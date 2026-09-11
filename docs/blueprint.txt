@@ -111,7 +111,7 @@ against the real CSV headers, season by season.
     differential score = predicted points vs selected_by_percent.
       High prediction + low ownership = the pick that wins mini-leagues.
   The 2025-26 dry run already surfaces the right shape: defenders like
-  GuÃ©hi and Senesi top the points-per-million list, and a <5% ownership
+  Guéhi and Senesi top the points-per-million list, and a <5% ownership
   filter finds the Casemiro-type differentials.
 
 
