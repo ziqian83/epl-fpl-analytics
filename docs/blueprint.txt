@@ -1,0 +1,147 @@
+FPL ANALYTICS PLAYGROUND - PROJECT BLUEPRINT
+Prepared 11 Sep 2026 for Ziqian. Working document: the "what and why", so you can
+direct the build without touching the technical plumbing.
+
+
+1. THE IDEA
+
+One dataset, two payoffs. First, a showcase: ten seasons of English Premier
+League data sitting in ClickHouse Cloud, queried in plain English through the
+new ChatGPT data connector - a live, personal demo of the "ChatGPT as front
+door to the data warehouse" story you tell boards. Second, an edge: the same
+tables power a backtested player-performance model and a Fantasy Premier
+League picker that spots undervalued players before the crowd does.
+
+
+2. ARCHITECTURE (zero code)
+
+Three pieces, no programming anywhere:
+
+  a. ClickHouse Cloud SQL console - the engine. All data loading and every
+     model below runs as plain SQL pasted into the browser console. The two
+     public data sources are loaded directly from their URLs using
+     ClickHouse's built-in url() table function: no downloads, no scripts,
+     no servers to babysit.
+  b. Public CSV sources (free, no sign-up):
+     - vaastav/Fantasy-Premier-League on GitHub: official FPL data per
+       player per gameweek, 2016-17 through 2025-26.
+     - football-data.co.uk: match-level results and stats (E0.csv),
+       same 10 seasons.
+  c. ChatGPT data connector - the natural-language layer. Once the tables
+     exist, the ClickHouse plugin lets ChatGPT write the SQL for you, live
+     against the service. Questions in, answers out, nothing exported.
+
+The load script is already written and tested end-to-end against a local
+ClickHouse (253,900 player-gameweek rows, 3,800 matches, 7,358 players,
+all 10 seasons complete). It goes in the moment the Cloud trial is
+reactivated.
+
+
+3. DATA MODEL
+
+Three raw tables plus one derived table. Column lists below are verified
+against the real CSV headers, season by season.
+
+  epl_fpl_gameweeks  (one row per player per gameweek, ~254k rows)
+    season, gw, name, position, team, player_id, opponent_team_id,
+    was_home, kickoff_time, round, minutes, goals_scored, assists,
+    expected_goals, expected_assists, expected_goal_involvements, starts,
+    selected, value (FPL price x10), total_points, team_h_score,
+    team_a_score
+    Caveats found in the files: position/team exist from 2020-21 onward;
+    expected-goals fields and starts exist from 2022-23 onward (empty
+    before that); player_id is reissued every season, so cross-season
+    matching uses player_code (see below).
+
+  epl_fpl_players_raw  (one row per player per season, FPL's own season
+  aggregates, ~7.4k rows)
+    season, player_id, player_code (stable across seasons - the join key),
+    web_name, first_name, second_name, position_id, team_id, now_cost
+    (price x10), selected_by_percent (ownership %), total_points, minutes,
+    goals_scored, assists, expected_goals, expected_assists (2022-23+),
+    starts (2022-23+)
+
+  epl_matches  (one row per match, 380 per season, 3,800 total)
+    season, match_date, match_time, home_team, away_team,
+    full-time and half-time goals and result (fthg, ftag, ftr, hthg,
+    htag, htr), referee, shots, shots on target, corners, yellows, reds
+    for each side. The source files also carry bookmaker odds columns;
+    not loaded yet, easy to add if you ever want a betting-angle demo.
+
+  epl_player_season  (derived; the backtest workhorse)
+    One row per player per season: season, player_id, player_code, name,
+    position, team (last club that season), minutes, starts, goals,
+    assists, xg, xa, fpl_points_from_gws, fpl_price_x10,
+    fpl_selected_by_percent, fpl_total_points.
+
+
+4. BACKTEST MODULE (train 2021-22..2024-25, test 2025-26)
+
+  Cohort rule: players with 900+ minutes in both the training window and
+  the test season (a full season is ~3,420; 900 keeps regulars and drops
+  cameos). 203 players qualified for the 2023-24 to 2024-25 dry run.
+
+  Baseline to beat: "next season = last season". Measured on real data,
+  last season's FPL points correlate with next season's at 0.52 (Pearson,
+  2023-24 vs 2024-25). That is the number any model must beat. (Final
+  metric: rank correlation, which is fairer to outliers - the plumbing
+  supports both.)
+
+  Model candidates, in order of effort:
+    i.  Weighted 3-season form: 0.5 x last season + 0.3 x season before
+        + 0.2 x the one before that, per 90 minutes, times expected
+        minutes.
+    ii. Minutes trend: reward players whose minutes are rising season
+        over season (new starters), penalise decliners.
+    iii.Age curve: peak years roughly 24-29 for outfield players. Needs
+        dates of birth, which the FPL files do not carry - optional
+        add-on from a third source, only if i and ii leave us short.
+
+  Verdict rule: a model ships only if it beats 0.52 on the test season.
+  If nothing beats the naive baseline, that is itself a publishable
+  finding ("FPL points are barely predictable year to year").
+
+
+5. FPL PICKER MODULE
+
+  Per upcoming gameweek, per player:
+    predicted points = recent form (per-90 FPL points, weighted last
+      5-10 gameweeks) x expected minutes factor x fixture difficulty
+      (opponent's goals conceded per match from epl_matches).
+    differential score = predicted points vs selected_by_percent.
+      High prediction + low ownership = the pick that wins mini-leagues.
+  The 2025-26 dry run already surfaces the right shape: defenders like
+  Guéhi and Senesi top the points-per-million list, and a <5% ownership
+  filter finds the Casemiro-type differentials.
+
+
+6. SHOWCASE LAYER
+
+  Demo queries that have already been run against the loaded data:
+    - Top scorer every season for 10 years, one query.
+      (Kane 29 in 2016-17 ... Haaland 36 in 2022-23 ... Salah 29 in 24-25.)
+    - "Which players beat their expected goals two years running?"
+      (Phil Foden +20.2 goals over xG across three seasons leads.)
+    - Best FPL value this season: points per million spent, 900+ minutes.
+    - Differentials: highest scorers owned by under 5% of managers.
+    - Home advantage by season: 49% home wins in 2016-17 down to 38% in
+      the behind-closed-doors 2020-21 season - a one-row COVID story.
+    - "Is last year's form a good predictor?" - the 0.52 baseline itself,
+      computed live.
+  Every one of these is a natural-language question the ChatGPT connector
+  can answer live in a board demo. That is the operating-model story:
+  the warehouse stays put, the questions come to it.
+
+
+7. MILESTONES
+
+  M1  Data loaded + sanity queries        (blocked only on the trial
+       decision; script tested and ready, ~5 minutes to run)
+  M2  Backtest v1: cohort, baseline, weighted-form model, verdict vs 0.52
+  M3  Picker v1: form + fixture model, differential leaderboard
+  M4  Showcase writeup: the demo queries packaged as the ChatGPT
+      connector story for board conversations
+
+  Current status: pre-M1. ClickHouse account confirmed (org
+  "HZ's Organization"); trial reactivation requested with ClickHouse
+  sales; load script validated; watching for their reply.
