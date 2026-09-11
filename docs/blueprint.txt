@@ -111,7 +111,7 @@ against the real CSV headers, season by season.
     differential score = predicted points vs selected_by_percent.
       High prediction + low ownership = the pick that wins mini-leagues.
   The 2025-26 dry run already surfaces the right shape: defenders like
-  Guéhi and Senesi top the points-per-million list, and a <5% ownership
+  GuÃ©hi and Senesi top the points-per-million list, and a <5% ownership
   filter finds the Casemiro-type differentials.
 
 
@@ -131,6 +131,30 @@ against the real CSV headers, season by season.
   Every one of these is a natural-language question the ChatGPT connector
   can answer live in a board demo. That is the operating-model story:
   the warehouse stays put, the questions come to it.
+
+  The board translation table - each picker signal is a familiar piece of
+  corporate data work wearing a football kit:
+    consistency (4+ pts when 60+ min)  -> revenue quality: repeatable,
+                                          dependable quarters, not one-off
+                                          spikes
+    team-proof (W/D/L splits)          -> alpha vs beta: does the unit
+                                          outperform, or just ride a rising
+                                          market
+    form-sustain (streak lengths)      -> initiative decay: how long a good
+                                          run typically lasts, and when to
+                                          intervene
+    fixture weighting (opp. strength)  -> territory-adjusted performance
+                                          measurement: fair comparisons once
+                                          difficulty is priced in
+    points per million                 -> ROI discipline under a budget cap
+    minutes security (starts %, mins)  -> key-person risk: is the output
+                                          dependent on someone always on
+                                          the pitch
+    transfer economics (-4 hit rule)   -> cost of switching: act only when
+                                          the expected gain over the hold
+                                          horizon beats the switching cost
+  The demo line writes itself: "the same seven questions, asked of your
+  sales pipeline instead of my fantasy team." 
 
 
 7. MILESTONES
