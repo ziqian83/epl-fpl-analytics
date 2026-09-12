@@ -1,0 +1,444 @@
+{
+ "meta": {
+  "brand": "The Boot Room",
+  "team_name": "MatchDay Blues",
+  "team_id": 4120529,
+  "gw": 4,
+  "season": "2026-27",
+  "deadline": "2026-09-12T20:30:00+08:00",
+  "generated": "12 Sep 2026, pre-deadline",
+  "plan_source": "manager's squad screenshot, 11 Sep 18:02 - the live, unlocked plan",
+  "baseline_source": "FPL API, team 4120529 - last saved squad (GW3, locked)",
+  "engine": "11-signal picker, backtested on 10 seasons (ClickHouse warehouse, 253,900 records)"
+ },
+ "diff": {
+  "personnel": "Same 15 players as the locked GW3 squad. No transfers made; 2 free transfers bank for GW5.",
+  "changes": [
+   {
+    "kind": "lineup",
+    "verdict": "endorsed",
+    "outcome": null,
+    "a": {
+     "name": "Steele",
+     "pos": "GKP",
+     "club": "BHA",
+     "price": 4.0,
+     "pts": 0,
+     "ppm": null,
+     "cons": null,
+     "fixture": "COV a2",
+     "note": "Punt keeper - expected non-starter"
+    },
+    "b": {
+     "name": "Kinsky",
+     "pos": "GKP",
+     "club": "TOT",
+     "price": 4.5,
+     "pts": 9,
+     "ppm": 2.0,
+     "cons": 0.333,
+     "fixture": "EVE h3",
+     "note": "The auto-sub floor"
+    },
+    "verdict_text": "Steele over Kinsky - decided by the GK punt rule: no appearance, Kinsky auto-subs in; a Coventry start (diff 2) is free upside."
+   },
+   {
+    "kind": "lineup",
+    "verdict": "mixed",
+    "outcome": null,
+    "a": {
+     "name": "Mitchell",
+     "pos": "DEF",
+     "club": "CRY",
+     "price": 4.5,
+     "pts": 16,
+     "ppm": 3.56,
+     "cons": 0.333,
+     "fixture": "IPS h2"
+    },
+    "b": {
+     "name": "Guehi",
+     "pos": "DEF",
+     "club": "MCI",
+     "price": 6.0,
+     "pts": 20,
+     "ppm": 3.33,
+     "cons": 0.667,
+     "fixture": "MUN a4"
+    },
+    "verdict_text": "Mitchell over Guehi, this week only - decided by fixture (home diff 2 vs away diff 4). Guehi wins every other dial; revert once it turns."
+   },
+   {
+    "kind": "lineup",
+    "verdict": "endorsed",
+    "outcome": null,
+    "a": {
+     "name": "Tzolis",
+     "pos": "MID",
+     "club": "ARS",
+     "price": 6.4,
+     "pts": 11,
+     "ppm": 1.72,
+     "cons": 1.0,
+     "fixture": "SUN a3",
+     "note": "210 mins - thin sample"
+    },
+    "b": {
+     "name": "Calvert-Lewin",
+     "pos": "FWD",
+     "club": "LEE",
+     "price": 6.0,
+     "pts": 10,
+     "ppm": 1.67,
+     "cons": 0.333,
+     "fixture": "NEW h2"
+    },
+    "verdict_text": "Tzolis over Calvert-Lewin - decided by consistency: 1.000 (thin sample) vs 0.333. DCL is weak on every dial."
+   },
+   {
+    "kind": "captaincy",
+    "verdict": "endorsed",
+    "outcome": null,
+    "a": {
+     "name": "Isak",
+     "pos": "FWD",
+     "club": "LIV",
+     "price": 9.1,
+     "pts": 23,
+     "ppm": 2.53,
+     "cons": 0.667,
+     "fixture": "FUL h2"
+    },
+    "b": {
+     "name": "B.Fernandes",
+     "pos": "MID",
+     "club": "MUN",
+     "price": 12.0,
+     "pts": 27,
+     "ppm": 2.25,
+     "cons": 0.333,
+     "fixture": "MCI h4",
+     "note": "Season propped by one 23-pt haul"
+    },
+    "verdict_text": "Isak over B.Fernandes for the armband - decided by consistency plus fixture: 0.667 at home (diff 2) vs 0.333 against Man City (diff 4)."
+   }
+  ]
+ },
+ "squad": [
+  {
+   "slot": 1,
+   "name": "Steele",
+   "pos": "GKP",
+   "club": "BHA",
+   "price": 4.0,
+   "own": 4.3,
+   "pts": 0,
+   "ppm": null,
+   "cons": null,
+   "fixture": "COV a2",
+   "starting": true,
+   "flag": "No minutes this season - unpriced by the engine"
+  },
+  {
+   "slot": 2,
+   "name": "Gabriel",
+   "pos": "DEF",
+   "club": "ARS",
+   "price": 8.0,
+   "own": 24.1,
+   "pts": 15,
+   "ppm": 1.88,
+   "cons": 0.667,
+   "fixture": "SUN a3",
+   "starting": true
+  },
+  {
+   "slot": 3,
+   "name": "De Cuyper",
+   "pos": "DEF",
+   "club": "BHA",
+   "price": 4.8,
+   "own": 21.9,
+   "pts": 21,
+   "ppm": 4.38,
+   "cons": 0.667,
+   "fixture": "COV a2",
+   "starting": true,
+   "flag": "Best value on the squad - the backtested archetype"
+  },
+  {
+   "slot": 4,
+   "name": "Mitchell",
+   "pos": "DEF",
+   "club": "CRY",
+   "price": 4.5,
+   "own": 6.6,
+   "pts": 16,
+   "ppm": 3.56,
+   "cons": 0.333,
+   "fixture": "IPS h2",
+   "starting": true,
+   "flag": "Fails consistency and team-proof - one-week fixture play only"
+  },
+  {
+   "slot": 5,
+   "name": "Yalcouye",
+   "pos": "MID",
+   "club": "BHA",
+   "price": 4.5,
+   "own": 3.3,
+   "pts": 11,
+   "ppm": 2.44,
+   "cons": 0.5,
+   "fixture": "COV a2",
+   "starting": true
+  },
+  {
+   "slot": 6,
+   "name": "Odegaard",
+   "pos": "MID",
+   "club": "ARS",
+   "price": 6.7,
+   "own": 17.4,
+   "pts": 24,
+   "ppm": 3.58,
+   "cons": 0.667,
+   "fixture": "SUN a3",
+   "starting": true
+  },
+  {
+   "slot": 7,
+   "name": "Szoboszlai",
+   "pos": "MID",
+   "club": "LIV",
+   "price": 7.0,
+   "own": 38.5,
+   "pts": 15,
+   "ppm": 2.14,
+   "cons": 0.667,
+   "fixture": "FUL h2",
+   "starting": true
+  },
+  {
+   "slot": 8,
+   "name": "B.Fernandes",
+   "pos": "MID",
+   "club": "MUN",
+   "price": 12.0,
+   "own": 43.3,
+   "pts": 27,
+   "ppm": 2.25,
+   "cons": 0.333,
+   "fixture": "MCI h4",
+   "starting": true,
+   "vice": true,
+   "flag": "Sell-before-the-crowd profile - one 23-pt haul props the season"
+  },
+  {
+   "slot": 9,
+   "name": "Tzolis",
+   "pos": "MID",
+   "club": "ARS",
+   "price": 6.4,
+   "own": 16.2,
+   "pts": 11,
+   "ppm": 1.72,
+   "cons": 1.0,
+   "fixture": "SUN a3",
+   "starting": true,
+   "flag": "Perfect consistency but 210 mins - thin sample"
+  },
+  {
+   "slot": 10,
+   "name": "Joao Pedro",
+   "pos": "FWD",
+   "club": "CHE",
+   "price": 7.7,
+   "own": 73.4,
+   "pts": 21,
+   "ppm": 2.73,
+   "cons": 0.667,
+   "fixture": "HUL h2",
+   "starting": true,
+   "flag": "The template anchor - 73% owned"
+  },
+  {
+   "slot": 11,
+   "name": "Isak",
+   "pos": "FWD",
+   "club": "LIV",
+   "price": 9.1,
+   "own": 23.1,
+   "pts": 23,
+   "ppm": 2.53,
+   "cons": 0.667,
+   "fixture": "FUL h2",
+   "starting": true,
+   "captain": true
+  },
+  {
+   "slot": 12,
+   "name": "Kinsky",
+   "pos": "GKP",
+   "club": "TOT",
+   "price": 4.5,
+   "own": 18.2,
+   "pts": 9,
+   "ppm": 2.0,
+   "cons": 0.333,
+   "fixture": "EVE h3",
+   "starting": false
+  },
+  {
+   "slot": 13,
+   "name": "Calvert-Lewin",
+   "pos": "FWD",
+   "club": "LEE",
+   "price": 6.0,
+   "own": 22.3,
+   "pts": 10,
+   "ppm": 1.67,
+   "cons": 0.333,
+   "fixture": "NEW h2",
+   "starting": false,
+   "flag": "Dials weak across the board - bench depth, not a start candidate"
+  },
+  {
+   "slot": 14,
+   "name": "Guehi",
+   "pos": "DEF",
+   "club": "MCI",
+   "price": 6.0,
+   "own": 18.4,
+   "pts": 20,
+   "ppm": 3.33,
+   "cons": 0.667,
+   "fixture": "MUN a4",
+   "starting": false,
+   "flag": "Clears both screens; benched only for the fixture"
+  },
+  {
+   "slot": 15,
+   "name": "Davis",
+   "pos": "DEF",
+   "club": "IPS",
+   "price": 4.0,
+   "own": 5.1,
+   "pts": 9,
+   "ppm": 2.25,
+   "cons": 0.333,
+   "fixture": "CRY a3",
+   "starting": false,
+   "flag": "Cold-start case, dated history - team losing when he plays"
+  }
+ ],
+ "this_gw": {
+  "lineup": "XI as planned, with the Steele call confirmed against team news before 20:30. Bench order: Guehi first (clears both screens), then Kinsky, Calvert-Lewin, Davis.",
+  "captain": "Isak - endorsed. Home to Fulham (difficulty 2), 0.667 consistency. Vice: B.Fernandes is acceptable.",
+  "transfer": "None. 2 free transfers bank for GW5. The banking model says GW4 buys almost no information over GW3 (6.8 vs 6.5 of the eventual top-20 identifiable), and no move this week clears the -4 point bar."
+ },
+ "short_term": {
+  "window": "GW5-GW8",
+  "grid": [
+   {
+    "club": "ARS",
+    "fixtures": [
+     "SUN a3",
+     "BHA a3",
+     "LEE h2",
+     "NFO a3",
+     "EVE h3"
+    ],
+    "note": "GW6 LEE (h2) is the window for the Arsenal triple"
+   },
+   {
+    "club": "LIV",
+    "fixtures": [
+     "FUL h2",
+     "BOU a3",
+     "MCI h4",
+     "BRE a3",
+     "BHA h2"
+    ],
+    "note": "Captaincy returns to Isak GW8 (BHA h2); GW6 MCI is the tough one"
+   },
+   {
+    "club": "MUN",
+    "fixtures": [
+     "MCI h4",
+     "FUL a3",
+     "TOT h3",
+     "LEE a3",
+     "BOU h3"
+    ],
+    "note": "Fixtures soften from GW5 - the Bruno exit window, not a panic sell this week"
+   },
+   {
+    "club": "BHA",
+    "fixtures": [
+     "COV a2",
+     "ARS h4",
+     "SUN a3",
+     "CRY h3",
+     "LIV a4"
+    ],
+    "note": "At the 3-per-club cap; GW5 ARS (h4) is the week to bench the third Brighton asset"
+   },
+   {
+    "club": "CHE",
+    "fixtures": [
+     "HUL h2",
+     "BRE a3",
+     "BOU h3",
+     "EVE a3",
+     "TOT h3"
+    ],
+    "note": "Joao Pedro's run stays green through GW8"
+   },
+   {
+    "club": "IPS",
+    "fixtures": [
+     "CRY a3",
+     "EVE a3",
+     "FUL h2",
+     "MCI a5",
+     "NFO h3"
+    ],
+    "note": "Davis exits or benches by GW8 (MCI a5)"
+   }
+  ],
+  "moves": [
+   "GW5 (2 FT): the Bruno exit window opens after the MCI fixture. Candidates from the value scan: Scott BOU 6.1 (3.93 ppm, 5.6% owned), Gakpo LIV 7.2 (3.89), Janelt BRE 5.0 (4.2). Each must clear the -4 bar.",
+   "GW6: Arsenal stack plays LEE (h2) - hold all three.",
+   "GW7-8: reassess Mitchell/Davis; both fixtures turn. If unresolved by GW8, they fold into the wildcard."
+  ]
+ },
+ "season_arc": {
+  "chips": [
+   "Bench Boost",
+   "Triple Captain",
+   "Wildcard",
+   "Free Hit"
+  ],
+  "template": "Template tracking vs the backtested curve: 6.8 of the eventual top-20 identifiable at GW4, roughly doubling by GW6-8 and settling near 10.6 by GW12. Joao Pedro (73.4%) is the current anchor; the engine tracks his own-vs-template gap weekly.",
+  "plan": [
+   "Wildcard: target GW9-10, after the GW6-8 information doubling and the international break - and inside the hard WC-by-GW19 deadline. Bruno and the Mitchell/Davis pair fold into it if unresolved.",
+   "Triple Captain: hold for a confirmed double gameweek, ideally on a template-heavy forward.",
+   "Bench Boost: pair with the wildcard squad built for a double week.",
+   "Free Hit: reserve for the blank gameweek.",
+   "Free transfers: stockpile toward the 5-cap; the model's reassessment window is GW6-8."
+  ]
+ },
+ "actions": [
+  "Start Steele in goal. It is a free swing: no appearance, Kinsky auto-subs in; a start away to Coventry (diff 2) is upside he has converted before.",
+  "Captain: Isak (home to Fulham, diff 2, 0.667 consistency). Vice: B.Fernandes.",
+  "Make zero transfers. Bank the 2 free transfers for GW5 - nothing this week clears the -4 bar.",
+  "Start Mitchell over Guehi for this week only (Ipswich at home vs away at Man City). Revert next week.",
+  "Start Tzolis over Calvert-Lewin. DCL's dials are weak everywhere; Tzolis is a thin sample but perfect so far."
+ ],
+ "squad_strategy": {
+  "gk_punt_rule": "A deliberately non-starting GK in the XI is an intended auto-sub play, never a news flag. Floor = backup's minutes; upside = the punt keeper's favourable fixture. Flag keeper risk only when the BACKUP's minutes are in doubt.",
+  "style_rule": "Actionable items findable in 10 seconds: recommended moves lead, evidence follows.",
+  "verdict_format": "Verdicts present as A-B comparisons: stacked cards (A over B, never side-by-side), identical dial order both cards, one shared verdict bar naming the winner and the one stat that decided it. In-chat answers follow the same shape: two compact lines plus verdict. Every call carries an outcome field, filled post-GW (held or busted)."
+ }
+}
