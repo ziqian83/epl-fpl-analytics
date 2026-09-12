@@ -37,6 +37,8 @@ GitHub is free. The account behind this project's repo was created years ago and
 2. Give it an email, a password, and a username. The username becomes part of every URL you ever share, so pick something you'd be happy to put on a resume. This project uses `ziqian83`, which is why its address is `github.com/ziqian83/epl-fpl-analytics`.
 3. Verify the email when GitHub asks. Done - you have an account.
 
+![github.com on a fresh browser - "Sign up" sits at the top right, and the big green button does the same thing](assets/1-ch1-01-signup.png)
+
 ### 1.3 Creating the repo - and why each setting is what it is
 
 1. Once signed in, click the **+** in the top-right corner, then **New repository**.
@@ -48,6 +50,8 @@ GitHub is free. The account behind this project's repo was created years ago and
 
 That is the whole ceremony. No software to install, nothing on your computer.
 
+![The New repository form: name, one-line description, Public selected, and the Add README switch - the three choices that matter](assets/2-ch1-02-new-repo-form.png)
+
 ### 1.4 The README: your project's cover page - and why it was written before any data
 
 Every repo has one special file: `README.md`. GitHub shows it on the repo's front page, automatically, nicely formatted - the way a magazine lays out its cover story.
@@ -57,6 +61,8 @@ When someone opens this project's link, the first thing they see is the README: 
 **Why write the story before there's data to show?** Because the README is where the project's promises live. Writing it first forces the design to be coherent: if you can't explain the idea, the architecture, and the milestones on one page, the project isn't ready to build. It also makes the repo honest from day one - ours states plainly "Status: build in progress", with the plan and the bar the backtest has to beat, so the repo documents the journey rather than pretending to be a finished product. When the data lands, we update the status line; the story was already true.
 
 **The mental model:** the repo is the filing cabinet, the README is the cover page taped to the front.
+
+![This project's front page: the file list up top, and the README rendered as the cover story right below it](assets/3-ch1-03-repo-front-readme.png)
 
 ### 1.5 Markdown: formatting with plain characters
 
@@ -78,9 +84,13 @@ GitHub's command-line tooling (`git`) is what professionals use day to day, but 
 **Create a new file:**
 1. Open the repo, click **Add file** (top-right of the file list), then **Create new file**.
 2. Type the filename at the top. To put a file inside a folder, type the folder name, then `/`, then the filename - `docs/blueprint.txt` creates a folder called `docs` containing `blueprint.txt`. Folders on GitHub are just names with slashes.
+
+![The Add file menu - "Create new file" is where every new page of the project starts](assets/4-ch1-04-add-file-menu.png)
 3. Paste or type the content into the big editor box.
 
 **Edit an existing file:** open the file, click the pencil icon (top-right of the file view), make your changes.
+
+![The web editor: file tree on the left, text on the right - this is the whole development environment](assets/5-ch1-04b-editor.png)
 
 **Save your work (this is the checkpoint):**
 1. Scroll down to **Commit changes**. Remember: a commit is a named checkpoint.
@@ -89,6 +99,8 @@ GitHub's command-line tooling (`git`) is what professionals use day to day, but 
 4. Click **Commit changes**.
 
 Every edit lands in the repo's history immediately, and the README on the front page updates the moment you commit.
+
+![The commit dialog: the message box is the note on your checkpoint, and "Commit directly to the main branch" is the default you want](assets/7-ch1-06-commit-dialog.png)
 
 ### 1.7 How this repo is organized - and why
 
@@ -105,6 +117,8 @@ Create a private practice repo and run the whole Chapter 1 circuit on it:
 2. Edit the README: give it a `#` title, one paragraph about anything (a hobby, a trip), one **bold** phrase, and a three-item bullet list. Commit with the message `Write my first README`.
 3. Create a folder and file in one move: **Add file** > **Create new file**, name it `docs/notes.md`, write three lines, commit.
 4. Open the repo's **commits** page (click the clock icon or "N commits" link on the front page) and find your three checkpoints with their notes. That list is the audit trail this chapter keeps talking about.
+
+![The commits page - every checkpoint with its note and timestamp. This is the audit trail](assets/6-ch1-05-commit-history.png)
 
 Fifteen minutes, and you've done everything this chapter describes. Chapter 2 picks up when the ClickHouse Cloud account goes live.
 
