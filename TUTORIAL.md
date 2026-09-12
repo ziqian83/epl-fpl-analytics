@@ -148,6 +148,8 @@ One term you will see constantly: **SQL** (Structured Query Language) is the lan
 3. Why bother, if the mail lands in the same place anyway? Because the alias gives each service its own identity while you keep one inbox. You can filter or search on it, you can tell exactly who leaked or sold an address when spam arrives addressed to it, and each trial or project account stays neatly labeled. It costs nothing and takes one extra word at signup.
 4. Click the verification link in the email - the standard prove-you-own-the-inbox step.
 
+![The ClickHouse Cloud signup page - the plus-aliased email goes in here. Note what the left panel prints in plain sight: free 30-day trial, $300 in credits](assets/8-ch2-01-signup.png)
+
 ### 2.3 Creating the service - what the wizard is really asking
 
 The onboarding wizard's choices, translated:
@@ -159,6 +161,8 @@ The onboarding wizard's choices, translated:
 - **Scaling = default.** How big the machine is. The defaults are deliberately small, and a quarter-million rows is nothing for ClickHouse - you can grow later. On a trial, size is how fast you burn credits, so small is correct.
 
 Click **Create service**, wait about two minutes while ClickHouse builds the machine in the background, and it appears in the console, running.
+
+![The service this project's wizard produced: epl-playground on AWS Singapore (ap-southeast-1), its scaling range in the middle, and the trial banner counting down on the left. The wizard screens themselves only exist while you are creating the service, so this is the live equivalent - everything the wizard asked, visible on the finished service](assets/9-ch2-02-service-dashboard.png)
 
 ### 2.4 Trial mechanics - read this before anyone ever enters a card
 
@@ -202,6 +206,8 @@ Why keep raw and derived in separate tables? The first four are loaded facts; th
 1. Open the **SQL console** (left sidebar of the ClickHouse Cloud console) and start a new query tab.
 2. Paste the whole script and hit **Run**.
 3. The console executes every statement in sequence: the `SET` line, the `CREATE TABLE`s, the 37 `INSERT`s, the derived-table build, then the sanity `SELECT`s. The output pane shows each statement's result as it goes - the last few print row counts, which are the point (see 3.5).
+
+![The SQL console with the load script pasted in: the five tables it built are listed on the left, and Run is the button at the top](assets/10-ch3-01-console-script.png)
 
 ### 3.4 Reading the script - three excerpts worth understanding
 
@@ -247,7 +253,12 @@ Group the gameweek rows by player and season, sum the facts, and attach `player_
 A script that runs without errors is not a load that worked. The only proof is counts, so the script ends with three sanity queries: total rows per table, then per-season counts for the gameweek and match tables. What "good" looks like:
 
 - **Matches = exactly 380 per season.** Every EPL season is 20 teams playing 38 rounds - know the shape of your domain so the data has to confess when it is wrong.
+- **Gameweek rows in the tens of thousands per season**, growing as the league's data got richer.- **Matches = exactly 380 per season.** Every EPL season is 20 teams playing 38 rounds - know the shape of your domain so the data has to confess when it is wrong.
 - **Gameweek rows in the tens of thousands per season**, growing as the league's data got richer.
+
+And here is this project's actual result, queried live after the load: 253,900 gameweek rows, 7,358 player-season rows, 3,800 matches - exactly 10 seasons x 380, to the row. Elapsed time: 4 milliseconds.
+
+![The proof: five tables counted live, and epl_matches lands on exactly 3,800 - ten seasons of 380](assets/11-ch3-02-results-counts.png)
 
 The moment a count looks off, something upstream is wrong and you fix it before building on top. This habit - reconcile the totals before you trust the detail - is pure accounting instinct, and it transfers directly.
 
