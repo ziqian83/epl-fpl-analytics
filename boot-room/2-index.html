@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Boot Room - MatchDay Blues, GW4 review</title>
+<style>
+  :root{--bg:#0a0a0b;--bg2:#101012;--ink:#f4f1ea;--ink-dim:#b9b4a8;--gold:#c2a05e;--gold-soft:#a98d52;--line:#26241f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  main{max-width:960px;margin:0 auto;padding:5vh 5vw 10vh}
+  h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+  h1{font-size:clamp(1.9rem,5vw,2.8rem)}
+  h1 em{font-style:normal;color:var(--gold)}
+  h2{font-size:clamp(1.2rem,3vw,1.5rem);margin-bottom:.8em}
+  h2 em{font-style:normal;color:var(--gold)}
+  .kicker{text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:var(--gold);margin-bottom:1em;font-weight:600}
+  .sub{color:var(--ink-dim);max-width:40em}
+  section{margin-top:3.2em;border-top:1px solid var(--line);padding-top:2em}
+  .meta-line{color:#6b675e;font-size:.82rem;margin-top:1.2em;letter-spacing:.04em}
+  .change{border:1px solid var(--line);border-left:3px solid var(--gold-soft);background:var(--bg2);padding:1em 1.2em;border-radius:3px;margin-top:.9em}
+  .change h3{font-size:.95rem;font-weight:600}
+  .change p{font-size:.88rem;color:var(--ink-dim);margin-top:.4em}
+  .chip{display:inline-block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.25em .7em;border-radius:2px;margin-left:.8em;vertical-align:middle}
+  .chip.endorsed{background:#1d2b1a;color:#9ccb86;border:1px solid #39522f}
+  .chip.mixed{background:#2b2416;color:#d8b45e;border:1px solid #52452a}
+  .chip.news{background:#2b1a1a;color:#e08c8c;border:1px solid #523030}
+  table{width:100%;border-collapse:collapse;margin-top:1em;font-size:.84rem}
+  th{text-align:left;text-transform:uppercase;letter-spacing:.1em;font-size:.64rem;color:var(--gold);padding:.55em .4em;border-bottom:1px solid var(--gold-soft);font-weight:600}
+  td{padding:.5em .4em;border-bottom:1px solid var(--line);color:var(--ink-dim)}
+  td:first-child{color:var(--ink)}
+  tr.bench td{opacity:.55}
+  .flag{font-size:.76rem;color:var(--gold-soft)}
+  .calls{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1em;margin-top:1.2em}
+  .call{border:1px solid var(--line);border-top:2px solid var(--gold-soft);background:var(--bg2);padding:1em 1.2em;border-radius:3px}
+  .call h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:.5em;font-weight:600}
+  .call p{font-size:.88rem;color:var(--ink-dim)}
+  .call p b{color:var(--ink)}
+  ul{list-style:none;margin-top:.8em}
+  li{padding:.4em 0 .4em 1.2em;position:relative;color:var(--ink-dim);font-size:.9rem}
+  li::before{content:"";position:absolute;left:0;top:.95em;width:.55em;height:2px;background:var(--gold)}
+  li b{color:var(--ink)}
+  .grid-note{font-size:.78rem;color:var(--gold-soft)}
+  .stamp{display:inline-block;margin-top:1.6em;border:1px solid var(--gold);border-radius:3px;padding:.7em 1.1em}
+  .stamp .lab{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .stamp .val{font-family:Georgia,serif;font-size:1.15rem;color:var(--ink);margin-top:.15em}
+  .action-card{border:1px solid var(--gold);background:var(--bg2);border-radius:4px;padding:1.4em 1.5em;margin-top:1.8em}
+  .action-card h2{font-size:1.05rem;margin-bottom:.7em}
+  .action-card ol{margin-left:1.2em}
+  .action-card li{padding:.35em 0 .35em .4em;color:var(--ink);font-size:.95rem}
+  .action-card li::before{display:none}
+  .foot{margin-top:3em;color:#6b675e;font-size:.78rem;letter-spacing:.06em;border-top:1px solid var(--line);padding-top:1.5em}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  .clubrow td:nth-child(2){font-variant-numeric:tabular-nums}
+  @media (max-width:640px){ table{font-size:.76rem} th,td{padding:.45em .25em} }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">The Boot Room</p>
+  <h1>MatchDay Blues. <em>GW4, priced before the deadline.</em></h1>
+  <p class="sub" style="margin-top:1em">Your plan, read against the engine's backtested dials - the same warehouse, signals, and discipline as <a href="../deck/">the deck</a>.</p>
+  <p class="meta-line" id="metaline"></p>
+  <div class="stamp"><div class="lab">Last updated</div><div class="val" id="stampval"></div></div>
+  <div class="action-card">
+    <h2>If I were the gaffer...</h2>
+    <ol id="actions"></ol>
+  </div>
+
+  <section id="diff">
+    <h2>Plan vs saved. <em>Four moves under the lamp.</em></h2>
+    <p class="sub" id="personnel"></p>
+    <div id="changes"></div>
+  </section>
+
+  <section id="squad">
+    <h2>The squad, <em>dial by dial.</em></h2>
+    <p class="sub">ppm = season points per million of price. Consistency = share of full games (60+ mins) returning 4+ points. Fixture = opponent, home/away, FPL difficulty 1-5.</p>
+    <table id="squadtable">
+      <thead><tr><th>Player</th><th>Pos</th><th>Price</th><th>Own%</th><th>Pts</th><th>ppm</th><th>Cons</th><th>GW4</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="thisgw">
+    <h2>This week. <em>The calls.</em></h2>
+    <div class="calls">
+      <div class="call"><h3>Lineup</h3><p id="c-lineup"></p></div>
+      <div class="call"><h3>Captain</h3><p id="c-captain"></p></div>
+      <div class="call"><h3>Transfers</h3><p id="c-transfer"></p></div>
+    </div>
+  </section>
+
+  <section id="shortterm">
+    <h2>Next 3-5 weeks. <em>The windows.</em></h2>
+    <table id="gridtable">
+      <thead><tr><th>Club</th><th>GW4</th><th>GW5</th><th>GW6</th><th>GW7</th><th>GW8</th><th>Read</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <ul id="moves"></ul>
+  </section>
+
+  <section id="arc">
+    <h2>The season arc. <em>Chips and template.</em></h2>
+    <p class="sub" id="template"></p>
+    <ul id="arcplan"></ul>
+  </section>
+
+  <p class="foot" id="foot"></p>
+</main>
+<script>
+fetch('data/review_gw4.json').then(r=>r.json()).then(d=>{
+  document.getElementById('metaline').textContent =
+    `GW${d.meta.gw} · deadline ${new Date(d.meta.deadline).toLocaleString('en-SG',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · plan: ${d.meta.plan_source} · baseline: ${d.meta.baseline_source} · generated ${d.meta.generated}`;
+  document.getElementById('stampval').textContent = `GW${d.meta.gw} review - ${d.meta.generated}`;
+  document.getElementById('personnel').textContent = d.diff.personnel;
+  if(d.actions){const al=document.getElementById('actions');d.actions.forEach(a=>{const li=document.createElement('li');li.textContent=a;al.appendChild(li)});}
+  const box = document.getElementById('changes');
+  d.diff.changes.forEach(c=>{
+    const div = document.createElement('div'); div.className='change';
+    div.innerHTML = `<h3>${c.change}<span class="chip ${c.verdict}">${c.verdict==='news'?'confirm news':c.verdict}</span></h3><p>${c.note}</p>`;
+    box.appendChild(div);
+  });
+  const tb = document.querySelector('#squadtable tbody');
+  d.squad.sort((a,b)=>a.slot-b.slot).forEach(p=>{
+    const tr = document.createElement('tr');
+    if(!p.starting) tr.className='bench';
+    const role = p.captain?' (C)':(p.vice?' (V)':'');
+    tr.innerHTML = `<td>${p.name}${role}${p.flag?`<div class="flag">${p.flag}</div>`:''}</td><td>${p.pos} ${p.club}</td><td>${p.price.toFixed(1)}</td><td>${p.own}</td><td>${p.pts}</td><td>${p.ppm??'-'}</td><td>${p.cons??'-'}</td><td>${p.fixture}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('c-lineup').textContent = d.this_gw.lineup;
+  document.getElementById('c-captain').textContent = d.this_gw.captain;
+  document.getElementById('c-transfer').textContent = d.this_gw.transfer;
+  const gb = document.querySelector('#gridtable tbody');
+  d.short_term.grid.forEach(g=>{
+    const tr = document.createElement('tr'); tr.className='clubrow';
+    tr.innerHTML = `<td>${g.club}</td>${g.fixtures.map(f=>`<td>${f}</td>`).join('')}<td class="grid-note">${g.note}</td>`;
+    gb.appendChild(tr);
+  });
+  const mv = document.getElementById('moves');
+  d.short_term.moves.forEach(m=>{const li=document.createElement('li');li.textContent=m;mv.appendChild(li)});
+  document.getElementById('template').textContent = d.season_arc.template;
+  const ap = document.getElementById('arcplan');
+  d.season_arc.plan.forEach(m=>{const li=document.createElement('li');li.textContent=m;ap.appendChild(li)});
+  document.getElementById('foot').innerHTML =
+    `Engine: ${d.meta.engine} · Chips available: ${d.season_arc.chips.join(', ')}<br><a href="../deck/">The decision engine (deck)</a> · <a href="https://github.com/ziqian83/epl-fpl-analytics">github.com/ziqian83/epl-fpl-analytics</a>`;
+}).catch(e=>{document.getElementById('metaline').textContent='Review data failed to load: '+e});
+</script>
+</body>
+</html>
