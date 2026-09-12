@@ -37,7 +37,7 @@ GitHub is free. The account behind this project's repo was created years ago and
 2. Give it an email, a password, and a username. The username becomes part of every URL you ever share, so pick something you'd be happy to put on a resume. This project uses `ziqian83`, which is why its address is `github.com/ziqian83/epl-fpl-analytics`.
 3. Verify the email when GitHub asks. Done - you have an account.
 
-![github.com on a fresh browser - "Sign up" sits at the top right, and the big green button does the same thing](assets/1-ch1-01-signup.png)
+![github.com on a fresh browser - "Sign up" sits at the top right, and the big green button does the same thing](assets/v2/1-ch1-01-signup.png)
 
 ### 1.3 Creating the repo - and why each setting is what it is
 
@@ -50,7 +50,7 @@ GitHub is free. The account behind this project's repo was created years ago and
 
 That is the whole ceremony. No software to install, nothing on your computer.
 
-![The New repository form: name, one-line description, Public selected, and the Add README switch - the three choices that matter](assets/2-ch1-02-new-repo-form.png)
+![The New repository form: name, one-line description, Public selected, and the Add README switch - the three choices that matter](assets/v2/2-ch1-02-new-repo-form.png)
 
 ### 1.4 The README: your project's cover page - and why it was written before any data
 
@@ -62,7 +62,7 @@ When someone opens this project's link, the first thing they see is the README: 
 
 **The mental model:** the repo is the filing cabinet, the README is the cover page taped to the front.
 
-![This project's front page: the file list up top, and the README rendered as the cover story right below it](assets/3-ch1-03-repo-front-readme.png)
+![This project's front page: the file list up top, and the README rendered as the cover story right below it](assets/v2/3-ch1-03-repo-front-readme.png)
 
 ### 1.5 Markdown: formatting with plain characters
 
@@ -85,12 +85,12 @@ GitHub's command-line tooling (`git`) is what professionals use day to day, but 
 1. Open the repo, click **Add file** (top-right of the file list), then **Create new file**.
 2. Type the filename at the top. To put a file inside a folder, type the folder name, then `/`, then the filename - `docs/blueprint.txt` creates a folder called `docs` containing `blueprint.txt`. Folders on GitHub are just names with slashes.
 
-![The Add file menu - "Create new file" is where every new page of the project starts](assets/4-ch1-04-add-file-menu.png)
+![The Add file menu - "Create new file" is where every new page of the project starts](assets/v2/4-ch1-04-add-file-menu.png)
 3. Paste or type the content into the big editor box.
 
 **Edit an existing file:** open the file, click the pencil icon (top-right of the file view), make your changes.
 
-![The web editor: file tree on the left, text on the right - this is the whole development environment](assets/5-ch1-04b-editor.png)
+![The web editor: file tree on the left, text on the right - this is the whole development environment](assets/v2/5-ch1-04b-editor.png)
 
 **Save your work (this is the checkpoint):**
 1. Scroll down to **Commit changes**. Remember: a commit is a named checkpoint.
@@ -100,7 +100,7 @@ GitHub's command-line tooling (`git`) is what professionals use day to day, but 
 
 Every edit lands in the repo's history immediately, and the README on the front page updates the moment you commit.
 
-![The commit dialog: the message box is the note on your checkpoint, and "Commit directly to the main branch" is the default you want](assets/7-ch1-06-commit-dialog.png)
+![The commit dialog: the message box is the note on your checkpoint, and "Commit directly to the main branch" is the default you want](assets/v2/7-ch1-06-commit-dialog.png)
 
 ### 1.7 How this repo is organized - and why
 
@@ -118,7 +118,7 @@ Create a private practice repo and run the whole Chapter 1 circuit on it:
 3. Create a folder and file in one move: **Add file** > **Create new file**, name it `docs/notes.md`, write three lines, commit.
 4. Open the repo's **commits** page (click the clock icon or "N commits" link on the front page) and find your three checkpoints with their notes. That list is the audit trail this chapter keeps talking about.
 
-![The commits page - every checkpoint with its note and timestamp. This is the audit trail](assets/6-ch1-05-commit-history.png)
+![The commits page - every checkpoint with its note and timestamp. This is the audit trail](assets/v2/6-ch1-05-commit-history.png)
 
 Fifteen minutes, and you've done everything this chapter describes. Chapter 2 picks up when the ClickHouse Cloud account goes live.
 
@@ -148,7 +148,7 @@ One term you will see constantly: **SQL** (Structured Query Language) is the lan
 3. Why bother, if the mail lands in the same place anyway? Because the alias gives each service its own identity while you keep one inbox. You can filter or search on it, you can tell exactly who leaked or sold an address when spam arrives addressed to it, and each trial or project account stays neatly labeled. It costs nothing and takes one extra word at signup.
 4. Click the verification link in the email - the standard prove-you-own-the-inbox step.
 
-![The ClickHouse Cloud signup page - the plus-aliased email goes in here. Note what the left panel prints in plain sight: free 30-day trial, $300 in credits](assets/8-ch2-01-signup.png)
+![The ClickHouse Cloud signup page - the plus-aliased email goes in here. Note what the left panel prints in plain sight: free 30-day trial, $300 in credits](assets/v2/8-ch2-01-signup.png)
 
 ### 2.3 Creating the service - what the wizard is really asking
 
@@ -162,7 +162,7 @@ The onboarding wizard's choices, translated:
 
 Click **Create service**, wait about two minutes while ClickHouse builds the machine in the background, and it appears in the console, running.
 
-![The service this project's wizard produced: epl-playground on AWS Singapore (ap-southeast-1), its scaling range in the middle, and the trial banner counting down on the left. The wizard screens themselves only exist while you are creating the service, so this is the live equivalent - everything the wizard asked, visible on the finished service](assets/9-ch2-02-service-dashboard.png)
+![The service this project's wizard produced: epl-playground on AWS Singapore (ap-southeast-1), its scaling range in the middle, and the trial banner counting down on the left. The wizard screens themselves only exist while you are creating the service, so this is the live equivalent - everything the wizard asked, visible on the finished service](assets/v2/9-ch2-02-service-dashboard.png)
 
 ### 2.4 Trial mechanics - read this before anyone ever enters a card
 
@@ -207,7 +207,7 @@ Why keep raw and derived in separate tables? The first four are loaded facts; th
 2. Paste the whole script and hit **Run**.
 3. The console executes every statement in sequence: the `SET` line, the `CREATE TABLE`s, the 37 `INSERT`s, the derived-table build, then the sanity `SELECT`s. The output pane shows each statement's result as it goes - the last few print row counts, which are the point (see 3.5).
 
-![The SQL console with the load script pasted in: the five tables it built are listed on the left, and Run is the button at the top](assets/10-ch3-01-console-script.png)
+![The SQL console with the load script pasted in: the five tables it built are listed on the left, and Run is the button at the top](assets/v2/10-ch3-01-console-script.png)
 
 ### 3.4 Reading the script - three excerpts worth understanding
 
@@ -258,7 +258,7 @@ A script that runs without errors is not a load that worked. The only proof is c
 
 And here is this project's actual result, queried live after the load: 253,900 gameweek rows, 7,358 player-season rows, 3,800 matches - exactly 10 seasons x 380, to the row. Elapsed time: 4 milliseconds.
 
-![The proof: five tables counted live, and epl_matches lands on exactly 3,800 - ten seasons of 380](assets/11-ch3-02-results-counts.png)
+![The proof: five tables counted live, and epl_matches lands on exactly 3,800 - ten seasons of 380](assets/v2/11-ch3-02-results-counts.png)
 
 The moment a count looks off, something upstream is wrong and you fix it before building on top. This habit - reconcile the totals before you trust the detail - is pure accounting instinct, and it transfers directly.
 
