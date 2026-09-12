@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lab Notebook - tested hypotheses, score kept</title>
+<style>
+  :root{--bg:#0a0a0b;--bg2:#101012;--ink:#f4f1ea;--ink-dim:#b9b4a8;--gold:#c2a05e;--gold-soft:#a98d52;--line:#26241f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  main{max-width:880px;margin:0 auto;padding:5vh 5vw 10vh}
+  h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+  h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+  h1 em{font-style:normal;color:var(--gold)}
+  .kicker{text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:var(--gold);margin-bottom:1em;font-weight:600}
+  .sub{color:var(--ink-dim);max-width:40em}
+  .meta-line{color:#6b675e;font-size:.82rem;margin-top:1.2em;letter-spacing:.04em}
+  .stamp{display:inline-block;margin-top:1.4em;border:1px solid var(--gold);border-radius:3px;padding:.6em 1em}
+  .stamp .lab{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .stamp .val{font-family:Georgia,serif;font-size:1.05rem;color:var(--ink);margin-top:.15em}
+  .entry{margin-top:2.6em}
+  .q{font-family:Georgia,serif;font-size:1.15rem;margin-bottom:.3em}
+  .q .date{color:#6b675e;font-size:.72rem;font-family:-apple-system,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-left:.8em}
+  .ab{border:1px solid var(--line);background:var(--bg2);border-radius:4px;margin-top:.8em;overflow:hidden}
+  .side{padding:.9em 1.2em}
+  .side.a{border-bottom:1px dashed var(--line)}
+  .side h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:.45em}
+  .side ul{list-style:none}
+  .side li{padding:.15em 0;color:var(--ink-dim);font-size:.88rem;font-variant-numeric:tabular-nums}
+  .side li::before{content:"·";color:var(--gold-soft);margin-right:.6em}
+  .verdict-bar{border-top:2px solid var(--gold-soft);padding:.8em 1.2em;font-size:.9rem;color:var(--ink-dim)}
+  .verdict-bar b{color:var(--ink)}
+  .outcome{padding:.7em 1.2em;font-size:.82rem;color:#8a8578;border-top:1px solid var(--line)}
+  .chip{display:inline-block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.25em .7em;border-radius:2px;margin-right:.7em;vertical-align:middle}
+  .chip.busted,.chip.resolved-busted{background:#2b1a1a;color:#e08c8c;border:1px solid #523030}
+  .chip.held-pending,.chip.pending{background:#2b2416;color:#d8b45e;border:1px solid #52452a}
+  .chip.held{background:#1d2b1a;color:#9ccb86;border:1px solid #39522f}
+  .chip.tracking{background:#241d2b;color:#b48cd8;border:1px solid #453052}
+  .foot{margin-top:3.5em;color:#6b675e;font-size:.78rem;letter-spacing:.06em;border-top:1px solid var(--line);padding-top:1.5em}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">The Boot Room · Lab Notebook</p>
+  <h1>Hypothesis in, <em>evidence out, score kept.</em></h1>
+  <p class="sub" style="margin-top:1em">Every question fired at the engine, logged with the verdict and the dials that decided it. Live calls carry an outcome field - filled after the gameweek, held or busted. Six months of this trail is the story.</p>
+  <div class="stamp"><div class="lab">Score so far</div><div class="val" id="score">-</div></div>
+  <div id="entries"></div>
+  <p class="foot" id="foot"></p>
+</main>
+<script>
+fetch('data/lab.json').then(r=>r.json()).then(d=>{
+  const box = document.getElementById('entries');
+  let score = {held:0, busted:0, pending:0, tracking:0};
+  d.entries.forEach(e=>{
+    const o = e.outcome || {status:'pending', text:''};
+    if(e.verdict==='busted') score.busted++;
+    else if(e.verdict==='held') score.held++;
+    if(o.status==='pending'||o.status==='tracking') score.pending++;
+    const side = (s,cls)=>`<div class="side ${cls}"><h3>${s.label}</h3><ul>${s.dials.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+    const chipLabel = {busted:'busted',held:'held','held-pending':'call made'}[e.verdict]||e.verdict;
+    const chipClass = {busted:'busted',held:'held','held-pending':'held-pending'}[e.verdict]||'held-pending';
+    const div = document.createElement('div'); div.className='entry';
+    div.innerHTML = `<div class="q">${e.question}<span class="date">${e.date}</span></div>
+      <div class="ab">${side(e.a,'a')}${side(e.b,'b')}
+      <div class="verdict-bar"><span class="chip ${chipClass}">${chipLabel}</span><b>${e.verdict_text.split(' - ')[0]}</b> - ${e.verdict_text.split(' - ').slice(1).join(' - ')}</div>
+      <div class="outcome">OUTCOME - ${o.text}</div></div>`;
+    box.appendChild(div);
+  });
+  document.getElementById('score').textContent =
+    `${d.entries.length} hypotheses logged · ${score.busted} busted · ${score.held} held · ${score.pending} awaiting results`;
+  document.getElementById('foot').innerHTML =
+    `Engine: ${d.meta.engine}<br><a href="../">The Boot Room (this week's review)</a> · <a href="../../deck/">The decision engine (deck)</a>`;
+}).catch(e=>{document.getElementById('entries').innerHTML='<p class="sub">Lab data failed to load: '+e+'</p>'});
+</script>
+</body>
+</html>
