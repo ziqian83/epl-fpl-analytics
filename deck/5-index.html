@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Decision Engine - Ten Seasons, One Warehouse, Every Decision Priced</title>
+<style>
+  :root{
+    --bg:#0a0a0b; --bg2:#101012; --ink:#f4f1ea; --ink-dim:#b9b4a8;
+    --gold:#c2a05e; --gold-soft:#a98d52; --line:#26241f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-snap-type:y proximity}
+  body{background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  section{min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;
+    justify-content:center;padding:7vh 7vw 15vh;max-width:1100px;margin:0 auto;position:relative}
+  h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+  h1{font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.12}
+  h2{font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.7em}
+  h1 em,h2 em{font-style:normal;color:var(--gold)}
+  .kicker{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--gold);margin-bottom:1.4em;font-weight:600}
+  .sub{color:var(--ink-dim);font-size:clamp(1rem,2.4vw,1.15rem);max-width:36em}
+  .foot{margin-top:2.5em;color:#6b675e;font-size:.8rem;letter-spacing:.08em}
+  .big{font-size:clamp(2.6rem,7vw,4.4rem);font-family:Georgia,serif;color:var(--gold);font-weight:600;line-height:1.05}
+  .label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-dim);margin-top:.6em;max-width:32em}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2em;margin-top:1.4em}
+  .card{border:1px solid var(--line);border-top:2px solid var(--gold-soft);background:var(--bg2);padding:1.1em 1.2em;border-radius:3px}
+  .card h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:.5em;font-weight:600}
+  .card p{font-size:.92rem;color:var(--ink-dim)}
+  .card p b{color:var(--ink);font-weight:600}
+  table{width:100%;border-collapse:collapse;margin-top:1.2em;font-size:.9rem}
+  th{text-align:left;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;color:var(--gold);padding:.6em .5em;border-bottom:1px solid var(--gold-soft);font-weight:600}
+  td{padding:.55em .5em;border-bottom:1px solid var(--line);color:var(--ink-dim)}
+  td:first-child{color:var(--ink)}
+  ul{list-style:none;margin-top:1.1em}
+  li{padding:.4em 0 .4em 1.2em;position:relative;color:var(--ink-dim)}
+  li::before{content:"";position:absolute;left:0;top:.95em;width:.55em;height:2px;background:var(--gold)}
+  li b{color:var(--ink);font-weight:600}
+  .quote{font-family:Georgia,serif;font-size:clamp(1.25rem,3.4vw,1.9rem);line-height:1.4;max-width:26em}
+  .bars{margin-top:1.4em}
+  .bar{display:grid;grid-template-columns:8.5em 1fr 3.5em;align-items:center;gap:1em;margin:.5em 0;font-size:.85rem;color:var(--ink-dim)}
+  .bar .track{background:#1b1a17;border-radius:2px;height:14px}
+  .bar .fill{background:var(--gold);height:14px;border-radius:2px;opacity:.85}
+  .bar .v{color:var(--ink);font-family:Georgia,serif}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  figure{margin-top:1.4em}
+  figure img{width:100%;max-width:860px;border:1px solid var(--line);border-radius:4px;display:block}
+  figcaption{font-size:.8rem;color:#6b675e;margin-top:.6em;letter-spacing:.04em}
+  .lesson{position:absolute;left:7vw;right:7vw;bottom:4.5vh;border-top:1px solid var(--gold-soft);
+    padding-top:.8em;display:flex;gap:1.2em;align-items:baseline;max-width:956px}
+  .lesson .tag{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap;font-weight:600}
+  .lesson p{font-size:.88rem;color:var(--ink-dim)}
+  .lesson p b{color:var(--ink);font-weight:600}
+  @media (max-width:600px){
+    body{font-size:16px}
+    .bar{grid-template-columns:6.5em 1fr 3em}
+    table{font-size:.8rem}
+    section{padding-bottom:22vh}
+    .lesson{flex-direction:column;gap:.3em;bottom:3vh}
+  }
+</style>
+</head>
+<body>
+
+<section>
+  <p class="kicker">A data &amp; AI operating model, proven on ten seasons</p>
+  <h1>The decision engine.<br><em>Ten seasons. One warehouse.<br>Every decision priced.</em></h1>
+  <p class="sub" style="margin-top:1.6em">Organisations sit on history and still decide on instinct. This is the alternative, working: a cloud warehouse, a backtested rulebook, and a weekly decision it actually makes.</p>
+  <p class="foot">ZI QIAN HOE &nbsp;·&nbsp; github.com/ziqian83/epl-fpl-analytics</p>
+</section>
+
+<section>
+  <p class="kicker">The test bed</p>
+  <h2>253,900 performances. <em>Total build cost: $3.77.</em></h2>
+  <p class="sub">Ten completed seasons of English Premier League player data in ClickHouse Cloud. Every number in this deck is a live query against it - and the whole build to this point consumed 1.3% of a $300 trial.</p>
+  <figure>
+    <img src="assets/billing.png" alt="ClickHouse Cloud billing page: 300 trial credits granted, 3.77 used, 296.23 remaining">
+    <figcaption>Live billing page, 12 Sep 2026. Compute $3.77 - storage, backups and transfer all $0.00.</figcaption>
+  </figure>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>The "platforms are expensive" objection is dead - a full working proof now costs less than a team lunch.</p></div>
+</section>
+
+<section>
+  <p class="kicker">The honest baseline</p>
+  <div class="big">0.517</div>
+  <p class="label">A correlation on the 0-to-1 scale, where 1.0 means last season perfectly predicts this season and 0 means no relationship at all. Here: last season's points vs this season's, for the 203 players with 900+ minutes in both 2023-24 and 2024-25. (Ranked version: 0.454 - same scale, comparing order rather than exact totals.)</p>
+  <p class="sub" style="margin-top:1.6em">That is what "just repeat last year" is worth. Every candidate signal was measured against this bar before anything shipped. None cleared it alone - so the engine is a composite, and the bar stays published.</p>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Instinct is a baseline, not a strategy - measure it, publish the number, then beat it.</p></div>
+</section>
+
+<section>
+  <p class="kicker">Signal 1 - survives</p>
+  <h2>Consistency: <em>73.5% vs 46.7%.</em></h2>
+  <p class="sub">The screen: share of a player's full games (60+ minutes) returning 4+ points, measured over four seasons. The model's top quintile went on to beat the cohort average <b>73.5%</b> of the time the following season. The average player manages <b>46.7%</b>. Dependable separates from streaky.</p>
+  <figure>
+    <img src="assets/consistency.png" alt="SQL query computing consistency per player for 2025-26, and the top-10 result: Cherki 0.812, Gabriel 0.767, Reece James 0.737">
+    <figcaption>The actual query and result, run 12 Sep 2026 - 40,978 rows read in 0.012s. The consistency column is a share: 0.812 means 81% of that player's full games returned 4+ points.</figcaption>
+  </figure>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Revenue quality: dependable contributors beat streaky stars - and the difference is measurable before you commit.</p></div>
+</section>
+
+<section>
+  <p class="kicker">Signal 2 - survives</p>
+  <h2>Fixture weighting: <em>4.04 down to 2.98.</em></h2>
+  <p class="sub">Every full appearance since 2019-20, sorted into four buckets by the opponent's defensive strength. Average points per appearance fall monotonically from <b>4.04</b> against the weakest quartile to <b>2.98</b> against the strongest - a 36% swing from the fixture alone, ~13,800 appearances per bucket.</p>
+  <figure>
+    <img src="assets/fixture.png" alt="SQL query bucketing appearances by opponent defensive strength; result 4.04, 3.75, 3.37, 2.98">
+    <figcaption>191,510 rows read in 0.018s. Tier 1 = weakest opposition defence. avg_points is points per appearance.</figcaption>
+  </figure>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Territory adjustment: judge every performance only after pricing the difficulty of the ground it was earned on.</p></div>
+</section>
+
+<section>
+  <p class="kicker">Signals 3 and 4 - survive, with caveats</p>
+  <div class="grid">
+    <div class="card"><h3>The cold-start price prior</h3><p>For the 43 newcomers with no league history in 2025-26, their opening market price predicts their season output at <b>0.534</b> - correlation on the same 0-to-1 scale as the baseline, and as good as the veteran 0.517. Trust the price for attackers fast; discount new defenders until about 900 live minutes.</p></div>
+    <div class="card"><h3>Value discipline</h3><p>Of the cheapest performers by points-per-million, <b>59.2%</b> went on to beat the cohort average - value screening pays at the cheap end, even though it cannot rank the expensive end.</p></div>
+    <div class="card"><h3>Team-proofing, inverted</h3><p>Players whose teams lose more when they play score <b>less</b> next season - correlation <b>-0.19</b> on the 0-to-1 scale, where the minus sign means more team losses, fewer points. The "he carries a bad side" story is priced wrong.</p></div>
+  </div>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Price signals, value screens, and unit economics all work - provided you know exactly where each one stops working.</p></div>
+</section>
+
+<section>
+  <p class="kicker">Two signals retired</p>
+  <h2>The busts are the credibility.</h2>
+  <div class="grid">
+    <div class="card"><h3>Home/away splits - 0.001</h3><p>Correlation between a player's home-minus-away scoring split this season and the same split next season, 173 regulars. On the 0-to-1 scale this is effectively zero persistence. A favourite pub stat, dead in the data.</p></div>
+    <div class="card"><h3>Past availability - 0.083</h3><p>How well a player's historical minutes-per-season predicts his future output, same scale. Near zero - it does not. Injury and rotation risk are live information, not history; moved to the news layer.</p></div>
+  </div>
+  <p class="sub" style="margin-top:1.6em">Both retirements are logged with the query that killed them.</p>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Kill weak signals in public - an operating model that cannot say "we were wrong, here is the number" is a marketing deck.</p></div>
+</section>
+
+<section>
+  <p class="kicker">The corporate analogs</p>
+  <h2>One engine, <em>boardroom grammar.</em></h2>
+  <table>
+    <tr><th>Mechanic in the model</th><th>Reads as</th></tr>
+    <tr><td>Consistency screen</td><td>Revenue quality</td></tr>
+    <tr><td>Points per million</td><td>ROI discipline</td></tr>
+    <tr><td>Team-proof ratio</td><td>Alpha vs beta</td></tr>
+    <tr><td>Fixture weighting</td><td>Territory-adjusted measurement</td></tr>
+    <tr><td>The 4-point transfer rule</td><td>Switching costs</td></tr>
+    <tr><td>Three-per-club cap</td><td>Concentration limits</td></tr>
+    <tr><td>Automatic substitutes</td><td>Failover design</td></tr>
+    <tr><td>Price changes + 50% sell-on tax</td><td>Mark-to-market with churn tax</td></tr>
+    <tr><td>Expiring chips</td><td>Use-it-or-lose-it budgets</td></tr>
+  </table>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Every mechanic in this engine already has a name in your boardroom - the grammar transfers whole.</p></div>
+</section>
+
+<section>
+  <p class="kicker">The exhibit</p>
+  <h2><em>Option value vs cash drag</em>, in one model.</h2>
+  <p class="sub">Unused weekly transfers bank to a cap of five - an option whose carrying cost is the points of the move not made. Ten seasons price the option. The bars: how many of the eventual top-20 performers are identifiable by week N.</p>
+  <div class="bars">
+    <div class="bar"><span>Week 1</span><div class="track"><div class="fill" style="width:26%"></div></div><span class="v">4.0</span></div>
+    <div class="bar"><span>Week 3</span><div class="track"><div class="fill" style="width:42%"></div></div><span class="v">6.5</span></div>
+    <div class="bar"><span>Week 4</span><div class="track"><div class="fill" style="width:44%"></div></div><span class="v">6.8</span></div>
+    <div class="bar"><span>Week 6</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="v">8.4</span></div>
+    <div class="bar"><span>Week 8</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="v">9.1</span></div>
+    <div class="bar"><span>Week 12</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="v">10.6</span></div>
+  </div>
+  <p class="sub" style="margin-top:1.4em">Week 4 buys almost nothing over week 3 (6.8 vs 6.5 of 20). By weeks 6-8 the picture has roughly doubled. So the option is worth holding: bank to the cap, reassess at weeks 6-8, spend before the mid-season expiry. The engine outputs the crossover point, not a feeling.</p>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>Waiting is a position with a price - bank the option, and spend it only when the odds say so.</p></div>
+</section>
+
+<section>
+  <p class="kicker">Data quality is the moat</p>
+  <ul>
+    <li><b>Join discipline.</b> Player IDs are reissued every season. Join on the wrong key and the correlation is -0.07; join on the stable key and it is 0.52 (same 0-to-1 scale as the baseline). Same data, opposite answers - the corporate identity problem in miniature.</li>
+    <li><b>Cold starts, three variants.</b> No history, thin history, dated history - each gets a different prior, and live evidence overrules fast for players on a development curve.</li>
+    <li><b>Entity resolution.</b> Three name formats across ten years of files; one stable key carries every join.</li>
+    <li><b>Query scoping.</b> A "missing" player was a one-season query over a ten-season problem. Scope is a design decision.</li>
+  </ul>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>The moat is never the data - it is the unglamorous discipline of keys, scopes, and cold starts.</p></div>
+</section>
+
+<section>
+  <p class="kicker">The engine, live</p>
+  <h2>Run on a real squad, <em>this week.</em></h2>
+  <ul>
+    <li><b>Best value held:</b> a 4.8m defender returning 4.38 points per million of price - nearly double the squad median of ~2.4 - with top-tier consistency (0.667, i.e. two of every three full games returned 4+ points).</li>
+    <li><b>The flag:</b> the most expensive midfielder (12.0m) returns 2.25 points per million with 0.333 consistency (one game in three), his season propped by one 23-point home haul. The profile to sell before the crowd, not after.</li>
+    <li><b>The watchlist:</b> three clean sheets from a promoted side - and the cold-start rule says discount new defenders. Watch, don't buy.</li>
+    <li><b>The discipline:</b> two banked transfers, no move that fails to clear the 4-point switching cost. Patience is also a position.</li>
+  </ul>
+  <p class="sub" style="margin-top:1.2em">Readout: <a href="https://github.com/ziqian83/epl-fpl-analytics/blob/main/docs/05_picker_v1.md">docs/05_picker_v1.md</a> · Backtest: <a href="https://github.com/ziqian83/epl-fpl-analytics/blob/main/docs/04_backtest_results.md">docs/04_backtest_results.md</a> · Live tool: <a href="https://ziqian83.github.io/epl-fpl-analytics/boot-room/">The Boot Room</a></p>
+  <div class="lesson"><span class="tag">The boardroom lesson</span><p>A model earns trust only when it runs on a live portfolio - this one did, this week.</p></div>
+</section>
+
+<section>
+  <p class="kicker">The close</p>
+  <p class="quote">"Data strategy is not the warehouse. It is the discipline of pricing every decision - <em style="color:var(--gold);font-style:normal">including the decision to wait</em> - and publishing the score when you were wrong."</p>
+  <p class="foot">ClickHouse Cloud · 253,900 records · 10 seasons · $3.77 build cost<br>github.com/ziqian83/epl-fpl-analytics</p>
+</section>
+
+</body>
+</html>
