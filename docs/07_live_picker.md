@@ -75,3 +75,17 @@ No install. No secret. No transfer is made for you.
 ## A browser-security wrinkle
 
 The official FPL feed is public, but it does not always allow a web page on another domain to read it directly. That browser rule is called CORS. The picker tries the official URL first, then uses AllOrigins as a public read-only relay if the browser blocks the direct request. The relay receives only the public FPL URL, never a login, cookie or secret. If both routes fail, the picker stops instead of recycling stale data.
+
+## Three squad jobs, not one bench bucket
+
+The picker now labels each player as XI core, pseudo-fodder, or true fodder. Core players carry the weekly scoring load. Pseudo-fodder, such as Calvert-Lewin or Mitchell, are cheap but play real minutes; a hard fixture swing can put them on sell-watch and a soft run raises their floor. True fodder, such as Steele, Yalcouye or Davis, is cheap insurance and is protected from churn. Its fixture is still shown in quieter type because it matters when an injury triggers an auto-sub.
+
+The bench is ranked every week as Sub 1, 2 and 3 using recent 60-minute appearances, form and the next fixture. This is separate from transfer value: true fodder can be protected from a transfer yet still be ordered intelligently if called on.
+
+## Planning three to five gameweeks ahead
+
+The page proposes a primary savings target and a runner-up from the whole player pool. It shows the five-week score, the funding gap, and the official FPL price-change signal. The target is not typed by the manager, so the alternative remains visible as a check on model bias.
+
+FPL's official public feed now carries price-change progress, projections, likelihood, lock and calibration fields. Those official fields drive the warning; the picker does not scrape a community predictor or invent a probability.
+
+The public locked-squad feed still does not reveal purchase or sale prices. Each owned player therefore gets an editable sell-value field, initially showing current list price. Replace it with the actual value on the FPL transfer screen before trusting affordability. This matters because FPL returns only half of a player's price profit when sold.

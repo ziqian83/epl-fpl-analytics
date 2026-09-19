@@ -41,9 +41,11 @@ await writeFile(OUT, `${JSON.stringify({
 console.log(`Wrote ${Object.keys(signals).length}/${players.length} player histories to ${OUT.pathname}`);
 const current = bootstrap.events.find(event => event.is_current) || bootstrap.events.filter(event => event.finished).at(-1);
 const next = bootstrap.events.find(event => event.is_next) || bootstrap.events.find(event => !event.finished);
-const [entry, picks, fixtures] = await Promise.all([
+const futureEvents=bootstrap.events.filter(e=>e.id>=next.id).slice(0,5).map(e=>e.id);
+const [entry, picks, fixtures, ...futureFixtures] = await Promise.all([
   fetch(`${API}/entry/4120529/`).then(check).then(r => r.json()),
   fetch(`${API}/entry/4120529/event/${current.id}/picks/`).then(check).then(r => r.json()),
-  fetch(`${API}/fixtures/?event=${next.id}`).then(check).then(r => r.json())
+  fetch(`${API}/fixtures/?event=${next.id}`).then(check).then(r => r.json()),
+  ...futureEvents.map(id=>fetch(`${API}/fixtures/?event=${id}`).then(check).then(r=>r.json()))
 ]);
-await writeFile(new URL('../boot-room/picker/data/live-state.json', import.meta.url), `${JSON.stringify({generated_at:new Date().toISOString(),bootstrap,entry,picks,fixtures},null,2)}\n`);
+await writeFile(new URL('../boot-room/picker/data/live-state.json', import.meta.url), `${JSON.stringify({generated_at:new Date().toISOString(),bootstrap,entry,picks,fixtures,fixtures_next_5:futureFixtures.flat()},null,2)}\n`);
