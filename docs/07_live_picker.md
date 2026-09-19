@@ -71,3 +71,7 @@ A later module could add on-device OCR, but only with a visible review step beca
 6. Re-run after internationals and press conferences before committing transfers.
 
 No install. No secret. No transfer is made for you.
+
+## A browser-security wrinkle
+
+The official FPL feed is public, but it does not always allow a web page on another domain to read it directly. That browser rule is called CORS. The picker tries the official URL first, then uses AllOrigins as a public read-only relay if the browser blocks the direct request. The relay receives only the public FPL URL, never a login, cookie or secret. If both routes fail, the picker stops instead of recycling stale data.
