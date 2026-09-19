@@ -39,3 +39,11 @@ await writeFile(OUT, `${JSON.stringify({
   players: signals
 }, null, 2)}\n`);
 console.log(`Wrote ${Object.keys(signals).length}/${players.length} player histories to ${OUT.pathname}`);
+const current = bootstrap.events.find(event => event.is_current) || bootstrap.events.filter(event => event.finished).at(-1);
+const next = bootstrap.events.find(event => event.is_next) || bootstrap.events.find(event => !event.finished);
+const [entry, picks, fixtures] = await Promise.all([
+  fetch(`${API}/entry/4120529/`).then(check).then(r => r.json()),
+  fetch(`${API}/entry/4120529/event/${current.id}/picks/`).then(check).then(r => r.json()),
+  fetch(`${API}/fixtures/?event=${next.id}`).then(check).then(r => r.json())
+]);
+await writeFile(new URL('../boot-room/picker/data/live-state.json', import.meta.url), `${JSON.stringify({generated_at:new Date().toISOString(),bootstrap,entry,picks,fixtures},null,2)}\n`);
