@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T09:53:35.903Z",
+  "generated_at": "2026-09-29T09:55:08.445Z",
   "source": "https://fantasy.premierleague.com/api/element-summary/{element_id}/",
   "window": "last 6 gameweeks; consistency uses 60+ minute matches",
   "players": {
