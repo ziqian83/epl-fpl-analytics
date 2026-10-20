@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T08:59:59.038Z",
+  "generated_at": "2026-10-20T08:38:18.571Z",
   "source": "https://fantasy.premierleague.com/api/element-summary/{element_id}/",
   "window": "last 6 gameweeks; consistency uses 60+ minute matches",
   "players": {
@@ -210,13 +210,13 @@
     },
     "108813": {
       "consistency": 0,
-      "xgi": 0.03,
+      "xgi": 0.02,
       "starts": 3
     },
     "109646": {
       "consistency": 0,
-      "xgi": 0,
-      "starts": 0
+      "xgi": 0.02,
+      "starts": 1
     },
     "109745": {
       "consistency": 0,
@@ -255,7 +255,7 @@
     },
     "115556": {
       "consistency": 0,
-      "xgi": 0,
+      "xgi": 0.04,
       "starts": 0
     },
     "116535": {
@@ -284,9 +284,9 @@
       "starts": 0
     },
     "122798": {
-      "consistency": 0.6666666666666666,
-      "xgi": 0.5,
-      "starts": 3
+      "consistency": 0.75,
+      "xgi": 0.52,
+      "starts": 4
     },
     "122806": {
       "consistency": 0.6,
@@ -364,9 +364,9 @@
       "starts": 6
     },
     "154566": {
-      "consistency": 0.3333333333333333,
-      "xgi": 1.23,
-      "starts": 3
+      "consistency": 0.5,
+      "xgi": 1.55,
+      "starts": 4
     },
     "155405": {
       "consistency": 0,
@@ -435,8 +435,8 @@
     },
     "168144": {
       "consistency": 0,
-      "xgi": 0.25,
-      "starts": 5
+      "xgi": 0.26,
+      "starts": 6
     },
     "168636": {
       "consistency": 0,
@@ -489,9 +489,9 @@
       "starts": 2
     },
     "172780": {
-      "consistency": 0,
-      "xgi": 0.09999999999999999,
-      "starts": 0
+      "consistency": 1,
+      "xgi": 0.24,
+      "starts": 1
     },
     "172850": {
       "consistency": 0,
@@ -504,9 +504,9 @@
       "starts": 5
     },
     "173878": {
-      "consistency": 0.4,
-      "xgi": 1.02,
-      "starts": 5
+      "consistency": 0.3333333333333333,
+      "xgi": 1.07,
+      "starts": 6
     },
     "173879": {
       "consistency": 0,
@@ -625,7 +625,7 @@
     },
     "196100": {
       "consistency": 0,
-      "xgi": 0.02,
+      "xgi": 0.13999999999999999,
       "starts": 0
     },
     "198869": {
@@ -780,7 +780,7 @@
     },
     "209036": {
       "consistency": 0.6666666666666666,
-      "xgi": 0.28,
+      "xgi": 0.26,
       "starts": 6
     },
     "209046": {
@@ -810,7 +810,7 @@
     },
     "210156": {
       "consistency": 0,
-      "xgi": 1.34,
+      "xgi": 1.62,
       "starts": 2
     },
     "210462": {
@@ -1015,7 +1015,7 @@
     },
     "223094": {
       "consistency": 1,
-      "xgi": 5.82,
+      "xgi": 5.700000000000001,
       "starts": 6
     },
     "223340": {
@@ -1105,13 +1105,13 @@
     },
     "230730": {
       "consistency": 1,
-      "xgi": 0.4,
-      "starts": 2
+      "xgi": 0.49,
+      "starts": 3
     },
     "231065": {
-      "consistency": 0.25,
-      "xgi": 0.12,
-      "starts": 4
+      "consistency": 0.2,
+      "xgi": 0.2,
+      "starts": 5
     },
     "231416": {
       "consistency": 0.6666666666666666,
@@ -1165,7 +1165,7 @@
     },
     "232787": {
       "consistency": 0,
-      "xgi": 0.9099999999999999,
+      "xgi": 0.9199999999999999,
       "starts": 2
     },
     "232859": {
@@ -1210,7 +1210,7 @@
     },
     "241293": {
       "consistency": 0,
-      "xgi": 0.6300000000000001,
+      "xgi": 0.8800000000000001,
       "starts": 2
     },
     "242313": {
@@ -1340,7 +1340,7 @@
     },
     "248875": {
       "consistency": 1,
-      "xgi": 1.17,
+      "xgi": 1.1800000000000002,
       "starts": 1
     },
     "249231": {
@@ -1370,7 +1370,7 @@
     },
     "428580": {
       "consistency": 0,
-      "xgi": 0.07,
+      "xgi": 0.27,
       "starts": 3
     },
     "428971": {
@@ -1385,13 +1385,13 @@
     },
     "431639": {
       "consistency": 0,
-      "xgi": 1.55,
+      "xgi": 1.56,
       "starts": 0
     },
     "432422": {
-      "consistency": 0.4,
-      "xgi": 1.04,
-      "starts": 5
+      "consistency": 0.5,
+      "xgi": 1.3900000000000001,
+      "starts": 6
     },
     "432714": {
       "consistency": 0.16666666666666666,
@@ -1494,9 +1494,9 @@
       "starts": 0
     },
     "438234": {
-      "consistency": 0,
-      "xgi": 0.53,
-      "starts": 4
+      "consistency": 0.2,
+      "xgi": 0.62,
+      "starts": 5
     },
     "438464": {
       "consistency": 0,
@@ -1520,7 +1520,7 @@
     },
     "440993": {
       "consistency": 0.75,
-      "xgi": 1.56,
+      "xgi": 1.3599999999999999,
       "starts": 4
     },
     "441164": {
@@ -1630,7 +1630,7 @@
     },
     "448047": {
       "consistency": 0.25,
-      "xgi": 1.6600000000000001,
+      "xgi": 1.65,
       "starts": 4
     },
     "448089": {
@@ -1660,7 +1660,7 @@
     },
     "449429": {
       "consistency": 0,
-      "xgi": 0.09,
+      "xgi": 0.1,
       "starts": 4
     },
     "449434": {
@@ -1684,9 +1684,9 @@
       "starts": 0
     },
     "451284": {
-      "consistency": 0.25,
-      "xgi": 0.3,
-      "starts": 4
+      "consistency": 0.2,
+      "xgi": 0.41,
+      "starts": 5
     },
     "451302": {
       "consistency": 0,
@@ -1734,14 +1734,14 @@
       "starts": 5
     },
     "460842": {
-      "consistency": 0,
-      "xgi": 0.8200000000000001,
-      "starts": 1
+      "consistency": 0.5,
+      "xgi": 0.9500000000000001,
+      "starts": 2
     },
     "461102": {
-      "consistency": 0.8,
-      "xgi": 0.77,
-      "starts": 5
+      "consistency": 0.6666666666666666,
+      "xgi": 0.9,
+      "starts": 6
     },
     "461199": {
       "consistency": 0,
@@ -1869,9 +1869,9 @@
       "starts": 1
     },
     "469142": {
-      "consistency": 0.6,
-      "xgi": 1.11,
-      "starts": 5
+      "consistency": 0.6666666666666666,
+      "xgi": 1.1600000000000001,
+      "starts": 6
     },
     "469247": {
       "consistency": 0,
@@ -1919,13 +1919,13 @@
       "starts": 1
     },
     "472739": {
-      "consistency": 0.2,
+      "consistency": 0.16666666666666666,
       "xgi": 0.02,
-      "starts": 5
+      "starts": 6
     },
     "472769": {
       "consistency": 0.3333333333333333,
-      "xgi": 1.07,
+      "xgi": 1.08,
       "starts": 3
     },
     "473284": {
@@ -1974,9 +1974,9 @@
       "starts": 6
     },
     "480457": {
-      "consistency": 0.4,
-      "xgi": 2.71,
-      "starts": 5
+      "consistency": 0.5,
+      "xgi": 2.86,
+      "starts": 6
     },
     "481283": {
       "consistency": 0,
@@ -2034,9 +2034,9 @@
       "starts": 0
     },
     "485055": {
-      "consistency": 0.4,
+      "consistency": 0.3333333333333333,
       "xgi": 0,
-      "starts": 5
+      "starts": 6
     },
     "485337": {
       "consistency": 0,
@@ -2144,9 +2144,9 @@
       "starts": 0
     },
     "491279": {
-      "consistency": 0.5,
-      "xgi": 0.64,
-      "starts": 4
+      "consistency": 0.4,
+      "xgi": 0.74,
+      "starts": 5
     },
     "491501": {
       "consistency": 0,
@@ -2310,8 +2310,8 @@
     },
     "501459": {
       "consistency": 0,
-      "xgi": 0.04,
-      "starts": 0
+      "xgi": 0.2,
+      "starts": 1
     },
     "501902": {
       "consistency": 0,
@@ -2380,7 +2380,7 @@
     },
     "511499": {
       "consistency": 0,
-      "xgi": 0.32000000000000006,
+      "xgi": 0.37000000000000005,
       "starts": 2
     },
     "512123": {
@@ -2585,7 +2585,7 @@
     },
     "543968": {
       "consistency": 0.2,
-      "xgi": 1.53,
+      "xgi": 1.73,
       "starts": 5
     },
     "544877": {
@@ -2625,8 +2625,8 @@
     },
     "547701": {
       "consistency": 0,
-      "xgi": 0.31,
-      "starts": 4
+      "xgi": 0.42,
+      "starts": 5
     },
     "547719": {
       "consistency": 0.2,
@@ -2700,7 +2700,7 @@
     },
     "551226": {
       "consistency": 0,
-      "xgi": 0.41000000000000003,
+      "xgi": 0.47000000000000003,
       "starts": 2
     },
     "551262": {
@@ -3175,7 +3175,7 @@
     },
     "627221": {
       "consistency": 1,
-      "xgi": 0.33,
+      "xgi": 0.37,
       "starts": 1
     },
     "629068": {
@@ -3300,7 +3300,7 @@
     },
     "661888": {
       "consistency": 0.3333333333333333,
-      "xgi": 0.19000000000000003,
+      "xgi": 0.20000000000000004,
       "starts": 3
     },
     "665243": {
