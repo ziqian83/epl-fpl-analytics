@@ -41,7 +41,7 @@
   h2 em{font-style:normal;color:var(--gold-ink)}
   .lede{color:var(--dim);max-width:44em;font-size:.94rem}
   .caption{color:var(--faint);font-size:.78rem;margin-top:.9em;letter-spacing:.03em}
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;margin-top:1.8em;align-items:stretch}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;margin-top:1.8em;align-items:start}
   .plan{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.3em 1.3em 1.1em;display:flex;flex-direction:column;position:relative}
   .plan .num{position:absolute;top:1.1em;left:1.3em;font-family:Georgia,serif;font-size:.95rem;color:var(--faint)}
   .plan .tagrow{min-height:1.7em;display:flex;justify-content:flex-end}
@@ -164,7 +164,7 @@
 
   <section id="plans">
     <h2>This week's <em>plays</em></h2>
-    <p class="lede">The feasible postures side by side. No verdicts: expected points here are a weak signal (validated as such - see the method), so every card shows cost, upside and what is unvalidated rather than a recommendation.</p>
+    <p class="lede">The feasible postures side by side. No verdicts: expected points here come from a small model whose rolling holdout tests on the 2024-25 and 2025-26 seasons ordered candidate swaps about 1 percentage point better than a naive baseline and trimmed roughly 0.2 points of mean absolute error - a weak signal, enough to sort a shortlist, not to justify a move alone (see the method). Every card shows cost, upside and what is unvalidated rather than a recommendation.</p>
     <div class="plans" id="plansrow">
       <article class="plan"><span class="num">1</span><div class="tagrow"><span class="badge quiet">Waiting</span></div><h3>Load your squad</h3><p style="font-size:.88rem;color:var(--dim)">The plays are computed from your actual squad, bank and free transfers - nothing generic gets dressed up as advice.</p></article>
     </div>

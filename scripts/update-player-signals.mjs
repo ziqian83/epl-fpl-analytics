@@ -44,6 +44,13 @@ const next = bootstrap.events.find(event => event.is_next) || bootstrap.events.f
 const futureEvents=bootstrap.events.filter(e=>e.id>=next.id).slice(0,5).map(e=>e.id);
 const TEAM_ID = process.env.FPL_TEAM_ID;
 if (!TEAM_ID) { console.error('FPL_TEAM_ID is not set - add it as a repository secret (Actions). Never hardcode it here.'); process.exit(1); }
+const reportFailure = (e) => {
+  const msg = String((e && e.message) || e).split(process.env.FPL_TEAM_ID || '\u0000').join('REDACTED-ID').slice(0, 300);
+  console.error('update-player-signals failed:', (e && e.name) || 'Error', '-', msg);
+  process.exit(1);
+};
+process.on('uncaughtException', reportFailure);
+process.on('unhandledRejection', reportFailure);
 const redact = (o) => JSON.parse(JSON.stringify(o, (k, v) =>
   typeof v === 'string' ? v.split(TEAM_ID).join('REDACTED-ID') :
   (typeof v === 'number' && String(v) === TEAM_ID ? 'REDACTED-ID' : v)));
