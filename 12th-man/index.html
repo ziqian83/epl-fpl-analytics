@@ -267,7 +267,7 @@
       squad = (picks.picks || []).map(function(pk){
         var pl = pool.players[pk.element];
         return { id: pk.element, slot: pk.position, captain: pk.is_captain, vice: pk.is_vice_captain,
-                 rated: !!pl, p: pl || null, selling: pk.selling_price/10 };
+                 rated: !!pl, p: pl || null, selling: (pk.selling_price != null ? pk.selling_price/10 : null) };
       });
       renderChips(); renderSquad(entry, lastFinished); renderPlans();
       $('settingspanel').removeAttribute('open');
@@ -295,13 +295,14 @@
       var team = s.rated ? s.p.team : '?';
       var pos = s.rated ? POSN[s.p.pos] : '?';
       var xp = s.rated ? s.p.xp.toFixed(2) : '-';
+      var costCell = s.rated ? '£' + s.p.cost.toFixed(1) : (s.selling != null ? '£' + s.selling.toFixed(1) : '-');
       var tags = '';
       if(s.captain) tags += ' <span class="tag" style="border-color:var(--gold);color:var(--gold-ink)">C</span>';
       if(s.vice) tags += ' <span class="tag" style="border-color:var(--faint);color:var(--faint)">VC</span>';
       if(s.rated && s.p.news) tags += ' <span class="tag">' + s.p.news.slice(0,40) + '</span>';
       if(!s.rated) tags += ' <span class="tag cold">Not rated - cold start</span>';
       var fx = s.rated ? s.p.fixtures.join(' + ') : '';
-      return '<tr' + (s.slot > 11 ? ' class="bench"' : '') + '><td>' + (s.slot > 11 ? 'Bench ' + (s.slot-11) : pos) + '</td><td><b>' + nm + '</b>' + tags + '</td><td>' + team + '</td><td>' + fx + '</td><td>' + (s.rated ? '£' + s.p.cost.toFixed(1) : '£' + s.selling.toFixed(1)) + '</td><td>' + xp + '</td></tr>';
+      return '<tr' + (s.slot > 11 ? ' class="bench"' : '') + '><td>' + (s.slot > 11 ? 'Bench ' + (s.slot-11) : pos) + '</td><td><b>' + nm + '</b>' + tags + '</td><td>' + team + '</td><td>' + fx + '</td><td>' + costCell + '</td><td>' + xp + '</td></tr>';
     }).join('');
     $('squadwrap').innerHTML =
       '<table class="sq"><thead><tr><th>Slot</th><th>Player (as locked GW' + lastFinished + ')</th><th>Team</th><th>GW' + pool.gameweek + ' fixture</th><th>Cost</th><th>xP GW' + pool.gameweek + '</th></tr></thead><tbody>' + rows + '</tbody></table>' +
