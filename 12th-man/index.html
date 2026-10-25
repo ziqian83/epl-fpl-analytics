@@ -353,6 +353,10 @@
       return best;
     }
     var swaps = [], benchSwaps = [];
+    var sellsUnknown = squad.filter(function(s){ return s.selling == null; }).length;
+    var budgetCaveat = sellsUnknown
+      ? '<div class="row"><dt>Budget estimated</dt><dd>Swaps are priced against current cost, not your actual sell values - the feed does not expose them, and current cost can overestimate what you get back. Provisional until you confirm real sell prices on the FPL transfers page.</dd></div>'
+      : '';
     var canAfford = state.bankConfirmed === true && !isNaN(parseFloat(state.bank !== null && state.bank !== '' ? state.bank : $('bank').value));
     if(canAfford){
       var b = parseFloat(state.bank);
@@ -383,7 +387,7 @@
 
     var card1;
     if(!canAfford){ card1 = cardShell('1','Needs confirmed bank','Make a transfer','<div class="row"><dt>Next step</dt><dd>Confirm your bank above - affordability is not guessed.</dd></div>',''); }
-    else if(!bestSwap && !benchSwaps.length){ card1 = cardShell('1','Quiet week','Make a transfer','<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div><div class="row"><dt>The move</dt><dd>No rated player inside budget out-projects your current options at the same position, within the 3-per-club cap.</dd></div>','<p>Search covered the whole rated pool at your positions, budget and club cap applied.</p>'); }
+    else if(!bestSwap && !benchSwaps.length){ card1 = cardShell('1','Quiet week','Make a transfer','<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div><div class="row"><dt>The move</dt><dd>No rated player inside estimated budget out-projects your current options at the same position, within the 3-per-club cap.</dd></div>' + budgetCaveat,'<p>Search covered the whole rated pool at your positions, budget and club cap applied.</p>'); }
     else {
       var rowsHtml = top.map(function(t){
         return '<div class="row"><dt>' + POSN[t.inn.c.pos] + ' swap (XI)</dt><dd><b>' + t.out.p.name + '</b> &rarr; <b>' + t.inn.c.name + '</b> (' + t.inn.c.team + ', £' + t.inn.c.cost.toFixed(1) + ')<br>' +
@@ -392,7 +396,7 @@
       if(benchSwaps.length) rowsHtml += '<div class="row"><dt>Bench depth</dt><dd>' + benchSwaps.slice(0,2).map(function(t){ return '<b>' + t.out.p.name + '</b> &rarr; <b>' + t.inn.c.name + '</b> (+' + t.delta.toFixed(2) + ')'; }).join('<br>') + '<br>Bench upgrades do not change the XI projection.</dd></div>';
       card1 = cardShell('1', badge1, 'Make a transfer',
         '<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div>' + rowsHtml +
-        '<div class="row"><dt>Unvalidated</dt><dd>These edges are weak, unvalidated estimates - they order options; they do not justify a move alone. See the method doc.</dd></div>',
+        '<div class="row"><dt>Unvalidated</dt><dd>These edges are weak, unvalidated estimates - they order options; they do not justify a move alone. See the method doc.</dd></div>' + budgetCaveat,
         '<div><b>' + bestSwap.out.p.name + ' (out)</b></div>' + evTable(bestSwap.out) + '<div style="margin-top:.7em"><b>' + bestSwap.inn.c.name + ' (in)</b></div>' + evTable({p:bestSwap.inn.c}));
     }
 
@@ -450,8 +454,9 @@
         '<div class="row"><dt>Per GW</dt><dd>' + perGw + '</dd></div>' +
         st.notes.map(function(n){ return '<div class="row"><dt>Note</dt><dd>' + n + '</dd></div>'; }).join('') +
         st.unknowns.map(function(u){ return '<div class="row"><dt>Unknown</dt><dd>' + u + '</dd></div>'; }).join('') +
-        (sellAssumed ? '<div class="row"><dt>Unknown</dt><dd>' + sellAssumed + ' sell price(s) not exposed by the feed - assumed at current cost, so affordability can be off</dd></div>' : '');
-      return '<article class="plan"><span class="num">' + (i+1) + '</span><div class="tagrow"><span class="badge quiet">' + (st.hits ? 'Costs ' + (st.hits*4) + ' pts' : 'No certain cost') + '</span></div><h3>' + st.label + '</h3><dl>' + rows + '</dl></article>';
+        (sellAssumed ? '<div class="row"><dt>Budget not verified</dt><dd>Affordability here is estimated, not established: the feed does not expose your ' + sellAssumed + ' actual sell price(s), so every move is budgeted at current cost - and current cost can overestimate what you get back. Confirm real sell values on the FPL transfers page before acting on any move.</dd></div>' : '');
+      var provisional = sellAssumed && st.moves.length ? '<span class="badge quiet">Budget estimated</span>' : '';
+      return '<article class="plan"><span class="num">' + (i+1) + '</span><div class="tagrow"><span class="badge quiet">' + (st.hits ? 'Costs ' + (st.hits*4) + ' pts' : 'No certain cost') + '</span>' + provisional + '</div><h3>' + st.label + '</h3><dl>' + rows + '</dl></article>';
     }).join('');
     row.innerHTML = cards;
   }
