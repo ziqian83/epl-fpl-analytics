@@ -174,9 +174,12 @@
     var h = horizonXp(cur, gws);
     return { key: 'aggr', label: 'Aggressive restructure (hits allowed)', available: true,
       moves: moves, hits: hits, total: +(h.total - hits * HIT_COST).toFixed(2), perGw: h.perGw,
-      notes: [moves.length ? moves.length + ' move(s) across the horizon, ' + hits + ' on a hit (certain -' + (hits * HIT_COST) + ').'
-                           : 'No swap sequence beat its certain costs - this posture collapses into Hold.',
-              'A hit is only taken when the weak projection clears the certain -4; that margin is not calibrated.'],
+      notes: [hits > 0
+        ? moves.length + ' move(s) across the horizon, ' + hits + ' on a hit (certain -' + (hits * HIT_COST) + ').'
+        : (moves.length
+          ? 'No hit taken: none cleared the >4pt gain bar, so this policy converges on the same move(s) as the targeted fix. Shown as its own policy, not presented as a different plan.'
+          : 'No swap sequence beat its certain costs - this posture collapses into Hold.'),
+        'A hit is only taken when the weak projection clears the certain -4; that margin is not calibrated.'],
       unknowns: ['Prices are frozen in the model - real price changes alter what is affordable'] };
   }
 
