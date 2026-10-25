@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The 12th Man - weekly briefing preview</title>
+<title>The 12th Man - weekly briefing</title>
 <link rel="icon" type="image/svg+xml" href="grid.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="A working preview of the next Boot Room: the weekly FPL briefing as plans, tradeoffs and evidence. Illustrative content, not advice.">
+<meta name="description" content="A weekly FPL briefing as plans, tradeoffs and evidence. Live public FPL data, your team ID never leaves your browser except as a lookup.">
 <style>
   :root{
     --bg:#f1f5f3; --card:#fdfefa; --ink:#0e3a40; --dim:#47645d; --faint:#7d948c;
-    --line:#d5e2dc; --gold:#63b3a2; --gold-ink:#4d9a89;
+    --line:#d5e2dc; --gold:#63b3a2; --gold-ink:#4d9a89; --warn:#b3541e;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -18,12 +18,8 @@
   main{max-width:1040px;margin:0 auto;padding:0 5vw 12vh}
   h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
   a{color:var(--gold-ink);text-decoration:none;border-bottom:1px solid var(--gold)}
-
-  /* preview ribbon */
   .ribbon{background:#0e3a40;color:#e9f2ee;font-size:.78rem;letter-spacing:.04em;padding:.6em 5vw;text-align:center}
   .ribbon b{color:#63b3a2}
-
-  /* masthead */
   header.mast{padding:7vh 0 4vh;display:flex;gap:1.5em;align-items:center}
   .mast .logo{flex:0 0 auto;width:clamp(56px,10vw,88px)}
   .mast .logo img{display:block;width:100%}
@@ -31,8 +27,6 @@
   h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1.05}
   h1 em{font-style:normal;color:var(--gold-ink)}
   .mast .sub{color:var(--dim);max-width:38em;margin-top:1em;font-size:1.02rem}
-
-  /* strip: week + chips */
   .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2em 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.1em}
   .cell .lab{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
   .cell .val{font-size:.92rem;color:var(--ink)}
@@ -42,49 +36,39 @@
   .pill.live{border-color:var(--gold);color:var(--gold-ink)}
   .pill.spent{opacity:.55;text-decoration:line-through}
   #count{font-variant-numeric:tabular-nums}
-
-  /* sections */
   section{margin-top:4.5em}
   h2{font-size:clamp(1.35rem,3.4vw,1.8rem);margin-bottom:.35em}
   h2 em{font-style:normal;color:var(--gold-ink)}
   .lede{color:var(--dim);max-width:44em;font-size:.94rem}
   .caption{color:var(--faint);font-size:.78rem;margin-top:.9em;letter-spacing:.03em}
-
-  /* plan cards */
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;margin-top:1.8em;align-items:stretch}
   .plan{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.3em 1.3em 1.1em;display:flex;flex-direction:column;position:relative}
   .plan .num{position:absolute;top:1.1em;left:1.3em;font-family:Georgia,serif;font-size:.95rem;color:var(--faint)}
   .plan .tagrow{min-height:1.7em;display:flex;justify-content:flex-end}
   .badge{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.35em .85em;border-radius:3px;background:var(--gold);color:#fff}
   .badge.quiet{background:none;border:1px solid var(--line);color:var(--faint)}
+  .badge.warn{background:none;border:1px solid var(--warn);color:var(--warn)}
   .plan h3{font-size:1.28rem;margin:.7em 0 .9em;line-height:1.2}
   .plan dl{margin-top:auto}
   .plan .row{border-top:1px solid var(--line);padding:.7em 0}
   .plan dt{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
   .plan dd{font-size:.9rem;color:var(--ink);margin-top:.2em}
-  .plan.disabled{opacity:.55}
-  .plan.disabled h3{text-decoration:line-through}
   details.ev{border-top:1px solid var(--line);padding:.7em 0}
   details.ev summary{cursor:pointer;list-style:none;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;display:flex;justify-content:space-between;align-items:center}
   details.ev summary::-webkit-details-marker{display:none}
   details.ev summary .tw{transition:transform .18s ease;color:var(--faint);font-size:.8rem;letter-spacing:0}
   details.ev[open] summary .tw{transform:rotate(45deg)}
-  details.ev p{font-size:.86rem;color:var(--dim);margin-top:.55em}
-
+  details.ev div, details.ev p{font-size:.86rem;color:var(--dim);margin-top:.55em}
   @media (max-width:760px){
     header.mast{flex-direction:column;align-items:flex-start;gap:1em;padding-top:5vh}
     .plans{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1em;margin-left:-5vw;margin-right:-5vw;padding:0 5vw .8em;-webkit-overflow-scrolling:touch}
     .plan{flex:0 0 82%;scroll-snap-align:center}
   }
-
-  /* generic facts */
   .facts{margin-top:1.6em;border-top:1px solid var(--line)}
   .fact{display:grid;grid-template-columns:minmax(140px,.9fr) 2fr;gap:1em;padding:.85em 0;border-bottom:1px solid var(--line)}
   .fact .k{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;padding-top:.3em}
   .fact .v{font-size:.92rem;color:var(--ink)}
   @media (max-width:560px){.fact{grid-template-columns:1fr;gap:.3em}}
-
-  /* squad settings panel */
   details.panel{margin-top:1.6em;border:1px solid var(--line);border-radius:6px;background:var(--card)}
   details.panel summary{cursor:pointer;list-style:none;padding:1em 1.3em;display:flex;justify-content:space-between;align-items:center}
   details.panel summary::-webkit-details-marker{display:none}
@@ -94,152 +78,319 @@
   details.panel .body{border-top:1px solid var(--line);padding:1.1em 1.3em 1.3em}
   .field{margin-top:.9em}
   .field label{display:block;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
-  .field input{width:100%;max-width:22em;padding:.55em .7em;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--dim);font-size:.9rem}
+  .field input{width:100%;max-width:22em;padding:.55em .7em;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);font-size:.9rem}
   .field small{display:block;color:var(--faint);font-size:.74rem;margin-top:.3em}
-
-  /* stamp + foot */
+  .btn{display:inline-block;margin-top:1em;background:var(--gold);color:#fff;border:none;border-radius:4px;padding:.6em 1.4em;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:pointer}
+  .btn[disabled]{opacity:.5;cursor:default}
+  .err{color:var(--warn);font-size:.82rem;margin-top:.7em}
   .stamp{display:inline-block;margin-top:2.6em;border:1px solid var(--gold);border-radius:4px;padding:.85em 1.2em}
+  .stamp.stale{border-color:var(--warn)}
   .stamp .lab{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .stamp.stale .lab{color:var(--warn)}
   .stamp .val{font-family:Georgia,serif;font-size:1.02rem;margin-top:.2em}
   .foot{margin-top:4em;border-top:1px solid var(--line);padding-top:1.6em;color:var(--faint);font-size:.8rem}
   .foot p{margin-bottom:.6em;max-width:46em}
+  table.sq{width:100%;border-collapse:collapse;margin-top:1.4em;font-size:.88rem}
+  table.sq th{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;text-align:left;padding:.5em .6em;border-bottom:1px solid var(--line)}
+  table.sq td{padding:.55em .6em;border-bottom:1px solid var(--line);color:var(--ink)}
+  table.sq tr.bench td{color:var(--faint)}
+  .tag{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.2em .6em;border-radius:3px;border:1px solid var(--warn);color:var(--warn);margin-left:.5em;white-space:nowrap}
+  .tag.cold{border-color:var(--faint);color:var(--faint)}
+  .evtab{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:.4em}
+  .evtab td{padding:.25em .4em;border-bottom:1px dotted var(--line);color:var(--dim)}
+  .evtab td:first-child{color:var(--faint);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
 </style>
 </head>
 <body>
-<div class="ribbon"><b>Preview.</b> This is the proposed next Boot Room - a working mock with illustrative plans, not this week's advice. <a href="../boot-room/" style="color:#e9f2ee;border-color:#63b3a2">The current Boot Room</a> is unchanged.</div>
+<div class="ribbon"><b>Live data.</b> Player numbers refresh daily from the public FPL feed. Your team ID is used only in your browser, as a lookup, and is never stored anywhere else.</div>
 <main>
   <header class="mast">
     <div class="logo"><img src="grid.svg" alt="The 12th Man mark"></div>
     <div>
     <div class="kicker">MatchDay Blues &middot; weekly briefing</div>
     <h1>The <em>12th</em> Man</h1>
-    <p class="sub">One page, every week: the decisions first, two or three coherent plans side by side, every number one tap away. The data is the underlying layer - always there, invisible until you ask for it.</p>
+    <p class="sub">The decisions first: the feasible plays side by side, each with its cost and its upside, every number one tap away with its as-of stamp. Estimates are estimates - the page says so where it matters.</p>
     </div>
   </header>
 
   <div class="strip">
     <div class="cell">
       <div class="lab">Gameweek</div>
-      <div class="val">GW8 in progress<small>Deadline locked Sat 24 Oct, 1:30 am SGT</small></div>
+      <div class="val" id="gwcell">Loading player pool...<small>&nbsp;</small></div>
     </div>
     <div class="cell">
-      <div class="lab">Next deadline</div>
-      <div class="val">GW9 - Sat 31 Oct, 7:00 pm SGT<small id="count">&nbsp;</small></div>
+      <div class="lab">Deadline</div>
+      <div class="val" id="deadlinecell">&nbsp;<small id="count">&nbsp;</small></div>
     </div>
     <div class="cell">
       <div class="lab">Chips</div>
-      <div class="chipline">
-        <span class="pill live">Free hit</span>
-        <span class="pill live">Bench boost</span>
-        <span class="pill live">Triple captain</span>
-        <span class="pill spent">Wildcard - used GW7</span>
-      </div>
+      <div class="chipline" id="chipline"><span class="pill">Load your squad to see chip state</span></div>
     </div>
   </div>
 
-  <section id="plans">
-    <h2>This week's <em>plans</em></h2>
-    <p class="lede">Three postures, one tap apart. Where the model leans, the card says so and says why - a reasoned preference, never a verdict. Swipe on your phone; side by side on a desktop.</p>
-    <div class="plans">
-      <article class="plan">
-        <span class="num">1</span>
-        <div class="tagrow"><span class="badge">Model's lean</span></div>
-        <h3>Spend the free transfer</h3>
-        <dl>
-          <div class="row"><dt>The move</dt><dd>One targeted upgrade</dd></div>
-          <div class="row"><dt>You gain</dt><dd>Fixes the weakest slot now</dd></div>
-          <div class="row"><dt>It costs</dt><dd>One fewer transfer in hand if injuries hit</dd></div>
-          <div class="row"><dt>It assumes</dt><dd>A clear upgrade exists in budget</dd></div>
-        </dl>
-        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
-          <p>Form over the last four, fixture swing, expected-goals delta between the out and the in, price and ownership. In the live page every one of these is a real number with its as-of stamp.</p>
-        </details>
-      </article>
-      <article class="plan">
-        <span class="num">2</span>
-        <div class="tagrow"><span class="badge quiet">The patient play</span></div>
-        <h3>Bank it</h3>
-        <dl>
-          <div class="row"><dt>The move</dt><dd>No transfer this week</dd></div>
-          <div class="row"><dt>You gain</dt><dd>Transfers carried forward</dd></div>
-          <div class="row"><dt>It costs</dt><dd>A week with the current XI</dd></div>
-          <div class="row"><dt>It assumes</dt><dd>No fires this week</dd></div>
-        </dl>
-        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
-          <p>Next week's fixture swing and what two transfers would unlock that one cannot. The carrying cost of holding is shown, not hidden.</p>
-        </details>
-      </article>
-      <article class="plan disabled" aria-label="Wildcard - not in play">
-        <span class="num">3</span>
-        <div class="tagrow"><span class="badge quiet">Not in play - used GW7</span></div>
-        <h3>Wildcard</h3>
-        <dl>
-          <div class="row"><dt>The move</dt><dd>Full squad rebuild</dd></div>
-          <div class="row"><dt>You gain</dt><dd>A squad reset for the run-in</dd></div>
-          <div class="row"><dt>It costs</dt><dd>The built-up squad value and structure</dd></div>
-          <div class="row"><dt>It assumes</dt><dd>The template has turned</dd></div>
-        </dl>
-        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
-          <p>Season-long projections. Shown for context only - this chip is spent for now. The official rules confirm a second wildcard: it unlocks after the Gameweek 19 deadline, so this card comes back to life from GW20 onward.</p>
-        </details>
-      </article>
-    </div>
-    <p class="caption">Illustrative plan cards - structure and interaction only, with real chip state; the projections are placeholders, not GW9 advice. Transfer wording assumes one free transfer in hand - the live page uses your confirmed count.</p>
-  </section>
-
   <section id="teamid">
-    <h2>What your team ID <em>can and cannot</em> see</h2>
+    <h2>Your <em>squad</em></h2>
     <div class="facts">
-      <div class="fact"><div class="k">It reveals</div><div class="v">The squad as of the last locked gameweek, chips used and remaining, per-gameweek points and rank, and locked bank and squad value by week.</div></div>
-      <div class="fact"><div class="k">It cannot</div><div class="v">Transfers made since the last lock, and the free transfers you hold now. One tap to confirm each week, as today.</div></div>
+      <div class="fact"><div class="k">Your ID reveals</div><div class="v">The squad as of the last locked gameweek, chips used and remaining, per-gameweek points and rank, and locked bank and squad value by week.</div></div>
+      <div class="fact"><div class="k">It cannot see</div><div class="v">Transfers made since the last lock, and the free transfers you hold now. Confirm those below - they stay on this device.</div></div>
+      <div class="fact"><div class="k">How it loads</div><div class="v">Read-only GET through a public relay (r.jina.ai, run by Jina AI; allorigins.win as fallback). The relay sees the team ID in the request, like any site you visit. No login, no keys, nothing is written back.</div></div>
     </div>
-    <details class="panel">
+    <details class="panel" id="settingspanel" open>
       <summary><span class="t">Squad settings</span><span class="tw">+</span></summary>
       <div class="body">
         <div class="field">
           <label>Team ID</label>
-          <input type="text" value="4120529" readonly>
-          <small>The ID the live page would read - squad, chips and history come from the public FPL feed. Illustrative field; nothing here fetches yet.</small>
+          <input type="text" id="teamid" inputmode="numeric" placeholder="The number in your FPL URL - /entry/1234567/">
+          <small>Stored only in this browser (localStorage). Never hardcoded, never sent anywhere except the lookup.</small>
         </div>
+        <button class="btn" id="loadbtn">Load my squad</button>
+        <div class="err" id="loaderr"></div>
         <div class="field">
           <label>Free transfers held</label>
-          <input type="text" placeholder="Confirm before the GW9 deadline" disabled>
-          <small>Not visible to the feed - you confirm this each week, one tap. Illustrative field.</small>
+          <input type="number" id="ft" min="0" max="15" placeholder="Confirm before the deadline">
+          <small>Not visible to the feed - you confirm this each week.</small>
         </div>
         <div class="field">
-          <label>Bank</label>
-          <input type="text" placeholder="Confirm before the GW9 deadline" disabled>
-          <small>Confirmed weekly alongside free transfers. Illustrative field.</small>
+          <label>Bank (after last lock)</label>
+          <input type="number" id="bank" min="0" step="0.1" placeholder="Prefilled from the feed; correct it if you have spent since">
+          <small>Confirmed weekly alongside free transfers.</small>
         </div>
       </div>
     </details>
+    <div id="squadwrap"></div>
+  </section>
+
+  <section id="plans">
+    <h2>This week's <em>plays</em></h2>
+    <p class="lede">The feasible postures side by side. No verdicts: expected points here are a weak signal (validated as such - see the method), so every card shows cost, upside and what is unvalidated rather than a recommendation.</p>
+    <div class="plans" id="plansrow">
+      <article class="plan"><span class="num">1</span><div class="tagrow"><span class="badge quiet">Waiting</span></div><h3>Load your squad</h3><p style="font-size:.88rem;color:var(--dim)">The plays are computed from your actual squad, bank and free transfers - nothing generic gets dressed up as advice.</p></article>
+    </div>
+    <p class="caption">Captaincy is deliberately not modelled in v0 - pick on minutes security and fixture, not on these numbers. Chips show live state only; timing judgement is yours.</p>
   </section>
 
   <section id="freshness">
     <h2>Honest <em>freshness</em></h2>
-    <p class="lede">Every plan carries an as-of stamp, and the briefing says when a number is too stale to act on. Advice-ready and as-of are never blurred.</p>
-    <div class="stamp">
+    <p class="lede">Every number carries its as-of stamp, and the page tells you when data is too stale to act on. Advice-ready and as-of are never blurred.</p>
+    <div class="stamp" id="stamp">
       <div class="lab">As of</div>
-      <div class="val">Player data through GW6 &middot; results through GW7 &middot; chips and deadlines from the official FPL API, 25 Oct 2026</div>
+      <div class="val">Loading...</div>
     </div>
   </section>
 
   <div class="foot">
-    <p><b>The 12th Man</b> is a design preview of the next Boot Room, built for review. Nothing here is live advice, and nothing on <a href="../boot-room/">the current Boot Room</a> has changed.</p>
-    <p>No dashboard, no query box, no warehouse login on the front page. An "ask your assistant" affordance ships only after the read-only connection is proven, labeled with what it can and cannot do.</p>
+    <p><b>The 12th Man</b> prices options; it does not make the call. Expected points come from a small open model - <a href="https://github.com/ziqian83/epl-fpl-analytics/blob/main/docs/09_12thman_model.md">method and validation</a> - fitted only on public FPL data. Pairwise tests say the signal is weak: it can order a shortlist, it cannot justify a move on its own.</p>
+    <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
 <script>
 (function(){
-  var deadline = Date.parse('2026-10-31T11:00:00Z'); /* Sat 31 Oct, 7:00 pm SGT */
-  var el = document.getElementById('count');
-  function tick(){
-    var ms = deadline - Date.now();
-    if(ms <= 0){ el.textContent = 'Deadline passed'; return; }
-    var d = Math.floor(ms/86400000), h = Math.floor(ms%86400000/3600000), m = Math.floor(ms%3600000/60000);
-    el.textContent = 'Locks in ' + d + 'd ' + h + 'h ' + m + 'm';
+  var $ = function(id){ return document.getElementById(id); };
+  var POSN = {1:'GKP',2:'DEF',3:'MID',4:'FWD'};
+  var pool = null, squad = null, state = { id:null, ft:null, bank:null, entry:null, chips:[] };
+
+  /* ---------- data fetch ---------- */
+  function stripJina(t){ var i = t.indexOf('{'); return i < 0 ? Promise.reject(new Error('relay returned no JSON')) : JSON.parse(t.slice(i)); }
+  function rj(url){ return fetch('https://r.jina.ai/' + url).then(function(r){ if(!r.ok) throw new Error('r.jina.ai ' + r.status); return r.text(); }).then(stripJina); }
+  function ao(url){ return fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(url)).then(function(r){ if(!r.ok) throw new Error('allorigins ' + r.status); return r.json(); }); }
+  function relay(url, allowFallback){
+    return rj(url).catch(function(e){
+      if(!allowFallback) throw e;
+      return ao(url);
+    });
   }
-  tick(); setInterval(tick, 30000);
+
+  function fmtDeadline(iso){
+    var d = new Date(iso);
+    return d.toLocaleString('en-SG', { timeZone:'Asia/Singapore', weekday:'short', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }).replace(/,/g,'') + ' SGT';
+  }
+
+  /* ---------- countdown ---------- */
+  var deadlineMs = null;
+  function tick(){
+    if(deadlineMs === null) return;
+    var ms = deadlineMs - Date.now();
+    if(ms <= 0){ $('count').textContent = 'Deadline passed'; return; }
+    var d = Math.floor(ms/86400000), h = Math.floor(ms%86400000/3600000), m = Math.floor(ms%3600000/60000);
+    $('count').textContent = 'Locks in ' + d + 'd ' + h + 'h ' + m + 'm';
+  }
+  setInterval(tick, 30000);
+
+  /* ---------- pool ---------- */
+  fetch('data/pool.json').then(function(r){ return r.json(); }).then(function(p){
+    pool = p;
+    deadlineMs = Date.parse(p.deadline); tick();
+    $('gwcell').innerHTML = 'GW' + p.gameweek + ' player pool<small>' + Object.keys(p.players).length + ' rated players - who is not rated, and why, is listed below your squad</small>';
+    $('deadlinecell').innerHTML = 'GW' + p.gameweek + ' - ' + fmtDeadline(p.deadline) + '<small id="count"></small>';
+    var hrs = (Date.now() - Date.parse(p.generated_at)) / 3600000;
+    var stale = hrs > 30;
+    $('stamp').className = 'stamp' + (stale ? ' stale' : '');
+    $('stamp').innerHTML = '<div class="lab">' + (stale ? 'Stale - act with care' : 'As of') + '</div><div class="val">Player pool generated ' +
+      new Date(p.generated_at).toLocaleString('en-SG', { timeZone:'Asia/Singapore', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }) +
+      ' SGT (' + Math.round(hrs) + 'h ago) &middot; model v0, validation in the method doc</div>';
+    if(state.id) loadSquad(state.id, true);
+  }).catch(function(){
+    $('gwcell').innerHTML = 'Player pool unavailable<small>data/pool.json failed to load</small>';
+  });
+
+  /* ---------- persistence ---------- */
+  try{
+    state.id = localStorage.getItem('t12_team_id');
+    state.ft = localStorage.getItem('t12_ft');
+    state.bank = localStorage.getItem('t12_bank');
+    if(state.id) $('teamid').value = state.id;
+    if(state.ft !== null && state.ft !== '') $('ft').value = state.ft;
+  }catch(e){}
+
+  $('ft').addEventListener('change', function(){ state.ft = $('ft').value; try{ localStorage.setItem('t12_ft', state.ft); }catch(e){} renderPlans(); });
+  $('bank').addEventListener('change', function(){ state.bank = $('bank').value; try{ localStorage.setItem('t12_bank', state.bank); }catch(e){} renderPlans(); });
+  $('loadbtn').addEventListener('click', function(){
+    var id = $('teamid').value.trim();
+    if(!/^\d+$/.test(id)){ $('loaderr').textContent = 'Team ID is the number in your FPL URL.'; return; }
+    state.id = id; try{ localStorage.setItem('t12_team_id', id); }catch(e){}
+    loadSquad(id, false);
+  });
+
+  /* ---------- squad load ---------- */
+  function loadSquad(id, silent){
+    if(!pool){ if(!silent) $('loaderr').textContent = 'Player pool still loading - try again in a moment.'; return; }
+    $('loadbtn').disabled = true; $('loadbtn').textContent = 'Loading...'; $('loaderr').textContent = '';
+    var lastFinished = pool.gameweek - 1;
+    var base = 'https://fantasy.premierleague.com/api/entry/' + id + '/';
+    var entryP = relay(base, true);
+    var histP = relay(base + 'history/', true);
+    var picksP = rj(base + 'event/' + lastFinished + '/picks/');
+    Promise.all([entryP, histP, picksP]).then(function(rs){
+      var entry = rs[0], hist = rs[1], picks = rs[2];
+      state.entry = entry; state.chips = hist.chips || [];
+      if($('bank').value === '' && typeof entry.last_deadline_bank === 'number'){
+        $('bank').value = (entry.last_deadline_bank/10).toFixed(1);
+        state.bank = $('bank').value;
+        try{ localStorage.setItem('t12_bank', state.bank); }catch(e){}
+      }
+      squad = (picks.picks || []).map(function(pk){
+        var pl = pool.players[pk.element];
+        return { id: pk.element, slot: pk.position, captain: pk.is_captain, vice: pk.is_vice_captain,
+                 rated: !!pl, p: pl || null, selling: pk.selling_price/10 };
+      });
+      renderChips(); renderSquad(entry, lastFinished); renderPlans();
+      $('settingspanel').removeAttribute('open');
+      $('loadbtn').disabled = false; $('loadbtn').textContent = 'Reload my squad';
+    }).catch(function(e){
+      $('loaderr').textContent = 'Could not load that squad (' + e.message + '). Check the ID, or try again - the relay is a free public service and can be slow.';
+      $('loadbtn').disabled = false; $('loadbtn').textContent = 'Load my squad';
+    });
+  }
+
+  function renderChips(){
+    var all = [['wildcard','Wildcard'],['freehit','Free hit'],['bboost','Bench boost'],['3xc','Triple captain']];
+    var used = {}; state.chips.forEach(function(c){ used[c.name] = c.event; });
+    var html = all.map(function(c){
+      if(used[c[0]]) return '<span class="pill spent">' + c[1] + ' - used GW' + used[c[0]] + '</span>';
+      return '<span class="pill live">' + c[1] + '</span>';
+    }).join('');
+    if(!used['wildcard']) html += '<span class="pill">2nd wildcard unlocks GW20 (official rules)</span>';
+    $('chipline').innerHTML = html;
+  }
+
+  function renderSquad(entry, lastFinished){
+    var rows = squad.map(function(s){
+      var nm = s.rated ? s.p.name : 'Player #' + s.id;
+      var team = s.rated ? s.p.team : '?';
+      var pos = s.rated ? POSN[s.p.pos] : '?';
+      var xp = s.rated ? s.p.xp.toFixed(2) : '-';
+      var tags = '';
+      if(s.captain) tags += ' <span class="tag" style="border-color:var(--gold);color:var(--gold-ink)">C</span>';
+      if(s.vice) tags += ' <span class="tag" style="border-color:var(--faint);color:var(--faint)">VC</span>';
+      if(s.rated && s.p.news) tags += ' <span class="tag">' + s.p.news.slice(0,40) + '</span>';
+      if(!s.rated) tags += ' <span class="tag cold">Not rated - cold start</span>';
+      var fx = s.rated ? s.p.fixtures.join(' + ') : '';
+      return '<tr' + (s.slot > 11 ? ' class="bench"' : '') + '><td>' + (s.slot > 11 ? 'Bench ' + (s.slot-11) : pos) + '</td><td><b>' + nm + '</b>' + tags + '</td><td>' + team + '</td><td>' + fx + '</td><td>' + (s.rated ? '£' + s.p.cost.toFixed(1) : '£' + s.selling.toFixed(1)) + '</td><td>' + xp + '</td></tr>';
+    }).join('');
+    $('squadwrap').innerHTML =
+      '<table class="sq"><thead><tr><th>Slot</th><th>Player (as locked GW' + lastFinished + ')</th><th>Team</th><th>GW' + pool.gameweek + ' fixture</th><th>Cost</th><th>xP GW' + pool.gameweek + '</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<p class="caption">' + (entry.player_first_name ? entry.player_first_name + ' ' + entry.player_last_name + ' &middot; ' : '') + 'Overall rank ' + (entry.summary_overall_rank ? entry.summary_overall_rank.toLocaleString() : '?') +
+      ' &middot; squad as locked GW' + lastFinished + ' - transfers since the lock are invisible to the feed. "Not rated" = cold start (new signing, promoted, or under 180 recent minutes); the model stays silent rather than inventing a number.</p>';
+  }
+
+  /* ---------- plans ---------- */
+  function renderPlans(){
+    if(!squad || !pool) return;
+    var bank = parseFloat(state.bank !== null && state.bank !== '' ? state.bank : ($('bank').value || 'NaN'));
+    var ft = state.ft !== null && state.ft !== '' ? parseInt(state.ft, 10) : NaN;
+    var squadIds = {}; squad.forEach(function(s){ squadIds[s.id] = true; });
+    var rated = squad.filter(function(s){ return s.rated; });
+
+    /* Hold: XI projection = starter xP sum (captaincy deliberately not doubled - unvalidated) */
+    var xiXp = squad.filter(function(s){ return s.slot <= 11 && s.rated; }).reduce(function(z,s){ return z + s.p.xp; }, 0);
+    var unratedStarters = squad.filter(function(s){ return s.slot <= 11 && !s.rated; }).length;
+
+    /* Transfer suggestions: best out->in per position within budget */
+    var swaps = [];
+    if(!isNaN(bank)){
+      rated.forEach(function(s){
+        var budget = bank + s.p.cost;
+        var best = null;
+        Object.keys(pool.players).forEach(function(pid){
+          var c = pool.players[pid];
+          if(c.pos !== s.p.pos || squadIds[pid]) return;
+          if(c.cost > budget) return;
+          if(c.news && /injur|doubt|suspend/i.test(c.news)) return;
+          if(!best || c.xp > best.xp) best = { id: pid, c: c };
+        });
+        if(best && best.c.xp > s.p.xp) swaps.push({ out: s, inn: best, delta: best.c.xp - s.p.xp });
+      });
+      swaps.sort(function(a,b){ return b.delta - a.delta; });
+    }
+    var top = swaps.slice(0,3);
+    var bestSwap = top[0];
+
+    function evTable(s){
+      return '<table class="evtab"><tr><td>Form (4GW)</td><td>' + s.p.f.pts4 + ' pts/GW</td></tr>' +
+        '<tr><td>xGI (4GW)</td><td>' + s.p.f.xgi4 + ' per GW</td></tr>' +
+        '<tr><td>Minutes (4GW)</td><td>' + Math.round(s.p.f.minshare4*100) + '% of available</td></tr>' +
+        '<tr><td>Opp. strength</td><td>' + s.p.f.oppstr + ' conceded/GW by opponent</td></tr>' +
+        '<tr><td>Ownership</td><td>' + s.p.selected_pct + '%</td></tr></table>';
+    }
+
+    var ftTxt = isNaN(ft) ? 'confirm your free transfers' : (ft === 0 ? 'no free transfers - a move costs 4 pts' : ft + ' free transfer' + (ft>1?'s':'') + ' in hand');
+
+    var card1;
+    if(isNaN(bank)){ card1 = cardShell('1','Needs your bank','Make a transfer','<div class="row"><dt>Next step</dt><dd>Confirm your bank above - prices need it.</dd></div>',''); }
+    else if(!bestSwap){ card1 = cardShell('1','Quiet week','Make a transfer','<div class="row"><dt>The move</dt><dd>No upgrade inside budget beats what you have on the model\'s weak signal.</dd></div><div class="row"><dt>It costs</dt><dd>Nothing - holding is free.</dd></div>','<p>No pool player within budget out-projects your current options at the same position.</p>'); }
+    else {
+      var rowsHtml = top.map(function(t){
+        return '<div class="row"><dt>' + POSN[t.inn.c.pos] + ' swap</dt><dd><b>' + t.out.p.name + '</b> &rarr; <b>' + t.inn.c.name + '</b> (' + t.inn.c.team + ', £' + t.inn.c.cost.toFixed(1) + ')<br>' +
+          'xP +' + t.delta.toFixed(2) + ' next GW &middot; owned ' + t.inn.c.selected_pct + '%</dd></div>';
+      }).join('');
+      card1 = cardShell('1', isNaN(ft) || ft > 0 ? 'Free' : 'Costs 4 pts', 'Make a transfer',
+        '<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div>' + rowsHtml +
+        '<div class="row"><dt>Unvalidated</dt><dd>Edges this size are inside the model\'s noise - see method. This orders options; it does not justify a move alone.</dd></div>',
+        '<div><b>' + bestSwap.out.p.name + ' (out)</b></div>' + evTable(bestSwap.out) + '<div style="margin-top:.7em"><b>' + bestSwap.inn.c.name + ' (in)</b></div>' + evTable({p:bestSwap.inn.c}));
+    }
+
+    var card2 = cardShell('2','Zero cost','Hold',
+      '<div class="row"><dt>The move</dt><dd>No transfer. XI projected xP ' + xiXp.toFixed(1) + (unratedStarters ? ' (' + unratedStarters + ' starter' + (unratedStarters>1?'s':'') + ' unrated - projection incomplete)' : '') + '</dd></div>' +
+      '<div class="row"><dt>You gain</dt><dd>' + (isNaN(ft) ? 'A transfer carried forward (confirm count)' : (ft >= 15 ? 'Nothing - you are at the 15-transfer cap' : 'A transfer carried forward: ' + ft + ' &rarr; ' + Math.min(15, ft+1))) + ', plus a week of price and team-news information</dd></div>' +
+      '<div class="row"><dt>It costs</dt><dd>' + (bestSwap ? 'Foregoing the best swap above (+' + bestSwap.delta.toFixed(2) + ' xP, weak signal)' : 'Nothing identified inside budget') + '</dd></div>' +
+      '<div class="row"><dt>Unvalidated</dt><dd>The XI total sums weak estimates; the gap between cards is smaller than the error bars.</dd></div>',
+      '<p>Holding is a real posture, not a default: it banks information and flexibility. The page treats it as equal to spending, always.</p>');
+
+    var used = {}; state.chips.forEach(function(c){ used[c.name] = c.event; });
+    var chipRows = [['wildcard','Wildcard'],['freehit','Free hit'],['bboost','Bench boost'],['3xc','Triple captain']].map(function(c){
+      var st = used[c[0]] ? 'Spent GW' + used[c[0]] : 'Live';
+      return '<div class="row"><dt>' + c[1] + '</dt><dd>' + st + (used[c[0]] ? '' : ' &middot; timing judgement is yours - chip-timing is unvalidated in v0') + '</dd></div>';
+    }).join('');
+    if(!used['wildcard']) chipRows += '<div class="row"><dt>Second wildcard</dt><dd>Unlocks after the GW19 deadline (official rules) - not playable now</dd></div>';
+    var card3 = cardShell('3','State only','Chips', chipRows, '<p>Chip state comes from your public entry history. What the model does NOT do yet: chip timing, captaincy, hit justification. Those stay with you, visibly.</p>');
+
+    $('plansrow').innerHTML = card1 + card2 + card3;
+  }
+
+  function cardShell(num, badge, title, rows, evidence){
+    return '<article class="plan"><span class="num">' + num + '</span><div class="tagrow"><span class="badge quiet">' + badge + '</span></div><h3>' + title + '</h3><dl>' + rows + '</dl>' +
+      (evidence ? '<details class="ev"><summary>Evidence <span class="tw">+</span></summary>' + evidence + '</details>' : '') + '</article>';
+  }
 })();
 </script>
 </body>

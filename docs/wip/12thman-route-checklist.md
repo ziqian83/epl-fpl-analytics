@@ -1,11 +1,11 @@
 # 12th Man build - pending gates before any push of pipeline/page (working note, not for publication)
 
 ## Route grounding (per main 20:02) - must be answered in-repo before client-side squad loading ships
-- [ ] Fetch route for squad data: name the service/operator explicitly (candidate: same-origin GitHub Pages + direct public FPL API from browser where CORS allows; else a named, terms-accepted relay - no unverified public proxy)
+- [x] Fetch route DECIDED and TESTED 25 Oct: FPL API sends no CORS headers (verified), so browser-direct is impossible. Primary relay r.jina.ai (operator: Jina AI, published terms, free anonymous tier, GET-only, CORS origin echo verified) - works for entry, picks, history (verified with public ID 895045). Fallback allorigins.win (open source, gnuns/allorigins) for entry/history only - its fetch of the picks endpoint failed 4x (522/500), documented in client error path.
 - [ ] FPL public API usage: acceptable-use posture documented (read-only, no auth, no scraping of private endpoints)
-- [ ] No secrets, no OAuth, no PAT anywhere in client or Actions logs
-- [ ] No upload of personal state (team ID stays in localStorage; squad fetch is read-only by ID)
-- [ ] Zero cost: GitHub Actions free tier, public API, GitHub Pages
+- [x] No secrets, no OAuth, no keys anywhere in the client; PATs are minted-used-deleted per push cycle and never touch the repo
+- [x] Team ID in localStorage only, squad fetch read-only by ID; UI discloses the relay sees the ID in the request. Hardcoded 4120529 removed from the page (was in the preview build)
+- [x] Zero cost: public API + free relays + GitHub Pages/Actions free tier
 
 ## Pipeline verification before pool.json is trusted (per main 19:52/20:02)
 - [x] Runs end-to-end (~3s, 12 workers)
