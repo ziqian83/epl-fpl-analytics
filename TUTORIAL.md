@@ -4,6 +4,10 @@ This file is the beginner's companion to the project. Every time the project hit
 
 No prior experience assumed. Jargon gets explained the first time it appears. If you know what an Excel pivot table is, you know enough to follow along.
 
+> **Where the warehouse lives now (25 Oct 2026).** Chapters 2-3 below were written when the project ran on ClickHouse Cloud, and they stay as the original build record - the concepts (cloud warehouses, services, loading CSVs straight from URLs) carry over. The live warehouse has since moved to MotherDuck (cloud DuckDB) with a local DuckDB fallback, loaded by [sql/epl_duckdb_load.sql](sql/epl_duckdb_load.sql). The migration note, including the free-tier access model, is [docs/08_motherduck_migration.md](docs/08_motherduck_migration.md).
+
+---
+
 ## Chapters
 
 1. **From zero to a GitHub repo**
