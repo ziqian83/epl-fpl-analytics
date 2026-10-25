@@ -14,7 +14,7 @@ A normal web page can request public data directly. That means this module needs
 
 - the current players, prices, flags and form;
 - the next gameweek deadline and fixtures;
-- the latest locked squad for team `4120529`;
+- the latest locked squad for team `REDACTED-ID`;
 - each shortlisted player's recent match history.
 
 The page never writes to the FPL account. It is advice only.
@@ -64,7 +64,7 @@ A later module could add on-device OCR, but only with a visible review step beca
 ## Run it
 
 1. Open the live picker.
-2. Check team ID `4120529`.
+2. Check team ID `REDACTED-ID`.
 3. Enter the real free-transfer count and money in the bank.
 4. Click **Run the picker**.
 5. Read the 10-second answer first, then the hold/sell board.

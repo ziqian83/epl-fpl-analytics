@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T12:07:21.811Z",
+  "generated_at": "2026-10-25T12:49:48.078Z",
   "model": "docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise",
   "gameweek": 9,
   "deadline": "2026-10-31T11:00:00Z",
@@ -13,6 +13,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 45.6,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0,
@@ -24,6 +25,28 @@
       ],
       "xp": 3.26
     },
+    "2": {
+      "name": "Arrizabalaga",
+      "team": "ARS",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "3": {
+      "name": "Meslier",
+      "team": "ARS",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "4": {
       "name": "Gabriel",
       "team": "ARS",
@@ -31,7 +54,8 @@
       "cost": 7.9,
       "status": "a",
       "news": "",
-      "selected_pct": 21.4,
+      "selected_pct": 21.5,
+      "rated": true,
       "f": {
         "pts4": 7,
         "xgi4": 0.29,
@@ -43,6 +67,39 @@
       ],
       "xp": 3.58
     },
+    "5": {
+      "name": "J.Timber",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 6.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "6": {
+      "name": "Saliba",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 5.9,
+      "status": "i",
+      "news": "Back injury - Unknown return date",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "7": {
+      "name": "Lewis-Skelly",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "8": {
       "name": "Calafiori",
       "team": "ARS",
@@ -51,6 +108,7 @@
       "status": "d",
       "news": "Hip injury - 75% chance of playing",
       "selected_pct": 54.2,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0.25,
@@ -62,6 +120,17 @@
       ],
       "xp": 2.57
     },
+    "9": {
+      "name": "Hincapie",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "10": {
       "name": "White",
       "team": "ARS",
@@ -70,6 +139,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.4,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.14,
@@ -81,6 +151,17 @@
       ],
       "xp": 2.41
     },
+    "11": {
+      "name": "Mosquera",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "12": {
       "name": "Saka",
       "team": "ARS",
@@ -89,6 +170,7 @@
       "status": "i",
       "news": "Thigh injury - Unknown return date",
       "selected_pct": 9.6,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.38,
@@ -108,6 +190,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 12.3,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.31,
@@ -119,6 +202,17 @@
       ],
       "xp": 3.43
     },
+    "14": {
+      "name": "Eze",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "15": {
       "name": "Ødegaard",
       "team": "ARS",
@@ -127,6 +221,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 18.2,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.47,
@@ -146,6 +241,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.27,
@@ -157,6 +253,105 @@
       ],
       "xp": 2.28
     },
+    "17": {
+      "name": "Merino",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "18": {
+      "name": "Martinelli",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.3,
+      "status": "u",
+      "news": "Has joined Al Hilal permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "19": {
+      "name": "Zubimendi",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "20": {
+      "name": "Dowman",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "21": {
+      "name": "Nørgaard",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "22": {
+      "name": "Nwaneri",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "u",
+      "news": "Has joined Borussia Dortmund on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "23": {
+      "name": "Fábio Vieira",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "u",
+      "news": "Has joined Hamburger SV permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "24": {
+      "name": "Nelson",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "u",
+      "news": "has departed the club as a free agent.",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "25": {
+      "name": "Gyökeres",
+      "team": "ARS",
+      "pos": 4,
+      "cost": 7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "26": {
       "name": "Havertz",
       "team": "ARS",
@@ -165,6 +360,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.9,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.33,
@@ -176,6 +372,17 @@
       ],
       "xp": 2.39
     },
+    "27": {
+      "name": "G.Jesus",
+      "team": "ARS",
+      "pos": 4,
+      "cost": 5.9,
+      "status": "u",
+      "news": "Has joined FC Barcelona permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "28": {
       "name": "Martinez",
       "team": "CHE",
@@ -184,6 +391,7 @@
       "status": "i",
       "news": "Head injury - Unknown return date",
       "selected_pct": 3.7,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0,
@@ -195,6 +403,28 @@
       ],
       "xp": 2.42
     },
+    "29": {
+      "name": "M.Bizot",
+      "team": "AVL",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "30": {
+      "name": "Digne",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Paris Saint-Germain permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "31": {
       "name": "Konsa",
       "team": "ARS",
@@ -203,6 +433,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 19.2,
+      "rated": true,
       "f": {
         "pts4": 7,
         "xgi4": 0.16,
@@ -222,6 +453,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.1,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.02,
@@ -241,6 +473,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0,
@@ -252,6 +485,39 @@
       ],
       "xp": 1.87
     },
+    "34": {
+      "name": "Pau",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "35": {
+      "name": "Bogarde",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "36": {
+      "name": "Maatsen",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "37": {
       "name": "Lindelöf",
       "team": "AVL",
@@ -260,6 +526,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 3.75,
         "xgi4": 0,
@@ -271,6 +538,28 @@
       ],
       "xp": 2.47
     },
+    "38": {
+      "name": "A.García",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Getafe on loan for the rest of the season",
+      "selected_pct": 1.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "39": {
+      "name": "Nedeljkovic",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Rangers on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "40": {
       "name": "Rogers",
       "team": "CHE",
@@ -279,6 +568,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 49.9,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.24,
@@ -298,6 +588,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.24,
@@ -309,6 +600,17 @@
       ],
       "xp": 2.88
     },
+    "42": {
+      "name": "Guessand",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "43": {
       "name": "Tielemans",
       "team": "MUN",
@@ -317,6 +619,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.21,
@@ -328,6 +631,17 @@
       ],
       "xp": 2.49
     },
+    "44": {
+      "name": "Bailey",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "u",
+      "news": "Has joined Olympiakos permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "45": {
       "name": "McGinn",
       "team": "AVL",
@@ -336,6 +650,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.9,
+      "rated": true,
       "f": {
         "pts4": 5.75,
         "xgi4": 0.3,
@@ -347,6 +662,17 @@
       ],
       "xp": 3.34
     },
+    "46": {
+      "name": "Barkley",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "47": {
       "name": "Kamara",
       "team": "AVL",
@@ -355,6 +681,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.07,
@@ -366,6 +693,61 @@
       ],
       "xp": 3.11
     },
+    "48": {
+      "name": "Onana",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "49": {
+      "name": "Iling Jr",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Bolton Wanderers on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "50": {
+      "name": "Burrowes",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "51": {
+      "name": "George Hemmings",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "52": {
+      "name": "Alysson",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "53": {
       "name": "Manzambi",
       "team": "AVL",
@@ -374,6 +756,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.4,
+      "rated": true,
       "f": {
         "pts4": 7.5,
         "xgi4": 0.5,
@@ -393,6 +776,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.07,
@@ -404,6 +788,28 @@
       ],
       "xp": 2.65
     },
+    "55": {
+      "name": "Watkins",
+      "team": "AVL",
+      "pos": 4,
+      "cost": 7.8,
+      "status": "u",
+      "news": "Has joined Al Hilal permanently",
+      "selected_pct": 2.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "56": {
+      "name": "Abraham",
+      "team": "AVL",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "57": {
       "name": "Petrović",
       "team": "BOU",
@@ -412,6 +818,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.8,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0,
@@ -423,6 +830,28 @@
       ],
       "xp": 2.18
     },
+    "58": {
+      "name": "Forster",
+      "team": "BOU",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "59": {
+      "name": "Dennis",
+      "team": "BOU",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined MK Dons permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "60": {
       "name": "Hill",
       "team": "BOU",
@@ -431,6 +860,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.9,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.05,
@@ -450,6 +880,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.7,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.12,
@@ -461,6 +892,28 @@
       ],
       "xp": 1.74
     },
+    "62": {
+      "name": "Diakité",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "63": {
+      "name": "Milosavljević",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Thigh injury - Expected back 31 Oct",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "64": {
       "name": "Smith",
       "team": "BOU",
@@ -469,6 +922,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.22,
@@ -480,6 +934,28 @@
       ],
       "xp": 1.8
     },
+    "65": {
+      "name": "J.Araujo",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "66": {
+      "name": "Soler",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "67": {
       "name": "Rayan",
       "team": "BOU",
@@ -488,6 +964,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.29,
@@ -507,6 +984,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 14.5,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.38,
@@ -518,6 +996,50 @@
       ],
       "xp": 2.58
     },
+    "69": {
+      "name": "Scott",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 6,
+      "status": "i",
+      "news": "Thigh injury - Expected back 8 Nov",
+      "selected_pct": 2.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "70": {
+      "name": "Kluivert",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "71": {
+      "name": "Cook",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "72": {
+      "name": "Gannon-Doak",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "73": {
       "name": "Adams",
       "team": "BOU",
@@ -526,6 +1048,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.05,
@@ -537,6 +1060,17 @@
       ],
       "xp": 2.08
     },
+    "74": {
+      "name": "Brooks",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "75": {
       "name": "Christie",
       "team": "BOU",
@@ -545,6 +1079,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.36,
@@ -556,6 +1091,39 @@
       ],
       "xp": 2.25
     },
+    "76": {
+      "name": "Tóth.A",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "77": {
+      "name": "Adli",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "78": {
+      "name": "Kroupi.Jr",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 7.3,
+      "status": "d",
+      "news": "Foot injury - 75% chance of playing",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "79": {
       "name": "Evanilson",
       "team": "BOU",
@@ -564,6 +1132,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.3,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.58,
@@ -575,6 +1144,28 @@
       ],
       "xp": 3.6
     },
+    "80": {
+      "name": "Enes Ünal",
+      "team": "BOU",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "u",
+      "news": "Has joined Getafe permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "81": {
+      "name": "Rodríguez",
+      "team": "BOU",
+      "pos": 4,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "82": {
       "name": "Kelleher",
       "team": "BRE",
@@ -583,6 +1174,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.2,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0,
@@ -594,6 +1186,39 @@
       ],
       "xp": 2.3
     },
+    "83": {
+      "name": "Valdimarsson",
+      "team": "BRE",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "84": {
+      "name": "Collins",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "85": {
+      "name": "Van den Berg",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "86": {
       "name": "Lewis-Potter",
       "team": "BRE",
@@ -602,6 +1227,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.9,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.1,
@@ -621,6 +1247,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.2,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.1,
@@ -640,6 +1267,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.06,
@@ -651,6 +1279,28 @@
       ],
       "xp": 1.61
     },
+    "89": {
+      "name": "Henry",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "90": {
+      "name": "Hickey",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "91": {
       "name": "Pinnock",
       "team": "COV",
@@ -659,6 +1309,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3.75,
         "xgi4": 0.03,
@@ -670,6 +1321,28 @@
       ],
       "xp": 2.52
     },
+    "92": {
+      "name": "Ji-soo",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "93": {
+      "name": "Schuster",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "d",
+      "news": "Ankle injury - 75% chance of playing",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "94": {
       "name": "Schade",
       "team": "BRE",
@@ -678,6 +1351,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 15.2,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.25,
@@ -689,6 +1363,39 @@
       ],
       "xp": 2.11
     },
+    "95": {
+      "name": "O.Dango",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "96": {
+      "name": "Damsgaard",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "97": {
+      "name": "Jensen",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "98": {
       "name": "Janelt",
       "team": "BRE",
@@ -697,6 +1404,7 @@
       "status": "s",
       "news": "Suspended until 31 Oct",
       "selected_pct": 1.8,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.06,
@@ -708,6 +1416,28 @@
       ],
       "xp": 1.93
     },
+    "99": {
+      "name": "Milambo",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "100": {
+      "name": "Carvalho",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "101": {
       "name": "Henderson",
       "team": "CHE",
@@ -716,6 +1446,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
+      "rated": true,
       "f": {
         "pts4": 6.25,
         "xgi4": 0.25,
@@ -735,6 +1466,7 @@
       "status": "s",
       "news": "Suspended until 8 Nov",
       "selected_pct": 0.5,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.05,
@@ -746,6 +1478,28 @@
       ],
       "xp": 1.83
     },
+    "103": {
+      "name": "Dasilva",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "104": {
+      "name": "Onyeka",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "105": {
       "name": "Anthony",
       "team": "BRE",
@@ -754,6 +1508,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0.32,
@@ -773,6 +1528,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 8.8,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.41,
@@ -784,6 +1540,28 @@
       ],
       "xp": 2.97
     },
+    "107": {
+      "name": "Furo",
+      "team": "BRE",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "i",
+      "news": "Unspecified injury - Unknown return date",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "108": {
+      "name": "Wilson",
+      "team": "BRE",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "109": {
       "name": "Verbruggen",
       "team": "BHA",
@@ -792,6 +1570,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 22.6,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0,
@@ -811,6 +1590,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.9,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0,
@@ -822,6 +1602,17 @@
       ],
       "xp": 3.09
     },
+    "111": {
+      "name": "Steele",
+      "team": "BHA",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "112": {
       "name": "Van Hecke",
       "team": "TOT",
@@ -830,6 +1621,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.9,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.19,
@@ -849,6 +1641,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.7,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.03,
@@ -868,6 +1661,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.06,
@@ -887,6 +1681,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 42.5,
+      "rated": true,
       "f": {
         "pts4": 6.75,
         "xgi4": 0.16,
@@ -898,6 +1693,94 @@
       ],
       "xp": 2.92
     },
+    "116": {
+      "name": "Dunk",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "117": {
+      "name": "Coppola",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "118": {
+      "name": "Igor",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Burnley permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "119": {
+      "name": "Costinha",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "120": {
+      "name": "Svoboda",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "121": {
+      "name": "Mitoma",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 31 Oct",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "122": {
+      "name": "Minteh",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "d",
+      "news": "Leg injury - 50% chance of playing",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "123": {
+      "name": "Hinshelwood",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "124": {
       "name": "Groß",
       "team": "BHA",
@@ -906,6 +1789,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 46.6,
+      "rated": true,
       "f": {
         "pts4": 6.25,
         "xgi4": 0.26,
@@ -917,6 +1801,28 @@
       ],
       "xp": 3.28
     },
+    "125": {
+      "name": "Georginio",
+      "team": "BHA",
+      "pos": 4,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "126": {
+      "name": "O'Riley",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "127": {
       "name": "Gomez",
       "team": "BHA",
@@ -925,6 +1831,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.08,
@@ -936,6 +1843,17 @@
       ],
       "xp": 2.89
     },
+    "128": {
+      "name": "Buonanotte",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Elche on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "129": {
       "name": "Ayari",
       "team": "BHA",
@@ -944,6 +1862,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.16,
@@ -955,6 +1874,94 @@
       ],
       "xp": 2.84
     },
+    "130": {
+      "name": "Wieffer",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "d",
+      "news": "Knee injury - 25% chance of playing",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "131": {
+      "name": "Baleba",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "132": {
+      "name": "Howell",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Leicester City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "133": {
+      "name": "Watson",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Leicester City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "134": {
+      "name": "Oriola",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "135": {
+      "name": "Yohanna",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Unspecified injury - Expected back 31 Oct",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "136": {
+      "name": "Welbeck",
+      "team": "CHE",
+      "pos": 4,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "137": {
+      "name": "Tzimas",
+      "team": "BHA",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "138": {
       "name": "Kostoulas",
       "team": "BHA",
@@ -963,6 +1970,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 10.4,
+      "rated": true,
       "f": {
         "pts4": 5.75,
         "xgi4": 0.18,
@@ -974,6 +1982,116 @@
       ],
       "xp": 3.06
     },
+    "139": {
+      "name": "Ferguson",
+      "team": "BHA",
+      "pos": 4,
+      "cost": 5,
+      "status": "i",
+      "news": "Ankle injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "140": {
+      "name": "Sánchez",
+      "team": "CHE",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Como on loan for the rest of the season",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "141": {
+      "name": "Jörgensen",
+      "team": "CHE",
+      "pos": 1,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined RC Strasbourg on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "142": {
+      "name": "James",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 5.2,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 3.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "143": {
+      "name": "Chalobah",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 5.5,
+      "status": "u",
+      "news": "Has joined Como permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "144": {
+      "name": "Gusto",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "145": {
+      "name": "Fofana",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "146": {
+      "name": "B.Badiashile",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Napoli on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "147": {
+      "name": "Tosin",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "148": {
+      "name": "Hato",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "149": {
       "name": "Colwill",
       "team": "CHE",
@@ -982,6 +2100,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.8,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.05,
@@ -993,6 +2112,17 @@
       ],
       "xp": 2.34
     },
+    "150": {
+      "name": "M.Sarr",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Real Sociedad on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "151": {
       "name": "Acheampong",
       "team": "CHE",
@@ -1001,6 +2131,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.01,
@@ -1012,6 +2143,28 @@
       ],
       "xp": 1.9
     },
+    "152": {
+      "name": "Palestra",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "153": {
+      "name": "Disasi",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "154": {
       "name": "Palmer",
       "team": "CHE",
@@ -1019,7 +2172,8 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 28.2,
+      "selected_pct": 28.1,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.2,
@@ -1039,6 +2193,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.9,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.37,
@@ -1058,6 +2213,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.7,
+      "rated": true,
       "f": {
         "pts4": 6.25,
         "xgi4": 0.31,
@@ -1069,6 +2225,28 @@
       ],
       "xp": 3.72
     },
+    "157": {
+      "name": "Estêvão",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "158": {
+      "name": "Gittens",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "i",
+      "news": "Ankle injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "159": {
       "name": "Caicedo",
       "team": "CHE",
@@ -1077,6 +2255,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.02,
@@ -1088,6 +2267,72 @@
       ],
       "xp": 1.93
     },
+    "160": {
+      "name": "Garnacho",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "161": {
+      "name": "Lavia",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "162": {
+      "name": "Andrey Santos",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "163": {
+      "name": "D.Essugo",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined RC Strasbourg on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "164": {
+      "name": "Quenda",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "165": {
+      "name": "João Pedro",
+      "team": "CHE",
+      "pos": 4,
+      "cost": 7.9,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 73.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "166": {
       "name": "N.Jackson",
       "team": "AVL",
@@ -1095,7 +2340,8 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 6.3,
+      "selected_pct": 6.4,
+      "rated": true,
       "f": {
         "pts4": 7.5,
         "xgi4": 0.47,
@@ -1115,6 +2361,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.9,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.53,
@@ -1126,6 +2373,61 @@
       ],
       "xp": 3.03
     },
+    "168": {
+      "name": "Marc Guiu",
+      "team": "CHE",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined RB Leipzig permanently",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "169": {
+      "name": "Mheuka",
+      "team": "CHE",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "170": {
+      "name": "Emegha",
+      "team": "CHE",
+      "pos": 4,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "171": {
+      "name": "Dovin",
+      "team": "COV",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "not included in squad.",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "172": {
+      "name": "Wilson",
+      "team": "COV",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "173": {
       "name": "Thomas",
       "team": "COV",
@@ -1134,6 +2436,7 @@
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
       "selected_pct": 9.7,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0.07,
@@ -1145,6 +2448,17 @@
       ],
       "xp": 2.56
     },
+    "174": {
+      "name": "Kitching",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Sheffield United on loan for the rest of the season",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "175": {
       "name": "van Ewijk",
       "team": "COV",
@@ -1153,6 +2467,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.3,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.03,
@@ -1172,6 +2487,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
+      "rated": true,
       "f": {
         "pts4": 5.5,
         "xgi4": 0.13,
@@ -1183,6 +2499,72 @@
       ],
       "xp": 3.05
     },
+    "177": {
+      "name": "Kesler-Hayden",
+      "team": "COV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "178": {
+      "name": "Bidwell",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "179": {
+      "name": "Latibeaudiere",
+      "team": "COV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "180": {
+      "name": "Woolfenden",
+      "team": "COV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "181": {
+      "name": "Brau",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Academico de Viseu on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "182": {
+      "name": "Amenda",
+      "team": "COV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "i",
+      "news": "Calf injury - Unknown return date",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "183": {
       "name": "Rudoni",
       "team": "COV",
@@ -1191,6 +2573,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.37,
@@ -1210,6 +2593,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.06,
@@ -1229,6 +2613,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.06,
@@ -1240,6 +2625,94 @@
       ],
       "xp": 1.62
     },
+    "186": {
+      "name": "Mason-Clark",
+      "team": "COV",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "187": {
+      "name": "Eccles",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Ankle injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "188": {
+      "name": "Torp",
+      "team": "COV",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "189": {
+      "name": "Shepherd",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "190": {
+      "name": "Tchaouna",
+      "team": "COV",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "191": {
+      "name": "Borges Rodrigues",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Burton Albion on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "192": {
+      "name": "Andrews",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Oxford United on loan for the rest of the season",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "193": {
+      "name": "Wright",
+      "team": "COV",
+      "pos": 4,
+      "cost": 5.3,
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "194": {
       "name": "Thomas-Asante",
       "team": "COV",
@@ -1248,6 +2721,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.1,
@@ -1259,6 +2733,50 @@
       ],
       "xp": 3.02
     },
+    "195": {
+      "name": "Simms",
+      "team": "COV",
+      "pos": 4,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "196": {
+      "name": "Markelo",
+      "team": "COV",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Shabab Al-Ahli Dubai permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "197": {
+      "name": "Bassette",
+      "team": "COV",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined KVC Westerlo on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "198": {
+      "name": "Henderson",
+      "team": "CRY",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "d",
+      "news": "Foot injury - 50% chance of playing",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "199": {
       "name": "Benitez",
       "team": "CRY",
@@ -1267,6 +2785,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0,
@@ -1286,6 +2805,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.3,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.1,
@@ -1305,6 +2825,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.7,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.25,
@@ -1324,6 +2845,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.02,
@@ -1343,6 +2865,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.04,
@@ -1362,6 +2885,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.5,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.01,
@@ -1373,6 +2897,50 @@
       ],
       "xp": 1.89
     },
+    "205": {
+      "name": "Sosa",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined FC Cologne on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "206": {
+      "name": "Chadi Riad",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "207": {
+      "name": "Mingueza",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "208": {
+      "name": "Sarr",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "209": {
       "name": "Johnson",
       "team": "EVE",
@@ -1381,6 +2949,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.26,
@@ -1400,6 +2969,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.22,
@@ -1419,6 +2989,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.22,
@@ -1430,6 +3001,28 @@
       ],
       "xp": 2.41
     },
+    "212": {
+      "name": "Hughes",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "213": {
+      "name": "Lerma",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "214": {
       "name": "Kamada",
       "team": "CRY",
@@ -1438,6 +3031,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.21,
@@ -1449,6 +3043,83 @@
       ],
       "xp": 2.48
     },
+    "215": {
+      "name": "Devenny",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Stoke City permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "216": {
+      "name": "Esse",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Millwall on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "217": {
+      "name": "M.França",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Alverca on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "218": {
+      "name": "Doucouré",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "219": {
+      "name": "J.Rak-Sakyi",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "has joined  Kasimpasa on loan for the rest of the seaon.",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "220": {
+      "name": "Cardines",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Bristol City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "221": {
+      "name": "Drakes-Thomas",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "222": {
       "name": "Strand Larsen",
       "team": "CRY",
@@ -1457,6 +3128,7 @@
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.38,
@@ -1468,6 +3140,39 @@
       ],
       "xp": 2.51
     },
+    "223": {
+      "name": "Mateta",
+      "team": "CRY",
+      "pos": 4,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "224": {
+      "name": "Nketiah",
+      "team": "CRY",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "225": {
+      "name": "Uche",
+      "team": "CRY",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "has returned to Getafe CF",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "226": {
       "name": "Pickford",
       "team": "EVE",
@@ -1476,6 +3181,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 8.6,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0,
@@ -1487,6 +3193,28 @@
       ],
       "xp": 2.79
     },
+    "227": {
+      "name": "Travers",
+      "team": "EVE",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "228": {
+      "name": "King",
+      "team": "EVE",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "229": {
       "name": "Tarkowski",
       "team": "EVE",
@@ -1495,6 +3223,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 18.3,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.02,
@@ -1514,6 +3243,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.4,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.04,
@@ -1525,6 +3255,28 @@
       ],
       "xp": 1.98
     },
+    "231": {
+      "name": "Keane",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "232": {
+      "name": "O'Brien",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "233": {
       "name": "Mykolenko",
       "team": "EVE",
@@ -1533,6 +3285,7 @@
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
       "selected_pct": 2.6,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.07,
@@ -1544,6 +3297,28 @@
       ],
       "xp": 1.59
     },
+    "234": {
+      "name": "Patterson",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Torino permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "235": {
+      "name": "Aznou",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Malaga on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "236": {
       "name": "Dewsbury-Hall",
       "team": "EVE",
@@ -1552,6 +3327,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.34,
@@ -1571,6 +3347,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.4,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.41,
@@ -1590,6 +3367,7 @@
       "status": "d",
       "news": "Illness - 75% chance of playing",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.19,
@@ -1609,6 +3387,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.17,
@@ -1620,6 +3399,50 @@
       ],
       "xp": 2.84
     },
+    "240": {
+      "name": "Iroegbunam",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "241": {
+      "name": "McNeil",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "242": {
+      "name": "George",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "243": {
+      "name": "Alcaraz",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "244": {
       "name": "Armstrong",
       "team": "EVE",
@@ -1628,6 +3451,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.24,
@@ -1639,6 +3463,17 @@
       ],
       "xp": 2.67
     },
+    "245": {
+      "name": "Dibling",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "246": {
       "name": "Röhl",
       "team": "EVE",
@@ -1647,6 +3482,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.01,
@@ -1658,6 +3494,28 @@
       ],
       "xp": 1.46
     },
+    "247": {
+      "name": "Hackney",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "248": {
+      "name": "Beto",
+      "team": "EVE",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "u",
+      "news": "Has joined Fiorentina permanently",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "249": {
       "name": "Barry",
       "team": "EVE",
@@ -1666,6 +3524,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.6,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.53,
@@ -1685,6 +3544,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.5,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0,
@@ -1696,6 +3556,39 @@
       ],
       "xp": 3.21
     },
+    "251": {
+      "name": "Lecomte",
+      "team": "FUL",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "252": {
+      "name": "McNally",
+      "team": "FUL",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined York City on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "253": {
+      "name": "Andersen",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "254": {
       "name": "Robinson",
       "team": "FUL",
@@ -1704,6 +3597,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.03,
@@ -1715,6 +3609,28 @@
       ],
       "xp": 2.21
     },
+    "255": {
+      "name": "J.Cuenca",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "256": {
+      "name": "Tete",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "257": {
       "name": "Bassey",
       "team": "FUL",
@@ -1723,6 +3639,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.2,
+      "rated": true,
       "f": {
         "pts4": 6,
         "xgi4": 0.07,
@@ -1742,6 +3659,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.2,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.05,
@@ -1761,6 +3679,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 10.8,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.03,
@@ -1772,6 +3691,17 @@
       ],
       "xp": 2.21
     },
+    "260": {
+      "name": "Wilson",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "261": {
       "name": "Iwobi",
       "team": "FUL",
@@ -1780,6 +3710,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.4,
+      "rated": true,
       "f": {
         "pts4": 5.75,
         "xgi4": 0.58,
@@ -1791,6 +3722,28 @@
       ],
       "xp": 3.79
     },
+    "262": {
+      "name": "Smith Rowe",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "d",
+      "news": "Knock - 75% chance of playing",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "263": {
+      "name": "Kevin",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "264": {
       "name": "Bobb",
       "team": "FUL",
@@ -1799,6 +3752,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 5,
         "xgi4": 0.37,
@@ -1818,6 +3772,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.11,
@@ -1829,6 +3784,28 @@
       ],
       "xp": 2.4
     },
+    "266": {
+      "name": "Cairney",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "267": {
+      "name": "Lukić",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Groin injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "268": {
       "name": "King",
       "team": "FUL",
@@ -1837,6 +3814,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.5,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.35,
@@ -1848,6 +3826,94 @@
       ],
       "xp": 2.85
     },
+    "269": {
+      "name": "Sessegnon",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "s",
+      "news": "Suspended until 7 Nov",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "270": {
+      "name": "Reed",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "271": {
+      "name": "Muniz",
+      "team": "FUL",
+      "pos": 4,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "272": {
+      "name": "Kusi-Asare",
+      "team": "FUL",
+      "pos": 4,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "273": {
+      "name": "Phillips",
+      "team": "HUL",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "274": {
+      "name": "Butland",
+      "team": "HUL",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Arm injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "275": {
+      "name": "Cartwright",
+      "team": "HUL",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Grimsby Town on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "276": {
+      "name": "Lo-Tutala",
+      "team": "HUL",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Colchester United on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "277": {
       "name": "Egan",
       "team": "HUL",
@@ -1856,6 +3922,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.1,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.05,
@@ -1867,6 +3934,17 @@
       ],
       "xp": 1.58
     },
+    "278": {
+      "name": "Hughes",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "i",
+      "news": "Groin injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "279": {
       "name": "Ajayi",
       "team": "HUL",
@@ -1875,6 +3953,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 13,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.01,
@@ -1894,6 +3973,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.02,
@@ -1905,6 +3985,61 @@
       ],
       "xp": 1.48
     },
+    "281": {
+      "name": "Drameh",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Genoa permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "282": {
+      "name": "Giles",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "283": {
+      "name": "Jacob",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Newport County on loan until January",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "284": {
+      "name": "McCarthy",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "285": {
+      "name": "McNair",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "286": {
       "name": "Belloumi",
       "team": "HUL",
@@ -1913,6 +4048,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 9.3,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.27,
@@ -1924,6 +4060,39 @@
       ],
       "xp": 2.3
     },
+    "287": {
+      "name": "Millar",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Birmingham on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "288": {
+      "name": "Dowell",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "289": {
+      "name": "Crooks",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "290": {
       "name": "Slater",
       "team": "HUL",
@@ -1932,6 +4101,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.7,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.06,
@@ -1943,6 +4113,50 @@
       ],
       "xp": 1.75
     },
+    "291": {
+      "name": "Matazo",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "292": {
+      "name": "Ömür",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "293": {
+      "name": "Kamara",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Portsmouth permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "294": {
+      "name": "Zambrano",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "295": {
       "name": "McBurnie",
       "team": "HUL",
@@ -1951,6 +4165,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.6,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.12,
@@ -1962,6 +4177,50 @@
       ],
       "xp": 2.1
     },
+    "296": {
+      "name": "Akintola",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Omonoia FC permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "297": {
+      "name": "Gyabi",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "298": {
+      "name": "Destan",
+      "team": "HUL",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Konyaspor permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "299": {
+      "name": "Burstow",
+      "team": "HUL",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Sheffield Wednesday on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "300": {
       "name": "Walton",
       "team": "IPS",
@@ -1970,6 +4229,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.01,
@@ -1981,6 +4241,39 @@
       ],
       "xp": 2.61
     },
+    "301": {
+      "name": "Palmer",
+      "team": "IPS",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "302": {
+      "name": "Button",
+      "team": "IPS",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "303": {
+      "name": "Kipré",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "304": {
       "name": "O'Shea",
       "team": "IPS",
@@ -1989,6 +4282,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.9,
+      "rated": true,
       "f": {
         "pts4": 4.5,
         "xgi4": 0.07,
@@ -2008,6 +4302,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.3,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.17,
@@ -2019,6 +4314,116 @@
       ],
       "xp": 2.06
     },
+    "306": {
+      "name": "Greaves",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "307": {
+      "name": "Johnson",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Stoke City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "308": {
+      "name": "Furlong",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "309": {
+      "name": "Núñez",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "310": {
+      "name": "Matusiwa",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "311": {
+      "name": "Burns",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Leicester City permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "312": {
+      "name": "Taylor",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "313": {
+      "name": "Clarke",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "314": {
+      "name": "Ogbene",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Lincoln City on loan until January",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "315": {
+      "name": "Fatawu",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "316": {
       "name": "Emersonn",
       "team": "IPS",
@@ -2027,6 +4432,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.5,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.27,
@@ -2038,6 +4444,149 @@
       ],
       "xp": 2.52
     },
+    "317": {
+      "name": "Hirst",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Stoke City permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "318": {
+      "name": "Philogene",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "319": {
+      "name": "Szmodics",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Derby County on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "320": {
+      "name": "Akpom",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "321": {
+      "name": "Walle Egeli",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "322": {
+      "name": "Al-Hamadi",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Sheffield Wednesday on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "323": {
+      "name": "McAteer",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "324": {
+      "name": "Mehmeti",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "325": {
+      "name": "Darlow",
+      "team": "MUN",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "326": {
+      "name": "Perri",
+      "team": "LEE",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Torino on loan for the rest of the season",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "327": {
+      "name": "Bijol",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "328": {
+      "name": "Struijk",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "329": {
+      "name": "Rodon",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 21 Nov",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "330": {
       "name": "Bogle",
       "team": "LEE",
@@ -2046,6 +4595,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 10.9,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.15,
@@ -2065,6 +4615,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.04,
@@ -2084,6 +4635,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.2,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.11,
@@ -2095,6 +4647,17 @@
       ],
       "xp": 2.26
     },
+    "333": {
+      "name": "Bornauw",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Hamburg SV on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "334": {
       "name": "Muharemović",
       "team": "LEE",
@@ -2103,6 +4666,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.5,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.16,
@@ -2122,6 +4686,7 @@
       "status": "d",
       "news": "Foot injury - 50% chance of playing",
       "selected_pct": 2.1,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.18,
@@ -2141,6 +4706,7 @@
       "status": "d",
       "news": "Thigh injury - 50% chance of playing",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.03,
@@ -2152,6 +4718,17 @@
       ],
       "xp": 1.82
     },
+    "337": {
+      "name": "Aaronson",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "338": {
       "name": "Ampadu",
       "team": "LEE",
@@ -2160,6 +4737,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.8,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.05,
@@ -2171,6 +4749,72 @@
       ],
       "xp": 2.05
     },
+    "339": {
+      "name": "Longstaff",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "340": {
+      "name": "Gelhardt",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "341": {
+      "name": "Gnonto",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined ACF Fiorentina on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "342": {
+      "name": "Harrison",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined New England Revolution permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "343": {
+      "name": "James",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "344": {
+      "name": "Gruev",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "345": {
       "name": "Tanaka",
       "team": "LEE",
@@ -2179,6 +4823,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.07,
@@ -2198,6 +4843,7 @@
       "status": "d",
       "news": "Foot injury - 50% chance of playing",
       "selected_pct": 22,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.29,
@@ -2209,6 +4855,39 @@
       ],
       "xp": 2.84
     },
+    "347": {
+      "name": "Nmecha",
+      "team": "LEE",
+      "pos": 4,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "348": {
+      "name": "Piroe",
+      "team": "LEE",
+      "pos": 4,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined West Ham United on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "349": {
+      "name": "Mateo Joseph",
+      "team": "LEE",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "350": {
       "name": "A.Becker",
       "team": "LIV",
@@ -2217,6 +4896,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.2,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0,
@@ -2228,6 +4908,61 @@
       ],
       "xp": 2.36
     },
+    "351": {
+      "name": "Mamardashvili",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "352": {
+      "name": "Woodman",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "353": {
+      "name": "Pecsi",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined TSV Hartberg on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "354": {
+      "name": "Jaros",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 4,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "355": {
+      "name": "Davies",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "356": {
       "name": "Virgil",
       "team": "LIV",
@@ -2236,6 +4971,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 15.1,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.02,
@@ -2247,6 +4983,17 @@
       ],
       "xp": 1.96
     },
+    "357": {
+      "name": "Frimpong",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 5.2,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 1.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "358": {
       "name": "Kerkez",
       "team": "LIV",
@@ -2255,6 +5002,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.9,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.02,
@@ -2266,6 +5014,39 @@
       ],
       "xp": 1.78
     },
+    "359": {
+      "name": "Gomez",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "360": {
+      "name": "Bradley",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "361": {
+      "name": "Lucky",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "362": {
       "name": "Jacquet",
       "team": "LIV",
@@ -2274,6 +5055,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.2,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.08,
@@ -2285,6 +5067,39 @@
       ],
       "xp": 2.01
     },
+    "363": {
+      "name": "Leoni",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "364": {
+      "name": "Tsimikas",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "365": {
+      "name": "Ramsay",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined St Mirren on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "366": {
       "name": "Wirtz",
       "team": "LIV",
@@ -2293,6 +5108,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.1,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.21,
@@ -2304,6 +5120,61 @@
       ],
       "xp": 2.4
     },
+    "367": {
+      "name": "Gakpo",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 7.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "368": {
+      "name": "Szoboszlai",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 6.7,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 15.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "369": {
+      "name": "Ngumoha",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "370": {
+      "name": "Chiesa",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "371": {
+      "name": "Gravenberch",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "372": {
       "name": "Mac Allister",
       "team": "LIV",
@@ -2312,6 +5183,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.22,
@@ -2323,6 +5195,50 @@
       ],
       "xp": 2.29
     },
+    "373": {
+      "name": "C.Jones",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "u",
+      "news": "Has joined Internazionale permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "374": {
+      "name": "Endo",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "375": {
+      "name": "Nyoni",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "376": {
+      "name": "Bajcetic",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Celta Vigo permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "377": {
       "name": "Munoz",
       "team": "LIV",
@@ -2331,6 +5247,7 @@
       "status": "d",
       "news": "Knee injury - 25% chance of playing",
       "selected_pct": 0.9,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.08,
@@ -2342,6 +5259,72 @@
       ],
       "xp": 2.04
     },
+    "378": {
+      "name": "McConnell",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "379": {
+      "name": "Isak",
+      "team": "LIV",
+      "pos": 4,
+      "cost": 9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 14.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "380": {
+      "name": "Ekitiké",
+      "team": "LIV",
+      "pos": 4,
+      "cost": 7.4,
+      "status": "i",
+      "news": "Achilles injury - Unknown return date",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "381": {
+      "name": "Koumas",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "382": {
+      "name": "Danns",
+      "team": "LIV",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "383": {
+      "name": "Elliott",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "u",
+      "news": "Has joined Valencia on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "384": {
       "name": "Donnarumma",
       "team": "MCI",
@@ -2350,6 +5333,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.7,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0,
@@ -2369,6 +5353,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0,
@@ -2380,6 +5365,28 @@
       ],
       "xp": 2.55
     },
+    "386": {
+      "name": "Bettinelli",
+      "team": "MCI",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "387": {
+      "name": "O'Reilly",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 8.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "388": {
       "name": "Guéhi",
       "team": "MCI",
@@ -2388,6 +5395,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 17.4,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.05,
@@ -2407,6 +5415,7 @@
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
       "selected_pct": 1,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.01,
@@ -2426,6 +5435,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.14,
@@ -2445,6 +5455,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 27.4,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.34,
@@ -2456,6 +5467,61 @@
       ],
       "xp": 1.98
     },
+    "392": {
+      "name": "Aït-Nouri",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "393": {
+      "name": "Khusanov",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "394": {
+      "name": "Alleyne",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Burnley on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "395": {
+      "name": "Lewis",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "396": {
+      "name": "Vitor Reis",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "397": {
       "name": "Semenyo",
       "team": "MCI",
@@ -2464,6 +5530,7 @@
       "status": "i",
       "news": "Knee injury - Unknown return date",
       "selected_pct": 8.3,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.16,
@@ -2475,6 +5542,17 @@
       ],
       "xp": 2.7
     },
+    "398": {
+      "name": "Foden",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "399": {
       "name": "Cherki",
       "team": "MCI",
@@ -2483,6 +5561,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 39.1,
+      "rated": true,
       "f": {
         "pts4": 4.5,
         "xgi4": 0.36,
@@ -2502,6 +5581,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.7,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.44,
@@ -2521,6 +5601,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.11,
@@ -2532,6 +5613,17 @@
       ],
       "xp": 2.68
     },
+    "402": {
+      "name": "Rodrigo",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "u",
+      "news": "Has joined Barcelona permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "403": {
       "name": "Sávio",
       "team": "TOT",
@@ -2540,6 +5632,7 @@
       "status": "i",
       "news": "Muscular injury - Expected back 7 Nov",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.21,
@@ -2551,6 +5644,17 @@
       ],
       "xp": 1.69
     },
+    "404": {
+      "name": "Reijnders",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6,
+      "status": "u",
+      "news": "Has joined Al Qadsiah permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "405": {
       "name": "N.Gonzalez",
       "team": "NEW",
@@ -2559,6 +5663,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.08,
@@ -2570,6 +5675,61 @@
       ],
       "xp": 1.9
     },
+    "406": {
+      "name": "Kovačić",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "407": {
+      "name": "Echeverri",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Benfica on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "408": {
+      "name": "Phillips",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Sheffield United on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "409": {
+      "name": "Mukasa",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "has joined West Ham on loan for the rest of the seaon.",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "410": {
+      "name": "Monga",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Swansea City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "411": {
       "name": "Haaland",
       "team": "MCI",
@@ -2578,6 +5738,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 77.7,
+      "rated": true,
       "f": {
         "pts4": 8.25,
         "xgi4": 0.76,
@@ -2597,6 +5758,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 8.3,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0,
@@ -2608,6 +5770,50 @@
       ],
       "xp": 2.24
     },
+    "413": {
+      "name": "Bayindir",
+      "team": "MUN",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Celta Vigo on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "414": {
+      "name": "Heaton",
+      "team": "MUN",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "415": {
+      "name": "Dorgu",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 25 Oct",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "416": {
+      "name": "De Ligt",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "417": {
       "name": "Dalot",
       "team": "MUN",
@@ -2616,6 +5822,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.4,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.05,
@@ -2635,6 +5842,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.3,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.04,
@@ -2654,6 +5862,7 @@
       "status": "d",
       "news": "Thigh injury - 75% chance of playing",
       "selected_pct": 1.1,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.05,
@@ -2665,6 +5874,72 @@
       ],
       "xp": 1.33
     },
+    "420": {
+      "name": "Yoro",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "421": {
+      "name": "Heaven",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "422": {
+      "name": "Mazraoui",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "423": {
+      "name": "Shaw",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.2,
+      "status": "i",
+      "news": "Unspecified injury - Unknown return date",
+      "selected_pct": 4.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "424": {
+      "name": "Amass",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "425": {
+      "name": "Fredricson",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Lausanne-Sport permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "426": {
       "name": "B.Fernandes",
       "team": "MUN",
@@ -2673,6 +5948,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 25.8,
+      "rated": true,
       "f": {
         "pts4": 1,
         "xgi4": 0.19,
@@ -2692,6 +5968,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 22,
+      "rated": true,
       "f": {
         "pts4": 4.5,
         "xgi4": 0.38,
@@ -2711,6 +5988,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.3,
+      "rated": true,
       "f": {
         "pts4": 5.25,
         "xgi4": 0.19,
@@ -2722,6 +6000,182 @@
       ],
       "xp": 2.7
     },
+    "429": {
+      "name": "Rashford",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 6.9,
+      "status": "d",
+      "news": "Hip injury - 75% chance of playing",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "430": {
+      "name": "Mount",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "431": {
+      "name": "Amad",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "432": {
+      "name": "Mainoo",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "i",
+      "news": "Unspecified injury - Expected back 8 Nov",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "433": {
+      "name": "Ugarte",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "434": {
+      "name": "J.Fletcher",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "435": {
+      "name": "Lacey",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "436": {
+      "name": "Collyer",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined West Brom permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "437": {
+      "name": "Bendito Mantato",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "438": {
+      "name": "Fletcher",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "439": {
+      "name": "Šeško",
+      "team": "MUN",
+      "pos": 4,
+      "cost": 6.9,
+      "status": "i",
+      "news": "Shin injury - Unknown return date",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "440": {
+      "name": "Zirkzee",
+      "team": "MUN",
+      "pos": 4,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "441": {
+      "name": "Obi",
+      "team": "MUN",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Willem II on loan for the rest of the season",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "442": {
+      "name": "Pope",
+      "team": "NEW",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "443": {
+      "name": "Gillespie",
+      "team": "NEW",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "444": {
+      "name": "Jaouen",
+      "team": "NEW",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "445": {
       "name": "Thiaw",
       "team": "NEW",
@@ -2730,6 +6184,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.8,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.02,
@@ -2741,6 +6196,17 @@
       ],
       "xp": 1.54
     },
+    "446": {
+      "name": "Schär",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "447": {
       "name": "Botman",
       "team": "NEW",
@@ -2749,6 +6215,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.8,
+      "rated": true,
       "f": {
         "pts4": 3.75,
         "xgi4": 0.06,
@@ -2760,6 +6227,17 @@
       ],
       "xp": 2.18
     },
+    "448": {
+      "name": "Burn",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "449": {
       "name": "Hall",
       "team": "NEW",
@@ -2768,6 +6246,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 20.4,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0.11,
@@ -2779,6 +6258,39 @@
       ],
       "xp": 2.35
     },
+    "450": {
+      "name": "Livramento",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Knee injury - Expected back 7 Nov",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "451": {
+      "name": "A.Murphy",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined FC Kaiserslautern on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "452": {
+      "name": "Bruno G.",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "453": {
       "name": "Barnes",
       "team": "NEW",
@@ -2787,6 +6299,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 7.3,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.31,
@@ -2798,6 +6311,17 @@
       ],
       "xp": 2.69
     },
+    "454": {
+      "name": "Elanga",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 6,
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
+      "selected_pct": 2.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "455": {
       "name": "Tonali",
       "team": "TOT",
@@ -2806,6 +6330,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.8,
+      "rated": true,
       "f": {
         "pts4": 4.5,
         "xgi4": 0.25,
@@ -2817,6 +6342,39 @@
       ],
       "xp": 3.27
     },
+    "456": {
+      "name": "J.Ramsey",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "457": {
+      "name": "J.Murphy",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "458": {
+      "name": "Joelinton",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "459": {
       "name": "L.Miley",
       "team": "NEW",
@@ -2825,6 +6383,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.09,
@@ -2844,6 +6403,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.15,
@@ -2855,6 +6415,39 @@
       ],
       "xp": 2.18
     },
+    "461": {
+      "name": "Touré",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "462": {
+      "name": "Steur",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "463": {
+      "name": "Woltemade",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 5.9,
+      "status": "u",
+      "news": "Has joined Juventus on loan for the rest of the season",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "464": {
       "name": "Wissa",
       "team": "NEW",
@@ -2863,6 +6456,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 12.3,
+      "rated": true,
       "f": {
         "pts4": 0.75,
         "xgi4": 0.39,
@@ -2874,6 +6468,28 @@
       ],
       "xp": 2.29
     },
+    "465": {
+      "name": "Osula",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "466": {
+      "name": "Neave",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Wolves on loan for the rest of the season",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "467": {
       "name": "Sels",
       "team": "NFO",
@@ -2882,6 +6498,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.4,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0,
@@ -2893,6 +6510,17 @@
       ],
       "xp": 2.55
     },
+    "468": {
+      "name": "John",
+      "team": "NFO",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "469": {
       "name": "N.Williams",
       "team": "NFO",
@@ -2901,6 +6529,7 @@
       "status": "d",
       "news": "Arm injury - 75% chance of playing",
       "selected_pct": 6.2,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.34,
@@ -2912,6 +6541,28 @@
       ],
       "xp": 2.77
     },
+    "470": {
+      "name": "Morato",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined West Ham on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "471": {
+      "name": "Milenković",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "472": {
       "name": "Murillo",
       "team": "NFO",
@@ -2920,6 +6571,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.2,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.27,
@@ -2931,6 +6583,17 @@
       ],
       "xp": 2.41
     },
+    "473": {
+      "name": "Aina",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "474": {
       "name": "Jair Cunha",
       "team": "NFO",
@@ -2939,6 +6602,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.05,
@@ -2950,6 +6614,61 @@
       ],
       "xp": 1.54
     },
+    "475": {
+      "name": "Savona",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "476": {
+      "name": "O.Richards",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "477": {
+      "name": "Abbott",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Southampton on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "478": {
+      "name": "Netz",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "479": {
+      "name": "Bindon",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Charlton Athletic on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "480": {
       "name": "Gibbs-White",
       "team": "NFO",
@@ -2958,6 +6677,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 12.2,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.47,
@@ -2977,6 +6697,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.8,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.12,
@@ -2988,6 +6709,17 @@
       ],
       "xp": 2.34
     },
+    "482": {
+      "name": "Hudson-Odoi",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "483": {
       "name": "Ndoye",
       "team": "NFO",
@@ -2996,6 +6728,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.42,
@@ -3007,6 +6740,28 @@
       ],
       "xp": 2.82
     },
+    "484": {
+      "name": "Hutchinson",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "u",
+      "news": "Has joined AC Milan on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "485": {
+      "name": "Bakwa",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "u",
+      "news": "Has joined Lille on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "486": {
       "name": "McAtee",
       "team": "NFO",
@@ -3015,6 +6770,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.17,
@@ -3026,6 +6782,105 @@
       ],
       "xp": 2.84
     },
+    "487": {
+      "name": "Dominguez",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "d",
+      "news": "Muscular injury - 75% chance of playing",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "488": {
+      "name": "I.Sangaré",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "489": {
+      "name": "Yates",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "490": {
+      "name": "Wood",
+      "team": "NFO",
+      "pos": 4,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "491": {
+      "name": "Igor Jesus",
+      "team": "NFO",
+      "pos": 4,
+      "cost": 5.7,
+      "status": "i",
+      "news": "Calf injury - Unknown return date",
+      "selected_pct": 1.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "492": {
+      "name": "Awoniyi",
+      "team": "COV",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "493": {
+      "name": "Kalimuendo",
+      "team": "NFO",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "494": {
+      "name": "Vicario",
+      "team": "TOT",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Juventus on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "495": {
+      "name": "Austin",
+      "team": "TOT",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "496": {
       "name": "Kinsky",
       "team": "TOT",
@@ -3034,6 +6889,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 14.7,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0,
@@ -3045,6 +6901,50 @@
       ],
       "xp": 3.03
     },
+    "497": {
+      "name": "Dubravka",
+      "team": "TOT",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 16.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "498": {
+      "name": "Senesi",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "499": {
+      "name": "Pedro Porro",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "500": {
+      "name": "Romero",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Atletico Madrid permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "501": {
       "name": "Danso",
       "team": "SUN",
@@ -3053,6 +6953,7 @@
       "status": "s",
       "news": "Suspended until 31 Oct",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": -0.5,
         "xgi4": 0.08,
@@ -3072,6 +6973,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.1,
+      "rated": true,
       "f": {
         "pts4": 3.75,
         "xgi4": 0.11,
@@ -3091,6 +6993,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.6,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.03,
@@ -3110,6 +7013,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.4,
+      "rated": true,
       "f": {
         "pts4": 6.75,
         "xgi4": 0.18,
@@ -3121,6 +7025,83 @@
       ],
       "xp": 3.04
     },
+    "505": {
+      "name": "Spence",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Internazionale permanently",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "506": {
+      "name": "Udogie",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "507": {
+      "name": "Phillips",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Middlesbrough permanently",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "508": {
+      "name": "Davies",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "509": {
+      "name": "Byfield",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "510": {
+      "name": "Rowswell",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "511": {
+      "name": "Souza",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined FC Porto on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "512": {
       "name": "Kudus",
       "team": "TOT",
@@ -3129,6 +7110,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.19,
@@ -3140,6 +7122,105 @@
       ],
       "xp": 2.8
     },
+    "513": {
+      "name": "Xavi",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "514": {
+      "name": "Tel",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "515": {
+      "name": "Maddison",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "516": {
+      "name": "Bentancur",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "s",
+      "news": "Suspended until 7 Nov",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "517": {
+      "name": "Odobert",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "518": {
+      "name": "P.M.Sarr",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Juventus on loan for the rest of the season",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "519": {
+      "name": "Gallagher",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "520": {
+      "name": "Bergvall",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "i",
+      "news": "Knee injury - Expected back 31 Oct",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "521": {
+      "name": "Kulusevski",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "522": {
       "name": "Gray",
       "team": "TOT",
@@ -3148,6 +7229,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.07,
@@ -3159,6 +7241,39 @@
       ],
       "xp": 2.54
     },
+    "523": {
+      "name": "Moore",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined FC Köln on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "524": {
+      "name": "Olusesi",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "525": {
+      "name": "Fernandes",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "526": {
       "name": "Solanke",
       "team": "TOT",
@@ -3167,6 +7282,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
+      "rated": true,
       "f": {
         "pts4": 3.5,
         "xgi4": 0.3,
@@ -3178,6 +7294,28 @@
       ],
       "xp": 2.91
     },
+    "527": {
+      "name": "Richarlison",
+      "team": "TOT",
+      "pos": 4,
+      "cost": 5.9,
+      "status": "u",
+      "news": "not included in squad.",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "528": {
+      "name": "Scarlett",
+      "team": "TOT",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Leyton Orient permanently",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "529": {
       "name": "Roefs",
       "team": "SUN",
@@ -3186,6 +7324,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.1,
+      "rated": true,
       "f": {
         "pts4": 0.75,
         "xgi4": 0.01,
@@ -3197,6 +7336,39 @@
       ],
       "xp": 1.89
     },
+    "530": {
+      "name": "Patterson",
+      "team": "SUN",
+      "pos": 1,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Wrexham permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "531": {
+      "name": "Ellborg",
+      "team": "SUN",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "532": {
+      "name": "Ballard",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "533": {
       "name": "Mukiele",
       "team": "SUN",
@@ -3205,6 +7377,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.8,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.1,
@@ -3224,6 +7397,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.04,
@@ -3235,6 +7409,83 @@
       ],
       "xp": 1.25
     },
+    "535": {
+      "name": "Alderete",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "536": {
+      "name": "Reinildo",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "537": {
+      "name": "Seelt",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Swansea City on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "538": {
+      "name": "Hjelde",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined KV Mechelen on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "539": {
+      "name": "O'Nien",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "540": {
+      "name": "Masuaku",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "Has joined Konyaspor permanently",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "541": {
+      "name": "Meunier",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "d",
+      "news": "Groin injury - 75% chance of playing",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "542": {
       "name": "E.Le Fée",
       "team": "SUN",
@@ -3243,6 +7494,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.9,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.2,
@@ -3254,6 +7506,17 @@
       ],
       "xp": 2.42
     },
+    "543": {
+      "name": "Diarra",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "544": {
       "name": "Xhaka",
       "team": "SUN",
@@ -3262,6 +7525,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.16,
@@ -3281,6 +7545,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 1.75,
         "xgi4": 0.03,
@@ -3292,6 +7557,138 @@
       ],
       "xp": 1.93
     },
+    "546": {
+      "name": "Adingra",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "u",
+      "news": "Has joined Ajax on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "547": {
+      "name": "Mundle",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "548": {
+      "name": "Rigg",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "549": {
+      "name": "Talbi",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "550": {
+      "name": "Jocelin.T",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "551": {
+      "name": "N.Angulo",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "552": {
+      "name": "Brobbey",
+      "team": "SUN",
+      "pos": 4,
+      "cost": 5.7,
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
+      "selected_pct": 5.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "553": {
+      "name": "Isidor",
+      "team": "SUN",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "d",
+      "news": "Knock - 50% chance of playing",
+      "selected_pct": 0.9,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "554": {
+      "name": "Van Oevelen",
+      "team": "IPS",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Valencia on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "555": {
+      "name": "Matthews",
+      "team": "CRY",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.6,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "556": {
+      "name": "Targett",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "i",
+      "news": "Ankle injury - Unknown return date",
+      "selected_pct": 1.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "557": {
+      "name": "Tzolis",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 1 Nov",
+      "selected_pct": 4.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "558": {
       "name": "Schlager",
       "team": "NFO",
@@ -3300,6 +7697,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.13,
@@ -3311,6 +7709,39 @@
       ],
       "xp": 2.7
     },
+    "559": {
+      "name": "Bamba",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "560": {
+      "name": "Penders",
+      "team": "CHE",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "561": {
+      "name": "Anselmino",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "562": {
       "name": "Maeda",
       "team": "IPS",
@@ -3319,6 +7750,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.11,
@@ -3330,6 +7762,39 @@
       ],
       "xp": 2
     },
+    "563": {
+      "name": "Morita",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "564": {
+      "name": "Scherpen",
+      "team": "IPS",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "565": {
+      "name": "M.Sangaré",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "566": {
       "name": "Silva",
       "team": "BOU",
@@ -3338,6 +7803,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.13,
@@ -3357,6 +7823,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0,
@@ -3368,6 +7835,17 @@
       ],
       "xp": 2
     },
+    "568": {
+      "name": "Barco",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "569": {
       "name": "Gonzalo",
       "team": "FUL",
@@ -3376,6 +7854,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 6.1,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.62,
@@ -3387,6 +7866,17 @@
       ],
       "xp": 3.11
     },
+    "570": {
+      "name": "Palacios",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "571": {
       "name": "Florentino",
       "team": "IPS",
@@ -3395,6 +7885,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.04,
@@ -3414,6 +7905,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 14.2,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0,
@@ -3425,6 +7917,28 @@
       ],
       "xp": 2.36
     },
+    "573": {
+      "name": "Sanchez",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "574": {
+      "name": "Hjertø-Dahl",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "575": {
       "name": "Yirenkyi",
       "team": "COV",
@@ -3433,6 +7947,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.5,
         "xgi4": 0.01,
@@ -3444,6 +7959,39 @@
       ],
       "xp": 2.27
     },
+    "576": {
+      "name": "Stroud",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "577": {
+      "name": "Tomiyasu",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Calf injury - Expected back 8 Nov",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "578": {
+      "name": "Mudryk",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "i",
+      "news": "Ankle injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "579": {
       "name": "Araujo",
       "team": "LIV",
@@ -3452,6 +8000,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.2,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.01,
@@ -3471,6 +8020,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3,
         "xgi4": 0.14,
@@ -3490,6 +8040,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.04,
@@ -3501,6 +8052,17 @@
       ],
       "xp": 1.48
     },
+    "582": {
+      "name": "Madjo",
+      "team": "AVL",
+      "pos": 4,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "583": {
       "name": "Chavarria",
       "team": "CHE",
@@ -3509,6 +8071,7 @@
       "status": "i",
       "news": "Unspecified injury - Expected back 31 Oct",
       "selected_pct": 0.2,
+      "rated": true,
       "f": {
         "pts4": 1.5,
         "xgi4": 0.08,
@@ -3520,6 +8083,50 @@
       ],
       "xp": 1.3
     },
+    "584": {
+      "name": "Hamer",
+      "team": "COV",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "585": {
+      "name": "Herrington",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "586": {
+      "name": "Mendy",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4.1,
+      "status": "i",
+      "news": "Groin injury - Expected back 31 Oct",
+      "selected_pct": 5.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "587": {
+      "name": "Rulli",
+      "team": "MCI",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "588": {
       "name": "Khalaili",
       "team": "CRY",
@@ -3528,6 +8135,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
+      "rated": true,
       "f": {
         "pts4": 2,
         "xgi4": 0.13,
@@ -3539,6 +8147,28 @@
       ],
       "xp": 1.84
     },
+    "589": {
+      "name": "Gourna-Douath",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "d",
+      "news": "Calf injury - 75% chance of playing",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "590": {
+      "name": "Benda",
+      "team": "NFO",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "591": {
       "name": "Enciso",
       "team": "IPS",
@@ -3547,6 +8177,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.8,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0.39,
@@ -3566,6 +8197,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1,
+      "rated": true,
       "f": {
         "pts4": 4.25,
         "xgi4": 0.08,
@@ -3577,6 +8209,50 @@
       ],
       "xp": 2.69
     },
+    "593": {
+      "name": "Dedić",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "594": {
+      "name": "David",
+      "team": "BHA",
+      "pos": 4,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "595": {
+      "name": "Gozo",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "596": {
+      "name": "Ruggeri",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 2 Jan",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "597": {
       "name": "Suzuki",
       "team": "AVL",
@@ -3585,6 +8261,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.3,
+      "rated": true,
       "f": {
         "pts4": 4,
         "xgi4": 0,
@@ -3604,6 +8281,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.06,
@@ -3623,6 +8301,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
+      "rated": true,
       "f": {
         "pts4": 3.75,
         "xgi4": 0.1,
@@ -3634,6 +8313,215 @@
       ],
       "xp": 2.48
     },
+    "600": {
+      "name": "Osman",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "601": {
+      "name": "Williams-Barnett",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "602": {
+      "name": "Humphreys",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Huddersfield Town on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "603": {
+      "name": "Lienou",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "604": {
+      "name": "Cresswell",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "605": {
+      "name": "Yalcouyé",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "606": {
+      "name": "Rowe",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "607": {
+      "name": "Lynch",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "u",
+      "news": "Has joined Oxford United on loan until January",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "608": {
+      "name": "Jebbison",
+      "team": "BOU",
+      "pos": 4,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "609": {
+      "name": "Shahar",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "has joined Arouca on loan for the rest of the seaon.",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "610": {
+      "name": "De Fougerolles",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "u",
+      "news": "has joined  Real Salt Lake on loan for the rest of the seaon.",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "611": {
+      "name": "Wan-Bissaka",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 21 Nov",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "612": {
+      "name": "Methalie",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "613": {
+      "name": "Ahoka",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "614": {
+      "name": "Hadjam",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "615": {
+      "name": "Di Gregorio",
+      "team": "BOU",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "616": {
+      "name": "Bouaddi",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "617": {
+      "name": "Cho",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "618": {
+      "name": "Goretzka",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "619": {
       "name": "Palacios",
       "team": "IPS",
@@ -3642,6 +8530,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.03,
@@ -3653,6 +8542,83 @@
       ],
       "xp": 2.33
     },
+    "620": {
+      "name": "Diouf",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "621": {
+      "name": "McAidoo",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "622": {
+      "name": "Braithwaite",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "623": {
+      "name": "Bentley",
+      "team": "COV",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "624": {
+      "name": "Cozier-Duberry",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5,
+      "status": "u",
+      "news": "Has joined Middlesbrough on loan for the rest of the season",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "625": {
+      "name": "Cairns",
+      "team": "LEE",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "626": {
+      "name": "Zepa",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "627": {
       "name": "Barcola",
       "team": "LIV",
@@ -3661,6 +8627,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 3.5,
+      "rated": true,
       "f": {
         "pts4": 2.25,
         "xgi4": 0.22,
@@ -3672,6 +8639,72 @@
       ],
       "xp": 2.26
     },
+    "628": {
+      "name": "Allan",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "629": {
+      "name": "Zetterer",
+      "team": "LEE",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "630": {
+      "name": "Harwood-Bellis",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "631": {
+      "name": "Mbaye",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "632": {
+      "name": "Ansah",
+      "team": "HUL",
+      "pos": 4,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Back injury - Unknown return date",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "633": {
+      "name": "Ahanor",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "634": {
       "name": "Fernandez-Pardo",
       "team": "NEW",
@@ -3680,6 +8713,7 @@
       "status": "d",
       "news": "Illness - 75% chance of playing",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 1.25,
         "xgi4": 0.19,
@@ -3691,6 +8725,50 @@
       ],
       "xp": 2.04
     },
+    "635": {
+      "name": "Larsson",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "636": {
+      "name": "Ángel",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "637": {
+      "name": "Vaz",
+      "team": "HUL",
+      "pos": 4,
+      "cost": 5,
+      "status": "d",
+      "news": "Achilles injury - 75% chance of playing",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "638": {
+      "name": "Norton-Cuffy",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "639": {
       "name": "Andrés",
       "team": "BHA",
@@ -3699,6 +8777,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.11,
@@ -3710,6 +8789,28 @@
       ],
       "xp": 2.44
     },
+    "640": {
+      "name": "Flemming",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "641": {
+      "name": "Bard",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "642": {
       "name": "Thomas",
       "team": "HUL",
@@ -3718,6 +8819,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.19,
@@ -3729,6 +8831,17 @@
       ],
       "xp": 2.22
     },
+    "643": {
+      "name": "Chilwell",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "644": {
       "name": "Timber",
       "team": "CRY",
@@ -3737,6 +8850,7 @@
       "status": "d",
       "news": "Hamstring injury - 75% chance of playing",
       "selected_pct": 0,
+      "rated": true,
       "f": {
         "pts4": 2.75,
         "xgi4": 0.09,
@@ -3748,6 +8862,50 @@
       ],
       "xp": 2.15
     },
+    "645": {
+      "name": "Mouzakitis",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "646": {
+      "name": "Fofana",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "647": {
+      "name": "Osorio",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "648": {
+      "name": "Bahoya",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
     "649": {
       "name": "Maitland-Niles",
       "team": "EVE",
@@ -3756,6 +8914,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
+      "rated": true,
       "f": {
         "pts4": 3.25,
         "xgi4": 0.15,
@@ -3775,6 +8934,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
+      "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.03,
@@ -3785,6 +8945,215 @@
         "AVL (A)"
       ],
       "xp": 2.75
+    },
+    "651": {
+      "name": "J.Angulo",
+      "team": "SUN",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "652": {
+      "name": "Azeez",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "i",
+      "news": "Hamstring injury - Expected back 31 Oct",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "653": {
+      "name": "Samba",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "654": {
+      "name": "Graham",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "655": {
+      "name": "Gboho",
+      "team": "COV",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "656": {
+      "name": "Mfuni",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "657": {
+      "name": "Nunes",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "658": {
+      "name": "Ibrahim",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "659": {
+      "name": "Miley",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "660": {
+      "name": "Fredrick",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "661": {
+      "name": "Balcombe",
+      "team": "BRE",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "662": {
+      "name": "Nicoll-Jazuli",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "663": {
+      "name": "Pivas",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "664": {
+      "name": "Salia",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "665": {
+      "name": "Mills",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "666": {
+      "name": "Thompson",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "667": {
+      "name": "Wright",
+      "team": "AVL",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "rated": false,
+      "reason": "cold start: under 180 recent minutes"
+    },
+    "668": {
+      "name": "Tutierov",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: fewer than 4 recent gameweeks"
+    },
+    "669": {
+      "name": "Sharman-Lowe",
+      "team": "CHE",
+      "pos": 1,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "rated": false,
+      "reason": "cold start: fewer than 4 recent gameweeks"
     }
   }
 }

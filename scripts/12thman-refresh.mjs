@@ -76,21 +76,21 @@ async function worker() {
         perGw.set(row.round, g);
       }
       const gws = [...perGw.entries()].sort((a, b) => a[0] - b[0]).slice(-TRAILING);
-      if (gws.length < TRAILING) continue;
+      const meta = { name: p.web_name, team: teamsById[p.team].short_name, pos: p.element_type,
+        cost: p.now_cost / 10, status: p.status, news: p.news || '',
+        selected_pct: Number(p.selected_by_percent) };
+      if (gws.length < TRAILING) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: fewer than 4 recent gameweeks' }; continue; }
       const mins = gws.reduce((z, [, g]) => z + g.mins, 0);
-      if (mins < MIN_TRAILING_MINUTES) continue;
+      if (mins < MIN_TRAILING_MINUTES) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: under 180 recent minutes' }; continue; }
       const pts4 = gws.reduce((z, [, g]) => z + g.pts, 0) / TRAILING;
       const xgi4 = gws.reduce((z, [, g]) => z + g.xgi, 0) / TRAILING;
       const minshare4 = mins / (TRAILING * 90);
       const fx = byTeam.get(p.team) || [];
-      if (!fx.length) continue; // blank gameweek: no fixture, no xP
+      if (!fx.length) { pool[p.id] = { ...meta, rated: false, reason: 'blank gameweek: no fixture' }; continue; }
       const oppStr = fx.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / fx.length;
       const xp = COEF.const + COEF.pts4 * pts4 + COEF.xgi4 * xgi4 +
         COEF.minshare4 * minshare4 + COEF.oppstr * oppStr + (POS_OFFSET[p.element_type] || 0);
-      pool[p.id] = {
-        name: p.web_name, team: teamsById[p.team].short_name, pos: p.element_type,
-        cost: p.now_cost / 10, status: p.status, news: p.news || '',
-        selected_pct: Number(p.selected_by_percent),
+      pool[p.id] = { ...meta, rated: true,
         f: { pts4: +pts4.toFixed(2), xgi4: +xgi4.toFixed(2), minshare4: +minshare4.toFixed(2), oppstr: +oppStr.toFixed(2) },
         fixtures: fx.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`),
         xp: +xp.toFixed(2),
@@ -111,4 +111,5 @@ await writeFile(new URL('pool.json', OUT_DIR), JSON.stringify({
   source: `${API}/bootstrap-static, /element-summary, /fixtures (public)`,
   players: pool,
 }, null, 2) + '\n');
-console.log(`pool.json: ${Object.keys(pool).length} players for GW${next.id}`);
+const nRated = Object.values(pool).filter((x) => x.rated).length;
+console.log(`pool.json: ${Object.keys(pool).length} players (${nRated} rated) for GW${next.id}`);

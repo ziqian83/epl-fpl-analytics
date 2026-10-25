@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/update-player-signals.mjs
+        env:
+          FPL_TEAM_ID: ${{ secrets.FPL_TEAM_ID }}
       - name: Commit changed signals
         run: |
           git config user.name 'github-actions[bot]'

@@ -1,6 +1,6 @@
 # M3 Picker v1 - the signal engine applied live
 
-Run date: 12 Sep 2026, ahead of the GW4 deadline (20:30 SGT). Live season data from the official FPL API (bootstrap-static, element-summary, fixtures event=4); model parameters from the M2 backtest on the ClickHouse warehouse. Worked example: MatchDay Blues (team ID 4120529), GW4 squad.
+Run date: 12 Sep 2026, ahead of the GW4 deadline (20:30 SGT). Live season data from the official FPL API (bootstrap-static, element-summary, fixtures event=4); model parameters from the M2 backtest on the ClickHouse warehouse. Worked example: MatchDay Blues (team ID REDACTED-ID), GW4 squad.
 
 ## How the picker reads a player
 

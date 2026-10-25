@@ -86708,7 +86708,7 @@
     ]
   },
   "entry": {
-    "id": 4120529,
+    "id": "REDACTED-ID",
     "joined_time": "2026-08-13T04:28:25.122747Z",
     "started_event": 1,
     "favourite_team": 1,
@@ -87117,7 +87117,7 @@
               "total": 117
             }
           ],
-          "admin_entry": 4120529,
+          "admin_entry": "REDACTED-ID",
           "closed": false,
           "created": "2026-08-20T05:35:58.735295Z",
           "cup_league": null,
@@ -87240,7 +87240,7 @@
     "last_deadline_bank": 55,
     "last_deadline_value": 1010,
     "last_deadline_total_transfers": 2,
-    "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/4120529/54ce08cc-556f-4961-ada0-48e036c176a9.png"
+    "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/REDACTED-ID/54ce08cc-556f-4961-ada0-48e036c176a9.png"
   },
   "picks": {
     "active_chip": null,

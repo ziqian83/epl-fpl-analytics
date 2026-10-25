@@ -4,7 +4,7 @@
 - [x] Fetch route DECIDED and TESTED 25 Oct: FPL API sends no CORS headers (verified), so browser-direct is impossible. Primary relay r.jina.ai (operator: Jina AI, published terms, free anonymous tier, GET-only, CORS origin echo verified) - works for entry, picks, history (verified with public ID 895045). Fallback allorigins.win (open source, gnuns/allorigins) for entry/history only - its fetch of the picks endpoint failed 4x (522/500), documented in client error path.
 - [ ] FPL public API usage: acceptable-use posture documented (read-only, no auth, no scraping of private endpoints)
 - [x] No secrets, no OAuth, no keys anywhere in the client; PATs are minted-used-deleted per push cycle and never touch the repo
-- [x] Team ID in localStorage only, squad fetch read-only by ID; UI discloses the relay sees the ID in the request. Hardcoded 4120529 removed from the page (was in the preview build)
+- [x] Team ID in localStorage only, squad fetch read-only by ID; UI discloses the relay sees the ID in the request. Hardcoded the preview team ID removed from the page (was in the preview build)
 - [x] Zero cost: public API + free relays + GitHub Pages/Actions free tier
 
 ## Pipeline verification before pool.json is trusted (per main 19:52/20:02)

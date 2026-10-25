@@ -2,13 +2,13 @@
  "meta": {
   "brand": "The Boot Room",
   "team_name": "MatchDay Blues",
-  "team_id": 4120529,
+  "team_id": "REDACTED-ID",
   "gw": 4,
   "season": "2026-27",
   "deadline": "2026-09-12T20:30:00+08:00",
   "generated": "12 Sep 2026, pre-deadline",
   "plan_source": "manager's squad screenshot, 11 Sep 18:02 - the live, unlocked plan",
-  "baseline_source": "FPL API, team 4120529 - last saved squad (GW3, locked)",
+  "baseline_source": "FPL API, team REDACTED-ID - last saved squad (GW3, locked)",
   "engine": "11-signal picker, backtested on 10 seasons (ClickHouse warehouse, 253,900 records)"
  },
  "diff": {
