@@ -49,8 +49,8 @@ Individual-level MAE and correlation do NOT establish usefulness for transfer de
 Honest read: the model beats naive persistence on pairwise ranking by only about one percentage point, and absolute accuracy sits near half because next-GW points are mostly variance. When the model picks the better side of a pair, the mean actual gap is 0.6-0.7 points. Consequences for the product:
 
 - xP is a WEAK signal. It can order a shortlist; it cannot justify a move on its own.
-- Projected transfer edges under roughly 1 point per gameweek are inside noise and must be presented as such.
-- The page should default conservative and only lean on moves with large edges plus corroborating evidence (minutes security, fixtures, availability).
+- Small projected transfer edges are noise-dominated - the mean correct-side gap in these tests was only 0.6-0.7 points, and no calibrated significance threshold is established. These pair results are diagnostic, not a significance claim. Edges must be shown with their uncertainty, never as decisive.
+- Weak projections must not collapse the user's feasible strategies (hold, transfer, chip) into one conservative recommendation. The page compares feasible strategies side by side, labels estimates as unvalidated where they are, and never claims an optimal answer.
 - "Errors cancel in out-vs-in comparisons" was asserted in the first draft of this doc and is NOT supported; removed.
 
 ## Intended use and limits (current state)
