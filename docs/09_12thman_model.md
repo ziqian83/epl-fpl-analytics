@@ -37,8 +37,32 @@ Coefficients are stable across the two fits: persistence ~0.24-0.26, xGI ~0.87-1
 - By position: GKP pred 3.00 vs actual 2.90; DEF 2.52 vs 2.84 (under); MID 3.02 vs 3.11; FWD 3.39 vs 3.41.
 - Known caveats: same players appear in train and test (inflates versus a true new-player test); FWD was under-predicted in 2024-25 (3.47 vs 3.71), so position bias is not fully stable season to season; single-GW variance dominates everything (FPL Review's published analysis puts even a perfect-information model near R2 0.15).
 
-## What this is good for, and what it is not
+## Pairwise ranking validation (added after review, 25 Oct)
 
-Good: ranking transfer candidates against each other - the error mostly cancels in out-vs-in comparisons. Not good: point-precise claims, captaincy certainty, or "expected 6.2 points" headlines. Any surface that shows xP links here; numbers never appear without the method and the holdout sizes.
+Individual-level MAE and correlation do NOT establish usefulness for transfer decisions, so the intended use (ranking out-vs-in swaps) was tested directly: same-position pairs within one gameweek, sampled per GW on the held-out seasons, scoring whether the higher-predicted player actually scored higher (actual-points ties count as wrong for both models):
+
+| Held-out season | Model pair accuracy | Persistence baseline |
+| --- | --- | --- |
+| 2024-25 | 0.483 (n=20,591 pairs) | 0.472 |
+| 2025-26 | 0.493 (n=20,431 pairs) | 0.480 |
+
+Honest read: the model beats naive persistence on pairwise ranking by only about one percentage point, and absolute accuracy sits near half because next-GW points are mostly variance. When the model picks the better side of a pair, the mean actual gap is 0.6-0.7 points. Consequences for the product:
+
+- xP is a WEAK signal. It can order a shortlist; it cannot justify a move on its own.
+- Projected transfer edges under roughly 1 point per gameweek are inside noise and must be presented as such.
+- The page should default conservative and only lean on moves with large edges plus corroborating evidence (minutes security, fixtures, availability).
+- "Errors cancel in out-vs-in comparisons" was asserted in the first draft of this doc and is NOT supported; removed.
+
+## Intended use and limits (current state)
+
+Intended use: one input among several for ordering transfer candidates, with uncertainty shown. Unvalidated for: captaincy, chip timing, multi-week sequences, hit justification.
+
+Known coverage limits:
+
+- Current scoring rules: training seasons 2021-22 to 2024-25 predate the 2025-26 defensive-contribution scoring. Only the 2025-26 holdout reflects current rules, and its fit was the weaker of the two. Coefficients may underweight defensive actions under current rules. A current-rules-only refit needs more 2025-26 gameweeks.
+- Cold start: players with fewer than 4 completed GW rows or under 180 trailing minutes are invisible to v0 - new signings, promoted players, players back from injury or loan. The page must say who is NOT rated, not just who is.
+- Mid-season transfers: a player's trailing features cross clubs unchanged; team context is not adjusted.
+- Blank and double gameweeks: doubles are summed into one player-GW; blanks are excluded from prediction at runtime (no fixture, no xP).
+- Zero-minute rows are real rows in the source data, so benchings count as zeros in trailing windows (verified on 2024-25: 661-666 distinct players per GW with ~356-362 zero-minute rows).
 
 No odds input. No market data. v0 inputs are FPL's own public xG/xA, minutes, points and fixtures only.
