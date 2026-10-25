@@ -1,0 +1,32 @@
+# The 12th Man - daily player-pool refresh.
+# Runs scripts/12thman-refresh.mjs (public FPL API only) and commits the generic
+# pool.json. No secrets, no team IDs, no personal state. GITHUB_TOKEN is the
+# built-in Actions identity; it never leaves GitHub.
+name: 12th-man-pool
+on:
+  schedule:
+    - cron: '0 22 * * *'   # 06:00 Asia/Singapore
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Refresh pool.json
+        run: node scripts/12thman-refresh.mjs
+      - name: Commit pool if changed
+        run: |
+          if git diff --quiet 12th-man/data/pool.json; then
+            echo "no change"
+          else
+            git config user.name "12th-man-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add 12th-man/data/pool.json
+            git commit -m "pool: daily refresh $(date -u +%Y-%m-%d)"
+            git push
+          fi
