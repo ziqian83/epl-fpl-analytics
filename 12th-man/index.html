@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 12th Man - weekly briefing preview</title>
+<meta name="description" content="A working preview of the next Boot Room: the weekly FPL briefing as plans, tradeoffs and evidence. Illustrative content, not advice.">
+<style>
+  :root{
+    --bg:#faf6ee; --card:#fffdf8; --ink:#211c13; --dim:#6d675a; --faint:#8d8677;
+    --line:#e6ddc9; --gold:#B69B61; --gold-ink:#8a7443;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  main{max-width:1040px;margin:0 auto;padding:0 5vw 12vh}
+  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+  a{color:var(--gold-ink);text-decoration:none;border-bottom:1px solid var(--gold)}
+
+  /* preview ribbon */
+  .ribbon{background:#211c13;color:#f4efe4;font-size:.78rem;letter-spacing:.04em;padding:.6em 5vw;text-align:center}
+  .ribbon b{color:var(--gold)}
+
+  /* masthead */
+  header.mast{padding:7vh 0 4vh;text-align:left}
+  .kicker{text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;color:var(--gold-ink);font-weight:700;margin-bottom:1.1em}
+  h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1.05}
+  h1 em{font-style:normal;color:var(--gold-ink)}
+  .mast .sub{color:var(--dim);max-width:38em;margin-top:1em;font-size:1.02rem}
+
+  /* strip: week + chips */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2em 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.1em}
+  .cell .lab{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
+  .cell .val{font-size:.92rem;color:var(--ink)}
+  .cell .val small{display:block;color:var(--faint);font-size:.78rem;margin-top:.15em}
+  .chipline{display:flex;flex-wrap:wrap;gap:.4em}
+  .pill{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.3em .8em;border-radius:999px;border:1px solid var(--line);color:var(--dim);background:var(--card)}
+  .pill.live{border-color:var(--gold);color:var(--gold-ink)}
+  .pill.spent{opacity:.55;text-decoration:line-through}
+  #count{font-variant-numeric:tabular-nums}
+
+  /* sections */
+  section{margin-top:4.5em}
+  h2{font-size:clamp(1.35rem,3.4vw,1.8rem);margin-bottom:.35em}
+  h2 em{font-style:normal;color:var(--gold-ink)}
+  .lede{color:var(--dim);max-width:44em;font-size:.94rem}
+  .caption{color:var(--faint);font-size:.78rem;margin-top:.9em;letter-spacing:.03em}
+
+  /* plan cards */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;margin-top:1.8em;align-items:stretch}
+  .plan{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.3em 1.3em 1.1em;display:flex;flex-direction:column;position:relative}
+  .plan .num{position:absolute;top:1.1em;left:1.3em;font-family:Georgia,serif;font-size:.95rem;color:var(--faint)}
+  .plan .tagrow{min-height:1.7em;display:flex;justify-content:flex-end}
+  .badge{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.35em .85em;border-radius:3px;background:var(--gold);color:#fff}
+  .badge.quiet{background:none;border:1px solid var(--line);color:var(--faint)}
+  .plan h3{font-size:1.28rem;margin:.7em 0 .9em;line-height:1.2}
+  .plan dl{margin-top:auto}
+  .plan .row{border-top:1px solid var(--line);padding:.7em 0}
+  .plan dt{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .plan dd{font-size:.9rem;color:var(--ink);margin-top:.2em}
+  .plan.disabled{opacity:.55}
+  .plan.disabled h3{text-decoration:line-through}
+  details.ev{border-top:1px solid var(--line);padding:.7em 0}
+  details.ev summary{cursor:pointer;list-style:none;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;display:flex;justify-content:space-between;align-items:center}
+  details.ev summary::-webkit-details-marker{display:none}
+  details.ev summary .tw{transition:transform .18s ease;color:var(--faint);font-size:.8rem;letter-spacing:0}
+  details.ev[open] summary .tw{transform:rotate(45deg)}
+  details.ev p{font-size:.86rem;color:var(--dim);margin-top:.55em}
+
+  @media (max-width:760px){
+    .plans{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1em;margin-left:-5vw;margin-right:-5vw;padding:0 5vw .8em;-webkit-overflow-scrolling:touch}
+    .plan{flex:0 0 82%;scroll-snap-align:center}
+  }
+
+  /* generic facts */
+  .facts{margin-top:1.6em;border-top:1px solid var(--line)}
+  .fact{display:grid;grid-template-columns:minmax(140px,.9fr) 2fr;gap:1em;padding:.85em 0;border-bottom:1px solid var(--line)}
+  .fact .k{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;padding-top:.3em}
+  .fact .v{font-size:.92rem;color:var(--ink)}
+  @media (max-width:560px){.fact{grid-template-columns:1fr;gap:.3em}}
+
+  /* squad settings panel */
+  details.panel{margin-top:1.6em;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+  details.panel summary{cursor:pointer;list-style:none;padding:1em 1.3em;display:flex;justify-content:space-between;align-items:center}
+  details.panel summary::-webkit-details-marker{display:none}
+  details.panel summary .t{font-family:Georgia,serif;font-size:1.05rem}
+  details.panel summary .tw{color:var(--faint);transition:transform .18s ease}
+  details.panel[open] summary .tw{transform:rotate(45deg)}
+  details.panel .body{border-top:1px solid var(--line);padding:1.1em 1.3em 1.3em}
+  .field{margin-top:.9em}
+  .field label{display:block;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
+  .field input{width:100%;max-width:22em;padding:.55em .7em;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--dim);font-size:.9rem}
+  .field small{display:block;color:var(--faint);font-size:.74rem;margin-top:.3em}
+
+  /* stamp + foot */
+  .stamp{display:inline-block;margin-top:2.6em;border:1px solid var(--gold);border-radius:4px;padding:.85em 1.2em}
+  .stamp .lab{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .stamp .val{font-family:Georgia,serif;font-size:1.02rem;margin-top:.2em}
+  .foot{margin-top:4em;border-top:1px solid var(--line);padding-top:1.6em;color:var(--faint);font-size:.8rem}
+  .foot p{margin-bottom:.6em;max-width:46em}
+</style>
+</head>
+<body>
+<div class="ribbon"><b>Preview.</b> This is the proposed next Boot Room - a working mock with illustrative plans, not this week's advice. <a href="../boot-room/" style="color:#f4efe4;border-color:#8a7443">The current Boot Room</a> is unchanged.</div>
+<main>
+  <header class="mast">
+    <div class="kicker">MatchDay Blues &middot; weekly briefing</div>
+    <h1>The <em>12th</em> Man</h1>
+    <p class="sub">One page, every week: the decisions first, two or three coherent plans side by side, every number one tap away. The data is the underlying layer - always there, invisible until you ask for it.</p>
+  </header>
+
+  <div class="strip">
+    <div class="cell">
+      <div class="lab">Gameweek</div>
+      <div class="val">GW8 in progress<small>Deadline locked Sat 24 Oct, 1:30 am SGT</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab">Next deadline</div>
+      <div class="val">GW9 - Sat 31 Oct, 7:00 pm SGT<small id="count">&nbsp;</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab">Chips</div>
+      <div class="chipline">
+        <span class="pill live">Free hit</span>
+        <span class="pill live">Bench boost</span>
+        <span class="pill live">Triple captain</span>
+        <span class="pill spent">Wildcard - used GW7</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="plans">
+    <h2>This week's <em>plans</em></h2>
+    <p class="lede">Three postures, one tap apart. Where the model leans, the card says so and says why - a reasoned preference, never a verdict. Swipe on your phone; side by side on a desktop.</p>
+    <div class="plans">
+      <article class="plan">
+        <span class="num">1</span>
+        <div class="tagrow"><span class="badge">Model's lean</span></div>
+        <h3>Spend the free transfer</h3>
+        <dl>
+          <div class="row"><dt>The move</dt><dd>One targeted upgrade</dd></div>
+          <div class="row"><dt>You gain</dt><dd>Fixes the weakest slot now</dd></div>
+          <div class="row"><dt>It costs</dt><dd>One fewer transfer in hand if injuries hit</dd></div>
+          <div class="row"><dt>It assumes</dt><dd>A clear upgrade exists in budget</dd></div>
+        </dl>
+        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
+          <p>Form over the last four, fixture swing, expected-goals delta between the out and the in, price and ownership. In the live page every one of these is a real number with its as-of stamp.</p>
+        </details>
+      </article>
+      <article class="plan">
+        <span class="num">2</span>
+        <div class="tagrow"><span class="badge quiet">The patient play</span></div>
+        <h3>Bank it</h3>
+        <dl>
+          <div class="row"><dt>The move</dt><dd>No transfer this week</dd></div>
+          <div class="row"><dt>You gain</dt><dd>Transfers carried forward</dd></div>
+          <div class="row"><dt>It costs</dt><dd>A week with the current XI</dd></div>
+          <div class="row"><dt>It assumes</dt><dd>No fires this week</dd></div>
+        </dl>
+        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
+          <p>Next week's fixture swing and what two transfers would unlock that one cannot. The carrying cost of holding is shown, not hidden.</p>
+        </details>
+      </article>
+      <article class="plan disabled" aria-label="Wildcard - not in play">
+        <span class="num">3</span>
+        <div class="tagrow"><span class="badge quiet">Not in play - used GW7</span></div>
+        <h3>Wildcard</h3>
+        <dl>
+          <div class="row"><dt>The move</dt><dd>Full squad rebuild</dd></div>
+          <div class="row"><dt>You gain</dt><dd>A squad reset for the run-in</dd></div>
+          <div class="row"><dt>It costs</dt><dd>The built-up squad value and structure</dd></div>
+          <div class="row"><dt>It assumes</dt><dd>The template has turned</dd></div>
+        </dl>
+        <details class="ev"><summary>Evidence <span class="tw">+</span></summary>
+          <p>Season-long projections. Shown for context only - this chip is spent for now. If a second wildcard becomes available later in the season under the official rules, the card comes back to life.</p>
+        </details>
+      </article>
+    </div>
+    <p class="caption">Illustrative plan cards - structure and interaction only, with real chip state; the projections are placeholders, not GW9 advice. Transfer wording assumes one free transfer in hand - the live page uses your confirmed count.</p>
+  </section>
+
+  <section id="teamid">
+    <h2>What your team ID <em>can and cannot</em> see</h2>
+    <div class="facts">
+      <div class="fact"><div class="k">It reveals</div><div class="v">The squad as of the last locked gameweek, chips used and remaining, per-gameweek points and rank, and locked bank and squad value by week.</div></div>
+      <div class="fact"><div class="k">It cannot</div><div class="v">Transfers made since the last lock, and the free transfers you hold now. One tap to confirm each week, as today.</div></div>
+    </div>
+    <details class="panel">
+      <summary><span class="t">Squad settings</span><span class="tw">+</span></summary>
+      <div class="body">
+        <div class="field">
+          <label>Team ID</label>
+          <input type="text" value="4120529" readonly>
+          <small>Linked - squad, chips and history from the public FPL feed.</small>
+        </div>
+        <div class="field">
+          <label>Free transfers held</label>
+          <input type="text" placeholder="Confirm before the GW9 deadline" disabled>
+          <small>Not visible to the feed - you confirm this each week, one tap. Illustrative field.</small>
+        </div>
+        <div class="field">
+          <label>Bank</label>
+          <input type="text" placeholder="Confirm before the GW9 deadline" disabled>
+          <small>Confirmed weekly alongside free transfers. Illustrative field.</small>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="freshness">
+    <h2>Honest <em>freshness</em></h2>
+    <p class="lede">Every plan carries an as-of stamp, and the briefing says when a number is too stale to act on. Advice-ready and as-of are never blurred.</p>
+    <div class="stamp">
+      <div class="lab">As of</div>
+      <div class="val">Player data through GW6 &middot; results through GW7 &middot; chips and deadlines from the official FPL API, 25 Oct 2026</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p><b>The 12th Man</b> is a design preview of the next Boot Room, built for review. Nothing here is live advice, and nothing on <a href="../boot-room/">the current Boot Room</a> has changed.</p>
+    <p>No dashboard, no query box, no warehouse login on the front page. An "ask your assistant" affordance ships only after the read-only connection is proven, labeled with what it can and cannot do.</p>
+  </div>
+</main>
+<script>
+(function(){
+  var deadline = Date.parse('2026-10-31T11:00:00Z'); /* Sat 31 Oct, 7:00 pm SGT */
+  var el = document.getElementById('count');
+  function tick(){
+    var ms = deadline - Date.now();
+    if(ms <= 0){ el.textContent = 'Deadline passed'; return; }
+    var d = Math.floor(ms/86400000), h = Math.floor(ms%86400000/3600000), m = Math.floor(ms%3600000/60000);
+    el.textContent = 'Locks in ' + d + 'd ' + h + 'h ' + m + 'm';
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>
