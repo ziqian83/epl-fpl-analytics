@@ -1,0 +1,3790 @@
+{
+  "generated_at": "2026-10-25T12:07:21.811Z",
+  "model": "docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise",
+  "gameweek": 9,
+  "deadline": "2026-10-31T11:00:00Z",
+  "source": "https://fantasy.premierleague.com/api/bootstrap-static, /element-summary, /fixtures (public)",
+  "players": {
+    "1": {
+      "name": "Raya",
+      "team": "ARS",
+      "pos": 1,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 45.6,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 3.26
+    },
+    "4": {
+      "name": "Gabriel",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 7.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 21.4,
+      "f": {
+        "pts4": 7,
+        "xgi4": 0.29,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 3.58
+    },
+    "8": {
+      "name": "Calafiori",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 6,
+      "status": "d",
+      "news": "Hip injury - 75% chance of playing",
+      "selected_pct": 54.2,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.25,
+        "minshare4": 0.79,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.57
+    },
+    "10": {
+      "name": "White",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.4,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.14,
+        "minshare4": 0.6,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.41
+    },
+    "12": {
+      "name": "Saka",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 9.5,
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
+      "selected_pct": 9.6,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.38,
+        "minshare4": 0.72,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.37
+    },
+    "13": {
+      "name": "Rice",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 7.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 12.3,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.31,
+        "minshare4": 0.97,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 3.43
+    },
+    "15": {
+      "name": "Ødegaard",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 18.2,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.47,
+        "minshare4": 0.95,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.91
+    },
+    "16": {
+      "name": "Madueke",
+      "team": "ARS",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.27,
+        "minshare4": 0.63,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.28
+    },
+    "26": {
+      "name": "Havertz",
+      "team": "ARS",
+      "pos": 4,
+      "cost": 7.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 5.9,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.33,
+        "minshare4": 0.66,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 2.39
+    },
+    "28": {
+      "name": "Martinez",
+      "team": "CHE",
+      "pos": 1,
+      "cost": 5,
+      "status": "i",
+      "news": "Head injury - Unknown return date",
+      "selected_pct": 3.7,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0,
+        "minshare4": 0.71,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 2.42
+    },
+    "31": {
+      "name": "Konsa",
+      "team": "ARS",
+      "pos": 2,
+      "cost": 4.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 19.2,
+      "f": {
+        "pts4": 7,
+        "xgi4": 0.16,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LIV (A)"
+      ],
+      "xp": 3.43
+    },
+    "32": {
+      "name": "Cash",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.1,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.02,
+        "minshare4": 0.88,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 2.01
+    },
+    "33": {
+      "name": "Mings",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 1.87
+    },
+    "37": {
+      "name": "Lindelöf",
+      "team": "AVL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 3.75,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 2.47
+    },
+    "40": {
+      "name": "Rogers",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 49.9,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.24,
+        "minshare4": 0.98,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 3.01
+    },
+    "41": {
+      "name": "Buendía",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0.24,
+        "minshare4": 0.69,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 2.88
+    },
+    "43": {
+      "name": "Tielemans",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.21,
+        "minshare4": 0.64,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 2.49
+    },
+    "45": {
+      "name": "McGinn",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.9,
+      "f": {
+        "pts4": 5.75,
+        "xgi4": 0.3,
+        "minshare4": 0.79,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 3.34
+    },
+    "47": {
+      "name": "Kamara",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0.07,
+        "minshare4": 0.98,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 3.11
+    },
+    "53": {
+      "name": "Manzambi",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.4,
+      "f": {
+        "pts4": 7.5,
+        "xgi4": 0.5,
+        "minshare4": 0.81,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 4.01
+    },
+    "54": {
+      "name": "Gomes",
+      "team": "AVL",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.07,
+        "minshare4": 0.91,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 2.65
+    },
+    "57": {
+      "name": "Petrović",
+      "team": "BOU",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.8,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.18
+    },
+    "60": {
+      "name": "Hill",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.05,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.04
+    },
+    "61": {
+      "name": "Truffert",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.7,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.12,
+        "minshare4": 0.73,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 1.74
+    },
+    "64": {
+      "name": "Smith",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.22,
+        "minshare4": 0.65,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 1.8
+    },
+    "67": {
+      "name": "Rayan",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.5,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.29,
+        "minshare4": 0.74,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.29
+    },
+    "68": {
+      "name": "Tavernier",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 14.5,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.38,
+        "minshare4": 0.62,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.58
+    },
+    "73": {
+      "name": "Adams",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.05,
+        "minshare4": 0.74,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.08
+    },
+    "75": {
+      "name": "Christie",
+      "team": "BOU",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.36,
+        "minshare4": 0.66,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.25
+    },
+    "79": {
+      "name": "Evanilson",
+      "team": "BOU",
+      "pos": 4,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.3,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.58,
+        "minshare4": 0.72,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 3.6
+    },
+    "82": {
+      "name": "Kelleher",
+      "team": "BRE",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.2,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.3
+    },
+    "86": {
+      "name": "Lewis-Potter",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.9,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.1,
+        "minshare4": 0.62,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.33
+    },
+    "87": {
+      "name": "Ajer",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.2,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.1,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.29
+    },
+    "88": {
+      "name": "Kayode",
+      "team": "BRE",
+      "pos": 2,
+      "cost": 4.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.06,
+        "minshare4": 0.69,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 1.61
+    },
+    "91": {
+      "name": "Pinnock",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3.75,
+        "xgi4": 0.03,
+        "minshare4": 1,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 2.52
+    },
+    "94": {
+      "name": "Schade",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 15.2,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.25,
+        "minshare4": 0.52,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.11
+    },
+    "98": {
+      "name": "Janelt",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5,
+      "status": "s",
+      "news": "Suspended until 31 Oct",
+      "selected_pct": 1.8,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.06,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 1.93
+    },
+    "101": {
+      "name": "Henderson",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.5,
+      "f": {
+        "pts4": 6.25,
+        "xgi4": 0.25,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 3.71
+    },
+    "102": {
+      "name": "Yarmoliuk",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "s",
+      "news": "Suspended until 8 Nov",
+      "selected_pct": 0.5,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.05,
+        "minshare4": 0.52,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 1.83
+    },
+    "105": {
+      "name": "Anthony",
+      "team": "BRE",
+      "pos": 3,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.32,
+        "minshare4": 0.67,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.83
+    },
+    "106": {
+      "name": "Thiago",
+      "team": "BRE",
+      "pos": 4,
+      "cost": 7.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 8.8,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.41,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "NFO (H)"
+      ],
+      "xp": 2.97
+    },
+    "109": {
+      "name": "Verbruggen",
+      "team": "BHA",
+      "pos": 1,
+      "cost": 4.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 22.6,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.97
+    },
+    "110": {
+      "name": "Rushworth",
+      "team": "COV",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.9,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 3.09
+    },
+    "112": {
+      "name": "Van Hecke",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.9,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.19,
+        "minshare4": 1,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.99
+    },
+    "113": {
+      "name": "F.Kadıoğlu",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.7,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.03,
+        "minshare4": 0.71,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.39
+    },
+    "114": {
+      "name": "Boscagli",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.06,
+        "minshare4": 0.66,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.41
+    },
+    "115": {
+      "name": "De Cuyper",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 42.5,
+      "f": {
+        "pts4": 6.75,
+        "xgi4": 0.16,
+        "minshare4": 0.69,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.92
+    },
+    "124": {
+      "name": "Groß",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 46.6,
+      "f": {
+        "pts4": 6.25,
+        "xgi4": 0.26,
+        "minshare4": 0.69,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 3.28
+    },
+    "127": {
+      "name": "Gomez",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.08,
+        "minshare4": 0.73,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.89
+    },
+    "129": {
+      "name": "Ayari",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0.16,
+        "minshare4": 0.71,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.84
+    },
+    "138": {
+      "name": "Kostoulas",
+      "team": "BHA",
+      "pos": 4,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 10.4,
+      "f": {
+        "pts4": 5.75,
+        "xgi4": 0.18,
+        "minshare4": 0.57,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 3.06
+    },
+    "149": {
+      "name": "Colwill",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.05,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 2.34
+    },
+    "151": {
+      "name": "Acheampong",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.01,
+        "minshare4": 0.8,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 1.9
+    },
+    "154": {
+      "name": "Palmer",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 9.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 28.2,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.2,
+        "minshare4": 0.96,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 2.75
+    },
+    "155": {
+      "name": "Enzo",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.9,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.37,
+        "minshare4": 0.83,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.87
+    },
+    "156": {
+      "name": "Neto",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 6.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.7,
+      "f": {
+        "pts4": 6.25,
+        "xgi4": 0.31,
+        "minshare4": 0.96,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 3.72
+    },
+    "159": {
+      "name": "Caicedo",
+      "team": "CHE",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.1,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.02,
+        "minshare4": 0.7,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 1.93
+    },
+    "166": {
+      "name": "N.Jackson",
+      "team": "AVL",
+      "pos": 4,
+      "cost": 6.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.3,
+      "f": {
+        "pts4": 7.5,
+        "xgi4": 0.47,
+        "minshare4": 0.97,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 4.37
+    },
+    "167": {
+      "name": "Delap",
+      "team": "NFO",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.9,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.53,
+        "minshare4": 0.95,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 3.03
+    },
+    "173": {
+      "name": "Thomas",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 9.7,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.07,
+        "minshare4": 0.91,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 2.56
+    },
+    "175": {
+      "name": "van Ewijk",
+      "team": "COV",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.3,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.03,
+        "minshare4": 0.75,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 1.8
+    },
+    "176": {
+      "name": "Dasilva",
+      "team": "COV",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.5,
+      "f": {
+        "pts4": 5.5,
+        "xgi4": 0.13,
+        "minshare4": 1,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 3.05
+    },
+    "183": {
+      "name": "Rudoni",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.37,
+        "minshare4": 0.92,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 3.44
+    },
+    "184": {
+      "name": "Grimes",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.06,
+        "minshare4": 0.98,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 2.51
+    },
+    "185": {
+      "name": "Sakamoto",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.06,
+        "minshare4": 0.53,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 1.62
+    },
+    "194": {
+      "name": "Thomas-Asante",
+      "team": "COV",
+      "pos": 4,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.1,
+        "minshare4": 0.9,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 3.02
+    },
+    "199": {
+      "name": "Benitez",
+      "team": "CRY",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.3
+    },
+    "200": {
+      "name": "Lacroix",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 5.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.3,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.1,
+        "minshare4": 1,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 2.52
+    },
+    "201": {
+      "name": "Muñoz",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.7,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.25,
+        "minshare4": 0.98,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.55
+    },
+    "202": {
+      "name": "Richards",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.02,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.08
+    },
+    "203": {
+      "name": "Canvot",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.04,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 1.85
+    },
+    "204": {
+      "name": "Mitchell",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 5.5,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.01,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 1.89
+    },
+    "209": {
+      "name": "Johnson",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.26,
+        "minshare4": 0.57,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.08
+    },
+    "210": {
+      "name": "Wharton",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.22,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.47
+    },
+    "211": {
+      "name": "Yeremy",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.22,
+        "minshare4": 0.62,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.41
+    },
+    "214": {
+      "name": "Kamada",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.21,
+        "minshare4": 0.72,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.48
+    },
+    "222": {
+      "name": "Strand Larsen",
+      "team": "CRY",
+      "pos": 4,
+      "cost": 6,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.38,
+        "minshare4": 0.62,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.51
+    },
+    "226": {
+      "name": "Pickford",
+      "team": "EVE",
+      "pos": 1,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 8.6,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.79
+    },
+    "229": {
+      "name": "Tarkowski",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 6.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 18.3,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0.02,
+        "minshare4": 1,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.75
+    },
+    "230": {
+      "name": "Branthwaite",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.4,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.04,
+        "minshare4": 0.75,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 1.98
+    },
+    "233": {
+      "name": "Mykolenko",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4.6,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 2.6,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.07,
+        "minshare4": 0.7,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 1.59
+    },
+    "236": {
+      "name": "Dewsbury-Hall",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 6.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.34,
+        "minshare4": 0.99,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 3.49
+    },
+    "237": {
+      "name": "Ndiaye",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 5.4,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.41,
+        "minshare4": 0.8,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 3.05
+    },
+    "238": {
+      "name": "Grealish",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "d",
+      "news": "Illness - 75% chance of playing",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.19,
+        "minshare4": 0.69,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.11
+    },
+    "239": {
+      "name": "Garner",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.17,
+        "minshare4": 1,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.84
+    },
+    "244": {
+      "name": "Armstrong",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.24,
+        "minshare4": 0.95,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 2.67
+    },
+    "246": {
+      "name": "Röhl",
+      "team": "EVE",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.01,
+        "minshare4": 0.5,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 1.46
+    },
+    "249": {
+      "name": "Barry",
+      "team": "EVE",
+      "pos": 4,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.6,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.53,
+        "minshare4": 0.99,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 3.63
+    },
+    "250": {
+      "name": "Leno",
+      "team": "FUL",
+      "pos": 1,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.5,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 3.21
+    },
+    "254": {
+      "name": "Robinson",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.03,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.21
+    },
+    "257": {
+      "name": "Bassey",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "f": {
+        "pts4": 6,
+        "xgi4": 0.07,
+        "minshare4": 1,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 3.1
+    },
+    "258": {
+      "name": "Castagne",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.2,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.05,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.23
+    },
+    "259": {
+      "name": "Diop",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 3.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 10.8,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.03,
+        "minshare4": 1,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.21
+    },
+    "261": {
+      "name": "Iwobi",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.4,
+      "f": {
+        "pts4": 5.75,
+        "xgi4": 0.58,
+        "minshare4": 0.89,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 3.79
+    },
+    "264": {
+      "name": "Bobb",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.37,
+        "minshare4": 0.84,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 3.31
+    },
+    "265": {
+      "name": "Berge",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.11,
+        "minshare4": 0.79,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.4
+    },
+    "268": {
+      "name": "King",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5.6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.5,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.35,
+        "minshare4": 0.86,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.85
+    },
+    "277": {
+      "name": "Egan",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.1,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.05,
+        "minshare4": 0.71,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 1.58
+    },
+    "279": {
+      "name": "Ajayi",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 13,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.01,
+        "minshare4": 0.75,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 1.47
+    },
+    "280": {
+      "name": "Coyle",
+      "team": "HUL",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.02,
+        "minshare4": 0.75,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 1.48
+    },
+    "286": {
+      "name": "Belloumi",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 9.3,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.27,
+        "minshare4": 0.55,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 2.3
+    },
+    "290": {
+      "name": "Slater",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.7,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.06,
+        "minshare4": 0.63,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 1.75
+    },
+    "295": {
+      "name": "McBurnie",
+      "team": "HUL",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.6,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.12,
+        "minshare4": 0.75,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 2.1
+    },
+    "300": {
+      "name": "Walton",
+      "team": "IPS",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.01,
+        "minshare4": 1,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.61
+    },
+    "304": {
+      "name": "O'Shea",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.9,
+      "f": {
+        "pts4": 4.5,
+        "xgi4": 0.07,
+        "minshare4": 1,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.74
+    },
+    "305": {
+      "name": "Davis",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.3,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.17,
+        "minshare4": 1,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.06
+    },
+    "316": {
+      "name": "Emersonn",
+      "team": "IPS",
+      "pos": 4,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.5,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.27,
+        "minshare4": 0.79,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.52
+    },
+    "330": {
+      "name": "Bogle",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 10.9,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.15,
+        "minshare4": 0.67,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 1.75
+    },
+    "331": {
+      "name": "Gudmundsson",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.04,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 1.92
+    },
+    "332": {
+      "name": "Justin",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.2,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.11,
+        "minshare4": 0.72,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.26
+    },
+    "334": {
+      "name": "Muharemović",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 5.5,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.16,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.17
+    },
+    "335": {
+      "name": "Stach",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 6,
+      "status": "d",
+      "news": "Foot injury - 50% chance of playing",
+      "selected_pct": 2.1,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.18,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.32
+    },
+    "336": {
+      "name": "Okafor",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5.8,
+      "status": "d",
+      "news": "Thigh injury - 50% chance of playing",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.03,
+        "minshare4": 0.61,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 1.82
+    },
+    "338": {
+      "name": "Ampadu",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.05,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.05
+    },
+    "345": {
+      "name": "Tanaka",
+      "team": "LEE",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.07,
+        "minshare4": 0.6,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 1.74
+    },
+    "346": {
+      "name": "Calvert-Lewin",
+      "team": "LEE",
+      "pos": 4,
+      "cost": 6.1,
+      "status": "d",
+      "news": "Foot injury - 50% chance of playing",
+      "selected_pct": 22,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.29,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.84
+    },
+    "350": {
+      "name": "A.Becker",
+      "team": "LIV",
+      "pos": 1,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.2,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.36
+    },
+    "356": {
+      "name": "Virgil",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 6.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 15.1,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.02,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 1.96
+    },
+    "358": {
+      "name": "Kerkez",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.9,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.02,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 1.78
+    },
+    "362": {
+      "name": "Jacquet",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 5.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 4.2,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.08,
+        "minshare4": 0.74,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.01
+    },
+    "366": {
+      "name": "Wirtz",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 7.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 5.1,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.21,
+        "minshare4": 0.63,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.4
+    },
+    "372": {
+      "name": "Mac Allister",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.22,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.29
+    },
+    "377": {
+      "name": "Munoz",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "d",
+      "news": "Knee injury - 25% chance of playing",
+      "selected_pct": 0.9,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.08,
+        "minshare4": 0.52,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.04
+    },
+    "384": {
+      "name": "Donnarumma",
+      "team": "MCI",
+      "pos": 1,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.7,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.84
+    },
+    "385": {
+      "name": "Trafford",
+      "team": "LEE",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 2.55
+    },
+    "388": {
+      "name": "Guéhi",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 17.4,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.05,
+        "minshare4": 0.88,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.1
+    },
+    "389": {
+      "name": "Matheus N.",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5.9,
+      "status": "d",
+      "news": "Unspecified injury - 75% chance of playing",
+      "selected_pct": 1,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.01,
+        "minshare4": 0.71,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 1.7
+    },
+    "390": {
+      "name": "Rúben",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.14,
+        "minshare4": 1,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.26
+    },
+    "391": {
+      "name": "Gvardiol",
+      "team": "MCI",
+      "pos": 2,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 27.4,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.34,
+        "minshare4": 0.65,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 1.98
+    },
+    "397": {
+      "name": "Semenyo",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 8.2,
+      "status": "i",
+      "news": "Knee injury - Unknown return date",
+      "selected_pct": 8.3,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.16,
+        "minshare4": 0.54,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.7
+    },
+    "399": {
+      "name": "Cherki",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 39.1,
+      "f": {
+        "pts4": 4.5,
+        "xgi4": 0.36,
+        "minshare4": 0.61,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.84
+    },
+    "400": {
+      "name": "Doku",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 7.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.7,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.44,
+        "minshare4": 0.6,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 3.1
+    },
+    "401": {
+      "name": "Marmoush",
+      "team": "TOT",
+      "pos": 4,
+      "cost": 7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.11,
+        "minshare4": 0.73,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.68
+    },
+    "403": {
+      "name": "Sávio",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "i",
+      "news": "Muscular injury - Expected back 7 Nov",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.21,
+        "minshare4": 0.5,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 1.69
+    },
+    "405": {
+      "name": "N.Gonzalez",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.08,
+        "minshare4": 0.5,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 1.9
+    },
+    "411": {
+      "name": "Haaland",
+      "team": "MCI",
+      "pos": 4,
+      "cost": 15.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 77.7,
+      "f": {
+        "pts4": 8.25,
+        "xgi4": 0.76,
+        "minshare4": 0.97,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 4.87
+    },
+    "412": {
+      "name": "Lammens",
+      "team": "MUN",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 8.3,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 2.24
+    },
+    "417": {
+      "name": "Dalot",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.4,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.05,
+        "minshare4": 0.59,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 1.39
+    },
+    "418": {
+      "name": "Maguire",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.3,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.04,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 1.74
+    },
+    "419": {
+      "name": "Martinez",
+      "team": "MUN",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "d",
+      "news": "Thigh injury - 75% chance of playing",
+      "selected_pct": 1.1,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.05,
+        "minshare4": 0.63,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 1.33
+    },
+    "426": {
+      "name": "B.Fernandes",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 11.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 25.8,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.19,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 2.02
+    },
+    "427": {
+      "name": "Mbeumo",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 7.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 22,
+      "f": {
+        "pts4": 4.5,
+        "xgi4": 0.38,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 3.07
+    },
+    "428": {
+      "name": "Cunha",
+      "team": "MUN",
+      "pos": 3,
+      "cost": 7.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.3,
+      "f": {
+        "pts4": 5.25,
+        "xgi4": 0.19,
+        "minshare4": 0.52,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "CHE (A)"
+      ],
+      "xp": 2.7
+    },
+    "445": {
+      "name": "Thiaw",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.8,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.02,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 1.54
+    },
+    "447": {
+      "name": "Botman",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "f": {
+        "pts4": 3.75,
+        "xgi4": 0.06,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.18
+    },
+    "449": {
+      "name": "Hall",
+      "team": "NEW",
+      "pos": 2,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 20.4,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.11,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.35
+    },
+    "453": {
+      "name": "Barnes",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 6.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 7.3,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.31,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.69
+    },
+    "455": {
+      "name": "Tonali",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.8,
+      "f": {
+        "pts4": 4.5,
+        "xgi4": 0.25,
+        "minshare4": 0.98,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 3.27
+    },
+    "459": {
+      "name": "L.Miley",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.09,
+        "minshare4": 0.66,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 1.95
+    },
+    "460": {
+      "name": "Willock",
+      "team": "NEW",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.6,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.15,
+        "minshare4": 0.55,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.18
+    },
+    "464": {
+      "name": "Wissa",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 6.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 12.3,
+      "f": {
+        "pts4": 0.75,
+        "xgi4": 0.39,
+        "minshare4": 0.71,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.29
+    },
+    "467": {
+      "name": "Sels",
+      "team": "NFO",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.4,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.55
+    },
+    "469": {
+      "name": "N.Williams",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5,
+      "status": "d",
+      "news": "Arm injury - 75% chance of playing",
+      "selected_pct": 6.2,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.34,
+        "minshare4": 0.98,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.77
+    },
+    "472": {
+      "name": "Murillo",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.2,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.27,
+        "minshare4": 1,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.41
+    },
+    "474": {
+      "name": "Jair Cunha",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.05,
+        "minshare4": 0.73,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 1.54
+    },
+    "480": {
+      "name": "Gibbs-White",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 7.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 12.2,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.47,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.45
+    },
+    "481": {
+      "name": "Anderson",
+      "team": "MCI",
+      "pos": 3,
+      "cost": 6.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.8,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.12,
+        "minshare4": 0.79,
+        "oppstr": 0
+      },
+      "fixtures": [
+        "BHA (H)"
+      ],
+      "xp": 2.34
+    },
+    "483": {
+      "name": "Ndoye",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.42,
+        "minshare4": 0.75,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.82
+    },
+    "486": {
+      "name": "McAtee",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.17,
+        "minshare4": 0.96,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.84
+    },
+    "496": {
+      "name": "Kinsky",
+      "team": "TOT",
+      "pos": 1,
+      "cost": 4.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 14.7,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 3.03
+    },
+    "501": {
+      "name": "Danso",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 5,
+      "status": "s",
+      "news": "Suspended until 31 Oct",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": -0.5,
+        "xgi4": 0.08,
+        "minshare4": 0.54,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 0.89
+    },
+    "502": {
+      "name": "Robertson",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 4.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.1,
+      "f": {
+        "pts4": 3.75,
+        "xgi4": 0.11,
+        "minshare4": 0.62,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.05
+    },
+    "503": {
+      "name": "Van de Ven",
+      "team": "TOT",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.6,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.03,
+        "minshare4": 0.79,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 1.86
+    },
+    "504": {
+      "name": "Vuskovic",
+      "team": "BHA",
+      "pos": 2,
+      "cost": 5.1,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.4,
+      "f": {
+        "pts4": 6.75,
+        "xgi4": 0.18,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 3.04
+    },
+    "512": {
+      "name": "Kudus",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 6.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.19,
+        "minshare4": 0.79,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.8
+    },
+    "522": {
+      "name": "Gray",
+      "team": "TOT",
+      "pos": 3,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.07,
+        "minshare4": 0.95,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.54
+    },
+    "526": {
+      "name": "Solanke",
+      "team": "TOT",
+      "pos": 4,
+      "cost": 5.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.5,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.3,
+        "minshare4": 0.75,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "CRY (H)"
+      ],
+      "xp": 2.91
+    },
+    "529": {
+      "name": "Roefs",
+      "team": "SUN",
+      "pos": 1,
+      "cost": 4.9,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.1,
+      "f": {
+        "pts4": 0.75,
+        "xgi4": 0.01,
+        "minshare4": 0.75,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 1.89
+    },
+    "533": {
+      "name": "Mukiele",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.8,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.1,
+        "minshare4": 0.75,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 1.69
+    },
+    "534": {
+      "name": "Hume",
+      "team": "SUN",
+      "pos": 2,
+      "cost": 4.2,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.04,
+        "minshare4": 0.53,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 1.25
+    },
+    "542": {
+      "name": "E.Le Fée",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.9,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.2,
+        "minshare4": 0.72,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 2.42
+    },
+    "544": {
+      "name": "Xhaka",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.16,
+        "minshare4": 0.75,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 2.11
+    },
+    "545": {
+      "name": "Sadiki",
+      "team": "SUN",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 1.75,
+        "xgi4": 0.03,
+        "minshare4": 0.69,
+        "oppstr": 2.25
+      },
+      "fixtures": [
+        "COV (A)"
+      ],
+      "xp": 1.93
+    },
+    "558": {
+      "name": "Schlager",
+      "team": "NFO",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.13,
+        "minshare4": 0.93,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 2.7
+    },
+    "562": {
+      "name": "Maeda",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5.3,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.11,
+        "minshare4": 0.51,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2
+    },
+    "566": {
+      "name": "Silva",
+      "team": "BOU",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.13,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "LEE (H)"
+      ],
+      "xp": 2.02
+    },
+    "567": {
+      "name": "Horníček",
+      "team": "NEW",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.3,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2
+    },
+    "569": {
+      "name": "Gonzalo",
+      "team": "FUL",
+      "pos": 4,
+      "cost": 6,
+      "status": "a",
+      "news": "",
+      "selected_pct": 6.1,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.62,
+        "minshare4": 0.89,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 3.11
+    },
+    "571": {
+      "name": "Florentino",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.04,
+        "minshare4": 0.65,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.01
+    },
+    "572": {
+      "name": "Tzolakis",
+      "team": "HUL",
+      "pos": 1,
+      "cost": 4.7,
+      "status": "a",
+      "news": "",
+      "selected_pct": 14.2,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0,
+        "minshare4": 0.75,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 2.36
+    },
+    "575": {
+      "name": "Yirenkyi",
+      "team": "COV",
+      "pos": 3,
+      "cost": 4.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.5,
+        "xgi4": 0.01,
+        "minshare4": 0.81,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 2.27
+    },
+    "579": {
+      "name": "Araujo",
+      "team": "LIV",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.2,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.01,
+        "minshare4": 0.58,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 1.45
+    },
+    "580": {
+      "name": "Charles",
+      "team": "FUL",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3,
+        "xgi4": 0.14,
+        "minshare4": 0.94,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.73
+    },
+    "581": {
+      "name": "Diomande",
+      "team": "NFO",
+      "pos": 2,
+      "cost": 5.4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.5,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.04,
+        "minshare4": 0.7,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "BRE (A)"
+      ],
+      "xp": 1.48
+    },
+    "583": {
+      "name": "Chavarria",
+      "team": "CHE",
+      "pos": 2,
+      "cost": 4.9,
+      "status": "i",
+      "news": "Unspecified injury - Expected back 31 Oct",
+      "selected_pct": 0.2,
+      "f": {
+        "pts4": 1.5,
+        "xgi4": 0.08,
+        "minshare4": 0.5,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "MUN (H)"
+      ],
+      "xp": 1.3
+    },
+    "588": {
+      "name": "Khalaili",
+      "team": "CRY",
+      "pos": 2,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.3,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.13,
+        "minshare4": 0.75,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 1.84
+    },
+    "591": {
+      "name": "Enciso",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.8,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.39,
+        "minshare4": 0.85,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 3.1
+    },
+    "592": {
+      "name": "Ouattara",
+      "team": "IPS",
+      "pos": 2,
+      "cost": 4,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.08,
+        "minshare4": 1,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.69
+    },
+    "597": {
+      "name": "Suzuki",
+      "team": "AVL",
+      "pos": 1,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 2.3,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0,
+        "minshare4": 1,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "FUL (H)"
+      ],
+      "xp": 3.02
+    },
+    "598": {
+      "name": "Elvedi",
+      "team": "LEE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.06,
+        "minshare4": 0.74,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "BOU (A)"
+      ],
+      "xp": 1.8
+    },
+    "599": {
+      "name": "Cherif",
+      "team": "COV",
+      "pos": 4,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.4,
+      "f": {
+        "pts4": 3.75,
+        "xgi4": 0.1,
+        "minshare4": 0.56,
+        "oppstr": 2.75
+      },
+      "fixtures": [
+        "SUN (H)"
+      ],
+      "xp": 2.48
+    },
+    "619": {
+      "name": "Palacios",
+      "team": "IPS",
+      "pos": 3,
+      "cost": 5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.03,
+        "minshare4": 0.8,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "HUL (A)"
+      ],
+      "xp": 2.33
+    },
+    "627": {
+      "name": "Barcola",
+      "team": "LIV",
+      "pos": 3,
+      "cost": 8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 3.5,
+      "f": {
+        "pts4": 2.25,
+        "xgi4": 0.22,
+        "minshare4": 0.69,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "ARS (H)"
+      ],
+      "xp": 2.26
+    },
+    "634": {
+      "name": "Fernandez-Pardo",
+      "team": "NEW",
+      "pos": 4,
+      "cost": 6,
+      "status": "d",
+      "news": "Illness - 75% chance of playing",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.19,
+        "minshare4": 0.61,
+        "oppstr": 1
+      },
+      "fixtures": [
+        "EVE (H)"
+      ],
+      "xp": 2.04
+    },
+    "639": {
+      "name": "Andrés",
+      "team": "BHA",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.1,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.11,
+        "minshare4": 0.73,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "MCI (A)"
+      ],
+      "xp": 2.44
+    },
+    "642": {
+      "name": "Thomas",
+      "team": "HUL",
+      "pos": 3,
+      "cost": 5.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.19,
+        "minshare4": 0.59,
+        "oppstr": 1.75
+      },
+      "fixtures": [
+        "IPS (H)"
+      ],
+      "xp": 2.22
+    },
+    "644": {
+      "name": "Timber",
+      "team": "CRY",
+      "pos": 3,
+      "cost": 5,
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
+      "selected_pct": 0,
+      "f": {
+        "pts4": 2.75,
+        "xgi4": 0.09,
+        "minshare4": 0.63,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "TOT (A)"
+      ],
+      "xp": 2.15
+    },
+    "649": {
+      "name": "Maitland-Niles",
+      "team": "EVE",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 1.5,
+      "f": {
+        "pts4": 3.25,
+        "xgi4": 0.15,
+        "minshare4": 0.61,
+        "oppstr": 2.5
+      },
+      "fixtures": [
+        "NEW (A)"
+      ],
+      "xp": 1.97
+    },
+    "650": {
+      "name": "Affengruber",
+      "team": "FUL",
+      "pos": 2,
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
+      "selected_pct": 0.7,
+      "f": {
+        "pts4": 4.75,
+        "xgi4": 0.03,
+        "minshare4": 1,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "AVL (A)"
+      ],
+      "xp": 2.75
+    }
+  }
+}
