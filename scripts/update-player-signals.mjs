@@ -20,7 +20,7 @@ async function worker() {
         starts: full.length
       };
     } catch (error) {
-      console.warn(`Skipped ${player.web_name} (${player.code}): ${error.message}`);
+      console.warn(`Skipped ${player.web_name} (${player.code}): ${(error && error.name) || "Error"}`);
     }
   }
 }
@@ -45,8 +45,9 @@ const futureEvents=bootstrap.events.filter(e=>e.id>=next.id).slice(0,5).map(e=>e
 const TEAM_ID = process.env.FPL_TEAM_ID;
 if (!TEAM_ID) { console.error('FPL_TEAM_ID is not set - add it as a repository secret (Actions). Never hardcode it here.'); process.exit(1); }
 const reportFailure = (e) => {
-  const msg = String((e && e.message) || e).split(process.env.FPL_TEAM_ID || '\u0000').join('REDACTED-ID').slice(0, 300);
-  console.error('update-player-signals failed:', (e && e.name) || 'Error', '-', msg);
+  // Public Actions logs: never echo error messages - they can carry untrusted
+  // API payload (entry name, leagues, ranks). Error name only, no payload.
+  console.error('update-player-signals failed:', (e && e.name) || 'Error');
   process.exit(1);
 };
 process.on('uncaughtException', reportFailure);

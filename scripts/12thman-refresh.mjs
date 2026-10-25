@@ -118,7 +118,7 @@ async function worker() {
         xpgw, fixgw,
       };
     } catch (e) {
-      console.warn(`skipped ${p.web_name}: ${e.message}`);
+      console.warn(`skipped ${p.web_name}: ${(e && e.name) || "Error"}`);
     }
   }
 }
