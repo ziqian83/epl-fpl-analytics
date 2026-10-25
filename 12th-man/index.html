@@ -172,6 +172,14 @@
     <p class="caption">Captaincy is deliberately not modelled in v0 - pick on minutes security and fixture, not on these numbers. Chips show live state only; timing judgement is yours.</p>
   </section>
 
+  <section id="horizon">
+    <h2>The next five gameweeks, <em>four ways</em></h2>
+    <p class="lede">Genuinely different postures simulated over GW9-13 under the real rules - formation, club cap, budget, transfer carry, hits, chip state, captain each week. Totals are cumulative weak estimates and stay uncalibrated: small gaps between cards are not meaningful. Fixture coverage ends at GW13 (official schedule) - nothing beyond it is invented. Prices are frozen and trailing form is held constant; both are stated, not hidden.</p>
+    <div class="plans" id="horizonrow">
+      <article class="plan"><span class="num">i</span><div class="tagrow"><span class="badge quiet">Waiting</span></div><h3>Load your squad, confirm bank and FTs</h3><p style="font-size:.88rem;color:var(--dim)">The comparison runs on your confirmed state - unconfirmed numbers would invent advice.</p></article>
+    </div>
+  </section>
+
   <section id="freshness">
     <h2>Honest <em>freshness</em></h2>
     <p class="lede">Every number carries its as-of stamp, and the page tells you when data is too stale to act on. Advice-ready and as-of are never blurred.</p>
@@ -186,6 +194,7 @@
     <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
+<script src="./engine.js"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -407,6 +416,44 @@
     var card3 = cardShell('3','State only','Chips', chipRows, '<p>Chip state comes from your public entry history. What the model does NOT do yet: chip timing, captaincy, hit justification. Those stay with you, visibly.</p>');
 
     $('plansrow').innerHTML = card1 + card2 + card3;
+    renderStrategies(bank, ft);
+  }
+
+  /* ---------- horizon strategy comparison (engine.js) ---------- */
+  function renderStrategies(bank, ft){
+    var row = $('horizonrow');
+    if(!row || typeof T12Engine === 'undefined' || !squad || !pool || !pool.horizon_gws) return;
+    if(!state.bankConfirmed || isNaN(bank) || isNaN(ft)){
+      row.innerHTML = '<article class="plan"><span class="num">i</span><div class="tagrow"><span class="badge quiet">Gate</span></div><h3>Confirm bank and free transfers</h3><p style="font-size:.88rem;color:var(--dim)">The five-gameweek comparison only runs on confirmed numbers - the feed cannot see your current FT count or transfers since the lock.</p></article>';
+      return;
+    }
+    var picks = squad.map(function(x){ return { id: x.id, selling: x.selling }; });
+    var sellAssumed = squad.filter(function(x){ return x.selling == null; }).length;
+    var res;
+    try {
+      res = T12Engine.compare(picks, pool.players, { gws: pool.horizon_gws, bank: bank, fts: ft, chips: state.chips });
+    } catch(e){
+      row.innerHTML = '<article class="plan"><h3>Comparison failed to run</h3><p style="font-size:.88rem;color:var(--dim)">' + String(e.message||e) + ' - the weekly plays above are unaffected.</p></article>';
+      return;
+    }
+    var cards = res.map(function(st, i){
+      if(!st.available){
+        return '<article class="plan"><span class="num">' + (i+1) + '</span><div class="tagrow"><span class="badge quiet">Not open</span></div><h3>' + st.label + '</h3><dl><div class="row"><dt>Why not</dt><dd>' + (st.reasonUnavailable || 'Unavailable') + '</dd></div></dl></article>';
+      }
+      var moveRows = st.moves.length
+        ? st.moves.map(function(m){ return '<div class="row"><dt>GW' + m.gw + (m.hit ? ' - HIT' : '') + '</dt><dd>' + m.out + ' -> ' + m.inn + '</dd></div>'; }).join('')
+        : '<div class="row"><dt>Moves</dt><dd>None - hold throughout</dd></div>';
+      var perGw = st.perGw.map(function(r, j){ return 'GW' + pool.horizon_gws[j] + ' ' + r.xp.toFixed(1); }).join(' - ');
+      var rows = '<div class="row"><dt>Horizon xP</dt><dd>' + (st.total === null ? '-' : st.total.toFixed(1)) + ' (weak, uncalibrated)</dd></div>' +
+        '<div class="row"><dt>Certain cost</dt><dd>' + (st.hits ? '-' + (st.hits * 4) + ' pts in hits' : '0') + '</dd></div>' +
+        moveRows +
+        '<div class="row"><dt>Per GW</dt><dd>' + perGw + '</dd></div>' +
+        st.notes.map(function(n){ return '<div class="row"><dt>Note</dt><dd>' + n + '</dd></div>'; }).join('') +
+        st.unknowns.map(function(u){ return '<div class="row"><dt>Unknown</dt><dd>' + u + '</dd></div>'; }).join('') +
+        (sellAssumed ? '<div class="row"><dt>Unknown</dt><dd>' + sellAssumed + ' sell price(s) not exposed by the feed - assumed at current cost, so affordability can be off</dd></div>' : '');
+      return '<article class="plan"><span class="num">' + (i+1) + '</span><div class="tagrow"><span class="badge quiet">' + (st.hits ? 'Costs ' + (st.hits*4) + ' pts' : 'No certain cost') + '</span></div><h3>' + st.label + '</h3><dl>' + rows + '</dl></article>';
+    }).join('');
+    row.innerHTML = cards;
   }
 
   function cardShell(num, badge, title, rows, evidence){

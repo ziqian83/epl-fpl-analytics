@@ -46,16 +46,24 @@ for (const ev of completedIds) {
 }
 const teamGc4 = new Map([...conceded].map(([t, v]) => [t, v.n ? v.gc / v.n : 1.4]));
 
-// Next-GW fixtures: per team, opponent strength (avg over double fixtures) + label.
-const nextFx = await j(`${API}/fixtures/?event=${next.id}`);
-const byTeam = new Map();
-for (const f of nextFx) {
-  for (const [tid, opp, home] of [[f.team_h, f.team_a, true], [f.team_a, f.team_h, false]]) {
-    const arr = byTeam.get(tid) || [];
-    arr.push({ opp, home });
-    byTeam.set(tid, arr);
+// Fixtures for the next HORIZON events: per team per GW, opponent strength
+// (avg over double fixtures) + labels. Missing fixture = blank GW (xP 0, labeled).
+const HORIZON = 5;
+const futureEvents = boot.events.filter((e) => e.id >= next.id).slice(0, HORIZON).map((e) => e.id);
+const fxByGw = new Map(); // gw -> Map(teamId -> [{opp, home}])
+for (const ev of futureEvents) {
+  const fx = await j(`${API}/fixtures/?event=${ev}`);
+  const m = new Map();
+  for (const f of fx) {
+    for (const [tid, opp, home] of [[f.team_h, f.team_a, true], [f.team_a, f.team_h, false]]) {
+      const arr = m.get(tid) || [];
+      arr.push({ opp, home });
+      m.set(tid, arr);
+    }
   }
+  fxByGw.set(ev, m);
 }
+const byTeam = fxByGw.get(next.id) || new Map(); // next-GW view kept for the existing `fixtures` field
 const teamsById = Object.fromEntries(boot.teams.map((t) => [t.id, t]));
 
 // Trailing per-player features from element histories (last TRAILING entries,
@@ -79,21 +87,35 @@ async function worker() {
       const meta = { name: p.web_name, team: teamsById[p.team].short_name, pos: p.element_type,
         cost: p.now_cost / 10, status: p.status, news: p.news || '',
         selected_pct: Number(p.selected_by_percent) };
-      if (gws.length < TRAILING) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: fewer than 4 recent gameweeks' }; continue; }
+      const fixgwOnly = Object.fromEntries(futureEvents.map((ev) => {
+        const g = fxByGw.get(ev)?.get(p.team) || [];
+        return [ev, g.length ? g.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`).join(' + ') : 'BLANK'];
+      }));
+      if (gws.length < TRAILING) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: fewer than 4 recent gameweeks', fixgw: fixgwOnly }; continue; }
       const mins = gws.reduce((z, [, g]) => z + g.mins, 0);
-      if (mins < MIN_TRAILING_MINUTES) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: under 180 recent minutes' }; continue; }
+      if (mins < MIN_TRAILING_MINUTES) { pool[p.id] = { ...meta, rated: false, reason: 'cold start: under 180 recent minutes', fixgw: fixgwOnly }; continue; }
       const pts4 = gws.reduce((z, [, g]) => z + g.pts, 0) / TRAILING;
       const xgi4 = gws.reduce((z, [, g]) => z + g.xgi, 0) / TRAILING;
       const minshare4 = mins / (TRAILING * 90);
       const fx = byTeam.get(p.team) || [];
-      if (!fx.length) { pool[p.id] = { ...meta, rated: false, reason: 'blank gameweek: no fixture' }; continue; }
-      const oppStr = fx.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / fx.length;
+      const oppStr = fx.length ? fx.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / fx.length : 1.4;
       const xp = COEF.const + COEF.pts4 * pts4 + COEF.xgi4 * xgi4 +
         COEF.minshare4 * minshare4 + COEF.oppstr * oppStr + (POS_OFFSET[p.element_type] || 0);
+      const xpgw = {}, fixgw = {};
+      for (const ev of futureEvents) {
+        const g = fxByGw.get(ev)?.get(p.team) || [];
+        if (!g.length) { xpgw[ev] = 0; fixgw[ev] = 'BLANK'; continue; }
+        const os = g.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / g.length;
+        const base = COEF.const + COEF.pts4 * pts4 + COEF.xgi4 * xgi4 +
+          COEF.minshare4 * minshare4 + COEF.oppstr * os + (POS_OFFSET[p.element_type] || 0);
+        xpgw[ev] = +(base * g.length).toFixed(2); // double GW ~ two matches, labeled approximation
+        fixgw[ev] = g.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`).join(' + ');
+      }
       pool[p.id] = { ...meta, rated: true,
         f: { pts4: +pts4.toFixed(2), xgi4: +xgi4.toFixed(2), minshare4: +minshare4.toFixed(2), oppstr: +oppStr.toFixed(2) },
         fixtures: fx.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`),
         xp: +xp.toFixed(2),
+        xpgw, fixgw,
       };
     } catch (e) {
       console.warn(`skipped ${p.web_name}: ${e.message}`);
@@ -105,7 +127,8 @@ await Promise.all(Array.from({ length: 12 }, worker));
 await mkdir(OUT_DIR, { recursive: true });
 await writeFile(new URL('pool.json', OUT_DIR), JSON.stringify({
   generated_at: new Date().toISOString(),
-  model: 'docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise',
+  model: 'docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.',
+  horizon_gws: futureEvents,
   gameweek: next.id,
   deadline: next.deadline_time,
   source: `${API}/bootstrap-static, /element-summary, /fixtures (public)`,
