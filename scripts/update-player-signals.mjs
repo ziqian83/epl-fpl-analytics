@@ -44,7 +44,9 @@ const next = bootstrap.events.find(event => event.is_next) || bootstrap.events.f
 const futureEvents=bootstrap.events.filter(e=>e.id>=next.id).slice(0,5).map(e=>e.id);
 const TEAM_ID = process.env.FPL_TEAM_ID;
 if (!TEAM_ID) { console.error('FPL_TEAM_ID is not set - add it as a repository secret (Actions). Never hardcode it here.'); process.exit(1); }
-const redact = (o) => JSON.parse(JSON.stringify(o).split(TEAM_ID).join('REDACTED-ID'));
+const redact = (o) => JSON.parse(JSON.stringify(o, (k, v) =>
+  typeof v === 'string' ? v.split(TEAM_ID).join('REDACTED-ID') :
+  (typeof v === 'number' && String(v) === TEAM_ID ? 'REDACTED-ID' : v)));
 const [entryRaw, picksRaw, fixtures, ...futureFixtures] = await Promise.all([
   fetch(`${API}/entry/${TEAM_ID}/`).then(check).then(r => r.json()),
   fetch(`${API}/entry/${TEAM_ID}/event/${current.id}/picks/`).then(check).then(r => r.json()),
