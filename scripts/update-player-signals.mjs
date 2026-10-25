@@ -52,4 +52,5 @@ const [entryRaw, picksRaw, fixtures, ...futureFixtures] = await Promise.all([
   ...futureEvents.map(id=>fetch(`${API}/fixtures/?event=${id}`).then(check).then(r=>r.json()))
 ]);
 const entry = redact(entryRaw), picks = redact(picksRaw);
+delete entry.club_badge_src; // badge URL embeds the team ID; nothing renders it
 await writeFile(new URL('../boot-room/picker/data/live-state.json', import.meta.url), `${JSON.stringify({generated_at:new Date().toISOString(),bootstrap,entry,picks,fixtures,fixtures_next_5:futureFixtures.flat()},null,2)}\n`);
