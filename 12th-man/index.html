@@ -41,6 +41,7 @@
   h2 em{font-style:normal;color:var(--gold-ink)}
   .lede{color:var(--dim);max-width:44em;font-size:.94rem}
   .caption{color:var(--faint);font-size:.78rem;margin-top:.9em;letter-spacing:.03em}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;margin-top:1.8em;align-items:start}
   .plan{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.3em 1.3em 1.1em;display:flex;flex-direction:column;position:relative}
   .plan .num{position:absolute;top:1.1em;left:1.3em;font-family:Georgia,serif;font-size:.95rem;color:var(--faint)}
@@ -307,7 +308,7 @@
       return '<tr' + (s.slot > 11 ? ' class="bench"' : '') + '><td>' + (s.slot > 11 ? 'Bench ' + (s.slot-11) : pos) + '</td><td><b>' + nm + '</b>' + tags + '</td><td>' + team + '</td><td>' + fx + '</td><td>' + costCell + '</td><td>' + xp + '</td></tr>';
     }).join('');
     $('squadwrap').innerHTML =
-      '<table class="sq"><thead><tr><th>Slot</th><th>Player (as locked GW' + lastFinished + ')</th><th>Team</th><th>GW' + pool.gameweek + ' fixture</th><th>Cost</th><th>xP GW' + pool.gameweek + '</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<div class="tablewrap"><table class="sq"><thead><tr><th>Slot</th><th>Player (as locked GW' + lastFinished + ')</th><th>Team</th><th>GW' + pool.gameweek + ' fixture</th><th>Cost</th><th>xP GW' + pool.gameweek + '</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="caption">' + (entry.player_first_name ? entry.player_first_name + ' ' + entry.player_last_name + ' &middot; ' : '') + 'Overall rank ' + (entry.summary_overall_rank ? entry.summary_overall_rank.toLocaleString() : '?') +
       ' &middot; squad as locked GW' + lastFinished + ' - transfers since the lock are invisible to the feed. "Not rated" = cold start (new signing, promoted, or under 180 recent minutes); the model stays silent rather than inventing a number.</p>';
   }
