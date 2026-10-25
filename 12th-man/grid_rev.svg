@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <clipPath id="cell3"><rect x="68" y="2" width="26" height="26"/></clipPath>
+  </defs>
+  <!-- X tile -->
+  <g transform="translate(2 2)">
+    <rect x="2" y="10.25" width="22" height="5.5" rx="2.75" fill="#e9f2ee" transform="rotate(45 13 13)"/>
+    <rect x="2" y="10.25" width="22" height="5.5" rx="2.75" fill="#e9f2ee" transform="rotate(-45 13 13)"/>
+  </g>
+  <!-- shirt stripes tile -->
+  <g transform="translate(35 2)">
+    <rect x="4" y="3" width="4.5" height="20" rx="1" fill="#e9f2ee"/>
+    <rect x="10.75" y="3" width="4.5" height="20" rx="1" fill="#e9f2ee"/>
+    <rect x="17.5" y="3" width="4.5" height="20" rx="1" fill="#e9f2ee"/>
+  </g>
+  <!-- corner quadrant tile -->
+  <g clip-path="url(#cell3)">
+    <circle cx="70" cy="26" r="17" fill="none" stroke="#e9f2ee" stroke-width="5"/>
+  </g>
+  <!-- run arrow tile -->
+  <g transform="translate(2 35)">
+    <path d="M 4 22 L 19 7" stroke="#e9f2ee" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+    <polygon points="23.5,3.5 21.5,14.5 11,6.5" fill="#e9f2ee"/>
+  </g>
+  <!-- the O: sea-green, centre of the board -->
+  <circle cx="48" cy="48" r="9.5" fill="none" stroke="#63b3a2" stroke-width="5.5"/>
+  <!-- solid tiles -->
+  <rect x="68" y="35" width="26" height="26" rx="3.5" fill="#e9f2ee"/>
+  <rect x="2" y="68" width="26" height="26" rx="3.5" fill="#e9f2ee"/>
+  <!-- pitch lines tile -->
+  <g transform="translate(35 68)">
+    <rect x="3" y="4" width="20" height="4" rx="2" fill="#e9f2ee"/>
+    <rect x="3" y="11" width="20" height="4" rx="2" fill="#e9f2ee"/>
+    <rect x="3" y="18" width="20" height="4" rx="2" fill="#e9f2ee"/>
+  </g>
+  <!-- bottom-right cell left open: the slot the 12th man fills -->
+</svg>

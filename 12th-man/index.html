@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The 12th Man - weekly briefing preview</title>
+<link rel="icon" type="image/svg+xml" href="grid.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="A working preview of the next Boot Room: the weekly FPL briefing as plans, tradeoffs and evidence. Illustrative content, not advice.">
 <style>
   :root{
-    --bg:#faf6ee; --card:#fffdf8; --ink:#211c13; --dim:#6d675a; --faint:#8d8677;
-    --line:#e6ddc9; --gold:#B69B61; --gold-ink:#8a7443;
+    --bg:#f1f5f3; --card:#fdfefa; --ink:#0e3a40; --dim:#47645d; --faint:#7d948c;
+    --line:#d5e2dc; --gold:#63b3a2; --gold-ink:#4d9a89;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -18,11 +20,13 @@
   a{color:var(--gold-ink);text-decoration:none;border-bottom:1px solid var(--gold)}
 
   /* preview ribbon */
-  .ribbon{background:#211c13;color:#f4efe4;font-size:.78rem;letter-spacing:.04em;padding:.6em 5vw;text-align:center}
-  .ribbon b{color:var(--gold)}
+  .ribbon{background:#0e3a40;color:#e9f2ee;font-size:.78rem;letter-spacing:.04em;padding:.6em 5vw;text-align:center}
+  .ribbon b{color:#63b3a2}
 
   /* masthead */
-  header.mast{padding:7vh 0 4vh;text-align:left}
+  header.mast{padding:7vh 0 4vh;display:flex;gap:1.5em;align-items:center}
+  .mast .logo{flex:0 0 auto;width:clamp(56px,10vw,88px)}
+  .mast .logo img{display:block;width:100%}
   .kicker{text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;color:var(--gold-ink);font-weight:700;margin-bottom:1.1em}
   h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1.05}
   h1 em{font-style:normal;color:var(--gold-ink)}
@@ -68,6 +72,7 @@
   details.ev p{font-size:.86rem;color:var(--dim);margin-top:.55em}
 
   @media (max-width:760px){
+    header.mast{flex-direction:column;align-items:flex-start;gap:1em;padding-top:5vh}
     .plans{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1em;margin-left:-5vw;margin-right:-5vw;padding:0 5vw .8em;-webkit-overflow-scrolling:touch}
     .plan{flex:0 0 82%;scroll-snap-align:center}
   }
@@ -101,12 +106,15 @@
 </style>
 </head>
 <body>
-<div class="ribbon"><b>Preview.</b> This is the proposed next Boot Room - a working mock with illustrative plans, not this week's advice. <a href="../boot-room/" style="color:#f4efe4;border-color:#8a7443">The current Boot Room</a> is unchanged.</div>
+<div class="ribbon"><b>Preview.</b> This is the proposed next Boot Room - a working mock with illustrative plans, not this week's advice. <a href="../boot-room/" style="color:#e9f2ee;border-color:#63b3a2">The current Boot Room</a> is unchanged.</div>
 <main>
   <header class="mast">
+    <div class="logo"><img src="grid.svg" alt="The 12th Man mark"></div>
+    <div>
     <div class="kicker">MatchDay Blues &middot; weekly briefing</div>
     <h1>The <em>12th</em> Man</h1>
     <p class="sub">One page, every week: the decisions first, two or three coherent plans side by side, every number one tap away. The data is the underlying layer - always there, invisible until you ask for it.</p>
+    </div>
   </header>
 
   <div class="strip">
