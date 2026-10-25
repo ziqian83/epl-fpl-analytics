@@ -102,7 +102,7 @@
 </style>
 </head>
 <body>
-<div class="ribbon"><b>Live data.</b> Player numbers refresh daily from the public FPL feed. Your team ID is used only in your browser, as a lookup, and is never stored anywhere else.</div>
+<div class="ribbon"><b>Live data.</b> Player numbers refresh daily from the public FPL feed. Your team ID is used only when you click Load, as a read-only lookup through one named relay.</div>
 <main>
   <header class="mast">
     <div class="logo"><img src="grid.svg" alt="The 12th Man mark"></div>
@@ -133,7 +133,7 @@
     <div class="facts">
       <div class="fact"><div class="k">Your ID reveals</div><div class="v">The squad as of the last locked gameweek, chips used and remaining, per-gameweek points and rank, and locked bank and squad value by week.</div></div>
       <div class="fact"><div class="k">It cannot see</div><div class="v">Transfers made since the last lock, and the free transfers you hold now. Confirm those below - they stay on this device.</div></div>
-      <div class="fact"><div class="k">How it loads</div><div class="v">Read-only GET through a public relay (r.jina.ai, run by Jina AI; allorigins.win as fallback). The relay sees the team ID in the request, like any site you visit. No login, no keys, nothing is written back.</div></div>
+      <div class="fact"><div class="k">How it loads</div><div class="v">Read-only GET through one named public relay: r.jina.ai, Jina AI's Reader service (a documented, free, rate-limited product). The relay sees the team ID in the request URL, like any site you visit. No login, no keys, nothing is written back. If the relay is down or its free terms change, loading fails loudly - it never falls back to a second operator without telling you.</div></div>
     </div>
     <details class="panel" id="settingspanel" open>
       <summary><span class="t">Squad settings</span><span class="tw">+</span></summary>
@@ -144,6 +144,7 @@
           <small>Stored only in this browser (localStorage). Never hardcoded, never sent anywhere except the lookup.</small>
         </div>
         <button class="btn" id="loadbtn">Load my squad</button>
+        <small style="display:block;color:var(--faint);font-size:.74rem;margin-top:.5em">Clicking sends one read-only lookup for this team ID through r.jina.ai (Jina AI's Reader). Nothing loads until you click, even if an ID is saved on this device.</small>
         <div class="err" id="loaderr"></div>
         <div class="field">
           <label>Free transfers held</label>
@@ -191,13 +192,8 @@
 
   /* ---------- data fetch ---------- */
   function stripJina(t){ var i = t.indexOf('{'); return i < 0 ? Promise.reject(new Error('relay returned no JSON')) : JSON.parse(t.slice(i)); }
-  function rj(url){ return fetch('https://r.jina.ai/' + url).then(function(r){ if(!r.ok) throw new Error('r.jina.ai ' + r.status); return r.text(); }).then(stripJina); }
-  function ao(url){ return fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(url)).then(function(r){ if(!r.ok) throw new Error('allorigins ' + r.status); return r.json(); }); }
-  function relay(url, allowFallback){
-    return rj(url).catch(function(e){
-      if(!allowFallback) throw e;
-      return ao(url);
-    });
+  function relay(url){
+    return fetch('https://r.jina.ai/' + url).then(function(r){ if(!r.ok) throw new Error('relay ' + r.status); return r.text(); }).then(stripJina);
   }
 
   function fmtDeadline(iso){
@@ -228,7 +224,7 @@
     $('stamp').innerHTML = '<div class="lab">' + (stale ? 'Stale - act with care' : 'As of') + '</div><div class="val">Player pool generated ' +
       new Date(p.generated_at).toLocaleString('en-SG', { timeZone:'Asia/Singapore', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }) +
       ' SGT (' + Math.round(hrs) + 'h ago) &middot; model v0, validation in the method doc</div>';
-    if(state.id) loadSquad(state.id, true);
+    if(state.id) $('loadbtn').textContent = 'Load my squad (ID saved on this device)';
   }).catch(function(){
     $('gwcell').innerHTML = 'Player pool unavailable<small>data/pool.json failed to load</small>';
   });
@@ -257,9 +253,9 @@
     $('loadbtn').disabled = true; $('loadbtn').textContent = 'Loading...'; $('loaderr').textContent = '';
     var lastFinished = pool.gameweek - 1;
     var base = 'https://fantasy.premierleague.com/api/entry/' + id + '/';
-    var entryP = relay(base, true);
-    var histP = relay(base + 'history/', true);
-    var picksP = rj(base + 'event/' + lastFinished + '/picks/');
+    var entryP = relay(base);
+    var histP = relay(base + 'history/');
+    var picksP = relay(base + 'event/' + lastFinished + '/picks/');
     Promise.all([entryP, histP, picksP]).then(function(rs){
       var entry = rs[0], hist = rs[1], picks = rs[2];
       state.entry = entry; state.chips = hist.chips || [];
@@ -277,7 +273,7 @@
       $('settingspanel').removeAttribute('open');
       $('loadbtn').disabled = false; $('loadbtn').textContent = 'Reload my squad';
     }).catch(function(e){
-      $('loaderr').textContent = 'Could not load that squad (' + e.message + '). Check the ID, or try again - the relay is a free public service and can be slow.';
+      $('loaderr').textContent = 'Could not load that squad (' + e.message + '). Check the ID and try again - the relay is a free public service and can be slow or rate-limited. Nothing was stored.';
       $('loadbtn').disabled = false; $('loadbtn').textContent = 'Load my squad';
     });
   }
