@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T12:49:48.078Z",
+  "generated_at": "2026-10-25T13:06:02.488Z",
   "model": "docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise",
   "gameweek": 9,
   "deadline": "2026-10-31T11:00:00Z",
@@ -432,7 +432,7 @@
       "cost": 4.6,
       "status": "a",
       "news": "",
-      "selected_pct": 19.2,
+      "selected_pct": 19.3,
       "rated": true,
       "f": {
         "pts4": 7,
@@ -1118,8 +1118,8 @@
       "team": "BOU",
       "pos": 3,
       "cost": 7.3,
-      "status": "d",
-      "news": "Foot injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.2,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
@@ -1337,8 +1337,8 @@
       "team": "BRE",
       "pos": 2,
       "cost": 4.5,
-      "status": "d",
-      "news": "Ankle injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.4,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
@@ -2329,7 +2329,7 @@
       "cost": 7.9,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 73.1,
+      "selected_pct": 73,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
     },
@@ -5859,8 +5859,8 @@
       "team": "MUN",
       "pos": 2,
       "cost": 4.9,
-      "status": "d",
-      "news": "Thigh injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 1.1,
       "rated": true,
       "f": {
@@ -6316,8 +6316,8 @@
       "team": "NEW",
       "pos": 3,
       "cost": 6,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 2.4,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
@@ -6347,8 +6347,8 @@
       "team": "NEW",
       "pos": 3,
       "cost": 4.8,
-      "status": "i",
-      "news": "Thigh injury - Unknown return date",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.2,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
@@ -7109,7 +7109,7 @@
       "cost": 6.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.6,
       "rated": true,
       "f": {
         "pts4": 4,
@@ -8112,7 +8112,7 @@
       "cost": 4.1,
       "status": "i",
       "news": "Groin injury - Expected back 31 Oct",
-      "selected_pct": 5.1,
+      "selected_pct": 5,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
     },
@@ -8505,8 +8505,8 @@
       "team": "HUL",
       "pos": 3,
       "cost": 5,
-      "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
@@ -8752,8 +8752,8 @@
       "team": "HUL",
       "pos": 4,
       "cost": 5,
-      "status": "d",
-      "news": "Achilles injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.1,
       "rated": false,
       "reason": "cold start: under 180 recent minutes"
