@@ -66,3 +66,59 @@ Known coverage limits:
 - Zero-minute rows are real rows in the source data, so benchings count as zeros in trailing windows (verified on 2024-25: 661-666 distinct players per GW with ~356-362 zero-minute rows).
 
 No odds input. No market data. v0 inputs are FPL's own public xG/xA, minutes, points and fixtures only.
+
+
+## v1: home/away, short-form window, role-split opponent terms (26 Oct 2026)
+
+v0's known gaps named three cheap fixes: no home/away term, one shared opponent
+coefficient (~0.005-0.19 depending on scaling, near zero), and a flat 4-GW form
+window. v1 adds exactly those, chosen a priori, no feature search:
+
+- Trailing 2-GW mean points and xGI alongside the 4-GW means (recency without an
+  arbitrary decay constant)
+- Home share of the predicted GW's fixtures (1.0 home, 0.0 away, 0.5 for a split double)
+- Opponent terms split by role: opponent's trailing goals CONCEDED per match for
+  MID/FWD (attacking relevance), opponent's trailing goals SCORED per match for
+  GKP/DEF (clean-sheet relevance)
+
+Validation protocol: identical rolling-origin holdouts as v0, rebuilt from the
+DuckDB warehouse (sql/epl_duckdb_load.sql). v0 was refit under this replication
+protocol so the comparison is exact; replication eligibility differs slightly from
+the original v0 run (train 14,582 vs 17,465 on the 2024-25 split; opponent trailing
+data is now required), so the v0 column below is the refit, not the original table
+above. Pairwise test: same-position pairs within one gameweek, deterministic
+sample (max 14 players per GW-position cell, all pairs, seed fixed), prediction
+ties skipped, actual-points ties count wrong.
+
+| Held-out season | Model | MAE | Naive MAE | Corr | Pair accuracy | Pairs |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2024-25 | v0 refit | 2.238 | 2.430 | 0.260 | 0.495 | 12,344 |
+| 2024-25 | v1 | 2.242 | 2.430 | 0.262 | 0.501 | 12,351 |
+| 2025-26 | v0 refit | 2.304 | 2.601 | 0.191 | 0.498 | 12,367 |
+| 2025-26 | v1 | 2.299 | 2.601 | 0.212 | 0.503 | 12,376 |
+
+Honest read:
+
+- The decision-relevant metric (pairwise ordering of same-position swaps) improves
+  about half a point on BOTH independent holdouts; correlation improves on both;
+  MAE is a wash (+0.004 on one, -0.005 on the other). Pairs within a GW are not
+  independent observations, so treat the edge as directional consistency, not a
+  tight significance claim.
+- The new coefficients are stable and correctly signed across both fits: home
+  +0.45/+0.58 points, opponent-scored for defenders -0.31/-0.36, opponent-conceded
+  for attackers +0.18/+0.24.
+- Everything from the v0 read still stands: single-GW variance dominates, small
+  projected edges are noise, xP orders shortlists and never justifies a move alone.
+
+Shipped v1 coefficients (fit on 2021-22..2024-25, the 2025-26-holdout fit):
+const 0.379, pts4 0.123, pts2 0.077, xgi4 1.084, xgi2 0.613, minshare4 1.542,
+home 0.450, opp-conceded MID/FWD 0.182, opp-conceded GKP/DEF 0.104,
+opp-scored MID/FWD -0.118, opp-scored GKP/DEF -0.305; position offsets vs MID:
+GKP +0.623, DEF +0.058, FWD +0.148.
+
+Still open (unchanged): current-rules fit has only the 2025-26 season (defensive
+contribution scoring is not a feature - the warehouse load does not carry it yet);
+cold start; mid-season club changes; horizon holds trailing features constant.
+ep_next (FPL's own projection) is not benchmarked: its history is not archived in
+the public sources this warehouse uses, so an honest season-long comparison is not
+possible from these data.

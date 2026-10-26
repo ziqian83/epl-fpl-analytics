@@ -11,9 +11,13 @@ const OUT_DIR = new URL('../12th-man/data/', import.meta.url);
 const TRAILING = 4;
 const MIN_TRAILING_MINUTES = 180;
 
-// docs/09 coefficients (2025-26 holdout fit); position offsets relative to MID.
-const COEF = { const: 0.478, pts4: 0.241, xgi4: 1.118, minshare4: 1.44, oppstr: 0.005 };
-const POS_OFFSET = { 1: 0.135, 2: -0.353, 3: 0.0, 4: 0.165 }; // GKP DEF MID FWD
+// docs/09 v1 coefficients (fit on 2021-22..2024-25, validated on rolling held-out
+// seasons 2024-25 and 2025-26). v1 adds a short 2-GW form window, home/away share,
+// and opponent terms split by role: conceded-strength for attackers (MID/FWD),
+// scored-strength for defenders (GKP/DEF). Position offsets relative to MID.
+const COEF = { const: 0.379, pts4: 0.123, pts2: 0.077, xgi4: 1.084, xgi2: 0.613,
+  minshare4: 1.542, home: 0.450, ogcAtt: 0.182, ogcDef: 0.104, ogsAtt: -0.118, ogsDef: -0.305 };
+const POS_OFFSET = { 1: 0.623, 2: 0.058, 3: 0.0, 4: 0.148 }; // GKP DEF MID FWD
 
 async function j(url) {
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -33,18 +37,19 @@ const next = boot.events.find((e) => e.is_next) || boot.events.find((e) => !e.fi
 // Team defensive strength entering GW `next`: mean goals conceded per match over
 // the TRAILING completed gameweeks, from finished-fixture scores.
 const completedIds = boot.events.filter((e) => e.finished).map((e) => e.id).slice(-TRAILING);
-const conceded = new Map(); // team id -> {gc, n}
+const conceded = new Map(); // team id -> {gc, gs, n}
 for (const ev of completedIds) {
   const fx = await j(`${API}/fixtures/?event=${ev}`);
   for (const f of fx) {
     if (!f.finished) continue;
-    const h = conceded.get(f.team_h) || { gc: 0, n: 0 };
-    h.gc += f.team_a_score; h.n += 1; conceded.set(f.team_h, h);
-    const a = conceded.get(f.team_a) || { gc: 0, n: 0 };
-    a.gc += f.team_h_score; a.n += 1; conceded.set(f.team_a, a);
+    const h = conceded.get(f.team_h) || { gc: 0, gs: 0, n: 0 };
+    h.gc += f.team_a_score; h.gs += f.team_h_score; h.n += 1; conceded.set(f.team_h, h);
+    const a = conceded.get(f.team_a) || { gc: 0, gs: 0, n: 0 };
+    a.gc += f.team_h_score; a.gs += f.team_a_score; a.n += 1; conceded.set(f.team_a, a);
   }
 }
 const teamGc4 = new Map([...conceded].map(([t, v]) => [t, v.n ? v.gc / v.n : 1.4]));
+const teamGs4 = new Map([...conceded].map(([t, v]) => [t, v.n ? v.gs / v.n : 1.4]));
 
 // Fixtures for the next HORIZON events: per team per GW, opponent strength
 // (avg over double fixtures) + labels. Missing fixture = blank GW (xP 0, labeled).
@@ -84,9 +89,11 @@ async function worker() {
         perGw.set(row.round, g);
       }
       const gws = [...perGw.entries()].sort((a, b) => a[0] - b[0]).slice(-TRAILING);
+      const gw1row = s.history.find((r) => r.round === 1);
       const meta = { name: p.web_name, team: teamsById[p.team].short_name, pos: p.element_type,
         cost: p.now_cost / 10, status: p.status, news: p.news || '',
-        selected_pct: Number(p.selected_by_percent) };
+        selected_pct: Number(p.selected_by_percent),
+        v1gw: gw1row && typeof gw1row.value === 'number' ? gw1row.value : null };
       const fixgwOnly = Object.fromEntries(futureEvents.map((ev) => {
         const g = fxByGw.get(ev)?.get(p.team) || [];
         return [ev, g.length ? g.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`).join(' + ') : 'BLANK'];
@@ -97,18 +104,28 @@ async function worker() {
       const pts4 = gws.reduce((z, [, g]) => z + g.pts, 0) / TRAILING;
       const xgi4 = gws.reduce((z, [, g]) => z + g.xgi, 0) / TRAILING;
       const minshare4 = mins / (TRAILING * 90);
+      const last2 = gws.slice(-2);
+      const pts2 = last2.reduce((z, [, g]) => z + g.pts, 0) / 2;
+      const xgi2 = last2.reduce((z, [, g]) => z + g.xgi, 0) / 2;
+      const att = p.element_type >= 3 ? 1 : 0; // MID/FWD get the conceded term; GKP/DEF the scored term
       const fx = byTeam.get(p.team) || [];
       const oppStr = fx.length ? fx.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / fx.length : 1.4;
-      const xp = COEF.const + COEF.pts4 * pts4 + COEF.xgi4 * xgi4 +
-        COEF.minshare4 * minshare4 + COEF.oppstr * oppStr + (POS_OFFSET[p.element_type] || 0);
       const xpgw = {}, fixgw = {};
+      const xpFor = (g) => {
+        const home = g.reduce((z, f) => z + (f.home ? 1 : 0), 0) / g.length;
+        const ogc = g.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / g.length;
+        const ogs = g.reduce((z, f) => z + (teamGs4.get(f.opp) ?? 1.4), 0) / g.length;
+        return COEF.const + COEF.pts4 * pts4 + COEF.pts2 * pts2 + COEF.xgi4 * xgi4 + COEF.xgi2 * xgi2 +
+          COEF.minshare4 * minshare4 + COEF.home * home +
+          COEF.ogcAtt * ogc * att + COEF.ogcDef * ogc * (1 - att) +
+          COEF.ogsAtt * ogs * att + COEF.ogsDef * ogs * (1 - att) +
+          (POS_OFFSET[p.element_type] || 0);
+      };
+      const xp = fx.length ? xpFor(fx) : 0;
       for (const ev of futureEvents) {
         const g = fxByGw.get(ev)?.get(p.team) || [];
         if (!g.length) { xpgw[ev] = 0; fixgw[ev] = 'BLANK'; continue; }
-        const os = g.reduce((z, f) => z + (teamGc4.get(f.opp) ?? 1.4), 0) / g.length;
-        const base = COEF.const + COEF.pts4 * pts4 + COEF.xgi4 * xgi4 +
-          COEF.minshare4 * minshare4 + COEF.oppstr * os + (POS_OFFSET[p.element_type] || 0);
-        xpgw[ev] = +(base * g.length).toFixed(2); // double GW ~ two matches, labeled approximation
+        xpgw[ev] = +(xpFor(g) * g.length).toFixed(2); // double GW ~ two matches, labeled approximation
         fixgw[ev] = g.map((f) => `${teamsById[f.opp].short_name} ${f.home ? '(H)' : '(A)'}`).join(' + ');
       }
       pool[p.id] = { ...meta, rated: true,
@@ -127,7 +144,8 @@ await Promise.all(Array.from({ length: 12 }, worker));
 await mkdir(OUT_DIR, { recursive: true });
 await writeFile(new URL('pool.json', OUT_DIR), JSON.stringify({
   generated_at: new Date().toISOString(),
-  model: 'docs/09_12thman_model.md v0 - OLS on trailing-4GW features; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.',
+  model: 'docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.',
+  model_version: 'v1',
   horizon_gws: futureEvents,
   gameweek: next.id,
   deadline: next.deadline_time,
