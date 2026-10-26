@@ -169,7 +169,7 @@
     <div class="plans" id="plansrow">
       <article class="plan"><span class="num">1</span><div class="tagrow"><span class="badge quiet">Waiting</span></div><h3>Load your squad</h3><p style="font-size:.88rem;color:var(--dim)">The plays are computed from your actual squad, bank and free transfers - nothing generic gets dressed up as advice.</p></article>
     </div>
-    <p class="caption">Captaincy is deliberately not modelled in v0 - pick on minutes security and fixture, not on these numbers. Chips show live state only; timing judgement is yours.</p>
+    <p class="caption">Captaincy is deliberately not modelled in v1 - pick on minutes security and fixture, not on these numbers. Chips show live state only; timing judgement is yours.</p>
   </section>
 
   <section id="horizon">
@@ -194,7 +194,7 @@
     <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
-<script src="./engine.js?v=2026-10-25.2"></script><!-- bump v= whenever engine.js changes, so returning visitors never run a stale engine -->
+<script src="./engine.js?v=2026-10-26.1"></script><!-- bump v= whenever engine.js changes, so returning visitors never run a stale engine -->
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -234,7 +234,7 @@
     $('stamp').className = 'stamp' + (stale ? ' stale' : '');
     $('stamp').innerHTML = '<div class="lab">' + (stale ? 'Stale - act with care' : 'As of') + '</div><div class="val">Player pool generated ' +
       new Date(p.generated_at).toLocaleString('en-SG', { timeZone:'Asia/Singapore', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }) +
-      ' SGT (' + Math.round(hrs) + 'h ago) &middot; model v0, validation in the method doc</div>';
+      ' SGT (' + Math.round(hrs) + 'h ago) &middot; model ' + (p.model_version || 'v0') + ', validation in the method doc</div>';
     if(state.id) $('loadbtn').textContent = 'Load my squad (ID saved on this device)';
   }).catch(function(){
     $('gwcell').innerHTML = 'Player pool unavailable<small>data/pool.json failed to load</small>';
@@ -268,9 +268,19 @@
     var entryP = relay(base);
     var histP = relay(base + 'history/');
     var picksP = relay(base + 'event/' + lastFinished + '/picks/');
-    Promise.all([entryP, histP, picksP]).then(function(rs){
-      var entry = rs[0], hist = rs[1], picks = rs[2];
+    var transfersP = relay(base + 'transfers/');
+    Promise.all([entryP, histP, picksP, transfersP]).then(function(rs){
+      var entry = rs[0], hist = rs[1], picks = rs[2], transfers = rs[3];
       state.entry = entry; state.chips = hist.chips || [];
+      var gw1v = {}, nowc = {};
+      Object.keys(pool.players).forEach(function(pid){
+        var pl2 = pool.players[pid];
+        nowc[pid] = Math.round(pl2.cost * 10);
+        if(typeof pl2.v1gw === 'number') gw1v[pid] = pl2.v1gw;
+      });
+      var sells = (typeof T12Engine !== 'undefined' && T12Engine.computeSells)
+        ? T12Engine.computeSells((picks.picks || []).map(function(pk){ return pk.element; }), transfers, gw1v, nowc, lastFinished)
+        : { byId: {}, unresolved: (picks.picks || []).length };
       if($('bank').value === '' && typeof entry.last_deadline_bank === 'number'){
         $('bank').value = (entry.last_deadline_bank/10).toFixed(1);
         state.bankConfirmed = false;
@@ -278,8 +288,12 @@
       }
       squad = (picks.picks || []).map(function(pk){
         var pl = pool.players[pk.element];
+        var cs = sells.byId[pk.element];
+        var selling = null, basis = 'cost';
+        if(pk.selling_price != null){ selling = pk.selling_price/10; basis = 'feed'; }
+        else if(cs && cs.sell != null){ selling = cs.sell/10; basis = cs.basis; }
         return { id: pk.element, slot: pk.position, captain: pk.is_captain, vice: pk.is_vice_captain,
-                 rated: !!(pl && pl.rated), p: pl || null, selling: (pk.selling_price != null ? pk.selling_price/10 : null) };
+                 rated: !!(pl && pl.rated), p: pl || null, selling: selling, sellBasis: basis };
       });
       renderChips(); renderSquad(entry, lastFinished); renderPlans();
       $('settingspanel').removeAttribute('open');
@@ -308,6 +322,7 @@
       var pos = s.p ? POSN[s.p.pos] : '?';
       var xp = s.rated ? s.p.xp.toFixed(2) : '-';
       var costCell = s.p ? '£' + s.p.cost.toFixed(1) : (s.selling != null ? '£' + s.selling.toFixed(1) : '-');
+      if(s.selling != null && s.sellBasis !== 'cost') costCell += '<br><small style="color:var(--dim)">sell £' + s.selling.toFixed(1) + ' (' + (s.sellBasis === 'feed' ? 'feed' : 'computed') + ')</small>';
       var tags = '';
       if(s.captain) tags += ' <span class="tag" style="border-color:var(--gold);color:var(--gold-ink)">C</span>';
       if(s.vice) tags += ' <span class="tag" style="border-color:var(--faint);color:var(--faint)">VC</span>';
@@ -353,10 +368,12 @@
       return best;
     }
     var swaps = [], benchSwaps = [];
-    var sellsUnknown = squad.filter(function(s){ return s.selling == null; }).length;
+    var sellsUnknown = squad.filter(function(s){ return s.selling == null || s.sellBasis === 'cost'; }).length;
+    var sellsHist = squad.filter(function(s){ return s.sellBasis === 'history' || s.sellBasis === 'feed'; }).length;
+    var sellsGw1 = squad.filter(function(s){ return s.sellBasis === 'gw1'; }).length;
     var budgetCaveat = sellsUnknown
-      ? '<div class="row"><dt>Budget estimated</dt><dd>Swaps are priced against current cost, not your actual sell values - the feed does not expose them, and current cost can overestimate what you get back. Provisional until you confirm real sell prices on the FPL transfers page.</dd></div>'
-      : '';
+      ? '<div class="row"><dt>Budget partially estimated</dt><dd>Sell values are computed from your public transfer history and FPL\'s half-profit rule, except ' + sellsUnknown + ' player(s) the history could not resolve - those are priced at current cost, which can overestimate what you get back. Confirm real sell prices on the FPL transfers page.</dd></div>'
+      : '<div class="row"><dt>Sell values computed</dt><dd>Priced from your public transfer history using FPL\'s half-profit rule (' + sellsHist + ' from transfers, ' + sellsGw1 + ' from GW1 prices), as of the last lock. Should match your FPL transfers page - confirm there before acting, because transfers made since the lock are invisible to the feed.</dd></div>';
     var canAfford = state.bankConfirmed === true && !isNaN(parseFloat(state.bank !== null && state.bank !== '' ? state.bank : $('bank').value));
     if(canAfford){
       var b = parseFloat(state.bank);
@@ -387,7 +404,7 @@
 
     var card1;
     if(!canAfford){ card1 = cardShell('1','Needs confirmed bank','Make a transfer','<div class="row"><dt>Next step</dt><dd>Confirm your bank above - affordability is not guessed.</dd></div>',''); }
-    else if(!bestSwap && !benchSwaps.length){ card1 = cardShell('1','Quiet week','Make a transfer','<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div><div class="row"><dt>The move</dt><dd>No rated player inside estimated budget out-projects your current options at the same position, within the 3-per-club cap.</dd></div>' + budgetCaveat,'<p>Search covered the whole rated pool at your positions, budget and club cap applied.</p>'); }
+    else if(!bestSwap && !benchSwaps.length){ card1 = cardShell('1','Quiet week','Make a transfer','<div class="row"><dt>Your state</dt><dd>' + ftTxt + '</dd></div><div class="row"><dt>The move</dt><dd>No rated player inside your computed budget out-projects your current options at the same position, within the 3-per-club cap.</dd></div>' + budgetCaveat,'<p>Search covered the whole rated pool at your positions, budget and club cap applied.</p>'); }
     else {
       var rowsHtml = top.map(function(t){
         return '<div class="row"><dt>' + POSN[t.inn.c.pos] + ' swap (XI)</dt><dd><b>' + t.out.p.name + '</b> &rarr; <b>' + t.inn.c.name + '</b> (' + t.inn.c.team + ', £' + t.inn.c.cost.toFixed(1) + ')<br>' +
@@ -414,7 +431,7 @@
                      '3xc':'Captain scores triple instead of double for one gameweek' };
     var chipRows = [['wildcard','Wildcard'],['freehit','Free hit'],['bboost','Bench boost'],['3xc','Triple captain']].map(function(c){
       if(used[c[0]]) return '<div class="row"><dt>' + c[1] + '</dt><dd>Spent GW' + used[c[0]] + '</dd></div>';
-      return '<div class="row"><dt>' + c[1] + ' - live</dt><dd>' + chipWhat[c[0]] + '. <i>When</i> to play it is unvalidated in v0 - the page shows the option, not the timing.</dd></div>';
+      return '<div class="row"><dt>' + c[1] + ' - live</dt><dd>' + chipWhat[c[0]] + '. <i>When</i> to play it is unvalidated in v1 - the page shows the option, not the timing.</dd></div>';
     }).join('');
     if(!used['wildcard']) chipRows += '<div class="row"><dt>Second wildcard</dt><dd>Unlocks after the GW19 deadline (official rules) - not playable now</dd></div>';
     var card3 = cardShell('3','State only','Chips', chipRows, '<p>Chip state comes from your public entry history. What the model does NOT do yet: chip timing, captaincy, hit justification. Those stay with you, visibly.</p>');
@@ -432,7 +449,7 @@
       return;
     }
     var picks = squad.map(function(x){ return { id: x.id, selling: x.selling }; });
-    var sellAssumed = squad.filter(function(x){ return x.selling == null; }).length;
+    var sellAssumed = squad.filter(function(x){ return x.selling == null || x.sellBasis === 'cost'; }).length;
     var res;
     try {
       res = T12Engine.compare(picks, pool.players, { gws: pool.horizon_gws, bank: bank, fts: ft, chips: state.chips });
@@ -454,8 +471,9 @@
         '<div class="row"><dt>Per GW</dt><dd>' + perGw + '</dd></div>' +
         st.notes.map(function(n){ return '<div class="row"><dt>Note</dt><dd>' + n + '</dd></div>'; }).join('') +
         st.unknowns.map(function(u){ return '<div class="row"><dt>Unknown</dt><dd>' + u + '</dd></div>'; }).join('') +
-        (sellAssumed ? '<div class="row"><dt>Budget not verified</dt><dd>Affordability here is estimated, not established: the feed does not expose your ' + sellAssumed + ' actual sell price(s), so every move is budgeted at current cost - and current cost can overestimate what you get back. Confirm real sell values on the FPL transfers page before acting on any move.</dd></div>' : '');
-      var provisional = sellAssumed && st.moves.length ? '<span class="badge quiet">Budget estimated</span>' : '';
+        (sellAssumed ? '<div class="row"><dt>Budget not fully verified</dt><dd>' + sellAssumed + ' player(s) could not be resolved from your public transfer history and are budgeted at current cost, which can overestimate what you get back. Confirm real sell values on the FPL transfers page before acting on any move.</dd></div>'
+          : '<div class="row"><dt>Sell values computed</dt><dd>Budgets use sell values computed from your public transfer history (FPL half-profit rule) as of the last lock - confirm on the FPL transfers page before acting, because transfers made since the lock are invisible to the feed.</dd></div>');
+      var provisional = st.moves.length ? (sellAssumed ? '<span class="badge quiet">Budget estimated</span>' : '<span class="badge quiet">Sells computed</span>') : '';
       return '<article class="plan"><span class="num">' + (i+1) + '</span><div class="tagrow"><span class="badge quiet">' + (st.hits ? 'Costs ' + (st.hits*4) + ' pts' : 'No certain cost') + '</span>' + provisional + '</div><h3>' + st.label + '</h3><dl>' + rows + '</dl></article>';
     }).join('');
     row.innerHTML = cards;

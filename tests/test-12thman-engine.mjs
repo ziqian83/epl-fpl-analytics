@@ -79,5 +79,28 @@ const picksNaN = squad.map((p) => ({ id: p.id, selling: NaN }));
 const singleNaN = E.compare(picksNaN, poolPlayers, { gws: GWS, bank: 0.5, fts: 1, chips: [] })[1];
 ok(!singleNaN.moves.some((m) => m.inn === 'P110'), 'NaN selling price cannot bypass budget (no P110)');
 
+
+// --- computeSells: grounded sell values from public transfer history ---
+// nowCost in tenths: P1 60, P2 50, P3 100, P4 45
+const nowc = { 1: 60, 2: 50, 3: 100, 4: 45, 5: 70 };
+const gw1v = { 1: 55, 2: 50, 4: 48 };
+const transfers = [
+  { element_in: 3, element_in_cost: 90, element_out: 9, event: 5 },   // P3 bought GW5 at 90
+  { element_in: 5, element_in_cost: 70, element_out: 3, event: 7 },   // P3 sold GW7 (inconsistent with squad)
+  { element_in: 99, element_in_cost: 50, element_out: 8, event: 12 }, // future event - ignored (lastGw 8)
+];
+const res = E.computeSells([1, 2, 3, 4], transfers, gw1v, nowc, 8);
+ok(res.byId[1].sell === 57 && res.byId[1].basis === 'gw1', 'GW1 player: purchase 55, profit 5, sell 55+floor(5/2)=57 (got ' + res.byId[1].sell + ')');
+ok(res.byId[2].sell === 50 && res.byId[2].basis === 'gw1', 'no profit: sell = now 50');
+ok(res.byId[3].basis === 'cost', 'sold after latest buy yet still in squad = inconsistent, unresolved cost fallback');
+ok(res.byId[4].sell === 45 && res.byId[4].basis === 'gw1', 'price drop: sell = now 45 (full loss), not purchase 48 (got ' + res.byId[4].sell + ')');
+ok(res.unresolved === 1, 'exactly one unresolved (got ' + res.unresolved + ')');
+const res2 = E.computeSells([3], transfers, gw1v, nowc, 6);
+ok(res2.byId[3].sell === 95 && res2.byId[3].basis === 'history', 'history basis at GW6: purchase 90, profit 10, sell 95 (got ' + res2.byId[3].sell + ')');
+const res3 = E.computeSells([99], transfers, gw1v, nowc, 8);
+ok(res3.byId[99].basis === 'cost' && res3.byId[99].sell === null, 'post-lock transfer ignored, no now-cost known -> unresolved null sell');
+const res4 = E.computeSells([1, 2], [], gw1v, nowc, 8);
+ok(res4.unresolved === 0 && res4.byId[1].basis === 'gw1', 'empty transfer history: initial squad priced from GW1 values');
+
 console.log(failures ? failures + ' FAILURES' : 'ALL PASS');
 process.exit(failures ? 1 : 0);

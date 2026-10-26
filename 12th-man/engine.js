@@ -1,4 +1,4 @@
-/* The 12th Man - horizon strategy engine (fresh build, 25 Oct 2026).
+/* The 12th Man - horizon strategy engine (fresh build, 25 Oct 2026; v1 sells 26 Oct 2026).
    Compares genuinely different transfer postures across the fixture horizon.
    Pure functions over pool.json + the user's squad; no DOM, no fetches, so the
    same file runs in the browser (window.T12Engine) and under node (tests).
@@ -237,6 +237,51 @@
       unknowns: ['A real wildcard is irreversible and reprices nightly - this is a sketch, not a squad to copy'] };
   }
 
+  /* Grounded sell values from the public transfer history + official sell rule.
+     pickIds: current squad element ids. transfers: entry/{id}/transfers/ rows.
+     gw1Value/nowCost: {elementId: tenths}. lastGw: last FINISHED gameweek -
+     transfers for later events are ignored (feed cannot see past the lock).
+     Rule (official): profit = now - purchase; sell = purchase + floor(profit/2)
+     when now > purchase, else sell = now. Purchase comes from the latest
+     in-transfer at or before lastGw; players never transferred in use the GW1
+     price (initial-squad assumption, labeled in the UI). When history is
+     inconsistent (sold after the latest buy yet still in the squad) or missing,
+     the player is unresolved and priced at current cost with basis 'cost'.
+     Returns { byId: {id: {sell (tenths int|null), basis}}, unresolved }. */
+  function computeSells(pickIds, transfers, gw1Value, nowCost, lastGw) {
+    var inAt = {}, outAt = {};
+    (transfers || []).forEach(function (t) {
+      if (!t || typeof t.event !== 'number' || t.event > lastGw) return;
+      if (typeof t.element_in === 'number' && typeof t.element_in_cost === 'number') {
+        if (inAt[t.element_in] === undefined || t.event >= inAt[t.element_in].event)
+          inAt[t.element_in] = { event: t.event, cost: t.element_in_cost };
+      }
+      if (typeof t.element_out === 'number') {
+        if (outAt[t.element_out] === undefined || t.event > outAt[t.element_out])
+          outAt[t.element_out] = t.event;
+      }
+    });
+    var byId = {}, unresolved = 0;
+    pickIds.forEach(function (id) {
+      var now = nowCost[id];
+      var hasNow = typeof now === 'number' && Number.isFinite(now);
+      var purchase = null, basis = 'cost';
+      if (inAt[id] !== undefined && !(outAt[id] !== undefined && outAt[id] > inAt[id].event)) {
+        purchase = inAt[id].cost; basis = 'history';
+      } else if (inAt[id] === undefined && gw1Value && typeof gw1Value[id] === 'number') {
+        purchase = gw1Value[id]; basis = 'gw1';
+      }
+      if (purchase === null || !hasNow) {
+        unresolved++;
+        byId[id] = { sell: hasNow ? now : null, basis: 'cost' };
+        return;
+      }
+      var profit = now - purchase;
+      byId[id] = { sell: profit > 0 ? purchase + Math.floor(profit / 2) : now, basis: basis };
+    });
+    return { byId: byId, unresolved: unresolved };
+  }
+
   function compare(squadPicks, poolPlayers, opts) {
     var gws = opts.gws;
     var squad = toEngine(squadPicks, poolPlayers);
@@ -249,5 +294,6 @@
   }
 
   return { compare: compare, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
-           candidates: candidates, toEngine: toEngine, _internals: { xpOf: xpOf, bestSwap: bestSwap, FORMATIONS: FORMATIONS } };
+           candidates: candidates, toEngine: toEngine, computeSells: computeSells,
+           _internals: { xpOf: xpOf, bestSwap: bestSwap, FORMATIONS: FORMATIONS } };
 });
