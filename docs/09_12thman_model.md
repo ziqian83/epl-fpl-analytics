@@ -92,8 +92,10 @@ ties skipped, actual-points ties count wrong.
 
 | Held-out season | Model | MAE | Naive MAE | Corr | Pair accuracy | Pairs |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2024-25 | naive persistence | 2.430 | - | - | 0.486 | 11,755 |
 | 2024-25 | v0 refit | 2.238 | 2.430 | 0.260 | 0.495 | 12,344 |
 | 2024-25 | v1 | 2.242 | 2.430 | 0.262 | 0.501 | 12,351 |
+| 2025-26 | naive persistence | 2.601 | - | - | 0.490 | 11,795 |
 | 2025-26 | v0 refit | 2.304 | 2.601 | 0.191 | 0.498 | 12,367 |
 | 2025-26 | v1 | 2.299 | 2.601 | 0.212 | 0.503 | 12,376 |
 
