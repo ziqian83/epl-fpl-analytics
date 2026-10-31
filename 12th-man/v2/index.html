@@ -440,15 +440,29 @@
     var chipState = data ? data.chipState : T12V2.chipState(pool.chips, state.chips, pool.gameweek);
     var verdicts = data ? data.verdicts : null;
     var wcPlan = data ? data.wcPlan : null;
+    var usedEvent = function(nm){ var ev = null; (state.chips || []).forEach(function(u){ if(u.name === nm) ev = Math.max(ev || 0, u.event || 0); }); return ev; };
+    var gwBars = function(rows, highlightGw){
+      if(!rows || !rows.length) return '';
+      var max = Math.max.apply(null, rows.map(function(r){ return r.xp; }).concat([1]));
+      return '<div class="gwline">' + rows.map(function(r){
+        var hot = r.gw === highlightGw ? ' style="border-color:var(--gold-ink)"' : '';
+        return '<div class="gwcell"' + hot + '><div class="g">GW' + r.gw + '</div><div class="p">' + r.xp.toFixed(1) + '</div><div class="m">' + (r.gw === highlightGw ? 'this week' : '') + '</div></div>';
+      }).join('') + '</div>';
+    };
     $('chipgrid').innerHTML = chipState.map(function(c){
       var v = verdicts ? verdicts[c.name] : null;
       var head = '<h3>' + c.label + '</h3>';
-      var windowLine = c.state === 'live' ? '<div class="window">Live now - first-half copy expires after GW' + c.expires + '</div>'
+      var windowLine = c.state === 'live' ? '<div class="window">Live now - this copy expires after GW' + c.expires + '</div>'
         : c.state === 'future' ? '<div class="window">Next copy unlocks GW' + c.unlocks + '</div>'
+        : c.state === 'locked' ? '<div class="window">Locked this week - unlocks GW' + c.unlocks + '</div>'
         : '<div class="window">Spent</div>';
       var body;
       if(c.state === 'spent') body = '<p class="vwhy">Both copies used this season.</p>';
-      else if(c.state === 'future') body = '<p class="vwhy">' + (c.name === 'wildcard' ? 'First-half wildcard spent GW7. The second-half copy unlocks after the GW19 deadline.' : 'Not playable yet.') + '</p>';
+      else if(c.state === 'locked') body = '<p class="vwhy">' + (c.note || 'Not playable this week.') + '</p>';
+      else if(c.state === 'future'){
+        var ue = usedEvent(c.name);
+        body = '<p class="vwhy">' + (ue ? 'First-half copy spent GW' + ue + '. The second-half copy unlocks after the GW19 deadline.' : 'Not playable yet.') + '</p>';
+      }
       else if(!v || !v.why) body = '<p class="vwhy">Confirm bank and free transfers for this week\'s read.</p>';
       else body = '<p class="vwhy">' + v.why + '</p>';
       if(c.name === 'wildcard' && c.state === 'live' && wcPlan && wcPlan.available){
@@ -456,10 +470,13 @@
           ? 'A full restructure projects +' + wcPlan.gainHorizon.toFixed(2) + ' horizon xP over holding - worth modelling seriously.'
           : 'A full restructure projects +' + wcPlan.gainHorizon.toFixed(2) + ' horizon xP over holding - under the bar for spending an irreversible chip.') + '</p>';
       }
+      // Evidence bars: the horizon check behind the verdict, shown not asserted.
+      if(c.name === 'bboost' && v && v.benchByGw) body += '<div class="window" style="margin-top:.6em">Bench xP by week</div>' + gwBars(v.benchByGw, pool.gameweek);
+      if(c.name === '3xc' && v && v.capByGw) body += '<div class="window" style="margin-top:.6em">Best-starter xP by week</div>' + gwBars(v.capByGw, pool.gameweek);
       var badge = c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Candidate week</span>'
         : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Borderline</span>'
         : c.state === 'live' ? '<span class="badge quiet">Hold</span>'
-        : '<span class="badge quiet">' + (c.state === 'spent' ? 'Spent' : 'Locked') + '</span>';
+        : '<span class="badge quiet">' + (c.state === 'spent' ? 'Spent' : (c.state === 'locked' ? 'Locked' : 'Future')) + '</span>';
       return '<div class="chip' + (c.state !== 'live' ? ' spentchip' : '') + '">' + head.replace('</h3>', badge + '</h3>') + windowLine + body + '</div>';
     }).join('');
   }
