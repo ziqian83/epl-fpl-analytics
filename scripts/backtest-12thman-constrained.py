@@ -40,7 +40,9 @@ FORMATIONS = [(3, 4, 3), (3, 5, 2), (4, 4, 2), (4, 3, 3), (4, 5, 1), (5, 3, 2), 
 FT_CAP = 5
 BUDGET = 1000  # tenths of GBPm
 
-def best_xi_points(rows):
+def best_xi_points(rows, cap_pts=None):
+    """Max realized XI points from squad rows (position, points). Captain (as-of chosen)
+    doubles: pass his realized points as cap_pts and the best XI including him adds them once more."""
     by = {p: sorted((a for pos, a in rows if pos == p), reverse=True) for p in QUOTA}
     if not by['GKP']: return 0.0
     best = by['GKP'][0]
@@ -48,7 +50,7 @@ def best_xi_points(rows):
     for d, m, f in FORMATIONS:
         if len(by['DEF']) >= d and len(by['MID']) >= m and len(by['FWD']) >= f:
             top = max(top, sum(by['DEF'][:d]) + sum(by['MID'][:m]) + sum(by['FWD'][:f]))
-    return best + top
+    return best + top + (cap_pts or 0.0)
 
 def load_prices():
     """{(season, gw, player_id): value} from the pinned cache snapshots. DGW rows deduped."""
@@ -61,11 +63,16 @@ def load_prices():
                 out[key] = int(row['value'])  # later DGW row overwrites; same value
     return out
 
-def build_squad(first, initkey):
-    """Reserve-aware greedy: rank by `initkey` desc, add a player only if the remaining
+def build_squad(first, initkey, strategy='signal'):
+    """Reserve-aware greedy: rank by the strategy's key, add a player only if the remaining
     budget can still cover the cheapest available player for every unfilled slot.
     Guarantees a full 15 under the budget whenever the pool allows it."""
-    order = first[first.value.notna()].sort_values(initkey, ascending=False)
+    pool = first[first.value.notna()].copy()
+    if strategy == 'signal_per_price':
+        pool['_k'] = pool[initkey] / pool.value
+    else:
+        pool['_k'] = pool[initkey]
+    order = pool.sort_values('_k', ascending=False)
     cheapest = {p: order[order.position == p].value.min() for p in QUOTA}
     squad, club, spent = {}, {}, 0
     for pid, r in order.iterrows():
@@ -84,7 +91,7 @@ def build_squad(first, initkey):
         if len(squad) == 15: break
     return squad, club, spent
 
-def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
+def simulate(te, prices, margin, key='pred', seed=None, always_one=False, gate=0.0, start='signal'):
     """Constrained weekly simulation. Returns (total, transfers, hits, end_value)."""
     rng = np.random.default_rng(seed if seed is not None else 11)
     gws = sorted(te.k.unique())
@@ -99,11 +106,12 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
         return v
     # --- starting squad: reserve-aware greedy under budget, quotas, club cap 3
     first = byk[gws[0]]
-    initkey = 'pred' if key in ('pred', 'random') else key
-    squad, club, spent = build_squad(first, initkey)
+    initkey = 'f_pts4' if start == 'form' else ('pred' if key in ('pred', 'random') else key)
+    squad, club, spent = build_squad(first, initkey, strategy=start)
     if len(squad) < 15:
         return None  # cannot field a squad - season data problem
     bank = BUDGET - spent
+    max_fts_seen = 0
     total, transfers, hits, fts = 0.0, 0, 0, 0
     for i, k in enumerate(gws):
         cur = byk[k]
@@ -111,9 +119,17 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
         # keeps an injured/benched player; he does not vanish). Excluding them collapses
         # the formation picker and under-credits hold.
         rows = [(squad[pid]['pos'], float(cur.loc[pid].target_pts) if pid in cur.index else 0.0) for pid in squad]
-        total += best_xi_points(rows)
+        # captain: highest as-of signal in the squad this GW (policy's own key); realized points double.
+        cappid, capsig = None, None
+        for pid in squad:
+            if pid in cur.index:
+                sg = float(cur.loc[pid][key]) if key in cur.columns else 0.0
+                if capsig is None or sg > capsig: cappid, capsig = pid, sg
+        cap_pts = float(cur.loc[cappid].target_pts) if cappid is not None else 0.0
+        total += best_xi_points(rows, cap_pts=cap_pts)
         if i + 1 >= len(gws): break
         fts = min(FT_CAP, fts + 1)
+        max_fts_seen = max(max_fts_seen, fts)
         nk = gws[i + 1]
         nxt = byk[nk]
         while True:
@@ -131,6 +147,7 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
                     pb = row_b.value
                     if not np.isfinite(pb): continue
                     if int(pb) > sell_w + bank: continue
+                    if gate and row_b.f_minshare4 < gate: continue  # consistency gate: cameo form is not evidence
                     if club.get(row_b.team, 0) - (1 if row_b.team == row_w.team else 0) >= 3: continue
                     if key == 'random':
                         cands.append((0.0, pid_w, pid_b, sell_w, int(pb), row_w.team, row_b.team))
@@ -144,9 +161,11 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
                 gain, pid_w, pid_b, sell_w, cost_b, t_w, t_b = best
                 fts -= 1
                 bank += sell_w - cost_b
+                assert bank >= 0, 'bank went negative'
                 club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
                 squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
                 del squad[pid_w]
+                assert len(squad) == 15
                 transfers += 1
                 break  # random takes one swap per week
             if best is None: break
@@ -158,58 +177,110 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False):
             else:
                 break
             bank += sell_w - cost_b
+            assert bank >= 0, 'bank went negative'
             club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
             squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
             del squad[pid_w]
+            assert len(squad) == 15
             transfers += 1
             if always_one: break
     lastk = gws[-1]
     end_value = bank + sum((lambda pw, w: (w['buy'] + max(0, (pw - w['buy']) // 2) if pw and pw >= w['buy'] else (pw or w['buy'])))(price(lastk, pid), w) for pid, w in squad.items())
     return total, transfers, hits, end_value
 
-def simulate_hold(te, prices):
+def simulate_hold(te, prices, start='signal'):
     gws = sorted(te.k.unique())
     byk = {k: g.set_index('player_id') for k, g in te.groupby('k')}
     first = byk[gws[0]]
-    squad_d, club, spent = build_squad(first, 'pred')
+    squad_d, club, spent = build_squad(first, 'f_pts4' if start == 'form' else 'pred', strategy=start)
     squad = {pid: v['pos'] for pid, v in squad_d.items()}
     total = 0.0
     for k in gws:
         cur = byk[k]
         rows = [(squad[pid], float(cur.loc[pid].target_pts) if pid in cur.index else 0.0) for pid in squad]
-        total += best_xi_points(rows)
+        cappid, capsig = None, None
+        for pid in squad:
+            if pid in cur.index:
+                sg = float(cur.loc[pid].pred)
+                if capsig is None or sg > capsig: cappid, capsig = pid, sg
+        cap_pts = float(cur.loc[cappid].target_pts) if cappid is not None else 0.0
+        total += best_xi_points(rows, cap_pts=cap_pts)
     return total
+
+def fit_and_prep(df, trainseasons, testseason, prices):
+    tr = df[df.season.isin(trainseasons)]
+    te = df[df.season == testseason].copy()
+    coef, *_ = np.linalg.lstsq(design(tr), tr.target_pts.values, rcond=None)
+    te['pred'] = design(te) @ coef
+    te['value'] = [prices.get((s, k, p)) for s, k, p in zip(te.season, te.k, te.player_id)]
+    return te
+
+def score(r, hold):
+    if r is None: return None
+    tot, ntr, nh, tv = r
+    return tot - 4 * nh, tot - 4 * nh - hold, ntr, nh
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--db', default='/tmp/epl12_fit.duckdb')
+    ap.add_argument('--stage', default='all')
     args = ap.parse_args()
     con = duckdb.connect(args.db, read_only=True)
     df = con.execute(PANEL_SQL).fetchdf()
     con.close()
     prices = load_prices()
+
+    # ---- reproducibility block
+    import hashlib, sys, duckdb as _d
+    h = hashlib.sha256(df.to_csv(index=False).encode()).hexdigest()[:16]
+    print(f'repro: panel sha256[:16]={h} rows={len(df)} | python {sys.version.split()[0]} numpy {np.__version__} duckdb {_d.__version__} | seeds: random policy 0-4 | FT_CAP={FT_CAP} (5 from 2024-25, premierleague.com 2024/25 rules)')
+
+    # ---- STAGE 1 (train-only spec design): fit 2021-22+2022-23, validate on 2023-24.
+    # The gate/margin/policy spec chosen HERE is the only thing later evaluated on the
+    # 2024-25 and 2025-26 holdouts. Nothing from the holdouts influences the choice.
+    if args.stage == '2':
+        bp, bg, bm = 'model', 0.8, 1.0  # stage-1 selection (train-only): model gate>=0.8 margin>1.0
+    if args.stage == '2':
+        print(f'=== STAGE 1 skipped (--stage 2); using train-only selection: model gate>=0.8 margin>1.0')
+        inner = None
+    else:
+        inner = fit_and_prep(df, SEASONS[:2], '2023-24', prices)
+    hold_in = simulate_hold(inner, prices) if inner is not None else float('nan')
+    print(f'=== STAGE 1 inner validation on 2023-24 (hold={hold_in:.1f}) - spec selection uses ONLY this')
+    if args.stage != '2':
+        grid = []
+        for policy, kk in [('model', 'pred'), ('persistence', 'f_pts4')]:
+            for gate in [0.0, 0.5, 0.6, 0.7, 0.8]:
+                for margin in [0.0, 1.0]:
+                    r = simulate(inner, prices, margin, key=kk, gate=gate)
+                    sc = score(r, hold_in)
+                    grid.append((sc[1], policy, gate, margin, sc))
+                    print(f'  {policy} gate>={gate} margin>{margin}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
+        grid.sort(reverse=True)
+        _, bp, bg, bm, _ = grid[0]
+        print(f'  SELECTED SPEC (train-only): {bp} gate>={bg} margin>{bm}')
+
+    # ---- STAGE 2: true holdouts. Baselines + the single selected spec.
+    if args.stage == '1': return
     for testseason, trainseasons in [('2024-25', SEASONS[:3]), ('2025-26', SEASONS[:4])]:
-        tr = df[df.season.isin(trainseasons)]; te = df[df.season == testseason].copy()
-        coef, *_ = np.linalg.lstsq(design(tr), tr.target_pts.values, rcond=None)
-        te['pred'] = design(te) @ coef
-        te['value'] = [prices.get((s, k, p)) for s, k, p in zip(te.season, te.k, te.player_id)]
-        miss = te.value.isna().mean()
-        print(f'=== {testseason} (price coverage {1 - miss:.1%})')
+        te = fit_and_prep(df, trainseasons, testseason, prices)
         hold = simulate_hold(te, prices)
-        print(f'  hold (constrained start, never transfer): {hold:.1f}')
+        print(f'=== STAGE 2 holdout {testseason} (hold={hold:.1f})')
         for m in [0.0, 1.0, 2.0]:
-            r = simulate(te, prices, m)
-            if r:
-                tot, ntr, nh, tv = r
-                print(f'  model margin>{m}: {tot:.1f} raw, {tot - 4 * nh:.1f} after -4 hits | vs hold {tot - 4 * nh - hold:+.1f} | {ntr} transfers, {nh} hits, end squad value GBP{tv / 10:.1f}m')
-        r = simulate(te, prices, 0.0, key='f_pts4')
-        if r:
-            tot, ntr, nh, tv = r
-            print(f'  persistence heuristic (no model): {tot - 4 * nh:.1f} | vs hold {tot - 4 * nh - hold:+.1f} | {ntr} transfers, {nh} hits')
-        rnd = [simulate(te, prices, 0.0, key='random', seed=s) for s in range(5)]
-        rnd = [x for x in rnd if x]
-        mt = np.mean([x[0] - 4 * x[2] for x in rnd]); mn = np.mean([x[1] for x in rnd])
-        print(f'  random legal swaps (5 seeds): {mt:.1f} | vs hold {mt - hold:+.1f} | {mn:.0f} transfers')
+            sc = score(simulate(te, prices, m), hold)
+            print(f'  raw model margin>{m}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
+        sc = score(simulate(te, prices, 0.0, key='f_pts4'), hold)
+        print(f'  raw persistence: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
+        rnd = [simulate(te, prices, 0.0, key='random', seed=sd) for sd in range(5)]
+        mt = np.mean([x[0] - 4 * x[2] for x in rnd if x])
+        print(f'  random (5 seeds): vs hold {mt - hold:+.1f}')
+        sc = score(simulate(te, prices, bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg), hold)
+        print(f'  SELECTED {bp} gate>={bg} margin>{bm}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
+        # starting-squad sensitivity: hold + selected spec across 3 builders
+        for st in ['signal', 'signal_per_price', 'form']:
+            h2 = simulate_hold(te, prices, start=st)
+            sc2 = score(simulate(te, prices, bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg, start=st), h2)
+            print(f'  start={st}: hold={h2:.1f} selected {sc2[1]:+.1f}')
 
 if __name__ == '__main__':
     main()
