@@ -187,6 +187,6 @@ his risk choice is situational (his 09:19 ruling).
 3. Ranking quality for gated-out players: best supported ordering is a trivial band mean (Spearman ~0.18 on played rows); cold starts carry no orderable signal. No estimator merge is justified on current evidence (frozen-spec result, docs/14).
 4. Chip timing heuristics: 12/9/7 xP bars and the +2 FH uplift bar are judgement lines, not calibrated thresholds; greedy free-hit squad is not a proven optimum; BB read withheld under missing bench coverage.
 5. Decision inputs FT/bank are user-entered and currently UNCONFIRMED by the user (page says "confirmed on this page" - literally true, but the confirmer has so far been the operator, not the user).
-6. Horizon effect of missing projections is shown as explicit scenario dependence (docs/14), not measured as expectation; six-week implications of an injury like João Pedro's remain a fitness question.
+6. Horizon effect of missing projections is shown as explicit scenario dependence (docs/14), not measured as expectation; for an injury like João Pedro's, both playing time and points conditional on return remain uncertain, and the current model answers neither.
 7. ep_next / chance_next are unvalidated external baselines; prospective calibration accumulates via committed pool.json snapshots but no validation exists yet.
 8. Verdict classes are judgement lines over a weak projection; the page's experimental labelling communicates status, it does not improve the underlying signal.
