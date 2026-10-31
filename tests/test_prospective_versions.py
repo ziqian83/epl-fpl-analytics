@@ -56,7 +56,7 @@ check('both specs carry the decision-freeze protocol', 'decision_freeze' in spec
 check('csv_sha256 fill-at-freeze slot', 'csv_sha256' in specj['panel'])
 check('source gaps recorded', len(specj.get('source_gaps', [])) >= 2)
 check('intended start recorded', 'intended_start' in specj)
-check('v1 spec untouched by v2 wiring', json.load(open(os.path.join(ROOT, '12th-man', 'v2', 'data', 'frozen', 'prospective-2026-27-spec.json')))['code']['fit_panel_source_blob_sha1'] == '35034548ded19e56d8b83460f409fd994e267b02')
+check('v1 spec keeps its original fit-panel pin', json.load(open(os.path.join(ROOT, '12th-man', 'v2', 'data', 'frozen', 'prospective-2026-27-spec.json')))['code']['fit_panel_source_blob_sha1'] == '35034548ded19e56d8b83460f409fd994e267b02')
 
 # 5. functional build_db on a synthetic cache
 SEASONS = ['2021-22', '2022-23', '2023-24', '2024-25', '2025-26', '2026-27']
