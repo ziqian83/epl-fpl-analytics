@@ -118,3 +118,47 @@ so this is a sanity read on the corrected units, not evidence of improvement.
 - Note on scope: contiguous 2026-27 history (all 669 players, 0-minute rounds
   included) is NOT evidence of scheduled-blank semantics - no blank has
   occurred yet; the synthetic tests establish intended behavior only.
+
+## Forward decision freeze (31 Oct 2026, third pass) - the prospective boundary
+
+The replay runner alone was NOT prospective: panel rows for GW K materialize only
+after GW K's data lands, and replay reconstructs choices after outcomes exist.
+Correction (pre-data-freeze, no frozen output existed yet):
+
+- `freeze --gw K` (new runner command) runs BEFORE GW K's deadline and persists
+  the actual decisions (starting squad at start_gw, transfers with the prices
+  used, XI, bench order, captain/vice) per policy per version into
+  12th-man/v2/data/frozen/decisions/gw<K>-<version>.json: frozen_at, input
+  hashes (csv_sha256 + pull time, schedule row count, bootstrap now_cost
+  sha256 + pull time), code blob pins, and a content_sha256 self-hash verified
+  on every load. Files are never overwritten (freeze refuses); scoring refuses
+  to re-score a GW.
+- Decision inputs are strictly pre-outcome: played rows gw < K (decision SQL
+  binds gw < K in every feature CTE), the fixture SCHEDULE at K (epl_schedule,
+  known pre-deadline), bootstrap now_cost at frozen_at, and prior frozen
+  decision files. No GW-K outcome rows are required or used; no future actuals
+  are fabricated anywhere (anchor rows carry target_pts = NULL).
+- decision_sql_for(version, K) reproduces the frozen panel's feature semantics
+  on schedule-anchored rows. Equivalence on completed GWs (membership +
+  f_pts4/f_xgi4/f_minshare4/opp_strength_k [+ v2 diagnostics], K=5..8, both
+  versions) is enforced by tests/test_prospective_decisions.py. Structural
+  lesson recorded: window features must be computed BEFORE the k=K-only
+  schedule join (the first draft joined first and silently emptied the windows).
+- Transfer decisions use bt.transfer_week, extracted verbatim from simulate()
+  so replay and freeze share ONE code path; the extraction was verified
+  behavior-preserving by byte-identical replay output vs the pre-refactor
+  script (both holdout seasons, all policies incl. random seeds).
+- Prices at decision time: bootstrap now_cost at frozen_at (recorded,
+  hash-pinned) - the documented deadline-price approximation; CSV history is
+  the fallback for players missing from bootstrap.
+- `score-gw --gw K` applies official actuals to the frozen decisions only
+  (full-data scorer, auto-subs, vice-captain) once the GW is complete in
+  provenance (all fixtures finished); writes the version-labelled results file.
+- `run` is renamed `replay` and relabeled DIAGNOSTIC: outputs move to
+  prospective-2026-27-replay*.json; the prospective record
+  (prospective-2026-27-results*.json) is written by score-gw only.
+- Remaining approximation boundary: GW K decisions freeze at freeze-run time,
+  not at the exact deadline; between the two, late team news/price moves are
+  not incorporated (recorded frozen_at vs deadline per file). The Nov 4 wake
+  freezes GW10; the per-GW scoring wake chain freezes K+1 ahead of its own
+  deadline each week.
