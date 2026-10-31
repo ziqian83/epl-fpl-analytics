@@ -1,0 +1,227 @@
+{
+  "kind": "engine diagnostic snapshot: predictions frozen before the GW deadline. NOT the user's confirmed plan â the user owns every decision. Squad and bank/FT inputs are derived from the last locked gameweek and are UNCONFIRMED BY THE USER.",
+  "frozen_at": "2026-10-31T07:16:02.736Z",
+  "gameweek": 9,
+  "deadline_utc": "2026-10-31T11:00:00Z",
+  "pool_sha256_16": "a2f3df7d894050e2",
+  "engine_sha256_16": "5101342b276e6f77",
+  "model": "docs/09 v1 coefficients (unchanged). xpgw holds trailing features constant across the horizon; doubles count as two matches; blanks are 0. Evidence fields (recent, form, consistency inputs) are raw official data, not projections.",
+  "horizon": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "inputs": {
+    "squad_asof": "locked GW8 (the upcoming GW's picks are not visible before the deadline)",
+    "ft_derived": 3,
+    "bank_at_lock": 2.5,
+    "confirmed_by_user": false,
+    "note": "bank/FT are test inputs derived from locked-GW history; the user has not confirmed his current bank, free transfers, or lineup. Any engine interactions during testing do not establish his live state.",
+    "chips_used": [
+      {
+        "name": "wildcard",
+        "event": 7
+      }
+    ]
+  },
+  "squad": [
+    {
+      "name": "Verbruggen",
+      "slot": 1,
+      "captain": false
+    },
+    {
+      "name": "Calafiori",
+      "slot": 2,
+      "captain": false
+    },
+    {
+      "name": "Dasilva",
+      "slot": 3,
+      "captain": false
+    },
+    {
+      "name": "De Cuyper",
+      "slot": 4,
+      "captain": false
+    },
+    {
+      "name": "Rogers",
+      "slot": 5,
+      "captain": false
+    },
+    {
+      "name": "Rice",
+      "slot": 6,
+      "captain": false
+    },
+    {
+      "name": "GroÃ",
+      "slot": 7,
+      "captain": false
+    },
+    {
+      "name": "Cherki",
+      "slot": 8,
+      "captain": false
+    },
+    {
+      "name": "Belloumi",
+      "slot": 9,
+      "captain": false
+    },
+    {
+      "name": "Evanilson",
+      "slot": 10,
+      "captain": false
+    },
+    {
+      "name": "Haaland",
+      "slot": 11,
+      "captain": true
+    },
+    {
+      "name": "Kinsky",
+      "slot": 12,
+      "captain": false
+    },
+    {
+      "name": "JoÃ£o Pedro",
+      "slot": 13,
+      "captain": false
+    },
+    {
+      "name": "Justin",
+      "slot": 14,
+      "captain": false
+    },
+    {
+      "name": "GuÃ©hi",
+      "slot": 15,
+      "captain": false
+    }
+  ],
+  "calls": {
+    "verdict": {
+      "cls": "surgery",
+      "label": "Structural issues worth modelling",
+      "why": "Best single fix projects +2.43 xP this week and 1 starter is flagged (news or blank).",
+      "xiXp": 45.56,
+      "bestFix": {
+        "out": "Cherki",
+        "inn": "Tavernier",
+        "price": -1.4,
+        "gain": 2.43
+      },
+      "flagged": [
+        "Rice"
+      ]
+    },
+    "chips": {
+      "wildcard": {
+        "state": "future",
+        "unlocks": 20
+      },
+      "freehit": {
+        "state": "live",
+        "expires": 19,
+        "blanks": 0,
+        "newsOut": 1,
+        "uplift": 7.43,
+        "fhXiXp": 52.99,
+        "verdict": "candidate",
+        "why": "Playing it this week projects +7.4 xP over your current XI (greedy best-affordable-squad estimate on weak xP, not a proven optimum). The certain cost is the copy itself: expires after GW19, next copy unlocks GW20. Whether +7.4 now beats saving it for a worse week is your call. The 2 xP bar is a judgement line, not calibrated."
+      },
+      "bboost": {
+        "state": "live",
+        "expires": 19,
+        "benchXp": 8.67,
+        "benchByGw": [
+          {
+            "gw": 9,
+            "xp": 8.67
+          },
+          {
+            "gw": 10,
+            "xp": 8.7
+          },
+          {
+            "gw": 11,
+            "xp": 8.87
+          },
+          {
+            "gw": 12,
+            "xp": 8.65
+          },
+          {
+            "gw": 13,
+            "xp": 8.67
+          },
+          {
+            "gw": 14,
+            "xp": 8.8
+          }
+        ],
+        "verdict": "hold",
+        "why": "Bench projects only 8.7 xP this week - weak week for it. Expires after GW19."
+      },
+      "3xc": {
+        "state": "live",
+        "expires": 19,
+        "capXp": 5.44,
+        "capByGw": [
+          {
+            "gw": 9,
+            "xp": 5.44
+          },
+          {
+            "gw": 10,
+            "xp": 5.34
+          },
+          {
+            "gw": 11,
+            "xp": 5.59
+          },
+          {
+            "gw": 12,
+            "xp": 5.16
+          },
+          {
+            "gw": 13,
+            "xp": 5.65
+          },
+          {
+            "gw": 14,
+            "xp": 5.52
+          }
+        ],
+        "verdict": "hold",
+        "why": "Best starter projects 5.4 xP - no standout week. A double gameweek is the classic spot; none is flagged in this horizon. Expires after GW19."
+      }
+    },
+    "lean": "aggr",
+    "leanWhy": "More moves, hits if needed leads the horizon by +43.40 xP net of certain costs. Weak signal: this orders the options, it does not make the call. This plan re-optimises every future week on today's frozen data, so its edge compounds model error - it is the least certain number on the page, and most of its moves are future weeks you will re-decide with better information.",
+    "plans": [
+      {
+        "key": "hold",
+        "cost": "Foregoes any fix this week. The cost is the best fix you did not make - shown on the other cards."
+      },
+      {
+        "key": "single",
+        "cost": "Spends 1 free transfer. Tavernier sells back at purchase price if it goes wrong (no half-profit yet)."
+      },
+      {
+        "key": "aggr",
+        "cost": "-4 certain points in hits."
+      },
+      {
+        "key": "wildcard"
+      }
+    ]
+  },
+  "fh_baseline": "free-hit uplift is measured against the engine's best feasible XI under formation, bench budget and club-cap constraints (45.56 xP), NOT against the user's picked XI, which is unknowable before the deadline.",
+  "scoring_rule": "After GW9 completes: fetch actual points per player from the official API. Score the PRE-FROZEN choices only â no hindsight re-selection of the XI or of transfer targets: (a) bestFix realized edge (Tavernier actual - Cherki actual), (b) frozen XI xP 45.6 vs the realized total of the frozen best XI, (c) FH uplift claim (frozen fhXiXp vs the frozen best-affordable-XI's actual points), (d) every chip verdict against realized outcomes. The hindsight oracle best-XI is reported separately as a diagnostic only, never as the benchmark the frozen calls are judged against. Publish the comparison alongside this file."
+}
