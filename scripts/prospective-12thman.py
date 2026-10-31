@@ -21,10 +21,18 @@ auto-subs and vice-captain on realized minutes, full-data scoring). Squad built 
 by builder 'signal'; decisions from GW10. Per-GW points are obtained by deterministic
 replay: cumulative(K) - cumulative(K-1) over completed GWs K >= 10.
 
+Panel versions (docs/15/16): spec field "panel_version" selects the frozen panel SQL -
+"v1" (default; fit-12thman-model.py PANEL_SQL) or "v2" (fit-12thman-model-v2.py
+PANEL_SQL_V2: fixture-deduped conceded, shared player-GW grid, blank/missing semantics).
+Each version scores under its own label: results land in
+prospective-2026-27-results.json (v1) and prospective-2026-27-results-v2.json (v2);
+the two never overwrite each other.
+
 Usage:
   python3 scripts/prospective-12thman.py refresh-data   # pull API -> cache CSV + provenance
   python3 scripts/prospective-12thman.py build-db       # rebuild /tmp/epl12_prospective.duckdb
   python3 scripts/prospective-12thman.py run --spec 12th-man/v2/data/frozen/prospective-2026-27-spec.json
+  python3 scripts/prospective-12thman.py run --spec 12th-man/v2/data/frozen/prospective-2026-27-spec-v2.json
 """
 import argparse, csv, hashlib, importlib.util, json, os, re, sys, time, urllib.request
 import duckdb, numpy as np, pandas as pd
@@ -36,6 +44,26 @@ DB = '/tmp/epl12_prospective.duckdb'
 SEASON = '2026-27'
 TRAIN = ['2021-22', '2022-23', '2023-24', '2024-25', '2025-26']
 RESULTS = os.path.join(ROOT, '12th-man', 'v2', 'data', 'frozen', 'prospective-2026-27-results.json')
+
+def results_path_for(version):
+    """Each panel version scores under its own label; v1 keeps the original path."""
+    suffix = '' if version == 'v1' else f'-{version}'
+    return os.path.join(ROOT, '12th-man', 'v2', 'data', 'frozen', f'prospective-2026-27-results{suffix}.json')
+
+def panel_sql_for(version):
+    """Frozen panel SQL for a version; the train-season tuple is extended to include 2026-27."""
+    if version == 'v1':
+        src = open(os.path.join(HERE, 'fit-12thman-model.py')).read()
+        sql = re.search(r'PANEL_SQL = """(.*?)"""', src, re.S).group(1)
+    elif version == 'v2':
+        src = open(os.path.join(HERE, 'fit-12thman-model-v2.py')).read()
+        sql = re.search(r'PANEL_SQL_V2 = """(.*?)"""', src, re.S).group(1)
+    else:
+        raise ValueError(f'unknown panel_version {version!r}')
+    sql = sql.replace("('2021-22','2022-23','2023-24','2024-25','2025-26')",
+                      "('2021-22','2022-23','2023-24','2024-25','2025-26','2026-27')")
+    assert "'2026-27'" in sql, 'season-list replacement failed'
+    return sql
 
 spec_loader = importlib.util.spec_from_file_location('bt', os.path.join(HERE, 'backtest-12thman-constrained.py'))
 bt = importlib.util.module_from_spec(spec_loader); spec_loader.loader.exec_module(bt)
@@ -61,7 +89,7 @@ def refresh_data():
             if fx is None: continue
             team_id = fx['team_h'] if h['was_home'] else fx['team_a']
             rows.append({
-                'GW': h['round'], 'element': e['id'], 'position': posmap[e['element_type']],
+                'GW': h['round'], 'fixture': h['fixture'], 'element': e['id'], 'position': posmap[e['element_type']],
                 'team': teams[team_id], 'minutes': h['minutes'], 'total_points': h['total_points'],
                 'expected_goal_involvements': h['expected_goal_involvements'],
                 'was_home': h['was_home'], 'team_h_score': h['team_h_score'],
@@ -69,7 +97,7 @@ def refresh_data():
                 'value': h['value']})
         if (i + 1) % 100 == 0: print(f'  pulled {i+1}/{len(elems)} players', flush=True)
         time.sleep(0.05)
-    cols = ['GW', 'element', 'position', 'team', 'minutes', 'total_points',
+    cols = ['GW', 'fixture', 'element', 'position', 'team', 'minutes', 'total_points',
             'expected_goal_involvements', 'was_home', 'team_h_score', 'team_a_score',
             'opponent_team', 'value']
     os.makedirs(CACHE, exist_ok=True)
@@ -106,27 +134,43 @@ def build_db():
         teams.append(t[['season', 'id', 'name']].rename(columns={'id': 'team_id'}))
     gw = pd.concat(frames, ignore_index=True)
     gw = gw.rename(columns={'GW': 'gw', 'element': 'player_id', 'opponent_team': 'opponent_team_id'})
-    keep = ['season', 'gw', 'player_id', 'position', 'team', 'minutes', 'total_points',
+    if 'fixture' not in gw.columns:
+        # snapshot predates the fixture column (e.g. the 31 Oct 2026 2026-27 pull);
+        # v1 runs tolerate this, v2 refuses at run() below
+        gw['fixture'] = None
+        print('WARNING: cache lacks fixture ids; panel v2 will refuse to run until refresh-data')
+    keep = ['season', 'gw', 'fixture', 'player_id', 'position', 'team', 'minutes', 'total_points',
             'expected_goal_involvements', 'was_home', 'team_a_score', 'team_h_score', 'opponent_team_id']
     con.register('gw_stage', gw[keep])
     con.execute('CREATE TABLE epl_fpl_gameweeks AS SELECT * FROM gw_stage')
     con.register('teams_stage', pd.concat(teams, ignore_index=True))
     con.execute('CREATE TABLE epl_teams AS SELECT * FROM teams_stage')
+    # build-time fixture integrity assertions (fail loudly, not silently); same check as fit v2
+    bad = con.execute("""SELECT COUNT(*) FROM (SELECT season, fixture FROM epl_fpl_gameweeks
+        WHERE fixture IS NOT NULL
+        GROUP BY season, fixture HAVING COUNT(DISTINCT (team_h_score, team_a_score)) > 1
+        OR COUNT(DISTINCT team) <> 2)""").fetchone()[0]
+    assert bad == 0, f'fixture integrity violated in {bad} fixtures'
     con.close()
     print('db built:', DB)
 
 def run(spec_path):
     specj = json.load(open(spec_path))
+    version = specj.get('panel_version', 'v1')
     start_gw = specj['start_gw']
     assert specj['season'] == SEASON and specj['ft_cap'] == bt.FT_CAP
     if not os.path.exists(DB): build_db()
-    fit_src = open(os.path.join(HERE, 'fit-12thman-model.py')).read()
-    panel_sql = re.search(r'PANEL_SQL = """(.*?)"""', fit_src, re.S).group(1)
-    panel_sql = panel_sql.replace("('2021-22','2022-23','2023-24','2024-25','2025-26')",
-                                  "('2021-22','2022-23','2023-24','2024-25','2025-26','2026-27')")
-    assert "'2026-27'" in panel_sql
+    panel_sql = panel_sql_for(version)
     con = duckdb.connect(DB, read_only=True)
+    if version == 'v2':
+        nnull = con.execute('SELECT COUNT(*) FROM epl_fpl_gameweeks WHERE fixture IS NULL').fetchone()[0]
+        assert nnull == 0, (f'{nnull} rows lack fixture ids; re-run refresh-data '
+                            '(the cached snapshot predates the fixture column)')
     df = con.execute(panel_sql).fetchdf()
+    if version == 'v2':
+        # v1's SQL applies eligibility in-query; v2 keeps the full panel for its
+        # diagnostics columns, so apply the identical outcome here (docs/16)
+        df = df[(df.nrows4 == 4) & (df.f_minshare4*4*90 >= 180)].copy()
     full = con.execute("""SELECT season, gw::INT AS k, player_id,
                           SUM(total_points)::DOUBLE AS pts, SUM(minutes)::DOUBLE AS mins
                           FROM epl_fpl_gameweeks GROUP BY season, gw, player_id""").fetchdf()
@@ -141,7 +185,7 @@ def run(spec_path):
     te_full = bt.fit_and_prep(df, TRAIN, SEASON, prices)
     te_full = te_full[te_full.k >= start_gw]
     act_s = act.get(SEASON, {})
-    results = {'spec': os.path.basename(spec_path),
+    results = {'spec': os.path.basename(spec_path), 'panel_version': version,
                'scored_through_gw': max(complete) if complete else None,
                'provenance': prov, 'policies': {}}
     for pol in specj['policies']:
@@ -160,10 +204,11 @@ def run(spec_path):
         results['policies'][pol['name']] = {
             'weekly': weekly, 'total': round(cum[0], 1), 'transfers': cum[1], 'hits': cum[2]}
         print(f"  {pol['name']}: total {cum[0]:.1f} ({cum[1]} tr, {cum[2]} hits) through GW {max(complete) if complete else '-'}")
-    os.makedirs(os.path.dirname(RESULTS), exist_ok=True)
-    with open(RESULTS, 'w') as f:
+    out = results_path_for(version)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, 'w') as f:
         json.dump(results, f, indent=2)
-    print('wrote', RESULTS)
+    print('wrote', out)
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
