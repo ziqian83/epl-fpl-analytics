@@ -134,8 +134,9 @@ same-position swap candidate each GW in the held-out seasons (rolling-origin
 fits, never future data), pairs it against holding the current player, and
 scores the realized points difference.
 
-Results (unrestricted same-position pairs - the optimistic ceiling, ignoring
-budget and legality):
+Results (unrestricted same-position pairs - an optimistic diagnostic of ranking
+quality, ignoring budget and legality; NOT a realistic deployable policy
+estimate):
 
 | Holdout | Pred. edge bar | Mean realized edge | n gw-groups (hit policy) |
 |---|---|---|---|
@@ -151,14 +152,23 @@ labels the ~1 xP line a chosen sensitivity/decision margin, never a measured
 
 ## Provenance and reproducibility (31 Oct 2026 addendum)
 
-- The live v1 coefficients come from a 26 Oct fit on an 11-season warehouse
-  (vaastav CSVs via `sql/epl_duckdb_load.sql`). The verbatim fit script was
-  filed as `scripts/fit-12thman-model-v1.py`. Its holdout results: 2024-25 MAE 2.242 /
-  corr 0.262 / pair-acc 0.501; 2025-26 MAE 2.299 / corr 0.212 / pair-acc 0.503
-  (naive 2.430 / 2.601). Runtime COEF + POS_OFFSET match that fit's beta
-  vector exactly.
-- `scripts/fit-12thman-model.py` (v0 research fit) reproduces the numbers in
-  the section above. Pair-sampling is now order-frozen (`ORDER BY` on the
+- The live v1 coefficients come from the 26 Oct fit on an 11-season warehouse
+  (vaastav CSVs via `sql/epl_duckdb_load.sql`). The original fit script is
+  filed as `scripts/fit-12thman-model-v1.py`; run it after building the
+  warehouse (`python3 -c "import duckdb; duckdb.connect('/tmp/epl.duckdb').execute(open('sql/epl_duckdb_load.sql').read())"`,
+  257,783 player-GW rows). VERIFIED 31 Oct: on a warehouse rebuilt from
+  vaastav master @ d7b05b51d137 the script reproduces the original run
+  exactly - byte-identical across repeated runs, same betas, pair counts and
+  accuracies, and the 2025-26 holdout beta vector equals the live COEF +
+  POS_OFFSET in `scripts/12thman2-refresh.mjs`. Holdout results: 2024-25
+  MAE 2.242 / corr 0.262 / pair-acc 0.501 (n=12351); 2025-26 MAE 2.299 /
+  corr 0.212 / pair-acc 0.503 (n=12376); naive 2.430 / 2.601.
+- `scripts/fit-12thman-model.py` (v0 research fit) reproduces the v0 numbers
+  quoted in the earlier sections of this doc (MAE 2.200/2.380, corr 0.251/0.212
+  on 2024-25; MAE 2.301/2.578, corr 0.188/0.138 on 2025-26, 5-season panel).
+  The v0 numbers come only from that script; the live-model numbers come only
+  from `fit-12thman-model-v1.py`; the decision-level numbers come only from
+  `scripts/backtest-12thman-policies.py`. Pair-sampling is now order-frozen (`ORDER BY` on the
   panel) and the script prints sha256 of each input CSV plus
   duckdb/numpy/pandas versions. Before the ORDER BY fix, pair-accuracy
   wandered ~+/-0.003 between identical runs (unstable DuckDB result order);

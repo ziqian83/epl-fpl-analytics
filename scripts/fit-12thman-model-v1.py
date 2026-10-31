@@ -9,8 +9,10 @@
 # (n=12376). Naive MAE 2.430 / 2.601.
 # Requires: warehouse at /tmp/epl.duckdb (build: duckdb /tmp/epl.duckdb
 #   then run sql/epl_duckdb_load.sql, or python3 with the duckdb package).
-# Note: pair sampling has no fixed ORDER BY upstream, so pair-acc varies
-# ~+/-0.003 between identical runs; MAE/corr are stable.
+# Reproducibility: verified deterministic on a warehouse rebuilt from
+# vaastav master @ d7b05b51d137 (22 Oct 2026) - two identical runs produce
+# byte-identical metrics, and the output matches the original 26 Oct run
+# exactly (same betas, pair counts and accuracies).
 # ---------------------------------------------------------------------------
 
 import duckdb, numpy as np, pandas as pd
