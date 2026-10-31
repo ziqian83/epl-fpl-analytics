@@ -291,8 +291,8 @@
     state.bank = sc ? sc.bank : null;
     state.ftConfirmed = !!(sc && sc.ftConfirmed);
     state.bankConfirmed = !!(sc && sc.bankConfirmed);
-    if(state.ftConfirmed) $('ftnote').textContent = 'Confirmed by you for GW' + (pool ? pool.gameweek : '') + '.';
-    if(state.bankConfirmed) $('banknote').textContent = 'Confirmed by you for GW' + (pool ? pool.gameweek : '') + '.';
+    if(state.ftConfirmed) $('ftnote').textContent = 'Confirmed on this page for GW' + (pool ? pool.gameweek : '') + '.';
+    if(state.bankConfirmed) $('banknote').textContent = 'Confirmed on this page for GW' + (pool ? pool.gameweek : '') + '.';
     if(state.id) $('teamid').value = state.id;
     if(state.ft !== null && state.ft !== '') $('ft').value = state.ft;
   }catch(e){}
