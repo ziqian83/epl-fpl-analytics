@@ -2,12 +2,15 @@
 """Checks for the forward decision freeze (docs/16):
 A. decision_sql_for(version, K) == replay panel features on COMPLETED GWs
    (real prospective DB; skipped when absent) - the no-leakage/equivalence gate.
-B. End-to-end freeze + score on a synthetic league (no network, monkeypatched
-   bootstrap): builder path, prior-state path, immutability, hash verification,
-   scoring from frozen decisions only.
+B. End-to-end freeze + score on a synthetic league (no network, snapshot
+   files only): builder path, prior-state path, immutability, hash verification,
+   scoring from frozen decisions only, deadline refusal, snapshot-consumed
+   prices, and outcome-perturbation invariance.
+All bank/FT/budget values here are SYNTHETIC league values; the user's real
+squad/FT/bank are unconfirmed diagnostics and never appear in tests or freezes.
 Run: python3 tests/test_prospective_decisions.py [--db /tmp/epl12_prospective.duckdb]
 """
-import importlib.util, json, os, sys, tempfile
+import copy, hashlib, importlib.util, json, os, shutil, sys, tempfile
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -85,6 +88,9 @@ with open(os.path.join(cache, '2026-27-schedule.csv'), 'w') as f:
         pairs = [((1, 'ALPHA'), (2, 'BETA')), ((3, 'GAMMA'), (4, 'DELTA')), ((5, 'ECHO'), (6, 'FOXTROT'))]
         for (htid, hnm), (atid, anm) in pairs:
             f.write(f'{gw},{hnm},{atid}\n'); f.write(f'{gw},{anm},{htid}\n')
+with open(os.path.join(cache, '2026-27-events.csv'), 'w') as f:
+    f.write('gw,deadline_time\n')
+    for gw in range(1, 10): f.write(f'{gw},2026-12-{gw:02d}T18:30:00Z\n')
 with open(os.path.join(cache, '2026-27-prices.csv'), 'w') as f:
     f.write('element,now_cost\n')
     for tid, _ in TEAMS:
@@ -109,7 +115,8 @@ specj = {'season': '2026-27', 'start_gw': 6, 'gw10_deadline': '2026-11-06T18:30:
                       {'name': 'model_m1', 'key': 'pred', 'margin': 1.0, 'builder': 'signal'}]}
 spec_path = os.path.join(tmp, 'spec.json'); json.dump(specj, open(spec_path, 'w'))
 
-prosp.freeze(6, spec_path)
+NOW = '2026-11-01T00:00:00Z'  # before every synthetic deadline
+prosp.freeze(6, spec_path, now=NOW)
 d6 = json.load(open(prosp.decision_file_path(6, 'v1')))
 
 check('B freeze file hash verifies', prosp.verify_decision_file(d6))
@@ -125,18 +132,75 @@ check('B hold/model share builder squad', [e['pid'] for e in d6['policies']['hol
 
 # immutability
 try:
-    prosp.freeze(6, spec_path)
+    prosp.freeze(6, spec_path, now=NOW)
     check('B freeze refuses overwrite', False)
 except SystemExit:
     check('B freeze refuses overwrite', True)
 
 # tamper detection
-import copy
 d6bad = copy.deepcopy(d6); d6bad['policies']['hold']['xi'][0] = 999999
 check('B tamper detected', not prosp.verify_decision_file(d6bad))
 
+# safeguard 1: deadline refusal (season/GW named), and missing events snapshot
+try:
+    prosp.freeze(8, spec_path, now='2026-12-09T00:00:00Z')  # synthetic GW8 deadline 2026-12-08
+    check('B freeze refuses at/after the official deadline', False)
+except SystemExit as e:
+    msg = str(e)
+    check('B freeze refuses at/after the official deadline',
+          '2026-27' in msg and 'GW 8' in msg and 'deadline' in msg, msg)
+_empty = tempfile.mkdtemp()
+_oldc = prosp.CACHE; prosp.CACHE = _empty
+try:
+    prosp.freeze(9, spec_path, now=NOW)
+    check('B freeze refuses without an events snapshot', False)
+except SystemExit as e:
+    check('B freeze refuses without an events snapshot', 'events snapshot' in str(e))
+finally:
+    prosp.CACHE = _oldc
+
+# safeguard 2: freeze consumes the SAME saved price snapshot it hashes (no second fetch)
+check('B recorded price sha == saved snapshot file bytes',
+      d6['inputs']['prices_sha256'] ==
+      hashlib.sha256(open(os.path.join(cache, '2026-27-prices.csv'), 'rb').read()).hexdigest())
+check('B gw_deadline from the events snapshot', d6['gw_deadline'] == '2026-12-06T18:30:00Z')
+check('B decision inputs declare gw < K played rows', d6['inputs']['played_rows'].startswith('gw < 6'))
+
+# safeguard 3: perturbation - GW >= K outcomes must not change the frozen GW-K decisions
+def freeze_variant(mutate):
+    tmp2 = tempfile.mkdtemp()
+    cache2 = os.path.join(tmp2, 'cache'); os.makedirs(cache2)
+    for fn in os.listdir(cache):
+        shutil.copy(os.path.join(cache, fn), os.path.join(cache2, fn))
+    dfx = pd.read_csv(os.path.join(cache2, '2026-27-merged_gw.csv'))
+    mutate(dfx).to_csv(os.path.join(cache2, '2026-27-merged_gw.csv'), index=False)
+    old = (prosp.CACHE, prosp.DB, prosp.ROOT)
+    prosp.CACHE = cache2
+    prosp.DB = os.path.join(tmp2, 'syn.duckdb')
+    prosp.ROOT = tmp2
+    os.makedirs(os.path.join(tmp2, '12th-man', 'v2', 'data', 'frozen', 'decisions'))
+    prosp.build_db()
+    prosp.freeze(6, spec_path, now=NOW)
+    dx = json.load(open(prosp.decision_file_path(6, 'v1')))
+    prosp.CACHE, prosp.DB, prosp.ROOT = old
+    return dx
+
+d6_del = freeze_variant(lambda d: d[d.GW < 6])
+check('B perturbation: deleting GW>=6 outcome rows leaves GW6 decisions identical',
+      d6_del['policies'] == d6['policies'])
+def _scramble(d):
+    d = d.copy(); m = d.GW >= 6
+    d.loc[m, 'total_points'] = d.loc[m, 'total_points'] * 7
+    d.loc[m, 'minutes'] = 0
+    d.loc[m, 'expected_goal_involvements'] = 9.9
+    d.loc[m, 'team_h_score'] = 9
+    return d
+d6_scr = freeze_variant(_scramble)
+check('B perturbation: scrambling GW>=6 outcome values leaves GW6 decisions identical',
+      d6_scr['policies'] == d6['policies'])
+
 # prior-state path (GW7): FT banks to 1, uniform signals -> no transfers
-prosp.freeze(7, spec_path)
+prosp.freeze(7, spec_path, now=NOW)
 d7 = json.load(open(prosp.decision_file_path(7, 'v1')))
 check('B GW7 file hash verifies', prosp.verify_decision_file(d7))
 for name, p in d7['policies'].items():
