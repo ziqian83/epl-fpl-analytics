@@ -149,7 +149,8 @@ def run(spec_path):
         for K in complete:
             te = te_full[te_full.k <= K]
             if pol['key'] == 'hold':
-                r = bt.simulate_hold(te, prices, act_s, start=specj['builder'])
+                t = bt.simulate_hold(te, prices, act_s, start=specj['builder'])
+                r = None if t is None else (t, 0, 0, None)
             else:
                 r = bt.simulate(te, prices, act_s, pol['margin'], key=pol['key'], start=specj['builder'])
             if r is None: continue
