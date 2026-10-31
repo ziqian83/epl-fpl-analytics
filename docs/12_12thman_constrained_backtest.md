@@ -1,52 +1,68 @@
-# 12 - Squad-constrained decision backtest (budget, FT banking, hits)
+# 12 - Squad-constrained decision backtest (budget, FT banking, hits, captain)
 
-`scripts/backtest-12thman-constrained.py` — 31 Oct 2026. Companion to the unrestricted
-diagnostic in `scripts/backtest-12thman-policies.py`; this version replays the weekly
-transfer question under real FPL constraints, so it is the evidence base for (or against)
-any recommendation-reliability claim.
+`scripts/backtest-12thman-constrained.py` — 31 Oct 2026. Replays weekly transfer decisions
+under real FPL constraints. Two-stage protocol: the policy/gate/margin spec is selected on
+an inner validation season using ONLY training-era data, then evaluated once on each true
+holdout. Nothing from the holdouts influences the spec choice.
 
 ## Method
 
-- Same leakage-safe panel and rolling-origin lstsq fit as `fit-12thman-model.py`;
-  held-out seasons 2024-25 (train 2021-22..2023-24) and 2025-26 (train 2021-22..2024-25),
-  GW5-GW38 (the panel needs 4 trailing GWs).
-- Prices: pinned vaastav `merged_gw.csv` snapshots (`value`, tenths of GBPm), joined by
-  (season, gw, element). Buys pay the target-GW deadline price; sells credit
-  buy + floor(profit/2), or current price if it fell. Price coverage 100% both seasons.
-- Starting squad: reserve-aware greedy under the GBP 100.0m budget, position quotas,
-  club cap 3. Identical builder for every policy, so differences are the transfer policy.
-- Free transfers bank week to week, cap 5 (the rule in force for both held-out seasons).
-  Extra transfers cost -4 and are taken only when the predicted edge clears margin + 4.
-- Scoring: realized best-XI points (no captain doubling, no chips). Squad members missing
-  from a GW's panel rows still occupy their slot and score 0 — a real squad keeps an
-  injured/benched player; excluding them collapses the formation picker and under-credits
-  hold (bug found and fixed during this audit, 31 Oct).
-- Comparators: hold (never transfer), persistence heuristic (f_pts4 form, no model),
-  random legal swaps (5 seeds). Policies decide on predictions only; realized points are
-  used exclusively for scoring.
+- Panel and rolling-origin lstsq fit identical to `fit-12thman-model.py`; features are
+  trailing-4-GW, as-of only. Decisions use predictions; realized points only score.
+- Constraints: GBP 100.0m start budget, position quotas, club cap 3, real vaastav prices
+  per GW (tenths), sell = buy + floor(profit/2) (current price if it fell), FT banking
+  capped at 5 (rule in force for both holdout seasons - introduced 2024/25, confirmed
+  against premierleague.com 31 Oct 2026), extra transfers -4 taken only when
+  edge > margin + 4. Captain: each GW's highest-signal squad member (policy's own key),
+  realized points doubled. Best legal XI from the 15 (approximates auto-subs; documented).
+- Squad members missing from a GW's panel rows keep their slot and score 0.
+- Stage 1 (train-only spec selection): fit 2021-22+2022-23, validate on 2023-24. Grid:
+  {model, persistence} x gate {0,.5,.6,.7,.8} x margin {0,1}.
+- Stage 2 (true holdouts): 2024-25 (train 2021-22..2023-24), 2025-26 (train ..2024-25),
+  GW5-GW38. Baselines: hold, raw model margins 0/1/2, raw persistence, random (seeds 0-4).
+- Repro: panel sha256[:16]=e5c5f580073d8ecb (31,429 rows), python 3.10.12, numpy 2.2.6,
+  duckdb 1.5.6, random seeds 0-4, DB /tmp/epl12_fit.duckdb (vaastav pinned master
+  d7b05b51d137, cache .fit-cache/). Runtime asserts: bank never negative, squad always 15.
 
-## Results (points vs hold, after -4 hit costs)
+## Stage 1 (inner validation on 2023-24, hold=1135) - selection uses ONLY this
 
-| policy | 2024-25 | 2025-26 |
+- Model: +487 (margin>0) / +508 (margin>1); the minshare gate never binds on model picks.
+- Persistence: +289..+433 across the grid (best: gate>=0.8 margin>0).
+- SELECTED SPEC: model, margin>1 (gate irrelevant - tied across gate values).
+
+## Stage 2 (true holdouts) - hit-adjusted points vs hold
+
+| policy | 2024-25 (hold 1457) | 2025-26 (hold 1382) |
 | --- | --- | --- |
-| hold (constrained start) | 1230 | 1177 |
-| model margin>0 | +237 (33 tr, 0 hits) | +287 (33 tr, 0 hits) |
-| model margin>1 | +132 (33 tr, 0 hits) | +301 (32 tr, 0 hits) |
-| model margin>2 | +128 (19 tr, 0 hits) | +340 (21 tr, 0 hits) |
-| persistence (form, no model) | +333 (63 tr, 30 hits) | +412 (60 tr, 27 hits) |
-| random legal swaps | -242 (33 tr) | -66 (33 tr) |
+| raw model margin>0 | +165 | +224 |
+| raw model margin>1 | +97 | +252 |
+| raw model margin>2 | +162 | +306 |
+| raw persistence (form) | +304 (63 tr, 30 hits) | +358 (60 tr, 27 hits) |
+| random legal swaps | -313 | -93 |
+| train-selected spec (model m>1) | +64 | +252 |
 
-## What this does and does not support
+Starting-squad sensitivity (selected spec vs the SAME builder's hold):
 
-- Supported: model-driven transfers beat holding and beat random activity by a wide,
-  consistent margin under budget/FT/hit constraints in both held-out seasons. Acting on
-  the model is better than not acting.
-- NOT supported: any calibrated margin bar. The margin curve falls in 2024-25
-  (+237/+132/+128) and rises in 2025-26 (+287/+301/+340) — no stable cutoff across seasons.
-- NOT supported: superiority over form-chasing. The persistence heuristic with aggressive
-  hits beat the model in both seasons. The engine's evidence layer (consistency,
-  one-week-wonder flags) exists to discipline exactly this; the backtest says the raw
-  projection alone does not dominate a naive form signal.
-- Known limitations: no captain doubling, no chips/wildcards, buys pay deadline price,
-  panel-missing players score 0 (biases against holding injury-prone players, applies to
-  all policies), starting squad is a greedy heuristic, two held-out seasons only.
+| start builder | 2024-25 | 2025-26 |
+| --- | --- | --- |
+| signal | +64 (hold 1457) | +252 (hold 1382) |
+| signal-per-price | +536 (hold 1083) | +303 (hold 1420) |
+| form | +345 (hold 1341) | +140 (hold 1587) |
+
+## Conclusions (bounded to exactly this experiment)
+
+1. The raw projection model LOSES to the simple form-chasing baseline on both true
+   holdouts (+64..+306 vs +304/+358 depending on margin), even though the model won
+   clearly on the 2023-24 inner validation (+508 vs +377). The inner-validation edge did
+   not generalize. This is the main finding.
+2. Form-chasing pays for 27-30 hits and still nets more than any model variant tested.
+   Hits were not the deciding factor; the raw persistence edge exceeds its hit costs.
+3. Results are highly sensitive to the starting squad (selected spec: +64 to +536 on the
+   same holdout across builders). Two holdout seasons and a greedy start heuristic are
+   not enough to rank policies with confidence beyond "persistence >= raw model here".
+4. What this does NOT establish: any calibrated transfer bar; any superiority claim for
+   the model; any claim that the engine's evidence layer (consistency, one-week-wonder
+   flags) closes the gap - that layer is untested here and is the next experiment, with
+   its spec again designed on training-era data only.
+5. Known simplifications: best-legal-XI approximates auto-subs; captain is the weekly
+   top-signal pick, not a human's choice; buys pay deadline price; two holdout seasons.
