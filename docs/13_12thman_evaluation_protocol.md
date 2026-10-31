@@ -59,6 +59,12 @@ them are not independent validation.
 
 ## Prospective outer-test protocol
 
+PROVISIONAL (31 Oct): this setup inherits the panel grain semantics under audit
+in docs/15 (blank-GW eligibility, opponent-strength units). Until the proposed
+corrections there are decided, treat the freeze below as provisional; frozen
+artifacts and pinned semantics are unchanged, and all scored results remain
+exploratory.
+
 - 2026-27 GW1-8 are elapsed and GW9 is mid-flight: NOT untouched. The only clean
   prospective window is GW10 onward, frozen before the GW10 deadline (2026-11-06T18:30Z,
   official bootstrap-static).
