@@ -67,6 +67,9 @@ them are not independent validation.
   XI/bench/captain rule as coded, FT cap 5, panel extended with 2026-27 (vaastav pinned
   commit recorded at build time). Score each completed GW without editing specs; any spec
   change restarts the clock.
+- When prospective evidence is reported (frozen calls vs actuals, or the as-of
+  ep_next/chance_next series accumulating in pool.json commits), report sample size
+  and uncertainty with it; a few GWs cannot by themselves establish calibration.
 - The engine's frozen weekly calls (12th-man/v2/data/frozen/, from GW9) are PRODUCT
   diagnostics - pre-deadline snapshots scored against actuals. They are not the same
   evidence class as an executable-policy simulation and are reported separately.
