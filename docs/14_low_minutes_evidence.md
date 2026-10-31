@@ -66,3 +66,33 @@ shape): n=531, P(plays)=26%, unconditional E[pts]=0.38.
   historic ep_next snapshots, so recoverability is doubtful.
 - These distributions describe the pool-wide average. Nothing here changes a shipped
   number today; the page discloses missing projections instead of imputing them.
+
+## Frozen-spec retrospective evaluation (spec frozen 31 Oct before the run)
+
+Spec: fit 2021-22..2024-25, test 2025-26 (retrospective chronological; 2025-26 had
+already been inspected in this rebuild - not untouched validation). Candidates:
+C0 silent zero; C1 fit-period unconditional band mean; C2 trailing-4-GW form;
+C3 two-part P(plays|band) x E[pts|plays,band x position] + P(DNP) x E[pts|DNP].
+Selection rule frozen: C3 must beat C0, C1 AND C2 on played-row MAE and not show
+worse bias than C1 to count as supported.
+
+| candidate | MAE all | MAE played rows | bias all | Spearman (played) |
+|---|---|---|---|---|
+| C0 zero | 0.436 | 2.239 | -0.432 | n/a |
+| C1 band mean | 0.511 | 1.491 | -0.001 | 0.184 |
+| C2 trailing form | 0.434 | 1.729 | -0.136 | 0.143 |
+| C3 two-part | 0.511 | 1.484 | +0.002 | 0.178 |
+
+Calibration per band (mean predicted vs actual 0.06 / 0.98 / 1.75):
+C1 0.12 / 0.90 / 1.53; C2 -0.00 / 0.62 / 1.49; C3 0.12 / 0.93 / 1.53.
+
+Outcome per the frozen rule: C3 is NOT supported - it ties the simplest nonzero
+baseline (C1) on played-row MAE with equal bias, so its extra machinery buys nothing.
+No estimator beats silent zero on overall MAE (most gated-out players do not play),
+which is why the page discloses rather than imputes. What survives: on the rows that
+matter for decisions (the player actually plays), a trivial band mean recovers most
+of the orderable signal (rho 0.18 vs zero's none); cold starts carry no orderable
+signal at all; and none of these one-week estimators address the six-week horizon.
+Six-week dependence can instead be shown as explicit multi-week scenarios (e.g. the
+missing player performs at his band mean, or at the played-row mean, across the
+horizon) - dependence displayed without claiming probabilities.
