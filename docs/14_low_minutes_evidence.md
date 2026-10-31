@@ -86,13 +86,42 @@ worse bias than C1 to count as supported.
 Calibration per band (mean predicted vs actual 0.06 / 0.98 / 1.75):
 C1 0.12 / 0.90 / 1.53; C2 -0.00 / 0.62 / 1.49; C3 0.12 / 0.93 / 1.53.
 
-Outcome per the frozen rule: C3 is NOT supported - it ties the simplest nonzero
-baseline (C1) on played-row MAE with equal bias, so its extra machinery buys nothing.
-No estimator beats silent zero on overall MAE (most gated-out players do not play),
-which is why the page discloses rather than imputes. What survives: on the rows that
+Significance of the gaps (cluster bootstrap by player, 5000 resamples, test season):
+the C2-vs-C0 overall-MAE gap (0.434 vs 0.436) is median -0.001 with 95% CI
+[-0.011, +0.009] - indistinguishable from zero. On played rows, C3 beats C1 by a
+statistically clear but practically negligible margin (median -0.007, CI
+[-0.010, -0.004]; ~0.5% relative); C1 clearly beats C2 (+0.238, CI [+0.214, +0.261]).
+
+Outcome per the frozen rule: C3 is NOT supported - its played-row edge over the
+trivial band-mean baseline is negligible, so its extra machinery buys nothing.
+No estimator is meaningfully better than silent zero on overall MAE (most gated-out
+players do not play), which is why the page discloses rather than imputes. What survives: on the rows that
 matter for decisions (the player actually plays), a trivial band mean recovers most
 of the orderable signal (rho 0.18 vs zero's none); cold starts carry no orderable
 signal at all; and none of these one-week estimators address the six-week horizon.
 Six-week dependence can instead be shown as explicit multi-week scenarios (e.g. the
 missing player performs at his band mean, or at the played-row mean, across the
 horizon) - dependence displayed without claiming probabilities.
+
+## Multi-week scenario dependence (his squad, GW9-14 horizon, 31 Oct)
+
+Explicit hypothetical paths for the missing player (João Pedro). These are NOT
+forecasts: each path holds his xP flat across the horizon (fixtures ignored), all
+other projections and prices fixed. P2 uses the played-45+ band mean, a POST-OUTCOME
+average over weeks gated-out players happened to play - shown only as an upper-ish
+"back and starting" path, never as a decision-time expectation. Engine re-run per
+path (plans + assess machinery unchanged):
+
+| path | GW9 xiXp | JP in XI | named fix | hold horizon | single horizon | aggr horizon | plan order |
+|---|---|---|---|---|---|---|---|
+| P0: 0/GW (page behavior) | 45.6 | no | Cherki->Tavernier +2.43 | 274.9 | 288.2 | 318.3 | aggr > single > hold |
+| P1: band mean 1.57/GW | 45.6 | no | Cherki->Tavernier +2.43 | 274.9 | 288.2 | 318.3 | unchanged |
+| P2: played-mean 3.15/GW | 46.1 | yes (flagged: injury news) | Cherki->Tavernier +1.92 | 277.6 | 288.6 | 318.3 | unchanged |
+| P3: 5.0/GW | 47.9 | yes (flagged) | Groß->Tavernier +1.75 | 288.7 | 299.1 | 323.6 | unchanged, gaps narrow |
+
+Read: the verdict class is stable across all paths this week; the named fix is
+fragile at high paths (identity changes by P3, gain shrinks from P2); plan ORDER is
+stable but horizon gaps move up to ~14 xP; and once rated, his injury news flags him
+as a starter risk (starters flagged 1 -> 2). The blind spot is decision-inert below
+~3 xP/GW and decision-active above it - the missing information is whether he
+returns at starter output, which is a fitness question, not a modelling one.
