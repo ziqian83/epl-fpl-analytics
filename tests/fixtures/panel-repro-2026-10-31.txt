@@ -1,0 +1,5 @@
+panel_sha256_16=e5c5f580073d8ecb
+rows=31429
+db=/tmp/epl12_fit.duckdb
+vaastav_pinned=d7b05b51d137
+python=3.10.12 numpy=2.2.6 duckdb=1.5.6
