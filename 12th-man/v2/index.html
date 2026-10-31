@@ -236,7 +236,7 @@
     <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
-<script src="./engine.js?v=2026-10-31.3"></script><!-- bump v= whenever engine.js changes -->
+<script src="./engine.js?v=2026-10-31.4"></script><!-- bump v= whenever engine.js changes -->
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -383,6 +383,7 @@
     var es = engineSquad();
     var gw = pool.gameweek, gws = pool.horizon_gws;
     var cov = T12V2.coverage(es, poolArr);
+    cov.sens = cov.shifters.map(function(m){ return T12V2.sensitivity(es, poolArr, gw, c.bank, m.id); });
     var chipState = T12V2.chipState(pool.chips, state.chips, gw);
     var verdict = T12V2.assess(es, poolArr, gw, c.bank);
     var pl = T12V2.plans(es, poolArr, { gws: gws, bank: c.bank, fts: c.ft, chipState: chipState });
@@ -405,7 +406,15 @@
     var shift = cov.couldShift
       ? ' Because ' + (cov.shifters.length === 1 ? 'this player has' : 'these players have') + ' real recent minutes, the verdict class, the XI total and the named fix can all shift once rated - treat every comparison on this page as a rated-players-only read, not a settled one.'
       : ' With no recent minutes, their absence is unlikely to move the verdict, but the totals still count rated players only.';
-    return '<p class="why" style="border-left:3px solid var(--warn);padding-left:.7em">Coverage: ' + (cov.total - cov.missing.length) + ' of ' + cov.total + ' squad players have a model projection. Missing: ' + names + '. A missing projection is not a real zero - the model simply cannot rank ' + (cov.missing.length === 1 ? 'this player' : 'these players') + ' yet.' + shift + '</p>';
+    var sens = (cov.sens || []).map(function(sn){
+      var nm = (cov.missing.find(function(m){ return m.id === sn.playerId; }) || {}).name || 'This player';
+      var parts = [];
+      parts.push(sn.entersXiAt == null ? 'does not enter the best XI at any projection up to 10' : 'enters the best XI if his projection reaches ~' + sn.entersXiAt.toFixed(1) + ' xP');
+      parts.push(sn.fixChangesAt == null ? 'the named fix stands at every projection up to 10' : 'the named fix changes if his projection reaches ~' + sn.fixChangesAt.toFixed(1) + ' xP');
+      parts.push(sn.clsChangesAt == null ? 'the verdict class does not change at any projection up to 10' : 'the verdict class changes if his projection reaches ~' + sn.clsChangesAt.toFixed(1) + ' xP');
+      return 'Sensitivity for ' + nm + ': ' + parts.join('; ') + '. Scenario assumptions: every other projection, price and the squad held fixed, his this-week projection swept 0.5 to 10, this week only. A tipping point is not a probability, a range, or an estimate of his value - it says where this page state would flip, nothing more.';
+    });
+    return '<p class="why" style="border-left:3px solid var(--warn);padding-left:.7em">Coverage: ' + (cov.total - cov.missing.length) + ' of ' + cov.total + ' squad players have a model projection. Missing: ' + names + '. A missing projection is not a real zero - the model simply cannot rank ' + (cov.missing.length === 1 ? 'this player' : 'these players') + ' yet.' + shift + (sens.length ? '<br>' + sens.join('<br>') : '') + '</p>';
   }
   function renderVerdict(v, c, cov){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
