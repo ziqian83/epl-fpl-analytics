@@ -33,16 +33,33 @@ E[pts|45+] ranges DEF 2.76 to FWD 3.67.
 Returning-from-absence pattern (45+ min 2-4 GWs ago, 0 min last GW; the injury-return
 shape): n=531, P(plays)=26%, unconditional E[pts]=0.38.
 
+## Caveats (read before using any number above)
+
+- A low aggregate mean does NOT establish that a silent zero is right for an individual
+  player or for a six-week horizon decision. These are group averages over loosely
+  matching players; no individual's expected points (e.g. João Pedro's) can be read off
+  them, and the unconditional numbers are one-week figures - they say nothing about
+  horizon sums.
+- FPL status / chance_next is an INPUT TO EVALUATE, not an established calibrated
+  P(plays). Whether chance_next is empirically calibrated has not been tested here.
+- A two-part P(plays) x E[pts|plays] estimator is a HYPOTHESIS TO TEST, not a concluded
+  design. Open questions before it could be tested: consistent handling of points
+  scoring paths across minute bands (cameos, cards, bonus), scoring-rule consistency
+  between the vaastav totals and official FPL scoring, and interaction with the
+  engine's XI/bench interlock.
+- The tipping-point sensitivity shipped in the engine is a scenario sweep (all other
+  projections, prices and squad fixed; one player's this-week projection swept 0.5-10).
+  A tipping point is not a calibrated probability or interval.
+
 ## What this supports and what it does not
 
-- The silent zero is approximately right for true cold starts (0.10) and for
-  injury-return shapes (0.38). It is most wrong for the 90-179 trailing-minute band
-  (~1.6 pts/GW understatement): rotation and short-term absence, exactly the players
-  who re-enter XIs.
-- Any future estimator must be two-part and measurable: P(plays) x E[pts|plays], by
-  trailing band and position, with FPL status/chance_next as the live P(plays) input
-  (João Pedro GW9: chance_next=0% dominates his band base rate). No single discount
-  coefficient is supported by this data.
+- At GROUP level the silent zero loses least for cold starts and injury-return shapes
+  and most for the 90-179 trailing-minute band (~1.6 pts/GW): rotation and short-term
+  absence, exactly the players who re-enter XIs. This sizes the aggregate error; it
+  does not validate the zero for any individual (see caveats).
+- No single discount coefficient is supported by this data. The two-part shape
+  P(plays) x E[pts|plays] with band/position splits and FPL status as a P(plays)
+  input is a testable hypothesis, not a concluded estimator.
 - ep_next as a fill-in remains an UNVALIDATED external baseline: validating it against
   our weak model tests agreement, not accuracy. Validate against as-of recorded outcomes
   only if a historical as-of source is recoverable; the official API does not expose
