@@ -86,16 +86,21 @@ worse bias than C1 to count as supported.
 Calibration per band (mean predicted vs actual 0.06 / 0.98 / 1.75):
 C1 0.12 / 0.90 / 1.53; C2 -0.00 / 0.62 / 1.49; C3 0.12 / 0.93 / 1.53.
 
-Significance of the gaps (cluster bootstrap by player, 5000 resamples, test season):
-the C2-vs-C0 overall-MAE gap (0.434 vs 0.436) is median -0.001 with 95% CI
-[-0.011, +0.009] - indistinguishable from zero. On played rows, C3 beats C1 by a
-statistically clear but practically negligible margin (median -0.007, CI
-[-0.010, -0.004]; ~0.5% relative); C1 clearly beats C2 (+0.238, CI [+0.214, +0.261]).
+Significance of the gaps (cluster bootstrap by player, 5000 resamples, test season;
+differences written as first-minus-second):
+- C2 - C0 overall MAE: median -0.001, 95% CI [-0.011, +0.009]. The interval crosses
+  zero, so this analysis does NOT distinguish the nominal form edge from no edge -
+  it neither confirms a real edge nor proves it is noise.
+- C3 - C1 on played rows: median -0.007, CI [-0.010, -0.004] - C3 lower (better) by
+  a statistically clear but practically negligible margin (~0.5% relative).
+- C2 - C1 on played rows: median +0.238, CI [+0.214, +0.261] - C2 higher (worse);
+  the band mean beats trailing form on played rows by about 0.24 pts.
 
 Outcome per the frozen rule: C3 is NOT supported - its played-row edge over the
 trivial band-mean baseline is negligible, so its extra machinery buys nothing.
-No estimator is meaningfully better than silent zero on overall MAE (most gated-out
-players do not play), which is why the page discloses rather than imputes. What survives: on the rows that
+On overall MAE, no candidate shows an edge over silent zero that this analysis can
+distinguish from no edge (most gated-out players do not play), which is why the page
+discloses rather than imputes. What survives: on the rows that
 matter for decisions (the player actually plays), a trivial band mean recovers most
 of the orderable signal (rho 0.18 vs zero's none); cold starts carry no orderable
 signal at all; and none of these one-week estimators address the six-week horizon.
@@ -119,9 +124,13 @@ path (plans + assess machinery unchanged):
 | P2: played-mean 3.15/GW | 46.1 | yes (flagged: injury news) | Cherki->Tavernier +1.92 | 277.6 | 288.6 | 318.3 | unchanged |
 | P3: 5.0/GW | 47.9 | yes (flagged) | Groß->Tavernier +1.75 | 288.7 | 299.1 | 323.6 | unchanged, gaps narrow |
 
-Read: the verdict class is stable across all paths this week; the named fix is
-fragile at high paths (identity changes by P3, gain shrinks from P2); plan ORDER is
-stable but horizon gaps move up to ~14 xP; and once rated, his injury news flags him
-as a starter risk (starters flagged 1 -> 2). The blind spot is decision-inert below
-~3 xP/GW and decision-active above it - the missing information is whether he
-returns at starter output, which is a fitness question, not a modelling one.
+Read, with the scenario limits stated: within THESE four flat paths on THIS page
+state (fixtures omitted, all other projections frozen), the verdict class does not
+move; the named fix changes identity by P3 and its gain shrinks from P2; plan order
+holds while horizon gaps move up to ~14 xP; and once rated, his injury news flags
+him as a starter risk (starters flagged 1 -> 2). Nothing here establishes general
+decision-inertness below ~3 xP/GW: a finite set of flat paths cannot show that, and
+fixture variation alone could move any of these points. Nor is his return output
+purely a fitness question: both his playing time and his points conditional on
+returning remain uncertain, and both are partly modelling questions the current
+model cannot answer.
