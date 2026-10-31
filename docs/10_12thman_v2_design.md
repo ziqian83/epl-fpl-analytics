@@ -149,6 +149,12 @@ his risk choice is situational (his 09:19 ruling).
 
 ## Validation and honesty protocol
 
+- Labelling decision (31 Oct, after review): the verdict, every chip badge and the
+  engine lean carry their experimental status in the primary label itself
+  ("Experimental - not validated advice", "Heuristic candidate/hold"), not only in
+  surrounding caveats. A class name like "surgery" or "candidate" must never read as
+  a recommendation to act.
+
 - The projection model stays the v1 OLS (method: docs/09) until a refit beats it
   on the same protocol - and the fit script ships in the repo this time
   (milestone below), so coefficients are reproducible from public data.
