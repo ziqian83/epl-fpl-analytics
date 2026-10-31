@@ -203,6 +203,25 @@
     return { byId: byId, unresolved: unresolved };
   }
 
+  /* Coverage: which squad players carry NO model projection (missing estimate,
+     not a real zero). A real zero is a rated player projected 0; a missing
+     projection means the model cannot rank this player at all (docs/10). */
+  function coverage(squad, poolArr) {
+    var missing = squad.filter(function (p) { return !p.rated; }).map(function (p) {
+      var pl = poolArr.find(function (q) { return q.id === p.id; });
+      var rec = (pl && pl.recent) || [];
+      var last3 = rec.slice(-3);
+      var mins3 = last3.reduce(function (z, r) { return z + r.mins; }, 0);
+      return { id: p.id, name: p.name, slot: p.slot,
+               reason: (pl && pl.reason) || 'not rated',
+               mins3: mins3,
+               pts3: last3.reduce(function (z, r) { return z + r.pts; }, 0),
+               epNext: (pl && pl.ep_next != null) ? Number(pl.ep_next) : null };
+    });
+    var shifters = missing.filter(function (m) { return m.mins3 >= 45; });
+    return { total: squad.length, missing: missing, shifters: shifters, couldShift: shifters.length > 0 };
+  }
+
   /* ---------- the verdict: good enough, or fix? (docs/10) ---------- */
   function assess(squad, poolArr, gw, bank) {
     var cands = candidates(poolArr, [gw], 8);
@@ -497,7 +516,7 @@
     return out;
   }
 
-  return { evidence: evidence, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts, freeHitXi: freeHitXi,
+  return { evidence: evidence, coverage: coverage, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts, freeHitXi: freeHitXi,
     plans: plans, whoElse: whoElse, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
     candidates: candidates, toEngine: toEngine, computeSells: computeSells,
     DECISION_MARGIN: DECISION_MARGIN, CHIP_LABELS: CHIP_LABELS,
