@@ -20,6 +20,11 @@ builder, so differences are the transfer policy, not the start. Leakage-safe: pr
 come from the same rolling-origin lstsq fit as fit-12thman-model.py; decisions for GW k+1
 use only as-of features and prices no later than that deadline.
 
+transfer_week() is the single transfer-decision code path: simulate() (replay) and the
+prospective freeze (prospective-12thman.py freeze) both call it, so frozen decisions and
+replayed decisions cannot diverge. Extraction verified behavior-preserving by exact-output
+reproduction of the pre-refactor script (recorded in docs/16).
+
 Run after fit-12thman-model.py has built the DB:  python3 scripts/backtest-12thman-constrained.py [--db /tmp/epl12_fit.duckdb]
 """
 import argparse, os, re, csv
@@ -131,6 +136,73 @@ def build_squad(first, initkey, strategy='signal'):
         if len(squad) == 15: break
     return squad, club, spent
 
+def transfer_week(squad, club, bank, fts, nxt, nk, price, margin, key, gate=0.0,
+                  always_one=False, rng=None):
+    """One week of transfer decisions (extracted verbatim from simulate's loop so the
+    prospective freeze uses the IDENTICAL decision code as the replay; docs/16).
+    squad/club/bank/fts are mutated state; nxt is the target-GW panel (index player_id);
+    price(k, pid) resolves the deadline price with fallback. Returns a dict with the new
+    bank/fts, this week's transfer/hit counts, and the moves applied."""
+    moves = []
+    n_tr, n_hits = 0, 0
+    while True:
+        best = None
+        cands = None
+        if key == 'random': cands = []
+        for pid_w, w in squad.items():
+            if pid_w not in nxt.index: continue
+            pw = price(nk, pid_w)
+            if pw is None: continue
+            sell_w = sell_price(w['buy'], pw)
+            row_w = nxt.loc[pid_w]
+            for pid_b, row_b in nxt.iterrows():
+                if pid_b in squad or row_b.position != w['pos']: continue
+                pb = row_b.value
+                if not np.isfinite(pb): continue
+                if int(pb) > sell_w + bank: continue
+                if gate and row_b.f_minshare4 < gate: continue  # consistency gate: cameo form is not evidence
+                if club.get(row_b.team, 0) - (1 if row_b.team == row_w.team else 0) >= 3: continue
+                if key == 'random':
+                    cands.append((0.0, pid_w, pid_b, sell_w, int(pb), row_w.team, row_b.team))
+                else:
+                    gain = row_b[key] - row_w[key]
+                    if best is None or gain > best[0]:
+                        best = (gain, pid_w, pid_b, sell_w, int(pb), row_w.team, row_b.team)
+        if key == 'random':
+            if not cands or fts <= 0: break
+            best = cands[rng.integers(len(cands))]
+            gain, pid_w, pid_b, sell_w, cost_b, t_w, t_b = best
+            fts -= 1
+            bank += sell_w - cost_b
+            assert bank >= 0, 'bank went negative'
+            club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
+            squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
+            del squad[pid_w]
+            assert len(squad) == 15
+            n_tr += 1
+            moves.append((pid_w, pid_b, sell_w, cost_b, 'ft'))
+            break  # random takes one swap per week
+        if best is None: break
+        gain, pid_w, pid_b, sell_w, cost_b, t_w, t_b = best
+        if fts > 0 and gain > margin:
+            fts -= 1
+            kind = 'ft'
+        elif gain > margin + 4:
+            n_hits += 1
+            kind = 'hit'
+        else:
+            break
+        bank += sell_w - cost_b
+        assert bank >= 0, 'bank went negative'
+        club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
+        squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
+        del squad[pid_w]
+        assert len(squad) == 15
+        n_tr += 1
+        moves.append((pid_w, pid_b, sell_w, cost_b, kind))
+        if always_one: break
+    return {'bank': bank, 'fts': fts, 'transfers': n_tr, 'hits': n_hits, 'moves': moves}
+
 def simulate(te, prices, act, margin, key='pred', seed=None, always_one=False, gate=0.0, start='signal'):
     """Constrained weekly simulation. Returns (total, transfers, hits, end_value)."""
     rng = np.random.default_rng(seed if seed is not None else 11)
@@ -169,58 +241,10 @@ def simulate(te, prices, act, margin, key='pred', seed=None, always_one=False, g
         max_fts_seen = max(max_fts_seen, fts)
         nk = gws[i + 1]
         nxt = byk[nk]
-        while True:
-            best = None
-            cands = None
-            if key == 'random': cands = []
-            for pid_w, w in squad.items():
-                if pid_w not in nxt.index: continue
-                pw = price(nk, pid_w)
-                if pw is None: continue
-                sell_w = sell_price(w['buy'], pw)
-                row_w = nxt.loc[pid_w]
-                for pid_b, row_b in nxt.iterrows():
-                    if pid_b in squad or row_b.position != w['pos']: continue
-                    pb = row_b.value
-                    if not np.isfinite(pb): continue
-                    if int(pb) > sell_w + bank: continue
-                    if gate and row_b.f_minshare4 < gate: continue  # consistency gate: cameo form is not evidence
-                    if club.get(row_b.team, 0) - (1 if row_b.team == row_w.team else 0) >= 3: continue
-                    if key == 'random':
-                        cands.append((0.0, pid_w, pid_b, sell_w, int(pb), row_w.team, row_b.team))
-                    else:
-                        gain = row_b[key] - row_w[key]
-                        if best is None or gain > best[0]:
-                            best = (gain, pid_w, pid_b, sell_w, int(pb), row_w.team, row_b.team)
-            if key == 'random':
-                if not cands or fts <= 0: break
-                best = cands[rng.integers(len(cands))]
-                gain, pid_w, pid_b, sell_w, cost_b, t_w, t_b = best
-                fts -= 1
-                bank += sell_w - cost_b
-                assert bank >= 0, 'bank went negative'
-                club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
-                squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
-                del squad[pid_w]
-                assert len(squad) == 15
-                transfers += 1
-                break  # random takes one swap per week
-            if best is None: break
-            gain, pid_w, pid_b, sell_w, cost_b, t_w, t_b = best
-            if fts > 0 and gain > margin:
-                fts -= 1
-            elif gain > margin + 4:
-                hits += 1
-            else:
-                break
-            bank += sell_w - cost_b
-            assert bank >= 0, 'bank went negative'
-            club[t_w] -= 1; club[t_b] = club.get(t_b, 0) + 1
-            squad[pid_b] = {'pos': squad[pid_w]['pos'], 'buy': cost_b}
-            del squad[pid_w]
-            assert len(squad) == 15
-            transfers += 1
-            if always_one: break
+        wk = transfer_week(squad, club, bank, fts, nxt, nk, price, margin, key,
+                           gate=gate, always_one=always_one, rng=rng)
+        bank, fts, wtr, whits = wk['bank'], wk['fts'], wk['transfers'], wk['hits']
+        transfers += wtr; hits += whits
     lastk = gws[-1]
     end_value = bank + sum(sell_price(w['buy'], price(lastk, pid)) for pid, w in squad.items())
     return total, transfers, hits, end_value
