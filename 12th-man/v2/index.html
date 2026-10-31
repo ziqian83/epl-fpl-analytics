@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 12th Man - decision room</title>
+<link rel="icon" type="image/svg+xml" href="../grid.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="A weekly FPL decision room: verdict first, then the feasible plays with costs and evidence. Live public FPL data; your team ID never leaves your browser except as a lookup.">
+<style>
+  :root{
+    --bg:#f1f5f3; --card:#fdfefa; --ink:#0e3a40; --dim:#47645d; --faint:#7d948c;
+    --line:#d5e2dc; --gold:#63b3a2; --gold-ink:#4d9a89; --warn:#b3541e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  main{max-width:1040px;margin:0 auto;padding:0 5vw 12vh}
+  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+  a{color:var(--gold-ink);text-decoration:none;border-bottom:1px solid var(--gold)}
+  .ribbon{background:#0e3a40;color:#e9f2ee;font-size:.78rem;letter-spacing:.04em;padding:.6em 5vw;text-align:center}
+  .ribbon b{color:#63b3a2}
+  header.mast{padding:6vh 0 3.5vh;display:flex;gap:1.5em;align-items:center}
+  .mast .logo{flex:0 0 auto;width:clamp(52px,9vw,80px)}
+  .mast .logo img{display:block;width:100%}
+  .kicker{text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;color:var(--gold-ink);font-weight:700;margin-bottom:1.1em}
+  h1{font-size:clamp(2.2rem,6.4vw,3.6rem);line-height:1.05}
+  h1 em{font-style:normal;color:var(--gold-ink)}
+  .mast .sub{color:var(--dim);max-width:38em;margin-top:1em;font-size:1rem}
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2em 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.1em}
+  .cell .lab{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
+  .cell .val{font-size:.92rem;color:var(--ink)}
+  .cell .val small{display:block;color:var(--faint);font-size:.78rem;margin-top:.15em}
+  section{margin-top:4em}
+  h2{font-size:clamp(1.35rem,3.4vw,1.8rem);margin-bottom:.35em}
+  h2 em{font-style:normal;color:var(--gold-ink)}
+  .lede{color:var(--dim);max-width:44em;font-size:.94rem}
+  .caption{color:var(--faint);font-size:.78rem;margin-top:.9em;letter-spacing:.03em}
+  .badge{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.35em .85em;border-radius:3px;background:var(--gold);color:#fff}
+  .badge.quiet{background:none;border:1px solid var(--line);color:var(--faint)}
+  .badge.warn{background:none;border:1px solid var(--warn);color:var(--warn)}
+  /* verdict */
+  .verdict{border:1px solid var(--line);border-left:5px solid var(--gold);background:var(--card);border-radius:6px;padding:1.5em 1.5em 1.2em;margin-top:1.6em}
+  .verdict.fix{border-left-color:#c9a227}
+  .verdict.surgery{border-left-color:var(--warn)}
+  .verdict h3{font-size:clamp(1.5rem,4vw,2rem);line-height:1.15}
+  .verdict .why{color:var(--dim);font-size:.94rem;margin-top:.7em;max-width:44em}
+  .verdict .numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1em;margin-top:1.2em;border-top:1px solid var(--line);padding-top:1em}
+  .verdict .numbers .n .k{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .verdict .numbers .n .v{font-family:Georgia,serif;font-size:1.25rem;margin-top:.15em}
+  .verdict .numbers .n small{display:block;color:var(--faint);font-size:.72rem;margin-top:.1em;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+  /* plans */
+  .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2em;margin-top:1.8em;align-items:start}
+  @media (max-width:820px){.plans{grid-template-columns:1fr}}
+  .plan{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.3em 1.3em 1.1em;display:flex;flex-direction:column;position:relative}
+  .plan.lean{border-color:var(--gold-ink);box-shadow:0 0 0 1px var(--gold-ink) inset}
+  .plan .tagrow{min-height:1.7em;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:.35em}
+  .plan h3{font-size:1.24rem;margin:.55em 0 .8em;line-height:1.2}
+  .plan dl{margin-top:auto}
+  .plan .row{border-top:1px solid var(--line);padding:.7em 0}
+  .plan dt{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .plan dd{font-size:.9rem;color:var(--ink);margin-top:.2em}
+  .lensrow{display:grid;grid-template-columns:1fr 1fr;gap:.8em;border-top:1px solid var(--line);padding:.7em 0}
+  .lensrow .lens .k{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .lensrow .lens .v{font-family:Georgia,serif;font-size:1.15rem}
+  .lensrow .lens small{display:block;color:var(--faint);font-size:.72rem}
+  .conflict{font-size:.78rem;color:var(--warn);margin-top:.5em}
+  /* chips */
+  .chipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1em;margin-top:1.6em;align-items:start}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.1em 1.2em}
+  .chip h3{font-size:1.08rem;display:flex;justify-content:space-between;align-items:center;gap:.6em}
+  .chip .window{font-size:.72rem;color:var(--faint);margin-top:.2em}
+  .chip .vwhy{font-size:.86rem;color:var(--dim);margin-top:.7em}
+  .chip.spentchip{opacity:.6}
+  /* squad table */
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4em}
+  table.sq{width:100%;border-collapse:collapse;font-size:.88rem}
+  table.sq th{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;text-align:left;padding:.5em .6em;border-bottom:1px solid var(--line)}
+  table.sq td{padding:.55em .6em;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+  table.sq tr.bench td{color:var(--faint)}
+  .tag{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.2em .6em;border-radius:3px;border:1px solid var(--warn);color:var(--warn);margin:.2em .4em 0 0;white-space:nowrap;display:inline-block}
+  .tag.cold{border-color:var(--faint);color:var(--faint)}
+  .tag.good{border-color:var(--gold);color:var(--gold-ink)}
+  details.ev{margin-top:.4em}
+  details.ev summary{cursor:pointer;list-style:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  details.ev summary::-webkit-details-marker{display:none}
+  .evtab{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:.4em}
+  .evtab td{padding:.25em .4em;border-bottom:1px dotted var(--line);color:var(--dim)}
+  .evtab td:first-child{color:var(--faint);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  .gwline{display:flex;gap:.3em;margin:.5em 0 .2em;flex-wrap:wrap}
+  .gwcell{flex:1;min-width:44px;border:1px solid var(--line);border-radius:4px;text-align:center;padding:.3em .1em;background:var(--bg)}
+  .gwcell .g{font-size:.6rem;color:var(--faint);letter-spacing:.08em}
+  .gwcell .p{font-family:Georgia,serif;font-size:1rem;color:var(--ink)}
+  .gwcell .m{font-size:.62rem;color:var(--faint)}
+  .gwcell.big .p{color:var(--warn)}
+  /* outsiders */
+  .outgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1em;margin-top:1.6em;align-items:start}
+  .outcol{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:1.1em 1.2em}
+  .outcol h3{font-size:1rem;margin-bottom:.6em}
+  .outrow{border-top:1px solid var(--line);padding:.6em 0;font-size:.86rem}
+  .outrow .nm{font-weight:700}
+  .outrow .meta{color:var(--dim);font-size:.78rem;margin-top:.15em}
+  /* settings + facts */
+  .facts{margin-top:1.6em;border-top:1px solid var(--line)}
+  .fact{display:grid;grid-template-columns:minmax(140px,.9fr) 2fr;gap:1em;padding:.85em 0;border-bottom:1px solid var(--line)}
+  .fact .k{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;padding-top:.3em}
+  .fact .v{font-size:.92rem;color:var(--ink)}
+  @media (max-width:560px){.fact{grid-template-columns:1fr;gap:.3em}}
+  details.panel{margin-top:1.6em;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+  details.panel summary{cursor:pointer;list-style:none;padding:1em 1.3em;display:flex;justify-content:space-between;align-items:center}
+  details.panel summary::-webkit-details-marker{display:none}
+  details.panel summary .t{font-family:Georgia,serif;font-size:1.05rem}
+  details.panel summary .tw{color:var(--faint);transition:transform .18s ease}
+  details.panel[open] summary .tw{transform:rotate(45deg)}
+  details.panel .body{border-top:1px solid var(--line);padding:1.1em 1.3em 1.3em}
+  .field{margin-top:.9em}
+  .field label{display:block;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:.35em}
+  .field input{width:100%;max-width:22em;padding:.55em .7em;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);font-size:.9rem}
+  .field small{display:block;color:var(--faint);font-size:.74rem;margin-top:.3em}
+  .btn{display:inline-block;margin-top:1em;background:var(--gold);color:#fff;border:none;border-radius:4px;padding:.6em 1.4em;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:pointer}
+  .btn[disabled]{opacity:.5;cursor:default}
+  .err{color:var(--warn);font-size:.82rem;margin-top:.7em}
+  .stamp{display:inline-block;margin-top:1.6em;border:1px solid var(--gold);border-radius:4px;padding:.85em 1.2em}
+  .stamp.stale{border-color:var(--warn)}
+  .stamp .lab{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .stamp.stale .lab{color:var(--warn)}
+  .stamp .val{font-family:Georgia,serif;font-size:1.02rem;margin-top:.2em}
+  .foot{margin-top:4em;border-top:1px solid var(--line);padding-top:1.6em;color:var(--faint);font-size:.8rem}
+  .foot p{margin-bottom:.6em;max-width:46em}
+  #count{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="ribbon"><b>Live data.</b> Player numbers refresh daily from the public FPL feed. Your team ID is used only when you click Load, as a read-only lookup through one named relay.</div>
+<main>
+  <header class="mast">
+    <div class="logo"><img src="../grid.svg" alt="The 12th Man mark"></div>
+    <div>
+    <div class="kicker">MatchDay Blues &middot; decision room</div>
+    <h1>The <em>12th</em> Man</h1>
+    <p class="sub">The verdict first, then the plays: hold, fix, or spend a chip - each with its price, its upside over one week and six, and the evidence one tap away. The numbers are a weak signal and the page says so where it matters. The call stays with the manager.</p>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="cell">
+      <div class="lab">Gameweek</div>
+      <div class="val" id="gwcell">Loading player pool...<small>&nbsp;</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab">Deadline</div>
+      <div class="val" id="deadlinecell">&nbsp;<small id="count">&nbsp;</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab">Player pool</div>
+      <div class="val" id="poolcell">...<small>&nbsp;</small></div>
+    </div>
+  </div>
+
+  <section id="teamsec">
+    <h2>Your <em>squad</em></h2>
+    <div class="facts">
+      <div class="fact"><div class="k">Your ID reveals</div><div class="v">The squad as of the last locked gameweek, chips used and remaining, per-gameweek points and rank, and locked bank and squad value by week.</div></div>
+      <div class="fact"><div class="k">It cannot see</div><div class="v">Transfers made since the last lock, and the free transfers you hold now. Confirm those below - they stay on this device.</div></div>
+      <div class="fact"><div class="k">How it loads</div><div class="v">Read-only GET through one named public relay: r.jina.ai, Jina AI's Reader service (a documented, free, rate-limited product). The relay sees the team ID in the request URL, like any site you visit. No login, no keys, nothing is written back. If the relay is down or its free terms change, loading fails loudly - it never falls back to a second operator without telling you.</div></div>
+    </div>
+    <details class="panel" id="settingspanel" open>
+      <summary><span class="t">Squad settings</span><span class="tw">+</span></summary>
+      <div class="body">
+        <div class="field">
+          <label>Team ID</label>
+          <input type="text" id="teamid" inputmode="numeric" placeholder="The number in your FPL URL - /entry/1234567/">
+          <small>Stored only in this browser (localStorage). Never hardcoded, never sent anywhere except the lookup.</small>
+        </div>
+        <button class="btn" id="loadbtn">Load my squad</button>
+        <small style="display:block;color:var(--faint);font-size:.74rem;margin-top:.5em">Clicking sends one read-only lookup for this team ID through r.jina.ai (Jina AI's Reader). Nothing loads until you click, even if an ID is saved on this device.</small>
+        <div class="err" id="loaderr"></div>
+        <div class="field">
+          <label>Free transfers held</label>
+          <input type="number" id="ft" min="0" max="15" placeholder="Confirm before the deadline">
+          <small>Not visible to the feed - you confirm this each week.</small>
+        </div>
+        <div class="field">
+          <label>Bank (after last lock)</label>
+          <input type="number" id="bank" min="0" step="0.1" placeholder="Prefilled from the feed; correct it if you have spent since">
+          <button class="btn" id="bankconfirm" style="padding:.4em 1em;margin-top:.5em">Confirm</button>
+          <small id="banknote">Confirmed weekly alongside free transfers.</small>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="verdict">
+    <h2>The <em>verdict</em></h2>
+    <p class="lede">Question one every week: is the squad good enough for this gameweek, or does it need fixing? The classes are judgement lines over a weak projection - the numbers behind the call are always shown.</p>
+    <div id="verdictwrap">
+      <div class="verdict"><h3>Load your squad</h3><p class="why">The verdict is computed from your actual squad, bank and free transfers - nothing generic gets dressed up as advice.</p></div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <h2>What I would <em>do</em></h2>
+    <p class="lede">The feasible plays side by side, each in both lenses: this gameweek, and the next six. Expected points come from a small open model whose rolling holdouts ordered candidate swaps about half a percentage point ahead of a naive baseline - a weak signal. Edges under ~1 xP are inside the noise band and are labelled, never sold. One card carries the engine's lean; the risk choice is yours, every week.</p>
+    <div class="plans" id="plansrow"></div>
+  </section>
+
+  <section id="chips">
+    <h2>Chips this <em>week</em></h2>
+    <p class="lede">Every chip with its official window, its expiry, and a this-week read with evidence. Chip verdicts are heuristics over the same weak projection - their job is that you never play one blind.</p>
+    <div class="chipgrid" id="chipgrid"><div class="chip"><h3>Load your squad</h3><p class="vwhy">Chip state comes from your public entry history.</p></div></div>
+  </section>
+
+  <section id="squad">
+    <h2>The fifteen, with <em>evidence</em></h2>
+    <p class="lede">Form, consistency and the one-week-wonder check for every squad member: the last six gameweeks of points, minutes and expected involvement, with flags where the points and the underlying numbers disagree.</p>
+    <div id="squadwrap"></div>
+  </section>
+
+  <section id="outsiders">
+    <h2>Who else was <em>considered</em></h2>
+    <p class="lede">The strongest players outside your squad at each position, inside your budget and the three-per-club cap - so "who should I have looked at" is answered without asking. Injury- or suspension-flagged players are excluded.</p>
+    <div class="outgrid" id="outgrid"></div>
+  </section>
+
+  <section id="freshness">
+    <h2>Honest <em>freshness</em></h2>
+    <div class="stamp" id="stamp">
+      <div class="lab">As of</div>
+      <div class="val">Loading...</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p><b>The 12th Man</b> prices options; it does not make the call. Expected points come from a small open model - <a href="https://github.com/ziqian83/epl-fpl-analytics/blob/main/docs/09_12thman_model.md">method and validation</a> - fitted only on public FPL data, with the decision design in <a href="https://github.com/ziqian83/epl-fpl-analytics/blob/main/docs/10_12thman_v2_design.md">docs/10</a>. Pairwise tests say the signal is weak: it can order a shortlist, it cannot justify a move on its own. Captaincy and chip timing carry extra uncertainty; shown as heuristics, never as instructions.</p>
+    <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
+  </div>
+</main>
+<script src="./engine.js?v=2026-10-31.1"></script><!-- bump v= whenever engine.js changes -->
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var POSN = {1:'GKP',2:'DEF',3:'MID',4:'FWD'};
+  var pool = null, squad = null, state = { id:null, ft:null, bank:null, bankConfirmed:false, entry:null, chips:[], lastFinished:null };
+  var poolArr = [];
+
+  function stripJina(t){ var a = t.indexOf('{'), b = t.indexOf('['); var i = a < 0 ? b : (b < 0 ? a : Math.min(a, b)); return i < 0 ? Promise.reject(new Error('relay returned no JSON')) : JSON.parse(t.slice(i)); }
+  function relay(url){
+    return fetch('https://r.jina.ai/' + url).then(function(r){ if(!r.ok) throw new Error('relay ' + r.status); return r.text(); }).then(stripJina);
+  }
+  function fmtDeadline(iso){
+    var d = new Date(iso);
+    return d.toLocaleString('en-SG', { timeZone:'Asia/Singapore', weekday:'short', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }).replace(/,/g,'') + ' SGT';
+  }
+
+  var deadlineMs = null;
+  function tick(){
+    if(deadlineMs === null) return;
+    var ms = deadlineMs - Date.now();
+    if(ms <= 0){ $('count').textContent = 'Deadline passed'; return; }
+    var d = Math.floor(ms/86400000), h = Math.floor(ms%86400000/3600000), m = Math.floor(ms%3600000/60000);
+    $('count').textContent = 'Locks in ' + d + 'd ' + h + 'h ' + m + 'm';
+  }
+  setInterval(tick, 30000);
+
+  fetch('data/pool.json').then(function(r){ return r.json(); }).then(function(p){
+    pool = p;
+    poolArr = Object.entries(p.players).map(function(kv){ kv[1].id = Number(kv[0]); return kv[1]; });
+    deadlineMs = Date.parse(p.deadline); tick();
+    var nRated = poolArr.filter(function(x){ return x.rated; }).length;
+    $('gwcell').innerHTML = 'GW' + p.gameweek + '<small>horizon to GW' + p.horizon_gws[p.horizon_gws.length-1] + '</small>';
+    $('deadlinecell').innerHTML = fmtDeadline(p.deadline) + '<small id="count"></small>';
+    $('poolcell').innerHTML = nRated + ' of ' + poolArr.length + ' rated<small>unrated squad members keep their identity, just no projection</small>';
+    var hrs = (Date.now() - Date.parse(p.generated_at)) / 3600000;
+    var stale = hrs > 30;
+    $('stamp').className = 'stamp' + (stale ? ' stale' : '');
+    $('stamp').innerHTML = '<div class="lab">' + (stale ? 'Stale - act with care' : 'As of') + '</div><div class="val">Player pool generated ' +
+      new Date(p.generated_at).toLocaleString('en-SG', { timeZone:'Asia/Singapore', day:'numeric', month:'short', hour:'numeric', minute:'2-digit', hour12:true }) +
+      ' SGT (' + Math.round(hrs) + 'h ago) &middot; model ' + (p.model_version || 'v0') + ', validation in the method doc</div>';
+    if(state.id) $('loadbtn').textContent = 'Load my squad (ID saved on this device)';
+  }).catch(function(){
+    $('gwcell').innerHTML = 'Player pool unavailable<small>data/pool.json failed to load</small>';
+  });
+
+  try{
+    state.id = localStorage.getItem('t12_team_id');
+    state.ft = localStorage.getItem('t12_ft');
+    state.bank = localStorage.getItem('t12_bank');
+    if(state.id) $('teamid').value = state.id;
+    if(state.ft !== null && state.ft !== '') $('ft').value = state.ft;
+  }catch(e){}
+
+  function confirmed(){
+    var b = parseFloat(state.bank !== null && state.bank !== '' ? state.bank : ($('bank').value || 'NaN'));
+    var f = state.ft !== null && state.ft !== '' ? parseInt(state.ft, 10) : NaN;
+    return { bank: b, ft: f, ok: state.bankConfirmed === true && !isNaN(b) && !isNaN(f) };
+  }
+  $('ft').addEventListener('change', function(){ state.ft = $('ft').value; try{ localStorage.setItem('t12_ft', state.ft); }catch(e){} renderAll(); });
+  $('bank').addEventListener('change', function(){ state.bank = $('bank').value; state.bankConfirmed = true; try{ localStorage.setItem('t12_bank', state.bank); }catch(e){} $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('bankconfirm').addEventListener('click', function(){ if($('bank').value === '') return; state.bank = $('bank').value; state.bankConfirmed = true; try{ localStorage.setItem('t12_bank', state.bank); }catch(e){} $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('loadbtn').addEventListener('click', function(){
+    var id = $('teamid').value.trim();
+    if(!/^\d+$/.test(id)){ $('loaderr').textContent = 'Team ID is the number in your FPL URL.'; return; }
+    state.id = id; try{ localStorage.setItem('t12_team_id', id); }catch(e){}
+    loadSquad(id);
+  });
+
+  function loadSquad(id){
+    if(!pool){ $('loaderr').textContent = 'Player pool still loading - try again in a moment.'; return; }
+    $('loadbtn').disabled = true; $('loadbtn').textContent = 'Loading...'; $('loaderr').textContent = '';
+    var lastFinished = pool.gameweek - 1;
+    state.lastFinished = lastFinished;
+    var base = 'https://fantasy.premierleague.com/api/entry/' + id + '/';
+    Promise.all([relay(base), relay(base + 'history/'), relay(base + 'event/' + lastFinished + '/picks/'), relay(base + 'transfers/')]).then(function(rs){
+      var entry = rs[0], hist = rs[1], picks = rs[2], transfers = rs[3];
+      state.entry = entry; state.chips = hist.chips || [];
+      var gw1v = {}, nowc = {};
+      Object.keys(pool.players).forEach(function(pid){
+        var pl2 = pool.players[pid];
+        nowc[pid] = Math.round(pl2.cost * 10);
+        if(typeof pl2.v1gw === 'number') gw1v[pid] = pl2.v1gw;
+      });
+      var sells = T12V2.computeSells((picks.picks || []).map(function(pk){ return pk.element; }), transfers, gw1v, nowc, lastFinished);
+      if($('bank').value === '' && typeof entry.last_deadline_bank === 'number'){
+        $('bank').value = (entry.last_deadline_bank/10).toFixed(1);
+        state.bank = $('bank').value;
+        state.bankConfirmed = false;
+        $('banknote').textContent = 'Prefilled from the feed as of the last lock - press Confirm or edit it before prices are treated as affordable.';
+      }
+      squad = (picks.picks || []).map(function(pk){
+        var pl = pool.players[pk.element];
+        var cs = sells.byId[pk.element];
+        var selling = null, basis = 'cost';
+        if(pk.selling_price != null){ selling = pk.selling_price/10; basis = 'feed'; }
+        else if(cs && cs.sell != null){ selling = cs.sell/10; basis = cs.basis; }
+        return { id: pk.element, slot: pk.position, captain: pk.is_captain, vice: pk.is_vice_captain,
+                 rated: !!(pl && pl.rated), p: pl || null, selling: selling, sellBasis: basis };
+      });
+      $('settingspanel').removeAttribute('open');
+      $('loadbtn').disabled = false; $('loadbtn').textContent = 'Reload my squad';
+      renderAll();
+    }).catch(function(e){
+      $('loaderr').textContent = 'Could not load that squad (' + e.message + '). Check the ID and try again - the relay is a free public service and can be slow or rate-limited. Nothing was stored.';
+      $('loadbtn').disabled = false; $('loadbtn').textContent = 'Load my squad';
+    });
+  }
+
+  function engineSquad(){
+    var picks = squad.map(function(x){ return { id: x.id, slot: x.slot, selling: x.selling, pos: x.p ? x.p.pos : null, team: x.p ? x.p.team : null, cost: x.p ? x.p.cost : null }; });
+    return T12V2.toEngine(picks, pool.players);
+  }
+
+  function gate(where){
+    $(where).innerHTML = '<article class="plan"><div class="tagrow"><span class="badge quiet">Gate</span></div><h3>Confirm bank and free transfers</h3><p style="font-size:.88rem;color:var(--dim)">This only runs on confirmed numbers - the feed cannot see your current FT count or transfers since the lock, and unconfirmed numbers would invent advice.</p></article>';
+  }
+
+  function renderAll(){
+    if(!squad || !pool) return;
+    renderSquadTable();
+    var c = confirmed();
+    if(!c.ok){
+      $('verdictwrap').innerHTML = '<div class="verdict"><h3>Confirm bank and free transfers</h3><p class="why">The verdict only runs on confirmed numbers - the feed cannot see your current FT count or transfers since the lock, and unconfirmed numbers would invent advice.</p></div>';
+      gate('plansrow');
+      renderChips(null);
+      $('outgrid').innerHTML = '';
+      return;
+    }
+    var es = engineSquad();
+    var gw = pool.gameweek, gws = pool.horizon_gws;
+    var chipState = T12V2.chipState(pool.chips, state.chips, gw);
+    var verdict = T12V2.assess(es, poolArr, gw, c.bank);
+    var pl = T12V2.plans(es, poolArr, { gws: gws, bank: c.bank, fts: c.ft, chipState: chipState });
+    renderVerdict(verdict, c);
+    renderPlans(pl);
+    renderChips({ chipState: chipState, verdicts: T12V2.chipVerdicts(es, poolArr, chipState, gw, gws), wcPlan: pl.plans[3] });
+    renderOutsiders(es, c.bank, gws);
+  }
+
+  /* ---------- verdict ---------- */
+  function renderVerdict(v, c){
+    var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
+    var badge = v.cls === 'good' ? '<span class="badge">Hold signal</span>' : (v.cls === 'fix' ? '<span class="badge warn">Judgement call</span>' : '<span class="badge warn">Act this week</span>');
+    var rows = '<div class="numbers">' +
+      '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (v.unratedInXi ? ' (' + v.unratedInXi + ' unrated)' : '') + '</small></div></div>' +
+      (v.bestFix
+        ? '<div class="n"><div class="k">Best single fix</div><div class="v">+' + v.bestFix.gain.toFixed(2) + '<small>' + v.bestFix.out + ' &rarr; ' + v.bestFix.inn + ' (weak estimate)</small></div></div>'
+        : '<div class="n"><div class="k">Best single fix</div><div class="v">none<small>no legal swap inside budget improves this week</small></div></div>') +
+      '<div class="n"><div class="k">Starters flagged</div><div class="v">' + v.flagged.length + '<small>' + (v.flagged.length ? v.flagged.join(', ') : 'no news or blanks in the projected XI') + '</small></div></div>' +
+      '</div>';
+    $('verdictwrap').innerHTML = '<div class="verdict' + cls + '"><div class="tagrow" style="min-height:1.7em;display:flex;justify-content:flex-end">' + badge + '</div><h3>' + v.label + '</h3><p class="why">' + v.why + '</p>' + rows + '</div>';
+  }
+
+  /* ---------- plans ---------- */
+  function planCard(p, idx, leanKey){
+    var num = ['1','2','3','4'][idx];
+    if(p.available === false){
+      return '<article class="plan"><span class="num">' + num + '</span><div class="tagrow"><span class="badge quiet">Not open</span></div><h3>' + p.label + '</h3><dl><div class="row"><dt>Why not</dt><dd>' + (p.why || 'Unavailable') + '</dd></div></dl></article>';
+    }
+    var lean = p.key === leanKey;
+    var moveRows = (p.moves && p.moves.length)
+      ? p.moves.map(function(m){ return '<div class="row"><dt>GW' + m.gw + (m.hit ? ' - HIT' : '') + '</dt><dd>' + m.out + ' &rarr; ' + m.inn + (m.price != null && m.inn.indexOf('Best 15') < 0 ? ' (' + (m.price >= 0 ? 'costs' : 'frees') + ' £' + Math.abs(m.price).toFixed(1) + ')' : '') + '</dd></div>'; }).join('')
+      : '<div class="row"><dt>Moves</dt><dd>None - hold throughout</dd></div>';
+    var lens = (typeof p.thisGw === 'number' && typeof p.horizon === 'number')
+      ? '<div class="lensrow"><div class="lens"><div class="k">This GW</div><div class="v">' + p.thisGw.toFixed(1) + '</div><small>' + (typeof p.gainThisGw === 'number' ? (p.gainThisGw >= 0 ? '+' : '') + p.gainThisGw.toFixed(2) + ' vs hold' : 'the baseline') + '</small></div>' +
+        '<div class="lens"><div class="k">Next ' + pool.horizon_gws.length + ' GWs</div><div class="v">' + p.horizon.toFixed(1) + '</div><small>' + (typeof p.gainHorizon === 'number' ? (p.gainHorizon >= 0 ? '+' : '') + p.gainHorizon.toFixed(2) + ' vs hold' : 'the baseline') + '</small></div></div>'
+      : '';
+    var conflict = p.conflict ? '<div class="conflict">The two lenses disagree here: what helps this week hurts the horizon (or the reverse). Pick the lens that matches your appetite this week.</div>' : '';
+    return '<article class="plan' + (lean ? ' lean' : '') + '"><span class="num">' + num + '</span><div class="tagrow">' +
+      (lean ? '<span class="badge">Engine lean - weak signal</span>' : '') +
+      '<span class="badge quiet">' + (p.certain ? 'Certain cost -' + p.certain : 'No certain cost') + '</span></div>' +
+      '<h3>' + p.label + '</h3>' + lens + conflict + '<dl>' + moveRows +
+      '<div class="row"><dt>You gain</dt><dd>' + p.benefit + '</dd></div>' +
+      '<div class="row"><dt>It costs</dt><dd>' + p.cost + '</dd></div>' +
+      '<div class="row"><dt>Uncertainty</dt><dd>' + p.uncertainty + '</dd></div>' + '</dl></article>';
+  }
+  function renderPlans(pl){
+    $('plansrow').innerHTML = pl.plans.map(function(p, i){ return planCard(p, i, pl.leanKey); }).join('') +
+      '<p class="caption" style="grid-column:1/-1">' + pl.leanWhy + '</p>';
+  }
+
+  /* ---------- chips ---------- */
+  function renderChips(data){
+    if(!squad){ $('chipgrid').innerHTML = '<div class="chip"><h3>Load your squad</h3><p class="vwhy">Chip state comes from your public entry history.</p></div>'; return; }
+    var chipState = data ? data.chipState : T12V2.chipState(pool.chips, state.chips, pool.gameweek);
+    var verdicts = data ? data.verdicts : null;
+    var wcPlan = data ? data.wcPlan : null;
+    $('chipgrid').innerHTML = chipState.map(function(c){
+      var v = verdicts ? verdicts[c.name] : null;
+      var head = '<h3>' + c.label + '</h3>';
+      var windowLine = c.state === 'live' ? '<div class="window">Live now - first-half copy expires after GW' + c.expires + '</div>'
+        : c.state === 'future' ? '<div class="window">Next copy unlocks GW' + c.unlocks + '</div>'
+        : '<div class="window">Spent</div>';
+      var body;
+      if(c.state === 'spent') body = '<p class="vwhy">Both copies used this season.</p>';
+      else if(c.state === 'future') body = '<p class="vwhy">' + (c.name === 'wildcard' ? 'First-half wildcard spent GW7. The second-half copy unlocks after the GW19 deadline.' : 'Not playable yet.') + '</p>';
+      else if(!v || !v.why) body = '<p class="vwhy">Confirm bank and free transfers for this week\'s read.</p>';
+      else body = '<p class="vwhy">' + v.why + '</p>';
+      if(c.name === 'wildcard' && c.state === 'live' && wcPlan && wcPlan.available){
+        body = '<p class="vwhy">' + (wcPlan.chipVerdict === 'candidate'
+          ? 'A full restructure projects +' + wcPlan.gainHorizon.toFixed(2) + ' horizon xP over holding - worth modelling seriously.'
+          : 'A full restructure projects +' + wcPlan.gainHorizon.toFixed(2) + ' horizon xP over holding - under the bar for spending an irreversible chip.') + '</p>';
+      }
+      var badge = c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Candidate week</span>'
+        : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Borderline</span>'
+        : c.state === 'live' ? '<span class="badge quiet">Hold</span>'
+        : '<span class="badge quiet">' + (c.state === 'spent' ? 'Spent' : 'Locked') + '</span>';
+      return '<div class="chip' + (c.state !== 'live' ? ' spentchip' : '') + '">' + head.replace('</h3>', badge + '</h3>') + windowLine + body + '</div>';
+    }).join('');
+  }
+
+  /* ---------- squad with evidence ---------- */
+  function flagTags(p, ev){
+    var t = '';
+    if(!p) return t;
+    if(p.news) t += '<span class="tag">' + p.news.slice(0, 44) + '</span>';
+    if(!p.rated) t += '<span class="tag cold">' + (p.reason || 'not rated') + '</span>';
+    if(ev){
+      if(ev.spike) t += '<span class="tag">one-week wonder risk</span>';
+      if(ev.quiet) t += '<span class="tag good">involvement ahead of points</span>';
+      if(ev.rotation) t += '<span class="tag">rotation risk</span>';
+    }
+    return t;
+  }
+  function evidenceDrawer(s){
+    var p = s.p;
+    if(!p) return '<div>No pool data for this player.</div>';
+    var ev = T12V2.evidence(p);
+    var gwcells = (p.recent || []).slice(-6).map(function(r){
+      var big = r.pts >= 8 ? ' big' : '';
+      return '<div class="gwcell' + big + '"><div class="g">GW' + r.gw + '</div><div class="p">' + r.pts + '</div><div class="m">' + r.mins + "' " + r.xgi.toFixed(1) + 'x</div></div>';
+    }).join('');
+    var fx = pool.horizon_gws.map(function(g){ return 'GW' + g + ' ' + (p.fixgw[g] || '-'); }).join(' &middot; ');
+    var rows = '';
+    if(gwcells) rows += '<div class="gwline">' + gwcells + '</div><div class="caption" style="margin-top:.2em">points, minutes, expected involvement - last six gameweeks</div>';
+    rows += '<table class="evtab">' +
+      (ev.form4 != null ? '<tr><td>Form</td><td>' + ev.form4.toFixed(1) + ' pts/GW over 4, ' + (ev.form2 != null ? ev.form2.toFixed(1) + ' over the last 2' : '') + '</td></tr>' : '') +
+      (ev.consistency != null ? '<tr><td>Consistency</td><td>' + ev.returns + ' of ' + ev.played + ' starts returned 5+ points</td></tr>' : '') +
+      (p.rated ? '<tr><td>Model xP GW' + pool.gameweek + '</td><td>' + (p.xpgw[pool.gameweek] || 0).toFixed(2) + (p.ep_next != null ? ' &middot; FPL\'s own projection ' + Number(p.ep_next).toFixed(1) : '') + '</td></tr>' : '') +
+      '<tr><td>Ownership</td><td>' + p.selected_pct + '% of managers</td></tr>' +
+      '<tr><td>Fixtures</td><td>' + fx + '</td></tr>' +
+      (s.selling != null ? '<tr><td>Sell value</td><td>£' + s.selling.toFixed(1) + ' (' + (s.sellBasis === 'feed' ? 'from feed' : s.sellBasis === 'cost' ? 'assumed = current price' : 'computed from your transfer history') + ')</td></tr>' : '') +
+      '</table>';
+    return rows;
+  }
+  function renderSquadTable(){
+    var rows = squad.map(function(s){
+      var nm = s.p ? s.p.name : 'Player #' + s.id;
+      var team = s.p ? s.p.team : '?';
+      var pos = s.p ? POSN[s.p.pos] : '?';
+      var ev = s.p ? T12V2.evidence(s.p) : null;
+      var xp = s.rated ? (s.p.xpgw[pool.gameweek] || 0).toFixed(1) : '-';
+      var cons = ev && ev.consistency != null ? ev.returns + '/' + ev.played : '-';
+      var tags = '';
+      if(s.captain) tags += '<span class="tag good">C</span>';
+      if(s.vice) tags += '<span class="tag" style="border-color:var(--faint);color:var(--faint)">VC</span>';
+      tags += flagTags(s.p, ev);
+      return '<tr' + (s.slot > 11 ? ' class="bench"' : '') + '><td>' + (s.slot > 11 ? 'Bench ' + (s.slot-11) : pos) + '</td>' +
+        '<td><b>' + nm + '</b> <span style="color:var(--faint)">' + team + '</span><br>' + tags +
+        '<details class="ev"><summary>Evidence +</summary>' + evidenceDrawer(s) + '</details></td>' +
+        '<td>' + cons + '</td><td>' + xp + '</td></tr>';
+    }).join('');
+    $('squadwrap').innerHTML =
+      '<div class="tablewrap"><table class="sq"><thead><tr><th>Slot</th><th>Player (locked GW' + state.lastFinished + ')</th><th>5+ returns</th><th>xP GW' + pool.gameweek + '</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p class="caption">' + (state.entry.player_first_name ? state.entry.player_first_name + ' ' + state.entry.player_last_name + ' &middot; ' : '') + 'Overall rank ' + (state.entry.summary_overall_rank ? state.entry.summary_overall_rank.toLocaleString() : '?') +
+      ' &middot; squad as locked GW' + state.lastFinished + ' - transfers since the lock are invisible to the feed. 5+ returns = of your last six weeks\' starts (45+ min), how many returned 5 or more points.</p>';
+  }
+
+  /* ---------- outsiders ---------- */
+  function renderOutsiders(es, bank, gws){
+    var list = T12V2.whoElse(es, poolArr, bank, gws, 3);
+    var byPos = { 1: [], 2: [], 3: [], 4: [] };
+    list.forEach(function(w){ byPos[w.pos].push(w); });
+    $('outgrid').innerHTML = [1, 2, 3, 4].map(function(pos){
+      var rows = byPos[pos].map(function(w){
+        var ev = w.evidence;
+        var tags = '';
+        if(ev.spike) tags += ' <span class="tag">one-week wonder risk</span>';
+        if(ev.quiet) tags += ' <span class="tag good">involvement ahead of points</span>';
+        return '<div class="outrow"><span class="nm">' + w.name + '</span> <span style="color:var(--faint)">' + w.team + ' &middot; £' + w.cost.toFixed(1) + '</span>' +
+          '<div class="meta">' + w.horizonXp.toFixed(1) + ' horizon xP (' + w.thisGwXp.toFixed(1) + ' this GW) &middot; owned ' + w.owned + '%' +
+          (ev.consistency != null ? ' &middot; ' + ev.returns + '/' + ev.played + ' returned 5+' : '') + '<br>' +
+          'in for ' + w.replaces + ' (' + w.replacesXp.toFixed(1) + ')' + tags + '</div></div>';
+      }).join('');
+      return '<div class="outcol"><h3>' + POSN[pos] + '</h3>' + (rows || '<div class="outrow"><span class="meta">No rated outsider inside budget at this position.</span></div>') + '</div>';
+    }).join('');
+  }
+})();
+</script>
+</body>
+</html>
