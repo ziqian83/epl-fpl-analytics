@@ -1,0 +1,41 @@
+{
+  "spec": "prospective-2026-27-spec.json",
+  "scored_through_gw": null,
+  "provenance": {
+    "source": "official FPL API (bootstrap-static, element-summary, fixtures) - chunked validation pull",
+    "pulled_at": "2026-10-31T08:01:14Z",
+    "csv_sha256": "ba23daf4b414e400fe55ecc8ee283eea8074d6147921090d4ad2bc4c0ead257f",
+    "rows": 5220,
+    "players": 669,
+    "completed_gws": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "policies": {
+    "hold": {
+      "weekly": {},
+      "total": 0.0,
+      "transfers": 0,
+      "hits": 0
+    },
+    "persistence_m0": {
+      "weekly": {},
+      "total": 0.0,
+      "transfers": 0,
+      "hits": 0
+    },
+    "model_m1": {
+      "weekly": {},
+      "total": 0.0,
+      "transfers": 0,
+      "hits": 0
+    }
+  }
+}
