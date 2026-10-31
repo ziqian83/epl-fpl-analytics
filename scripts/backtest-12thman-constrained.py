@@ -256,7 +256,7 @@ def main():
                     sc = score(r, hold_in)
                     grid.append((sc[1], policy, gate, margin, sc))
                     print(f'  {policy} gate>={gate} margin>{margin}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
-        grid.sort(reverse=True)
+        grid.sort(key=lambda t: (t[0], -t[2], -t[3]), reverse=True)  # tiebreak: simplest spec (lowest gate, lowest margin) first
         _, bp, bg, bm, _ = grid[0]
         print(f'  SELECTED SPEC (train-only): {bp} gate>={bg} margin>{bm}')
 
