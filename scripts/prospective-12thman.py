@@ -25,7 +25,10 @@ persists each policy's actual decisions (starting squad at start_gw, transfers, 
 bench order, captain/vice) into 12th-man/v2/data/frozen/decisions/gw<K>-<version>.json
 with frozen_at, input hashes and code pins; frozen files are never overwritten.
 Decision inputs are strictly pre-outcome: played rows with gw < K, the fixture SCHEDULE
-at K (opponents), bootstrap now_cost at frozen_at, and prior frozen decision files.
+at K (opponents), the SAVED price snapshot (freeze consumes and hashes the same file -
+no second fetch), and prior frozen decision files. freeze REFUSES to run at/after the
+official GW deadline from the events snapshot (naming season/GW), and fit rows are
+constrained to the completed train seasons with decision rows only at K.
 `score-gw --gw K` later applies official actuals to the frozen decisions only.
 `replay` (formerly `run`) reconstructs choices AFTER outcome rows exist and is a
 DIAGNOSTIC: its outputs land in prospective-2026-27-replay*.json, never in the
@@ -263,8 +266,10 @@ def _load_prior_state(gw, version, specj):
                 'transfers_total': p['transfers_total_after'], 'hits_total': p['hits_total_after']}
     return state
 
-def freeze(gw, spec_path):
-    """Persist the actual pre-deadline policy decisions for GW gw. Never overwrites."""
+def freeze(gw, spec_path, now=None):
+    """Persist the actual pre-deadline policy decisions for GW gw. Never overwrites.
+    `now` is an ISO-UTC override for the deadline comparison, used only by tests;
+    the CLI never sets it."""
     specj = json.load(open(spec_path))
     version = specj.get('panel_version', 'v1')
     start_gw = specj['start_gw']
@@ -272,12 +277,34 @@ def freeze(gw, spec_path):
     outpath = decision_file_path(gw, version)
     if os.path.exists(outpath):
         raise SystemExit(f'immutable: {outpath} already exists; frozen decisions are never overwritten')
+    # deadline guard: decisions made at/after the official deadline are not prospective
+    ev_path = os.path.join(CACHE, f'{SEASON}-events.csv')
+    if not os.path.exists(ev_path):
+        raise SystemExit(f'no events snapshot at {ev_path}; run refresh-data so official GW deadlines are available')
+    deadlines = {}
+    with open(ev_path) as f:
+        for r in csv.DictReader(f):
+            deadlines[int(r['gw'])] = r['deadline_time']
+    deadline = deadlines.get(int(gw))
+    if not deadline:
+        raise SystemExit(f'no official deadline for {SEASON} GW {int(gw)} in the events snapshot; refusing to freeze')
+    now_s = now or time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+    if now_s >= deadline:
+        raise SystemExit(f'refusing to freeze {SEASON} GW {int(gw)}: the official deadline {deadline} has passed '
+                         f'(now {now_s}); decisions made at/after the deadline are not prospective')
+    # prices: consume the SAVED snapshot - the same file that is hashed; never re-fetch
+    pr_path = os.path.join(CACHE, f'{SEASON}-prices.csv')
+    if not os.path.exists(pr_path):
+        raise SystemExit(f'no price snapshot at {pr_path}; run refresh-data before freeze')
+    prices_sha = hashlib.sha256(open(pr_path, 'rb').read()).hexdigest()
+    now_cost = {}
+    with open(pr_path) as f:
+        for r in csv.DictReader(f):
+            now_cost[int(r['element'])] = int(r['now_cost'])
+    prov = json.load(open(os.path.join(CACHE, f'{SEASON}-provenance.json')))
+    prices_pulled_at = prov['pulled_at']
+    frozen_at = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
     if not os.path.exists(DB): build_db()
-    # fresh price snapshot at freeze time (the recorded deadline-price approximation)
-    boot = api('bootstrap-static/')
-    now_cost = {e['id']: int(e['now_cost']) for e in boot['elements']}
-    prices_pulled_at = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
-    prices_sha = hashlib.sha256(json.dumps(now_cost, sort_keys=True).encode()).hexdigest()
     con = duckdb.connect(DB, read_only=True)
     nsched = con.execute(f'SELECT COUNT(*) FROM epl_schedule WHERE gw::INT = {int(gw)}').fetchone()[0]
     assert nsched > 0, f'no schedule rows for GW {gw}; run refresh-data first'
@@ -291,6 +318,12 @@ def freeze(gw, spec_path):
     bt.SEASONS = TRAIN + [SEASON]
     prices = bt.load_prices()
     dtr = dtr[dtr.season.isin(TRAIN)]  # fit rows only; the decision view owns SEASON rows
+    # as-of guardrails: training evidence is the completed train seasons only, and the
+    # decision view contributes rows at the target GW alone (its feature CTEs bind gw < K)
+    assert set(dtr.season.unique()) <= set(TRAIN), 'fit rows must come from completed train seasons only'
+    assert SEASON not in set(dtr.season.unique()), 'current-season rows must never enter the fit'
+    if len(dpan):
+        assert (dpan['k'] == int(gw)).all(), 'decision rows must all sit at the target GW'
     df = pd.concat([dtr, dpan], ignore_index=True)
     te = bt.fit_and_prep(df, TRAIN, SEASON, prices)
     te = te[te.k == gw]  # decision rows only (fit_and_prep also passes played 2026-27 rows through)
@@ -304,16 +337,17 @@ def freeze(gw, spec_path):
             if v is not None: return v
         return None
     prior = _load_prior_state(gw, version, specj) if gw > start_gw else {}
-    prov = json.load(open(os.path.join(CACHE, f'{SEASON}-provenance.json')))
     out = {'kind': 'frozen pre-deadline policy decisions (docs/13/16)',
            'panel_version': version, 'season': SEASON, 'gw': int(gw),
-           'frozen_at': prices_pulled_at,
-           'gw_deadline': specj.get('gw10_deadline') if gw == specj['start_gw'] else None,
+           'frozen_at': frozen_at,
+           'gw_deadline': deadline,
            'inputs': {'played_rows': f'gw < {int(gw)} from {SEASON}-merged_gw.csv',
                       'csv_sha256': prov['csv_sha256'], 'csv_pulled_at': prov['pulled_at'],
                       'schedule': f'{SEASON}-schedule.csv (epl_schedule, {nsched} rows at GW {gw})',
-                      'prices': 'bootstrap-static now_cost', 'prices_pulled_at': prices_pulled_at,
-                      'prices_sha256': prices_sha},
+                      'prices': f'{SEASON}-prices.csv saved snapshot (consumed and hashed by freeze; no second fetch)',
+                      'prices_pulled_at': prices_pulled_at,
+                      'prices_sha256': prices_sha,
+                      'deadlines': f'{SEASON}-events.csv (official); GW {int(gw)} deadline {deadline}'},
            'code': {'repo': 'ziqian83/epl-fpl-analytics',
                     'runner_blob_sha1': _blob('scripts/prospective-12thman.py'),
                     'backtest_blob_sha1': _blob('scripts/backtest-12thman-constrained.py'),
@@ -464,10 +498,14 @@ def refresh_data():
             w.writerow([fx['event'], teams[fx['team_h']], fx['team_a']])
             w.writerow([fx['event'], teams[fx['team_a']], fx['team_h']])
             nsched += 2
-    # price snapshot at pull time (freeze re-pulls bootstrap for its own snapshot)
+    # price snapshot at pull time (freeze consumes and hashes THIS file; no re-fetch)
     with open(os.path.join(CACHE, f'{SEASON}-prices.csv'), 'w', newline='') as f:
         w = csv.writer(f); w.writerow(['element', 'now_cost'])
         for e in elems: w.writerow([e['id'], e['now_cost']])
+    # official GW deadlines: freeze refuses to run at/after the target GW's deadline
+    with open(os.path.join(CACHE, f'{SEASON}-events.csv'), 'w', newline='') as f:
+        w = csv.writer(f); w.writerow(['gw', 'deadline_time'])
+        for e in boot['events']: w.writerow([e['id'], e['deadline_time']])
     with open(os.path.join(CACHE, f'{SEASON}-teams.csv'), 'w', newline='') as f:
         w = csv.writer(f); w.writerow(['id', 'name'])
         for tid, name in sorted(teams.items()): w.writerow([tid, name])
@@ -478,7 +516,7 @@ def refresh_data():
     prov = {'source': 'official FPL API (bootstrap-static, element-summary, fixtures)',
             'pulled_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'csv_sha256': sha, 'rows': len(rows), 'players': len(elems),
-            'schedule_rows': nsched,
+            'schedule_rows': nsched, 'events_rows': len(boot['events']),
             'completed_gws': completed}
     with open(os.path.join(CACHE, f'{SEASON}-provenance.json'), 'w') as f:
         json.dump(prov, f, indent=2)
