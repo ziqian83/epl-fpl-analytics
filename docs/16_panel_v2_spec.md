@@ -162,3 +162,38 @@ Correction (pre-data-freeze, no frozen output existed yet):
   not incorporated (recorded frozen_at vs deadline per file). The Nov 4 wake
   freezes GW10; the per-GW scoring wake chain freezes K+1 ahead of its own
   deadline each week.
+
+### Safeguards (31 Oct 2026, fourth pass)
+
+- Deadline refusal: refresh-data now snapshots official GW deadlines
+  (2026-27-events.csv from bootstrap events, count recorded in provenance).
+  `freeze --gw K` REFUSES to run at/after GW K's official deadline (SystemExit
+  naming season/GW/deadline), refuses to run without an events snapshot or a
+  price snapshot, and records gw_deadline from the events snapshot on every
+  frozen file (previously only start_gw carried a deadline, from the spec).
+  The CLI exposes no override; tests use an internal `now` parameter.
+- Snapshot-consumed prices: freeze no longer re-fetches bootstrap. It consumes
+  the SAME saved 2026-27-prices.csv it hashes (recorded prices_sha256 is the
+  sha256 of the file bytes; prices_pulled_at comes from provenance). Freshness
+  comes from the flow (refresh-data immediately before freeze), not from a
+  second fetch the hash could not cover. This supersedes the "Prices at
+  decision time: bootstrap now_cost at frozen_at" bullet above.
+- As-of training/squad guardrails: freeze asserts fit rows come from the
+  completed train seasons only (current-season rows never enter the fit) and
+  that decision-view rows sit only at the target GW (their feature CTEs bind
+  gw < K). Starting-squad selection at start_gw runs build_squad on that same
+  as-of decision panel, priced from the saved snapshot.
+- Perturbation proof (tests/test_prospective_decisions.py): freezing GW6 in
+  synthetic stores where GW>=6 outcome rows are (a) deleted entirely and
+  (b) scrambled (points x7, minutes 0, xGI 9.9, scores 9) yields policy
+  decisions byte-identical to the unperturbed freeze.
+- Start squad declared in both specs (start_squad field): the experiment runs
+  a SYNTHETIC builder squad (build_squad under budget/club-cap on the as-of
+  panel), not the user's FPL squad. User squad/FT/bank remain unconfirmed
+  diagnostics and appear nowhere in frozen decisions or scoring; synthetic
+  test bank/FT values are synthetic league values.
+- Spec revision provenance: both specs carry revision_history - one entry per
+  committed revision with git commit and sha256 of that revision's file bytes;
+  the current entry's commit/hash fields are filled by the next revision
+  (its bytes are preserved in git). Older revisions are never edited in
+  place.
