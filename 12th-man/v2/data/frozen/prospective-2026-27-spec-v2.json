@@ -1,0 +1,68 @@
+{
+  "kind": "prospective outer-test freeze (docs/13 protocol) - panel v2 (docs/16 versioned correction)",
+  "panel_version": "v2",
+  "status": "WIRED, PRE-FREEZE: data freeze (csv_sha256/pulled_at fill) completes on the 2026-11-04 wake, before the GW10 deadline; no spec or code edits after that freeze",
+  "season": "2026-27",
+  "start_gw": 10,
+  "gw10_deadline": "2026-11-06T18:30:00Z",
+  "deadline_source": "official FPL API bootstrap-static, fetched 2026-10-31",
+  "spec_frozen_at": "2026-10-31T09:15:00Z",
+  "intended_start": "GW10 (deadline 2026-11-06T18:30Z), the first deadline this version affects. v2 runs alongside the v1 provisional freeze from the same data snapshot and is scored under its own label (prospective-2026-27-results-v2.json); v1 results and the v1 spec stay untouched",
+  "builder": "signal",
+  "ft_cap": 5,
+  "budget_tenths": 1000,
+  "club_cap": 3,
+  "policies": [
+    {
+      "name": "hold",
+      "key": "hold",
+      "margin": null,
+      "builder": "signal"
+    },
+    {
+      "name": "persistence_m0",
+      "key": "f_pts4",
+      "margin": 0.0,
+      "builder": "signal"
+    },
+    {
+      "name": "model_m1",
+      "key": "pred",
+      "margin": 1.0,
+      "builder": "signal"
+    }
+  ],
+  "scorer": "pre-outcome pick_team + score_gw: legal XI/bench/captain/vice from as-of signal only; official auto-subs (bench order, formation legal, GK-for-GK) and vice-captain on realized minutes; full player-GW scoring (identical scorer as the v1 freeze)",
+  "code": {
+    "repo": "ziqian83/epl-fpl-analytics",
+    "backtest_blob_sha1": "7f3b412bd69aaec354f546870f4e62b846be829f",
+    "runner_blob_sha1": "78f6830854ef8948b706dd844fea0db3b8c8e61f",
+    "fit_panel_source_blob_sha1": "07dc175b000b9c06c2a84a8068ac9b944b01b4b7"
+  },
+  "panel": {
+    "version": "v2 (docs/16): fixture-deduped team conceded from fixture final scores; shared player-GW grid aggregated before windowing; calendar RANGE windows; true scheduled blanks distinct from absent records (n_blank4 vs n_missing4); eligibility outcome unchanged from v1 (4 distinct trailing GWs, >=180 trailing minutes)",
+    "train_seasons": [
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25",
+      "2025-26"
+    ],
+    "train_source": "vaastav/Fantasy-Premier-League pinned master d7b05b51d137 (cache .fit-cache)",
+    "current_season_source": "official FPL API (bootstrap-static, element-summary, fixtures); element-summary history supplies the fixture id per row; vaastav 2026-27 covers only through GW6 at pinned master, insufficient for GW10 trailing-4 features",
+    "csv_sha256": null,
+    "pulled_at": null,
+    "note": "csv_sha256 and pulled_at are filled at the data freeze after GW9 completes and before the GW10 deadline; that data snapshot is part of the freeze plan, not a spec change. The snapshot carries the fixture column (runner refresh-data format from 31 Oct 2026)."
+  },
+  "scoring_rule": "Score each completed GW (all fixtures finished, official points incl. bonus final) by deterministic replay of the frozen policies from GW10; per-GW points = cumulative(K) - cumulative(K-1). Version labels are preserved when scoring and reporting: v2 numbers are never merged with or substituted for v1. No spec or code edits after the freeze; any spec change restarts the clock and is recorded here.",
+  "source_gaps": [
+    "Blank-round shape in live element-summary history is UNVERIFIED: 2026-27 shows contiguous per-round rows incl. 0-minute rounds for all registered players through GW8, but no scheduled blank has occurred yet, and a contiguous player history is not evidence of blank-round semantics. tests/test_grain_v2.py establishes INTENDED blank/double/missing behavior on synthetic source-shaped data, not observed API behavior for blanks.",
+    "vaastav in-span gaps (371/841 players, 2025-26): reason unestablished (registration timing vs scraper gaps); v2 records them as n_missing4, distinct from true blanks.",
+    "Whether a mid-season refresh during live fixtures could trip the build-time fixture-integrity assert: history rows share the fixture's current score, but this is untested against a live GW; the freeze pull happens between GWs."
+  ],
+  "known_simplifications": [
+    "buys pay the target-GW deadline price (intra-week moves unmodelled)",
+    "buy candidates must be panel-present (4 trailing GW rows, >=180 trailing minutes) - eligibility bias toward established regulars",
+    "chips (WC/FH/BB/TC) are not modelled in this simulation"
+  ]
+}
