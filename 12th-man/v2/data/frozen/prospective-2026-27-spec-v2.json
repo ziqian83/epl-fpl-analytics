@@ -35,8 +35,8 @@
   "scorer": "pre-outcome pick_team + score_gw: legal XI/bench/captain/vice from as-of signal only; official auto-subs (bench order, formation legal, GK-for-GK) and vice-captain on realized minutes; full player-GW scoring (identical scorer as the v1 freeze)",
   "code": {
     "repo": "ziqian83/epl-fpl-analytics",
-    "backtest_blob_sha1": "7f3b412bd69aaec354f546870f4e62b846be829f",
-    "runner_blob_sha1": "78f6830854ef8948b706dd844fea0db3b8c8e61f",
+    "backtest_blob_sha1": "9d9593950cb90879612169bca1d32075aec03cfa",
+    "runner_blob_sha1": "a2d1bb503fb40a95d37b143cc6597b1e5d639bb5",
     "fit_panel_source_blob_sha1": "07dc175b000b9c06c2a84a8068ac9b944b01b4b7"
   },
   "panel": {
@@ -64,5 +64,15 @@
     "buys pay the target-GW deadline price (intra-week moves unmodelled)",
     "buy candidates must be panel-present (4 trailing GW rows, >=180 trailing minutes) - eligibility bias toward established regulars",
     "chips (WC/FH/BB/TC) are not modelled in this simulation"
+  ],
+  "decision_freeze": {
+    "protocol": "Before each GW K deadline, `freeze --gw K --spec <this spec>` persists each policy's actual decisions (starting squad at start_gw, transfers with prices used, XI, bench order, captain/vice) into 12th-man/v2/data/frozen/decisions/gw<K>-<version>.json with frozen_at, input hashes (played-rows csv_sha256, schedule rows, bootstrap now_cost sha256 + pull time) and code blob pins. Frozen files are NEVER overwritten; corrections require a new label, not an edit. `score-gw --gw K` later applies official actuals (bonus-final, GW complete in provenance) to the frozen decisions only, appending to the version-labelled results file; re-scoring a GW is refused.",
+    "decision_inputs": "strictly pre-outcome: played rows with gw < K; fixture SCHEDULE at K (opponents known pre-deadline); bootstrap now_cost at frozen_at; prior frozen decision files. No GW-K outcome rows are required or used; decision_sql_for reproduces the frozen panel's feature semantics on schedule-anchored rows (equivalence enforced by tests/test_prospective_decisions.py on completed GWs).",
+    "decision_code": "transfer decisions use bt.transfer_week, the identical code path as the replay (extracted from simulate() 31 Oct; behavior-preserving, verified by byte-identical replay output against the pre-refactor script on both holdout seasons).",
+    "replay_label": "`replay` (formerly `run`) reconstructs choices AFTER outcome rows exist and is a DIAGNOSTIC only; outputs land in prospective-2026-27-replay*.json, never in the prospective record.",
+    "immutability": "freeze refuses to overwrite an existing decision file; score-gw refuses to re-score a GW already in the results file; every decision file carries a content_sha256 self-hash verified at load."
+  },
+  "pre_freeze_revisions": [
+    "2026-10-31 (pre-data-freeze): added the forward decision-freeze protocol (decision_freeze block) and relabeled run->replay as diagnostic; code pins updated for the transfer_week extraction + freeze/score-gw runner commands. Policy definitions, panel semantics, scorer and budget/FT parameters UNCHANGED; both specs were pre-data-freeze (csv_sha256 null), so the prospective clock had not started and no frozen output existed."
   ]
 }
