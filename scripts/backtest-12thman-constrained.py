@@ -38,19 +38,59 @@ def design(d):
 QUOTA = {'GKP': 2, 'DEF': 5, 'MID': 5, 'FWD': 3}
 FORMATIONS = [(3, 4, 3), (3, 5, 2), (4, 4, 2), (4, 3, 3), (4, 5, 1), (5, 3, 2), (5, 4, 1), (5, 2, 3)]
 FT_CAP = 5
+
+def sell_price(buy, now):
+    """Official FPL sell price: on a rise, half the profit (rounded down) is kept;
+    on a fall, the full current price is returned. Values in tenths of GBPm."""
+    if now is None: return buy
+    return buy + max(0, (now - buy) // 2) if now >= buy else now
+
 BUDGET = 1000  # tenths of GBPm
 
-def best_xi_points(rows, cap_pts=None):
-    """Max realized XI points from squad rows (position, points). Captain (as-of chosen)
-    doubles: pass his realized points as cap_pts and the best XI including him adds them once more."""
-    by = {p: sorted((a for pos, a in rows if pos == p), reverse=True) for p in QUOTA}
-    if not by['GKP']: return 0.0
-    best = by['GKP'][0]
-    top = 0.0
+LEGAL_SET = set(FORMATIONS)
+
+def pick_team(rows):
+    """Pre-outcome team selection: choose XI, bench order, captain and vice purely from
+    each player's as-of signal. rows: list of (pid, pos, signal). Returns
+    (xi_pids, bench_pids_ordered, cap_pid, vice_pid)."""
+    gkps = sorted((r for r in rows if r[1] == 'GKP'), key=lambda r: -r[2])
+    out = {p: sorted((r for r in rows if r[1] == p), key=lambda r: -r[2]) for p in ('DEF', 'MID', 'FWD')}
+    best = None
     for d, m, f in FORMATIONS:
-        if len(by['DEF']) >= d and len(by['MID']) >= m and len(by['FWD']) >= f:
-            top = max(top, sum(by['DEF'][:d]) + sum(by['MID'][:m]) + sum(by['FWD'][:f]))
-    return best + top + (cap_pts or 0.0)
+        if len(out['DEF']) < d or len(out['MID']) < m or len(out['FWD']) < f: continue
+        chosen = out['DEF'][:d] + out['MID'][:m] + out['FWD'][:f]
+        tot = sum(r[2] for r in chosen)
+        if best is None or tot > best[0]:
+            best = (tot, [r[0] for r in chosen])
+    xi = [gkps[0][0]] + best[1]
+    inxi = set(xi)
+    bench = [r[0] for r in sorted((r for r in rows if r[1] != 'GKP' and r[0] not in inxi), key=lambda r: -r[2])]
+    bench.append(gkps[1][0])  # bench GK goes last (can only sub for the GK)
+    ranked = sorted((r for r in rows if r[0] in inxi), key=lambda r: -r[2])
+    cap = ranked[0][0]; vice = ranked[1][0] if len(ranked) > 1 else ranked[0][0]
+    return xi, bench, cap, vice
+
+def score_gw(xi, bench, cap, vice, posmap, act):
+    """Score a GW with REAL auto-subs on full player-GW data (including panel-ineligible
+    owned players). act: pid -> (points, minutes). No hindsight: the XI/bench/captain
+    were fixed by pick_team before outcomes; only official auto-sub and vice-captain
+    rules apply after."""
+    def mins(p): return act.get(p, (0.0, 0.0))[1]
+    def pts(p): return act.get(p, (0.0, 0.0))[0]
+    xi = list(xi); bench = list(bench)
+    for pid in list(xi):
+        if mins(pid) > 0: continue
+        for b in list(bench):
+            if (posmap[b] == 'GKP') != (posmap[pid] == 'GKP'): continue  # GK for GK only
+            if mins(b) == 0: continue
+            new = [x for x in xi if x != pid] + [b]
+            d = sum(posmap[x] == 'DEF' for x in new); m = sum(posmap[x] == 'MID' for x in new); f = sum(posmap[x] == 'FWD' for x in new)
+            if (d, m, f) in LEGAL_SET:
+                xi = new; bench.remove(b); break
+    total = sum(pts(p) for p in xi)
+    cap_final = cap if mins(cap) > 0 else vice
+    if mins(cap_final) > 0: total += pts(cap_final)
+    return total
 
 def load_prices():
     """{(season, gw, player_id): value} from the pinned cache snapshots. DGW rows deduped."""
@@ -91,7 +131,7 @@ def build_squad(first, initkey, strategy='signal'):
         if len(squad) == 15: break
     return squad, club, spent
 
-def simulate(te, prices, margin, key='pred', seed=None, always_one=False, gate=0.0, start='signal'):
+def simulate(te, prices, act, margin, key='pred', seed=None, always_one=False, gate=0.0, start='signal'):
     """Constrained weekly simulation. Returns (total, transfers, hits, end_value)."""
     rng = np.random.default_rng(seed if seed is not None else 11)
     gws = sorted(te.k.unique())
@@ -115,18 +155,15 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False, gate=0
     total, transfers, hits, fts = 0.0, 0, 0, 0
     for i, k in enumerate(gws):
         cur = byk[k]
-        # Panel-missing squad members still occupy their slot and score 0 (a real squad
-        # keeps an injured/benched player; he does not vanish). Excluding them collapses
-        # the formation picker and under-credits hold.
-        rows = [(squad[pid]['pos'], float(cur.loc[pid].target_pts) if pid in cur.index else 0.0) for pid in squad]
-        # captain: highest as-of signal in the squad this GW (policy's own key); realized points double.
-        cappid, capsig = None, None
-        for pid in squad:
-            if pid in cur.index:
-                sg = float(cur.loc[pid][key]) if key in cur.columns else 0.0
-                if capsig is None or sg > capsig: cappid, capsig = pid, sg
-        cap_pts = float(cur.loc[cappid].target_pts) if cappid is not None else 0.0
-        total += best_xi_points(rows, cap_pts=cap_pts)
+        # Panel-missing squad members still occupy their slot and score their REAL points
+        # via the full-data act matrix (a real squad keeps an injured/benched player; he
+        # does not vanish). Their as-of signal is 0 (no current panel row), so the picker
+        # benches them; scoring never uses panel membership.
+        sig = {pid: (float(cur.loc[pid][key]) if (pid in cur.index and key in cur.columns) else 0.0) for pid in squad}
+        rows = [(pid, squad[pid]['pos'], sig[pid]) for pid in squad]
+        xi, bench_o, cap, vice = pick_team(rows)
+        posmap = {pid: squad[pid]['pos'] for pid in squad}
+        total += score_gw(xi, bench_o, cap, vice, posmap, act.get(k, {}))
         if i + 1 >= len(gws): break
         fts = min(FT_CAP, fts + 1)
         max_fts_seen = max(max_fts_seen, fts)
@@ -140,7 +177,7 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False, gate=0
                 if pid_w not in nxt.index: continue
                 pw = price(nk, pid_w)
                 if pw is None: continue
-                sell_w = w['buy'] + max(0, (pw - w['buy']) // 2) if pw >= w['buy'] else pw
+                sell_w = sell_price(w['buy'], pw)
                 row_w = nxt.loc[pid_w]
                 for pid_b, row_b in nxt.iterrows():
                     if pid_b in squad or row_b.position != w['pos']: continue
@@ -185,10 +222,10 @@ def simulate(te, prices, margin, key='pred', seed=None, always_one=False, gate=0
             transfers += 1
             if always_one: break
     lastk = gws[-1]
-    end_value = bank + sum((lambda pw, w: (w['buy'] + max(0, (pw - w['buy']) // 2) if pw and pw >= w['buy'] else (pw or w['buy'])))(price(lastk, pid), w) for pid, w in squad.items())
+    end_value = bank + sum(sell_price(w['buy'], price(lastk, pid)) for pid, w in squad.items())
     return total, transfers, hits, end_value
 
-def simulate_hold(te, prices, start='signal'):
+def simulate_hold(te, prices, act, start='signal'):
     gws = sorted(te.k.unique())
     byk = {k: g.set_index('player_id') for k, g in te.groupby('k')}
     first = byk[gws[0]]
@@ -197,15 +234,30 @@ def simulate_hold(te, prices, start='signal'):
     total = 0.0
     for k in gws:
         cur = byk[k]
-        rows = [(squad[pid], float(cur.loc[pid].target_pts) if pid in cur.index else 0.0) for pid in squad]
-        cappid, capsig = None, None
-        for pid in squad:
-            if pid in cur.index:
-                sg = float(cur.loc[pid].pred)
-                if capsig is None or sg > capsig: cappid, capsig = pid, sg
-        cap_pts = float(cur.loc[cappid].target_pts) if cappid is not None else 0.0
-        total += best_xi_points(rows, cap_pts=cap_pts)
+        sig = {pid: (float(cur.loc[pid].pred) if pid in cur.index else 0.0) for pid in squad}
+        rows = [(pid, squad[pid], sig[pid]) for pid in squad]
+        xi, bench_o, cap, vice = pick_team(rows)
+        total += score_gw(xi, bench_o, cap, vice, squad, act.get(k, {}))
     return total
+
+FULL_SQL = """
+SELECT season, gw::INT AS k, player_id, SUM(total_points)::DOUBLE AS pts, SUM(minutes)::DOUBLE AS mins
+FROM epl_fpl_gameweeks
+WHERE season IN ('2021-22','2022-23','2023-24','2024-25','2025-26')
+GROUP BY season, gw, player_id
+"""
+
+def load_actuals(db):
+    """Full (unfiltered) player-GW actuals: {season: {k: {pid: (pts, mins)}}}.
+    Scoring uses this, never the filtered panel, so owned players always get their real
+    points and real minutes drive auto-subs."""
+    con = duckdb.connect(db, read_only=True)
+    full = con.execute(FULL_SQL).fetchdf()
+    con.close()
+    out = {}
+    for s, k, p, pts, mins in full.itertuples(index=False):
+        out.setdefault(s, {}).setdefault(k, {})[p] = (pts, mins)
+    return out
 
 def fit_and_prep(df, trainseasons, testseason, prices):
     tr = df[df.season.isin(trainseasons)]
@@ -229,6 +281,7 @@ def main():
     df = con.execute(PANEL_SQL).fetchdf()
     con.close()
     prices = load_prices()
+    actuals = load_actuals(args.db)
 
     # ---- reproducibility block
     import hashlib, sys, duckdb as _d
@@ -239,20 +292,20 @@ def main():
     # The gate/margin/policy spec chosen HERE is the only thing later evaluated on the
     # 2024-25 and 2025-26 holdouts. Nothing from the holdouts influences the choice.
     if args.stage == '2':
-        bp, bg, bm = 'model', 0.8, 1.0  # stage-1 selection (train-only): model gate>=0.8 margin>1.0
+        bp, bg, bm = 'model', 0.0, 1.0  # stage-1 selection (train-only, corrected scorer): model gate>=0.0 margin>1.0
     if args.stage == '2':
-        print(f'=== STAGE 1 skipped (--stage 2); using train-only selection: model gate>=0.8 margin>1.0')
+        print(f'=== STAGE 1 skipped (--stage 2); using train-only selection: model gate>=0.0 margin>1.0')
         inner = None
     else:
         inner = fit_and_prep(df, SEASONS[:2], '2023-24', prices)
-    hold_in = simulate_hold(inner, prices) if inner is not None else float('nan')
+    hold_in = simulate_hold(inner, prices, actuals['2023-24']) if inner is not None else float('nan')
     print(f'=== STAGE 1 inner validation on 2023-24 (hold={hold_in:.1f}) - spec selection uses ONLY this')
     if args.stage != '2':
         grid = []
         for policy, kk in [('model', 'pred'), ('persistence', 'f_pts4')]:
             for gate in [0.0, 0.5, 0.6, 0.7, 0.8]:
                 for margin in [0.0, 1.0]:
-                    r = simulate(inner, prices, margin, key=kk, gate=gate)
+                    r = simulate(inner, prices, actuals['2023-24'], margin, key=kk, gate=gate)
                     sc = score(r, hold_in)
                     grid.append((sc[1], policy, gate, margin, sc))
                     print(f'  {policy} gate>={gate} margin>{margin}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
@@ -264,22 +317,22 @@ def main():
     if args.stage == '1': return
     for testseason, trainseasons in [('2024-25', SEASONS[:3]), ('2025-26', SEASONS[:4])]:
         te = fit_and_prep(df, trainseasons, testseason, prices)
-        hold = simulate_hold(te, prices)
+        hold = simulate_hold(te, prices, actuals[testseason])
         print(f'=== STAGE 2 holdout {testseason} (hold={hold:.1f})')
         for m in [0.0, 1.0, 2.0]:
-            sc = score(simulate(te, prices, m), hold)
+            sc = score(simulate(te, prices, actuals[testseason], m), hold)
             print(f'  raw model margin>{m}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
-        sc = score(simulate(te, prices, 0.0, key='f_pts4'), hold)
+        sc = score(simulate(te, prices, actuals[testseason], 0.0, key='f_pts4'), hold)
         print(f'  raw persistence: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
-        rnd = [simulate(te, prices, 0.0, key='random', seed=sd) for sd in range(5)]
+        rnd = [simulate(te, prices, actuals[testseason], 0.0, key='random', seed=sd) for sd in range(5)]
         mt = np.mean([x[0] - 4 * x[2] for x in rnd if x])
         print(f'  random (5 seeds): vs hold {mt - hold:+.1f}')
-        sc = score(simulate(te, prices, bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg), hold)
+        sc = score(simulate(te, prices, actuals[testseason], bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg), hold)
         print(f'  SELECTED {bp} gate>={bg} margin>{bm}: vs hold {sc[1]:+.1f} ({sc[2]} tr, {sc[3]} hits)')
         # starting-squad sensitivity: hold + selected spec across 3 builders
         for st in ['signal', 'signal_per_price', 'form']:
-            h2 = simulate_hold(te, prices, start=st)
-            sc2 = score(simulate(te, prices, bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg, start=st), h2)
+            h2 = simulate_hold(te, prices, actuals[testseason], start=st)
+            sc2 = score(simulate(te, prices, actuals[testseason], bm, key='pred' if bp == 'model' else 'f_pts4', gate=bg, start=st), h2)
             print(f'  start={st}: hold={h2:.1f} selected {sc2[1]:+.1f}')
 
 if __name__ == '__main__':
