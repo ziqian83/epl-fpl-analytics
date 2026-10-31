@@ -105,8 +105,8 @@ ok(plNoFt.plans[1].available === false, 'single fix unavailable with 0 FTs');
 ok(plNoFt.plans[2].moves.filter((m) => m.hit).every((m) => true), 'with 0 FTs every move is a hit');
 
 // wildcard live -> restructure plan builds a legal squad in budget
-const csWc = E.chipState(chipWindows, [], 9);
-const plWc = E.plans(engineSquad, poolArr, { gws: GWS, bank: 2, fts: 1, chipState: csWc });
+const csWc2 = E.chipState(chipWindows, [], 9);
+const plWc = E.plans(engineSquad, poolArr, { gws: GWS, bank: 2, fts: 1, chipState: csWc2 });
 ok(plWc.plans[3].available === true && plWc.plans[3].moves.length === 1, 'wildcard restructure available when chip live');
 const wcBudget = squad.reduce((z, p) => z + p.sell, 0) + 2;
 ok(plWc.plans[3].moves[0].price <= wcBudget + 1e-9, 'wildcard respects budget');
@@ -124,6 +124,47 @@ ok(!rich.some((w) => w.id === 110), 'unaffordable P110 excluded on small bank');
 const res = E.computeSells([1, 2], [{ element_in: 1, element_in_cost: 90, element_out: 9, event: 5 }], { 2: 50 }, { 1: 100, 2: 50 }, 8);
 ok(res.byId[1].sell === 95 && res.byId[1].basis === 'history', 'computeSells: half-profit rule intact');
 ok(res.byId[2].sell === 50 && res.byId[2].basis === 'gw1', 'computeSells: GW1 basis intact');
+
+
+// --- chipState: official-rule gating (2026/27 rules, unchanged from 2025/26 per /en/help/new + /en/help/rules) ---
+// Two copies per chip: first set GW1-19, second GW20-38. wildcard used GW7 -> locked until GW20.
+const csWcNew = E.chipState(chipWindows, [{ name: 'wildcard', event: 7 }], 9);
+ok(csWcNew.find((c) => c.name === 'wildcard').state === 'future' && csWcNew.find((c) => c.name === 'wildcard').unlocks === 20,
+   'chipState: spent first-half wildcard locked until GW20');
+ok(csWcNew.find((c) => c.name === 'freehit').state === 'live' && csWcNew.find((c) => c.name === 'freehit').expires === 19,
+   'chipState: unused free hit live, first set expires after GW19');
+// Free hit cannot be consecutive: played GW19 -> second copy locked at GW20, unlocks GW21.
+const csFh = E.chipState(chipWindows, [{ name: 'freehit', event: 19 }], 20);
+const fh20 = csFh.find((c) => c.name === 'freehit');
+ok(fh20.state === 'locked' && fh20.unlocks === 21, 'chipState: FH in GW19 locks the second copy until GW21');
+const csFh21 = E.chipState(chipWindows, [{ name: 'freehit', event: 19 }], 21);
+ok(csFh21.find((c) => c.name === 'freehit').state === 'live', 'chipState: second FH copy live again at GW21');
+// Both copies spent -> spent.
+const cs2 = E.chipState(chipWindows, [{ name: '3xc', event: 10 }, { name: '3xc', event: 25 }], 26);
+ok(cs2.find((c) => c.name === '3xc').state === 'spent', 'chipState: both copies used -> spent');
+// Non-consecutive FH within a half is fine: FH at GW10 -> GW12 live again only if a second copy existed (it does not) -> spent until GW20
+const csFh2 = E.chipState(chipWindows, [{ name: 'freehit', event: 10 }], 11);
+ok(csFh2.find((c) => c.name === 'freehit').state === 'locked' && csFh2.find((c) => c.name === 'freehit').unlocks === 20,
+   'chipState: GW right after a FH is locked (non-consecutive rule), next copy GW20');
+const csFh3 = E.chipState(chipWindows, [{ name: 'freehit', event: 10 }], 12);
+ok(csFh3.find((c) => c.name === 'freehit').state === 'future' && csFh3.find((c) => c.name === 'freehit').unlocks === 20,
+   'chipState: two GWs after a spent first-half FH, second copy shows GW20');
+
+// --- deriveFT: 1/GW, carry cap 5, retained through chips (official rules) ---
+const histShape = {
+  chips: [{ name: 'wildcard', event: 7 }],
+  current: [
+    { event: 1, event_transfers: 0 }, { event: 2, event_transfers: 1 }, { event: 3, event_transfers: 1 },
+    { event: 4, event_transfers: 0 }, { event: 5, event_transfers: 0 }, { event: 6, event_transfers: 3 },
+    { event: 7, event_transfers: 0 }, { event: 8, event_transfers: 1 },
+  ] };
+ok(E.deriveFT(histShape) === 3, 'deriveFT: WC-retained carry cap-5 recurrence gives 3 (0,1,1,0,0,3,WC,1)');
+ok(E.deriveFT({ chips: [], current: [{ event: 1, event_transfers: 0 }] }) === 2, 'deriveFT: one unused week carries to 2');
+ok(E.deriveFT({ chips: [], current: Array.from({ length: 8 }, () => ({ event_transfers: 0 })) }) === 5,
+   'deriveFT: carry caps at 5');
+ok(E.deriveFT({ chips: [{ name: 'freehit', event: 6 }], current: Array.from({ length: 6 }, (_, i) => ({ event: i + 1, event_transfers: i === 5 ? 4 : 0 })) }) === 5,
+   'deriveFT: FH-week transfers do not consume FTs (saved FTs retained, cap 5)');
+ok(E.deriveFT({ chips: [], current: [] }) === 1, 'deriveFT: pre-GW1 start is 1');
 
 console.log(failures ? failures + ' FAILURES' : 'ALL PASS');
 process.exit(failures ? 1 : 0);

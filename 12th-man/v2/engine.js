@@ -205,18 +205,41 @@
 
   /* ---------- chips: windows from official rules + used history ---------- */
   function chipState(chipWindows, usedChips, gw) {
-    var used = {};
-    (usedChips || []).forEach(function (c) { used[c.name] = (used[c.name] || 0) + 1; });
+    var used = {}, usedEv = {};
+    (usedChips || []).forEach(function (c) {
+      used[c.name] = (used[c.name] || 0) + 1;
+      usedEv[c.name] = Math.max(usedEv[c.name] || 0, c.event || 0);
+    });
     var names = ['wildcard', 'freehit', 'bboost', '3xc'];
     return names.map(function (nm) {
       var copies = (chipWindows || []).filter(function (c) { return c.name === nm; });
       var spent = used[nm] || 0;
       var liveCopy = copies.find(function (c) { return gw >= c.start && gw <= c.stop && spent < copies.indexOf(c) + 1; });
       var futureCopy = copies.find(function (c) { return c.start > gw && spent < copies.indexOf(c) + 1; });
+      // Official rule: a Free Hit cannot be played in consecutive Gameweeks (e.g. FH in GW19 locks the second copy until GW21).
+      if (nm === 'freehit' && usedEv.freehit && gw === usedEv.freehit + 1) {
+        var nxt = copies.find(function (c) { return c.start > usedEv.freehit && spent < copies.indexOf(c) + 1; });
+        return { name: nm, label: CHIP_LABELS[nm], state: 'locked', unlocks: nxt ? Math.max(nxt.start, gw + 1) : gw + 1,
+                 note: 'Played in GW' + usedEv.freehit + ' - free hits cannot run in consecutive gameweeks.' };
+      }
       if (liveCopy) return { name: nm, label: CHIP_LABELS[nm], state: 'live', expires: liveCopy.stop, window: liveCopy };
       if (futureCopy) return { name: nm, label: CHIP_LABELS[nm], state: 'future', unlocks: futureCopy.start, window: futureCopy };
       return { name: nm, label: CHIP_LABELS[nm], state: 'spent', window: null };
     });
+  }
+
+  /* Free transfers held, derived from entry history under current official rules:
+     1 FT per GW, unused carry capped at 5, saved FTs retained through wildcard/free hit
+     (chip-week transfers do not consume FTs). Recurrence over finished GWs only. */
+  function deriveFT(hist) {
+    var chipGw = {};
+    ((hist && hist.chips) || []).forEach(function (c) { if (c.name === 'wildcard' || c.name === 'freehit') chipGw[c.event] = true; });
+    var ft = 1;
+    ((hist && hist.current) || []).forEach(function (r) {
+      var used = chipGw[r.event] ? 0 : (r.event_transfers || 0);
+      ft = Math.min(FT_MAX, ft - used + 1);
+    });
+    return ft;
   }
 
   function chipVerdicts(squad, poolArr, chips, gw, horizonGws) {
@@ -246,22 +269,22 @@
         out.bboost = { state: 'live', expires: c.expires, benchXp: +benchXp.toFixed(2), benchByGw: benchByGw,
           verdict: benchXp >= 12 ? 'candidate' : (benchXp >= 9 ? 'borderline' : 'hold'),
           why: benchXp >= 12
-            ? 'Bench projects ' + benchXp.toFixed(1) + ' xP this week' + (betterBench ? ' - a later week in the horizon projects even higher, so compare before playing' : ' - as strong as the model sees on the horizon') + '.'
+            ? 'Bench projects ' + benchXp.toFixed(1) + ' xP this week' + (betterBench ? ' - a later week in the horizon projects even higher, so compare before playing' : ' - as strong as the model sees on the horizon') + '. The 12/9 xP bars are judgement lines, not calibrated thresholds.'
             : benchXp >= 9
-              ? 'Bench projects ' + benchXp.toFixed(1) + ' xP - playable, but ' + (betterBench ? 'a later horizon week projects higher' : 'not a standout week') + '.'
+              ? 'Bench projects ' + benchXp.toFixed(1) + ' xP - playable, but ' + (betterBench ? 'a later horizon week projects higher' : 'not a standout week') + '. Bars are judgement lines, not calibrated.'
               : 'Bench projects only ' + benchXp.toFixed(1) + ' xP this week - weak week for it. Expires after GW' + c.expires + '.' };
       } else if (c.name === '3xc') {
         out['3xc'] = { state: 'live', expires: c.expires, capXp: +capXp.toFixed(2), capByGw: capByGw,
           verdict: capXp >= 7 ? 'candidate' : 'hold',
           why: capXp >= 7
-            ? 'Your best starter projects ' + capXp.toFixed(1) + ' xP' + (betterCap ? ' - a later week projects a better captain spot' : ' - the strongest captain spot on the visible horizon') + '. Triple is a one-week multiplier on one player: variance-heavy even when the read is right.'
+            ? 'Your best starter projects ' + capXp.toFixed(1) + ' xP' + (betterCap ? ' - a later week projects a better captain spot' : ' - the strongest captain spot on the visible horizon') + '. Triple is a one-week multiplier on one player: variance-heavy even when the read is right. The 7 xP bar is a judgement line, not calibrated.'
             : 'Best starter projects ' + capXp.toFixed(1) + ' xP - no standout week. A double gameweek is the classic spot; none is flagged in this horizon. Expires after GW' + c.expires + '.' };
       } else if (c.name === 'freehit') {
         out.freehit = { state: 'live', expires: c.expires, blanks: blanks, newsOut: newsOut,
           verdict: (blanks + newsOut) >= 3 ? 'candidate' : 'hold',
           why: (blanks + newsOut) >= 3
-            ? (blanks + newsOut) + ' starters project 0 or carry news - a free hit patches the week without permanent damage. Compare against taking hits instead (each -4 is certain).'
-            : 'Only ' + (blanks + newsOut) + ' starter(s) project 0 or carry news - not an emergency week. Save it for a blank gameweek. Expires after GW' + c.expires + '.' };
+            ? (blanks + newsOut) + ' starters project 0 or carry news - a free hit patches the week without permanent squad damage. The cost is the chip itself: this copy expires after GW19 and the next unlocks GW20, so the alternative is saving it for a worse week. Compare against taking hits instead (each -4 is certain). The 3-flagged bar is a judgement line, not calibrated.'
+            : 'Only ' + (blanks + newsOut) + ' starter(s) project 0 or carry news - not an emergency week. Saving it costs nothing this week; the trade is expiry after GW' + c.expires + ' against worse weeks that may come. Bar is a judgement line, not calibrated.' };
       } else if (c.name === 'wildcard') {
         out.wildcard = { state: 'live', expires: c.expires }; // structural verdict rides on the wildcard plan card
       }
@@ -274,7 +297,7 @@
     var gws = opts.gws, gw = gws[0], bank = opts.bank, fts = opts.fts;
     var cands = candidates(poolArr, gws, 8);
     var hold = horizonXp(squad, gws);
-    var noise = 'Edges under ~' + NOISE_BAR.toFixed(0) + ' xP are inside the noise band of a weak model (mean error ~2.3 per player-GW) - shown for completeness, not as a reason to act.';
+    var noise = 'Edges under ~' + NOISE_BAR.toFixed(0) + ' xP sit inside the noise band of a weak model (mean error ~2.3 per player-GW, pairwise lift ~1pt over persistence in held-out seasons) - shown for completeness, not as a reason to act. The bar itself is a chosen round number, not a calibrated threshold.';
 
     // Hold
     var holdPlan = { key: 'hold', label: 'Hold - roll the transfer', certain: 0,
@@ -436,7 +459,7 @@
     return out;
   }
 
-  return { evidence: evidence, assess: assess, chipState: chipState, chipVerdicts: chipVerdicts,
+  return { evidence: evidence, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts,
     plans: plans, whoElse: whoElse, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
     candidates: candidates, toEngine: toEngine, computeSells: computeSells,
     NOISE_BAR: NOISE_BAR, CHIP_LABELS: CHIP_LABELS,

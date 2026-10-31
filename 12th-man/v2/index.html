@@ -177,8 +177,9 @@
         <div class="err" id="loaderr"></div>
         <div class="field">
           <label>Free transfers held</label>
-          <input type="number" id="ft" min="0" max="15" placeholder="Confirm before the deadline">
-          <small>Not visible to the feed - you confirm this each week.</small>
+          <input type="number" id="ft" min="0" max="15" placeholder="Derived after load - confirm or correct">
+          <button class="btn" id="ftconfirm" style="padding:.4em 1em;margin-top:.5em">Confirm</button>
+          <small id="ftnote">No feed publishes your current FT count - after loading we derive it from your history (1 per week, carry cap 5, kept through chips) and you confirm or correct it.</small>
         </div>
         <div class="field">
           <label>Bank (after last lock)</label>
@@ -240,7 +241,9 @@
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var POSN = {1:'GKP',2:'DEF',3:'MID',4:'FWD'};
-  var pool = null, squad = null, state = { id:null, ft:null, bank:null, bankConfirmed:false, entry:null, chips:[], lastFinished:null };
+  var pool = null, squad = null, state = { id:null, ft:null, bank:null, ftConfirmed:false, bankConfirmed:false, ftDerived:null, entry:null, chips:[], lastFinished:null };
+  function storedConfirm(){ try{ var s = JSON.parse(localStorage.getItem('t12_confirm') || 'null'); return (s && pool && s.gw === pool.gameweek) ? s : null; }catch(e){ return null; } }
+  function saveConfirm(){ try{ localStorage.setItem('t12_confirm', JSON.stringify({ gw: pool ? pool.gameweek : null, ft: state.ft, bank: state.bank, ftConfirmed: state.ftConfirmed, bankConfirmed: state.bankConfirmed })); }catch(e){} }
   var poolArr = [];
 
   function stripJina(t){ var a = t.indexOf('{'), b = t.indexOf('['); var i = a < 0 ? b : (b < 0 ? a : Math.min(a, b)); return i < 0 ? Promise.reject(new Error('relay returned no JSON')) : JSON.parse(t.slice(i)); }
@@ -283,8 +286,13 @@
 
   try{
     state.id = localStorage.getItem('t12_team_id');
-    state.ft = localStorage.getItem('t12_ft');
-    state.bank = localStorage.getItem('t12_bank');
+    var sc = storedConfirm();
+    state.ft = sc ? sc.ft : null;
+    state.bank = sc ? sc.bank : null;
+    state.ftConfirmed = !!(sc && sc.ftConfirmed);
+    state.bankConfirmed = !!(sc && sc.bankConfirmed);
+    if(state.ftConfirmed) $('ftnote').textContent = 'Confirmed by you for GW' + (pool ? pool.gameweek : '') + '.';
+    if(state.bankConfirmed) $('banknote').textContent = 'Confirmed by you for GW' + (pool ? pool.gameweek : '') + '.';
     if(state.id) $('teamid').value = state.id;
     if(state.ft !== null && state.ft !== '') $('ft').value = state.ft;
   }catch(e){}
@@ -292,11 +300,12 @@
   function confirmed(){
     var b = parseFloat(state.bank !== null && state.bank !== '' ? state.bank : ($('bank').value || 'NaN'));
     var f = state.ft !== null && state.ft !== '' ? parseInt(state.ft, 10) : NaN;
-    return { bank: b, ft: f, ok: state.bankConfirmed === true && !isNaN(b) && !isNaN(f) };
+    return { bank: b, ft: f, ok: state.bankConfirmed === true && state.ftConfirmed === true && !isNaN(b) && !isNaN(f) };
   }
-  $('ft').addEventListener('change', function(){ state.ft = $('ft').value; try{ localStorage.setItem('t12_ft', state.ft); }catch(e){} renderAll(); });
-  $('bank').addEventListener('change', function(){ state.bank = $('bank').value; state.bankConfirmed = true; try{ localStorage.setItem('t12_bank', state.bank); }catch(e){} $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
-  $('bankconfirm').addEventListener('click', function(){ if($('bank').value === '') return; state.bank = $('bank').value; state.bankConfirmed = true; try{ localStorage.setItem('t12_bank', state.bank); }catch(e){} $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('ft').addEventListener('change', function(){ state.ft = $('ft').value; state.ftConfirmed = true; saveConfirm(); $('ftnote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('ftconfirm').addEventListener('click', function(){ if($('ft').value === '') return; state.ft = $('ft').value; state.ftConfirmed = true; saveConfirm(); $('ftnote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('bank').addEventListener('change', function(){ state.bank = $('bank').value; state.bankConfirmed = true; saveConfirm(); $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
+  $('bankconfirm').addEventListener('click', function(){ if($('bank').value === '') return; state.bank = $('bank').value; state.bankConfirmed = true; saveConfirm(); $('banknote').textContent = 'Confirmed by you.'; renderAll(); });
   $('loadbtn').addEventListener('click', function(){
     var id = $('teamid').value.trim();
     if(!/^\d+$/.test(id)){ $('loaderr').textContent = 'Team ID is the number in your FPL URL.'; return; }
@@ -313,6 +322,13 @@
     Promise.all([relay(base), relay(base + 'history/'), relay(base + 'event/' + lastFinished + '/picks/'), relay(base + 'transfers/')]).then(function(rs){
       var entry = rs[0], hist = rs[1], picks = rs[2], transfers = rs[3];
       state.entry = entry; state.chips = hist.chips || [];
+      state.ftDerived = T12V2.deriveFT(hist);
+      if($('ft').value === '' && !state.ftConfirmed){
+        $('ft').value = state.ftDerived; state.ft = String(state.ftDerived); state.ftConfirmed = false;
+        $('ftnote').textContent = 'Derived from your history (carry cap 5, kept through chips): ' + state.ftDerived + ' - press Confirm or correct it. Transfers made since the last lock are not in the feed, so if you have made any, edit this.';
+      } else if(state.ftConfirmed) {
+        $('ftnote').textContent = 'Confirmed by you. History derives ' + state.ftDerived + ' - edit if you have made transfers since the lock.';
+      }
       var gw1v = {}, nowc = {};
       Object.keys(pool.players).forEach(function(pid){
         var pl2 = pool.players[pid];
@@ -379,6 +395,7 @@
   function renderVerdict(v, c){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
     var badge = v.cls === 'good' ? '<span class="badge">Hold signal</span>' : (v.cls === 'fix' ? '<span class="badge warn">Judgement call</span>' : '<span class="badge warn">Act this week</span>');
+    var assumptions = '<p class="why" style="margin-top:1em;border-top:1px dashed var(--line);padding-top:.8em">Assumptions in force: ' + c.ft + ' free transfer' + (c.ft === 1 ? '' : 's') + ' (confirmed by you; history derived ' + (state.ftDerived == null ? 'n/a' : state.ftDerived) + '), bank £' + c.bank.toFixed(1) + 'm (confirmed by you), squad as of the last locked gameweek. Projections come from a weak model - edges under ~1 xP are noise and that bar is chosen, not calibrated.</p>';
     var rows = '<div class="numbers">' +
       '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (v.unratedInXi ? ' (' + v.unratedInXi + ' unrated)' : '') + '</small></div></div>' +
       (v.bestFix
@@ -386,7 +403,7 @@
         : '<div class="n"><div class="k">Best single fix</div><div class="v">none<small>no legal swap inside budget improves this week</small></div></div>') +
       '<div class="n"><div class="k">Starters flagged</div><div class="v">' + v.flagged.length + '<small>' + (v.flagged.length ? v.flagged.join(', ') : 'no news or blanks in the projected XI') + '</small></div></div>' +
       '</div>';
-    $('verdictwrap').innerHTML = '<div class="verdict' + cls + '"><div class="tagrow" style="min-height:1.7em;display:flex;justify-content:flex-end">' + badge + '</div><h3>' + v.label + '</h3><p class="why">' + v.why + '</p>' + rows + '</div>';
+    $('verdictwrap').innerHTML = '<div class="verdict' + cls + '"><div class="tagrow" style="min-height:1.7em;display:flex;justify-content:flex-end">' + badge + '</div><h3>' + v.label + '</h3><p class="why">' + v.why + '</p>' + rows + assumptions + '</div>';
   }
 
   /* ---------- plans ---------- */
