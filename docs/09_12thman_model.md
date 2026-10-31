@@ -150,6 +150,30 @@ per-swap variance is large and the hit-policy samples are thin, so the page
 labels the ~1 xP line a chosen sensitivity/decision margin, never a measured
 "noise band".
 
+## Dynamic policy comparison (31 Oct 2026 addendum)
+
+The static pairwise grid cannot answer whether RE-OPTIMIZING WEEKLY beats
+holding, because it never carries a squad forward. The same script now
+simulates that: a 15-man squad (2/5/5/3) starting as the top-pred squad at the
+first eligible GW, scored each GW on realized best-XI points. The dynamic
+policy takes the single best predicted same-position swap each week (1 FT,
+margin m); the hold policy never transfers.
+
+| Holdout | Hold (never transfer) | Dynamic margin>0 | margin>1 | margin>2 |
+|---|---|---|---|---|
+| 2024-25 | 1247 | +190 (33 tr) | +190 (33 tr) | +207 (20 tr) |
+| 2025-26 | 1012 | +428 (33 tr) | +426 (32 tr) | +220 (19 tr) |
+
+Reading: weekly model-driven transferring beats never-transferring by a wide
+margin in both seasons, mostly because the hold squad decays (form drops,
+players stop appearing once injured below the minutes threshold - no auto-subs
+are modelled). 20 well-chosen transfers capture most of the gain; the extra
+~13 transfers at margin 0-1 add little or hurt (2025-26). This is the same
+optimistic diagnostic frame as the pairwise grid - no budget, prices,
+ownership, chips, hits or auto-subs - so it validates the PRODUCT SHAPE
+(weekly re-optimization with a small number of well-chosen moves), not any
+specific point total.
+
 ## Provenance and reproducibility (31 Oct 2026 addendum)
 
 - The live v1 coefficients come from the 26 Oct fit on an 11-season warehouse

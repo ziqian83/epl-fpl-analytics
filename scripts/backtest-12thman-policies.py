@@ -15,6 +15,12 @@ realized edge, and hit-policy net. No ownership or budget model - pairs are
 unrestricted within position, so absolute levels are optimistic; the SHAPE of
 the curve vs k is the decision-relevant output.
 
+Also included: a DYNAMIC comparison - a simulated 15-man squad re-optimized by
+the model each week (1 FT, best predicted same-position swap above a margin)
+versus never transferring, scored on realized best-XI points. This answers
+whether sequential weekly decisions beat holding, which the static pairwise
+grid cannot. Same optimistic diagnostic frame (no budget, no ownership).
+
 Run after fit-12thman-model.py has built the DB:  python3 scripts/backtest-12thman-policies.py [--db /tmp/epl12_fit.duckdb]
 """
 import argparse
@@ -30,6 +36,71 @@ def design(d):
     pos = d.position.map({'GKP': 0, 'DEF': 1, 'MID': 2, 'FWD': 3}).fillna(2).values
     return np.column_stack([np.ones(len(d)), d.f_pts4, d.f_xgi4, d.f_minshare4, d.opp_strength_k,
                             (pos == 0), (pos == 1), (pos == 3)]).astype(float)
+
+
+
+QUOTA = {'GKP': 2, 'DEF': 5, 'MID': 5, 'FWD': 3}
+FORMATIONS = [(3, 4, 3), (3, 5, 2), (4, 4, 2), (4, 3, 3), (4, 5, 1), (5, 3, 2), (5, 4, 1), (5, 2, 3)]
+
+def best_xi_points(rows):
+    """Max realized XI points from squad rows (list of (position, points))."""
+    by = {p: sorted((a for pos, a in rows if pos == p), reverse=True) for p in QUOTA}
+    if not by['GKP']: return 0.0
+    best = by['GKP'][0]
+    top = 0.0
+    for d, m, f in FORMATIONS:
+        if len(by['DEF']) >= d and len(by['MID']) >= m and len(by['FWD']) >= f:
+            top = max(top, sum(by['DEF'][:d]) + sum(by['MID'][:m]) + sum(by['FWD'][:f]))
+    return best + top
+
+def dynamic_policy(te, margin):
+    """Simulate: start with the top-pred squad at the first eligible GW, then each
+    week take the single best predicted same-position swap above `margin`.
+    Returns (season realized total, transfers made)."""
+    gws = sorted(te.k.unique())
+    byk = {k: g for k, g in te.groupby('k')}
+    first = byk[gws[0]]
+    squad = {}  # player_id -> position
+    for pos, n in QUOTA.items():
+        top = first[first.position == pos].nlargest(n, 'pred')
+        for pid in top.player_id: squad[pid] = pos
+    total, transfers = 0.0, 0
+    for i, k in enumerate(gws):
+        cur = byk[k]
+        rows = [(squad[pid], float(cur[cur.player_id == pid].target_pts.iloc[0])) for pid in squad if pid in set(cur.player_id)]
+        total += best_xi_points(rows)
+        if i + 1 >= len(gws): break
+        nxt = byk[gws[i + 1]]
+        insquad = nxt[nxt.player_id.isin(squad.keys())]
+        outsquad = nxt[~nxt.player_id.isin(squad.keys())]
+        best_gain, best_swap = margin, None
+        for pos in QUOTA:
+            sin = insquad[insquad.position == pos]
+            sout = outsquad[outsquad.position == pos]
+            if sin.empty or sout.empty: continue
+            worst = sin.loc[sin.pred.idxmin()]
+            best_in = sout.loc[sout.pred.idxmax()]
+            gain = best_in.pred - worst.pred
+            if gain > best_gain:
+                best_gain, best_swap = gain, (worst.player_id, best_in.player_id, pos)
+        if best_swap:
+            del squad[best_swap[0]]; squad[best_swap[1]] = best_swap[2]; transfers += 1
+    return total, transfers
+
+def dynamic_hold(te):
+    """Same starting squad, never transfer."""
+    gws = sorted(te.k.unique())
+    byk = {k: g for k, g in te.groupby('k')}
+    first = byk[gws[0]]
+    squad = {}
+    for pos, n in QUOTA.items():
+        for pid in first[first.position == pos].nlargest(n, 'pred').player_id: squad[pid] = pos
+    total = 0.0
+    for k in gws:
+        cur = byk[k]
+        rows = [(squad[pid], float(cur[cur.player_id == pid].target_pts.iloc[0])) for pid in squad if pid in set(cur.player_id)]
+        total += best_xi_points(rows)
+    return total
 
 def main():
     ap = argparse.ArgumentParser()
@@ -60,6 +131,13 @@ def main():
         for bar, v in acted.items():
             print(f'  k>{bar:<4} gw-groups={len(v):<4} mean realized {np.mean(v):+.3f} pts')
         print(f'  hit policy (edge>4, cost 4): gw-groups={len(hit)} mean net {np.mean(hit):+.3f} pts')
+        # dynamic comparison: weekly re-optimized squad vs never-transfer hold
+        hold_total = dynamic_hold(te)
+        print(f'--- {testseason}: dynamic policy (start = top-pred squad, realized best-XI points)')
+        print(f'  hold (never transfer): {hold_total:.1f}')
+        for m in [0.0, 1.0, 2.0]:
+            tot, ntr = dynamic_policy(te, m)
+            print(f'  1FT/wk model-driven, margin>{m}: {tot:.1f} ({tot - hold_total:+.1f} vs hold, {ntr} transfers)')
 
 if __name__ == '__main__':
     main()
