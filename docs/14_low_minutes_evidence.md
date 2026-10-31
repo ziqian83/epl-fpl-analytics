@@ -134,3 +134,38 @@ fixture variation alone could move any of these points. Nor is his return output
 purely a fitness question: both his playing time and his points conditional on
 returning remain uncertain, and both are partly modelling questions the current
 model cannot answer.
+
+## Appendix: frozen spec (verbatim, frozen 31 Oct 2026 before the run)
+
+FROZEN SPEC - low-minutes estimator retrospective evaluation (31 Oct 2026, frozen before this run)
+Population: epl_fpl_gameweeks, gw>=5, gated-out = trailing-4-GW minutes < 180.
+Fit seasons 2021-22..2024-25; test season 2025-26 (retrospective chronological; 2025-26
+was already inspected during this rebuild - NOT untouched validation).
+Candidates:
+  C0 silent zero
+  C1 nonzero baseline: fit-period unconditional band mean (bands: 0 / 1-89 / 90-179 trailing min)
+  C2 nonzero baseline: trailing form = mean total_points over trailing 4 GWs (0 when no trailing rows)
+  C3 two-part hypothesis: P(plays>0 | band) x E[pts | plays, band x position] + P(DNP) x E[pts|DNP]
+Metrics (all pre-registered): overall MAE; MAE on played rows (minutes>0); bias overall and
+per band; calibration = mean predicted vs mean actual per band; decision sensitivity =
+Spearman rank correlation of prediction vs actual on played rows (the buy-side ordering question).
+Selection rule: no estimator is merged on one metric; C3 must beat C0, C1 AND C2 on played-row
+MAE and not show worse bias than C1 to count as supported.
+
+## Reproduction
+
+scripts/low-minutes-eval.py (committed 31 Oct) re-runs the frozen-spec evaluation
+end to end. The original run was interactive and its code was not persisted; the
+script was reconstructed from the frozen spec above and verified against the same
+DB (seed 20261031, deterministic ORDER BY). It reproduces the table exactly at
+printed precision for C0 bias, all C1 metrics, C2 MAE-all / bias / Spearman, C3
+MAE-played / bias, and bootstrap C2-C0 and C3-C1 medians AND CIs. Last-digit gaps
+(+-0.001..0.003, inside the reported CIs): C0 MAE-all (0.435 vs 0.436), C0
+MAE-played (2.238 vs 2.239), C2 MAE-played (1.730 vs 1.729), C3 MAE-all (0.510 vs
+0.511), Spearman C1/C3 (0.183/0.177 vs 0.184/0.178), band b1_89 actual (0.99 vs
+0.98), C2/C3 b1_89 calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1 (+0.239
+[+0.217, +0.263] vs +0.238 [+0.214, +0.261]). No conclusion is affected.
+Population definition pinned by the reproduction: player-GW rows with gw>=5,
+trailing minutes = SUM(minutes) over the player's previous 4 rows within the same
+season (missed GWs skipped), gated-out = trailing minutes < 180.
+DB: /tmp/epl12_fit.duckdb, built by scripts/fit-12thman-model.py.
