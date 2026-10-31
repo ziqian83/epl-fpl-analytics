@@ -1,6 +1,6 @@
 {
-  "kind": "engine diagnostic snapshot: predictions frozen before the GW deadline. NOT the user's confirmed plan â the user owns every decision. Squad and bank/FT inputs are derived from the last locked gameweek and are UNCONFIRMED BY THE USER.",
-  "frozen_at": "2026-10-31T07:16:02.736Z",
+  "kind": "engine diagnostic snapshot: predictions frozen before the GW deadline. NOT the user's confirmed plan - the user owns every decision. Squad and bank/FT inputs are derived from the last locked gameweek and are UNCONFIRMED BY THE USER.",
+  "frozen_at": "2026-10-31T07:19:15.457Z",
   "gameweek": 9,
   "deadline_utc": "2026-10-31T11:00:00Z",
   "pool_sha256_16": "a2f3df7d894050e2",
@@ -59,7 +59,7 @@
       "captain": false
     },
     {
-      "name": "GroÃ",
+      "name": "Groß",
       "slot": 7,
       "captain": false
     },
@@ -89,7 +89,7 @@
       "captain": false
     },
     {
-      "name": "JoÃ£o Pedro",
+      "name": "João Pedro",
       "slot": 13,
       "captain": false
     },
@@ -99,7 +99,7 @@
       "captain": false
     },
     {
-      "name": "GuÃ©hi",
+      "name": "Guéhi",
       "slot": 15,
       "captain": false
     }
@@ -223,5 +223,5 @@
     ]
   },
   "fh_baseline": "free-hit uplift is measured against the engine's best feasible XI under formation, bench budget and club-cap constraints (45.56 xP), NOT against the user's picked XI, which is unknowable before the deadline.",
-  "scoring_rule": "After GW9 completes: fetch actual points per player from the official API. Score the PRE-FROZEN choices only â no hindsight re-selection of the XI or of transfer targets: (a) bestFix realized edge (Tavernier actual - Cherki actual), (b) frozen XI xP 45.6 vs the realized total of the frozen best XI, (c) FH uplift claim (frozen fhXiXp vs the frozen best-affordable-XI's actual points), (d) every chip verdict against realized outcomes. The hindsight oracle best-XI is reported separately as a diagnostic only, never as the benchmark the frozen calls are judged against. Publish the comparison alongside this file."
+  "scoring_rule": "After GW9 completes: fetch actual points per player from the official API. Score the PRE-FROZEN choices only - no hindsight re-selection of the XI or of transfer targets: (a) bestFix realized edge (Tavernier actual - Cherki actual), (b) frozen XI xP 45.6 vs the realized total of the frozen best XI, (c) FH uplift claim (frozen fhXiXp vs the frozen best-affordable-XI's actual points), (d) every chip verdict against realized outcomes. The hindsight oracle best-XI is reported separately as a diagnostic only, never as the benchmark the frozen calls are judged against. Publish the comparison alongside this file."
 }
