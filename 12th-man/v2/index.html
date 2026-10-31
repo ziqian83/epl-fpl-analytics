@@ -236,7 +236,7 @@
     <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
-<script src="./engine.js?v=2026-10-31.2"></script><!-- bump v= whenever engine.js changes -->
+<script src="./engine.js?v=2026-10-31.3"></script><!-- bump v= whenever engine.js changes -->
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -399,7 +399,7 @@
       var pl = pool.players[m.id];
       var s = m.name + ' (' + m.reason + '; ' + m.mins3 + ' min, ' + m.pts3 + ' pts over the last 3 GWs';
       if(pl && pl.news) s += '; ' + pl.news + (typeof pl.chance_next === 'number' ? ' - ' + pl.chance_next + '% chance of playing' : '');
-      if(m.epNext != null) s += "; FPL's own projection " + m.epNext.toFixed(1);
+      if(m.epNext != null) s += "; FPL's own projection " + m.epNext.toFixed(1) + ' (external baseline, unvalidated)';
       return s + ')';
     }).join('; ');
     var shift = cov.couldShift
@@ -446,7 +446,7 @@
   }
   function renderPlans(pl, cov){
     var covLine = (cov && cov.missing.length)
-      ? ' Every total above counts rated players only - ' + cov.missing.map(function(m){ return m.name; }).join(', ') + ' would add an unknown amount on top, so totals are floors and the ordering of plays can shift.'
+      ? ' Every total above counts rated players only - a partial estimate, not a lower bound: ' + cov.missing.map(function(m){ return m.name; }).join(', ') + ' could raise or lower it, and XI, bench and transfer choices interlock, so this is not simple addition. The ordering of plays can shift.'
       : '';
     $('plansrow').innerHTML = pl.plans.map(function(p, i){ return planCard(p, i, pl.leanKey); }).join('') +
       '<p class="caption" style="grid-column:1/-1">' + pl.leanWhy + covLine + '</p>';
@@ -492,12 +492,8 @@
       // Evidence bars: the horizon check behind the verdict, shown not asserted.
       if(c.name === 'bboost' && v && v.benchByGw) body += '<div class="window" style="margin-top:.6em">Bench xP by week</div>' + gwBars(v.benchByGw, pool.gameweek);
       if(c.name === '3xc' && v && v.capByGw) body += '<div class="window" style="margin-top:.6em">Best-starter xP by week</div>' + gwBars(v.capByGw, pool.gameweek);
-      var benchMissing = cov ? cov.missing.filter(function(m){ return m.slot > 11; }) : [];
-      if(c.name === 'bboost' && c.state === 'live' && benchMissing.length){
-        body = '<p class="vwhy">The bench total above counts rated bench players only. ' + benchMissing.map(function(m){ return m.name; }).join(', ') + ' (bench) carry no projection - a missing estimate, not a real zero - so the true bench value is higher by an unknown amount and the candidate read is withheld.</p>' + body;
-      }
       if(c.state === 'live' && cov && cov.couldShift) body += '<p class="vwhy" style="color:var(--faint);font-size:.82rem">Squad coverage incomplete - this read uses rated players only.</p>';
-      var badge = c.state === 'live' && c.name === 'bboost' && benchMissing.length ? '<span class="badge warn">Read withheld - incomplete coverage</span>'
+      var badge = c.state === 'live' && v && v.verdict === 'withheld' ? '<span class="badge warn">Read withheld - incomplete coverage</span>'
         : c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Heuristic candidate - experimental</span>'
         : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Heuristic borderline</span>'
         : c.state === 'live' ? '<span class="badge quiet">Heuristic hold</span>'
