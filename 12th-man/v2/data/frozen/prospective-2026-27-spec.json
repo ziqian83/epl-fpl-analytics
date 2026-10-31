@@ -33,7 +33,7 @@
   "code": {
     "repo": "ziqian83/epl-fpl-analytics",
     "backtest_blob_sha1": "9d9593950cb90879612169bca1d32075aec03cfa",
-    "runner_blob_sha1": "a2d1bb503fb40a95d37b143cc6597b1e5d639bb5",
+    "runner_blob_sha1": "71c0da91d416beca9ad3b07a6b2f81522ec5bc5f",
     "fit_panel_source_blob_sha1": "35034548ded19e56d8b83460f409fd994e267b02"
   },
   "panel": {
@@ -57,13 +57,40 @@
     "chips (WC/FH/BB/TC) are not modelled in this simulation"
   ],
   "decision_freeze": {
-    "protocol": "Before each GW K deadline, `freeze --gw K --spec <this spec>` persists each policy's actual decisions (starting squad at start_gw, transfers with prices used, XI, bench order, captain/vice) into 12th-man/v2/data/frozen/decisions/gw<K>-<version>.json with frozen_at, input hashes (played-rows csv_sha256, schedule rows, bootstrap now_cost sha256 + pull time) and code blob pins. Frozen files are NEVER overwritten; corrections require a new label, not an edit. `score-gw --gw K` later applies official actuals (bonus-final, GW complete in provenance) to the frozen decisions only, appending to the version-labelled results file; re-scoring a GW is refused.",
-    "decision_inputs": "strictly pre-outcome: played rows with gw < K; fixture SCHEDULE at K (opponents known pre-deadline); bootstrap now_cost at frozen_at; prior frozen decision files. No GW-K outcome rows are required or used; decision_sql_for reproduces the frozen panel's feature semantics on schedule-anchored rows (equivalence enforced by tests/test_prospective_decisions.py on completed GWs).",
+    "protocol": "Before each GW K deadline, `freeze --gw K --spec <this spec>` persists each policy's actual decisions (starting squad at start_gw, transfers with prices used, XI, bench order, captain/vice) into 12th-man/v2/data/frozen/decisions/gw<K>-<version>.json with frozen_at, input hashes (played-rows csv_sha256, schedule rows, saved price-snapshot file sha256 + pull time, official deadline from the events snapshot) and code blob pins. Frozen files are NEVER overwritten; corrections require a new label, not an edit. `score-gw --gw K` later applies official actuals (bonus-final, GW complete in provenance) to the frozen decisions only, appending to the version-labelled results file; re-scoring a GW is refused. freeze REFUSES to run at/after the target GW's official deadline (SystemExit naming season/GW/deadline) and refuses to run without the events or price snapshots. Prices come from the SAME saved snapshot file that is hashed - freeze never re-fetches.",
+    "decision_inputs": "strictly pre-outcome: played rows with gw < K; fixture SCHEDULE at K (opponents known pre-deadline); the saved price snapshot (consumed and hashed, no second fetch); prior frozen decision files. No GW-K outcome rows are required or used; decision_sql_for reproduces the frozen panel's feature semantics on schedule-anchored rows (equivalence enforced by tests/test_prospective_decisions.py on completed GWs). Fit rows are the completed train seasons only (current-season rows never enter the fit); decision rows sit only at K.",
     "decision_code": "transfer decisions use bt.transfer_week, the identical code path as the replay (extracted from simulate() 31 Oct; behavior-preserving, verified by byte-identical replay output against the pre-refactor script on both holdout seasons).",
     "replay_label": "`replay` (formerly `run`) reconstructs choices AFTER outcome rows exist and is a DIAGNOSTIC only; outputs land in prospective-2026-27-replay*.json, never in the prospective record.",
     "immutability": "freeze refuses to overwrite an existing decision file; score-gw refuses to re-score a GW already in the results file; every decision file carries a content_sha256 self-hash verified at load."
   },
   "pre_freeze_revisions": [
     "2026-10-31 (pre-data-freeze): added the forward decision-freeze protocol (decision_freeze block) and relabeled run->replay as diagnostic; code pins updated for the transfer_week extraction + freeze/score-gw runner commands. Policy definitions, panel semantics, scorer and budget/FT parameters UNCHANGED; both specs were pre-data-freeze (csv_sha256 null), so the prospective clock had not started and no frozen output existed."
+  ],
+  "start_squad": "synthetic builder squad: build_squad(strategy=builder) under budget_tenths/club_cap on the as-of decision panel at start_gw, priced from the saved snapshot. This experiment does NOT use the user's actual FPL squad; user squad/FT/bank are unconfirmed diagnostics and appear nowhere in frozen decisions or scoring.",
+  "revision_history": [
+    {
+      "rev": 1,
+      "git_commit": "e0b962329ce7d5a39d6b8554638c90b1d4b8bc2e",
+      "file_sha256": "1770118a683387aca7ae9522fb6e71b122884b92e3f1fbac93a905127662cdf3",
+      "note": "Freeze prospective outer-test spec (3 policies, builder signal, corrected scorer, GW10 start)"
+    },
+    {
+      "rev": 2,
+      "git_commit": "0fd1201832fbebd9c523c9f22025c2b6048bff19",
+      "file_sha256": "33bceaa9b5d92e8637bd9dc384299c92f7c72e475e4201060cc4e06448d27c70",
+      "note": "Spec: pin fixed runner blob sha (freeze finalization, pre-deadline)"
+    },
+    {
+      "rev": 3,
+      "git_commit": "3cdbe0d9a9b995852efe83a7c8bd6b374eda1b5f",
+      "file_sha256": "2ba7dfd38d4715b145d932074ef649f6d1c25b616d222ab11d3e5172a951a4e2",
+      "note": "Update decision freeze protocol and SHA1 references"
+    },
+    {
+      "rev": 4,
+      "git_commit": null,
+      "file_sha256": null,
+      "note": "Deadline refusal at/after the official GW deadline (events snapshot), snapshot-consumed prices (freeze hashes the same file it reads; no second fetch), as-of fit/squad guardrails, start-squad declaration, revision_history added; runner pin updated. git_commit/file_sha256 of THIS revision are filled by the next revision (bytes preserved in git)."
+    }
   ]
 }
