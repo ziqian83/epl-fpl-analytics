@@ -201,7 +201,7 @@
 
   <section id="plans">
     <h2>What I would <em>do</em></h2>
-    <p class="lede">The feasible plays side by side, each in both lenses: this gameweek, and the next six. Expected points come from a small open model whose rolling holdouts ordered candidate swaps about half a percentage point ahead of a naive baseline - a weak signal. Edges under ~1 xP are inside the noise band and are labelled, never sold. One card carries the engine's lean; the risk choice is yours, every week.</p>
+    <p class="lede">The feasible plays side by side, each in both lenses: this gameweek, and the next six. Expected points come from a small open model whose rolling holdouts ordered candidate swaps about half a percentage point ahead of a naive baseline - a weak signal. Edges under ~1 xP sit inside the model's decision margin and are labelled, never sold. Cards state what the model flags; the risk choice is yours, every week.</p>
     <div class="plans" id="plansrow"></div>
   </section>
 
@@ -394,8 +394,8 @@
   /* ---------- verdict ---------- */
   function renderVerdict(v, c){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
-    var badge = v.cls === 'good' ? '<span class="badge">Hold signal</span>' : (v.cls === 'fix' ? '<span class="badge warn">Judgement call</span>' : '<span class="badge warn">Act this week</span>');
-    var assumptions = '<p class="why" style="margin-top:1em;border-top:1px dashed var(--line);padding-top:.8em">Assumptions in force: ' + c.ft + ' free transfer' + (c.ft === 1 ? '' : 's') + ' (confirmed by you; history derived ' + (state.ftDerived == null ? 'n/a' : state.ftDerived) + '), bank £' + c.bank.toFixed(1) + 'm (confirmed by you), squad as of the last locked gameweek. Projections come from a weak model - edges under ~1 xP are noise and that bar is chosen, not calibrated.</p>';
+    var badge = v.cls === 'good' ? '<span class="badge">Hold signal</span>' : (v.cls === 'fix' ? '<span class="badge warn">Judgement call</span>' : '<span class="badge warn">Several moves to weigh</span>');
+    var assumptions = '<p class="why" style="margin-top:1em;border-top:1px dashed var(--line);padding-top:.8em">Assumptions in force: ' + c.ft + ' free transfer' + (c.ft === 1 ? '' : 's') + ' (confirmed by you; history derived ' + (state.ftDerived == null ? 'n/a' : state.ftDerived) + '), bank £' + c.bank.toFixed(1) + 'm (confirmed by you), squad as of the last locked gameweek. Projections come from a weak model - edges under ~1 xP sit inside its decision margin, a chosen sensitivity line rather than a calibrated threshold.</p>';
     var rows = '<div class="numbers">' +
       '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (v.unratedInXi ? ' (' + v.unratedInXi + ' unrated)' : '') + '</small></div></div>' +
       (v.bestFix

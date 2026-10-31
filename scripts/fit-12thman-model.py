@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The 12th Man - reproducible model fit + validation.
 
-Recovered and consolidated 31 Oct 2026 from the 25 Oct 2026 build session, where
+Consolidated 31 Oct 2026 from the original 25 Oct 2026 modelling run, where
 the fit ran as inline scripts that were never committed (audit gap). The SQL and
 statistics below are the recovered final versions, unchanged; this file adds a
 documented, repeatable data path so anyone can rebuild the input and re-run.
@@ -102,12 +102,20 @@ panel AS (
 SELECT season, k, player_id, position, f_pts4, f_xgi4, f_minshare4, opp_strength_k, target_pts
 FROM panel
 WHERE nrows4 = 4 AND f_minshare4*4*90 >= 180 AND opp_strength_k IS NOT NULL
+ORDER BY season, k, position, player_id
 """
 
 def design(d):
     pos = d.position.map({'GKP': 0, 'DEF': 1, 'MID': 2, 'FWD': 3}).fillna(2).values
     return np.column_stack([np.ones(len(d)), d.f_pts4, d.f_xgi4, d.f_minshare4, d.opp_strength_k,
                             (pos == 0), (pos == 1), (pos == 3)]).astype(float)
+
+def print_freeze():
+    import hashlib, duckdb as dk, numpy as np_, pandas as pd_
+    print('freeze: duckdb', dk.__version__, '| numpy', np_.__version__, '| pandas', pd_.__version__)
+    import glob
+    for f in sorted(glob.glob('.fit-cache/*.csv')):
+        print('freeze: csv', f, hashlib.sha256(open(f,'rb').read()).hexdigest()[:16])
 
 def main():
     ap = argparse.ArgumentParser()
@@ -117,6 +125,7 @@ def main():
     con = duckdb.connect(args.db, read_only=True)
     df = con.execute(PANEL_SQL).fetchdf()
     con.close()
+    print_freeze()
     print('panel rows:', len(df))
     rng = np.random.default_rng(7)
     for testseason, trainseasons in [('2024-25', SEASONS[:3]), ('2025-26', SEASONS[:4])]:

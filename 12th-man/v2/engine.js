@@ -3,7 +3,7 @@
    Pure functions over v2/data/pool.json + the user's squad; no DOM, no fetches,
    so the same file runs in the browser (window.T12V2) and under node (tests).
    Every projection is a WEAK signal (docs/09: pairwise +0.5-1.5pp over naive,
-   MAE ~2.3/player-GW): edges under ~1 point are noise and are labeled so.
+   MAE ~2.3/player-GW): edges under ~1 point sit inside a chosen decision margin and are labeled so.
    Known simplifications (labeled in the UI): prices frozen across the horizon,
    trailing features held constant, transfers settle at each GW start, unrated
    players contribute 0 xP and are counted, never hidden. */
@@ -15,7 +15,7 @@
   var CLUB_CAP = 3;
   var FT_MAX = 5;
   var HIT_COST = 4;
-  var NOISE_BAR = 1.0; // below this horizon edge, differences are noise (docs/09 MAE ~2.3/player-GW)
+  var DECISION_MARGIN = 1.0; // chosen sensitivity line for horizon edges (docs/09 MAE ~2.3/player-GW); NOT a calibrated noise threshold
   var FORMATIONS = [[3, 4, 3], [3, 5, 2], [4, 3, 3], [4, 4, 2], [4, 5, 1], [5, 2, 3], [5, 3, 2], [5, 4, 1]];
   var CHIP_LABELS = { wildcard: 'Wildcard', freehit: 'Free hit', bboost: 'Bench boost', '3xc': 'Triple captain' };
 
@@ -195,7 +195,7 @@
     } else {
       cls = 'surgery'; label = 'Structural issues worth modelling';
       why = 'Best single fix projects +' + gain.toFixed(2) + ' xP this week' +
-        (flagged.length ? ' and ' + flagged.length + (flagged.length === 1 ? ' starter is' : ' starters are') + ' flagged (news or blank)' : '') + ' - bigger surgery is on the table.';
+        (flagged.length ? ' and ' + flagged.length + (flagged.length === 1 ? ' starter is' : ' starters are') + ' flagged (news or blank)' : '') + '.';
     }
     return { cls: cls, label: label, why: why, xiXp: xi.xp, xiIds: xi.xiIds, captainId: xi.captainId,
       unratedInXi: xi.unratedInXi, formation: xi.formation,
@@ -283,8 +283,8 @@
         out.freehit = { state: 'live', expires: c.expires, blanks: blanks, newsOut: newsOut,
           verdict: (blanks + newsOut) >= 3 ? 'candidate' : 'hold',
           why: (blanks + newsOut) >= 3
-            ? (blanks + newsOut) + ' starters project 0 or carry news - a free hit patches the week without permanent squad damage. The cost is the chip itself: this copy expires after GW19 and the next unlocks GW20, so the alternative is saving it for a worse week. Compare against taking hits instead (each -4 is certain). The 3-flagged bar is a judgement line, not calibrated.'
-            : 'Only ' + (blanks + newsOut) + ' starter(s) project 0 or carry news - not an emergency week. Saving it costs nothing this week; the trade is expiry after GW' + c.expires + ' against worse weeks that may come. Bar is a judgement line, not calibrated.' };
+            ? (blanks + newsOut) + ' starters project 0 or carry news - a free hit patches the week without permanent squad damage. The cost is the chip itself: this copy expires after GW19 and the next unlocks GW20. The optimized one-week uplift of playing it (best affordable squad for the week) is not yet modelled here, so weigh this flag against taking hits instead (each -4 is certain). The 3-flagged bar is a judgement line, not calibrated.'
+            : 'Only ' + (blanks + newsOut) + ' starter(s) project 0 or carry news. That is a flag count, not the optimized uplift of playing the chip (best affordable one-week squad) - that comparison is not yet modelled, so this card cannot say whether holding is optimal. What is certain: playing it burns a copy that expires after GW' + c.expires + '. Bar is a judgement line, not calibrated.' };
       } else if (c.name === 'wildcard') {
         out.wildcard = { state: 'live', expires: c.expires }; // structural verdict rides on the wildcard plan card
       }
@@ -297,7 +297,7 @@
     var gws = opts.gws, gw = gws[0], bank = opts.bank, fts = opts.fts;
     var cands = candidates(poolArr, gws, 8);
     var hold = horizonXp(squad, gws);
-    var noise = 'Edges under ~' + NOISE_BAR.toFixed(0) + ' xP sit inside the noise band of a weak model (mean error ~2.3 per player-GW, pairwise lift ~1pt over persistence in held-out seasons) - shown for completeness, not as a reason to act. The bar itself is a chosen round number, not a calibrated threshold.';
+    var noise = 'Edges under ~' + DECISION_MARGIN.toFixed(0) + ' xP sit inside the decision margin of a weak model (mean error ~2.3 per player-GW, pairwise lift ~1pt over persistence in held-out seasons) - shown for completeness, not as a reason to act. The bar is a chosen sensitivity line, not a calibrated threshold or measured noise band.';
 
     // Hold
     var holdPlan = { key: 'hold', label: 'Hold - roll the transfer', certain: 0,
@@ -424,9 +424,9 @@
     list.forEach(function (p) {
       if (p !== holdPlan && typeof p.horizon === 'number' && p.horizon > (lean.horizon || 0)) lean = p;
     });
-    if (lean !== holdPlan && (lean.horizon - hold.total) < NOISE_BAR) lean = holdPlan;
+    if (lean !== holdPlan && (lean.horizon - hold.total) < DECISION_MARGIN) lean = holdPlan;
     var leanWhy = lean === holdPlan
-      ? 'No play clears the ~1 xP noise bar over holding on the horizon - holding is the honest lean, not inertia.'
+      ? 'No play clears the ~1 xP decision margin over holding on the horizon - holding is the honest lean, not inertia.'
       : lean.label + ' leads the horizon by +' + (lean.horizon - hold.total).toFixed(2) + ' xP net of certain costs. Weak signal: this orders the options, it does not make the call.';
     if (lean === aggrPlan && aggrPlan.moves.length > 1) {
       leanWhy += ' This plan re-optimises every future week on today\'s frozen data, so its edge compounds model error - it is the least certain number on the page, and most of its moves are future weeks you will re-decide with better information.';
@@ -462,6 +462,6 @@
   return { evidence: evidence, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts,
     plans: plans, whoElse: whoElse, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
     candidates: candidates, toEngine: toEngine, computeSells: computeSells,
-    NOISE_BAR: NOISE_BAR, CHIP_LABELS: CHIP_LABELS,
+    DECISION_MARGIN: DECISION_MARGIN, CHIP_LABELS: CHIP_LABELS,
     _internals: { xpOf: xpOf, bestSwap: bestSwap, FORMATIONS: FORMATIONS } };
 });

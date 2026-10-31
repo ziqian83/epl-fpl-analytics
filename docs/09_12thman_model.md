@@ -124,3 +124,44 @@ cold start; mid-season club changes; horizon holds trailing features constant.
 ep_next (FPL's own projection) is not benchmarked: its history is not archived in
 the public sources this warehouse uses, so an honest season-long comparison is not
 possible from these data.
+
+## Decision-level validation (31 Oct 2026 addendum)
+
+Aggregate MAE/correlation says how far projections are off on average; the
+decision question is whether the model's *ranking of candidate swaps* earns
+points. `scripts/backtest-12thman-policies.py` replays every feasible
+same-position swap candidate each GW in the held-out seasons (rolling-origin
+fits, never future data), pairs it against holding the current player, and
+scores the realized points difference.
+
+Results (unrestricted same-position pairs - the optimistic ceiling, ignoring
+budget and legality):
+
+| Holdout | Pred. edge bar | Mean realized edge | n gw-groups (hit policy) |
+|---|---|---|---|
+| 2024-25 | >0 / >1 / >2 | +0.60 / +1.25 / +2.28 pts | hit net +0.86 (22) |
+| 2025-26 | >0 / >1 / >2 | +0.72 / +1.46 / +1.84 pts | hit net +1.82 (5 - thin) |
+
+Realized edge rises monotonically with the predicted bar, which supports the
+page's decision-margin framing: small predicted edges realize small average
+gains, not zero. It does NOT establish any bar as a calibrated threshold -
+per-swap variance is large and the hit-policy samples are thin, so the page
+labels the ~1 xP line a chosen sensitivity/decision margin, never a measured
+"noise band".
+
+## Provenance and reproducibility (31 Oct 2026 addendum)
+
+- The live v1 coefficients come from a 26 Oct fit on an 11-season warehouse
+  (vaastav CSVs via `sql/epl_duckdb_load.sql`). The verbatim fit script was
+  filed as `scripts/fit-12thman-model-v1.py`. Its holdout results: 2024-25 MAE 2.242 /
+  corr 0.262 / pair-acc 0.501; 2025-26 MAE 2.299 / corr 0.212 / pair-acc 0.503
+  (naive 2.430 / 2.601). Runtime COEF + POS_OFFSET match that fit's beta
+  vector exactly.
+- `scripts/fit-12thman-model.py` (v0 research fit) reproduces the numbers in
+  the section above. Pair-sampling is now order-frozen (`ORDER BY` on the
+  panel) and the script prints sha256 of each input CSV plus
+  duckdb/numpy/pandas versions. Before the ORDER BY fix, pair-accuracy
+  wandered ~+/-0.003 between identical runs (unstable DuckDB result order);
+  MAE/corr were always stable. Residual differences vs the 25 Oct original-run
+  numbers are attributable to that ordering, possibly plus upstream CSV edits
+  (vaastav master last changed 22 Oct 2026).
