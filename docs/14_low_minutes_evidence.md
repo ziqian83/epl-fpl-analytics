@@ -116,7 +116,9 @@ population the model, backtests, or live gate would use, and the spec's intent
 is calendar; treat the evaluation as approximate at the eligibility margin,
 especially for intermittent players. Not patched: the spec for this run was
 frozen, and the rest of the pipeline is internally consistent on the calendar
-rule.
+rule for eligibility and features (see docs/15 for the full grain audit,
+including two panel-side issues found during it: blank-GW eligibility and the
+opponent-strength feature's units).
 
 Outcome per the frozen rule: C3 is NOT supported - its played-row edge over the
 trivial band-mean baseline is negligible, so its extra machinery buys nothing.
@@ -190,11 +192,15 @@ vs +0.238 [+0.214, +0.261]). All band calibration actuals and the C1/C2
 calibration rows match exactly. These are unexplained implementation
 differences in the original run, reported as-is; matching confidence intervals
 would not establish implementation equivalence and are not offered as
-justification. One likely contributor: the DB holds 5,541 player-GWs with two
-fixture rows (double fixtures); window order among same-GW rows is pinned by
-opponent_team_id in the reconstruction, but the original run's tie handling is
-unknown. An aggregated player-GW-grain variant diverges further (C0 0.440,
-C1 0.522, C2 0.439, C3 0.521 overall MAE), evidence the original ran on raw
-fixture rows. The reconstruction also inherits the population-definition
+justification. No causal attribution for the remaining gaps is established.
+Candidate contributors, unproven: the original run's tie handling among
+same-player-GW fixture rows (the DB holds 5,541 such doubles; the
+reconstruction pins ties by opponent_team_id) and any other unpersisted
+implementation details. An aggregated player-GW-grain variant diverges further
+(C0 0.440, C1 0.522, C2 0.439, C3 0.521 overall MAE), which is consistent with
+the original having run on raw fixture rows but does not prove it. Note the
+rows-vs-calendar mismatch above CANNOT explain these gaps: the original run and
+this reconstruction both used row windows. See docs/15 for the full grain
+audit. The reconstruction also inherits the population-definition
 limitation above (previous 4 rows, not previous 4 calendar GWs).
 DB: /tmp/epl12_fit.duckdb, built by scripts/fit-12thman-model.py.
