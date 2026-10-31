@@ -387,7 +387,7 @@
     var pl = T12V2.plans(es, poolArr, { gws: gws, bank: c.bank, fts: c.ft, chipState: chipState });
     renderVerdict(verdict, c);
     renderPlans(pl);
-    renderChips({ chipState: chipState, verdicts: T12V2.chipVerdicts(es, poolArr, chipState, gw, gws), wcPlan: pl.plans[3] });
+    renderChips({ chipState: chipState, verdicts: T12V2.chipVerdicts(es, poolArr, chipState, gw, gws, c.bank), wcPlan: pl.plans[3] });
     renderOutsiders(es, c.bank, gws);
   }
 

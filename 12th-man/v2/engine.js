@@ -92,6 +92,39 @@
     return out;
   }
 
+  /* Greedy estimate of the best affordable free-hit squad for one gameweek.
+     Budget = sum of current sell values + bank (a real free hit sells the whole
+     squad at sell price). Fills legal squad quotas by xP, club cap 3, under
+     budget. This is a greedy ESTIMATE of the optimized one-week uplift, not a
+     proof of the optimum. */
+  function freeHitXi(squad, poolArr, bank, gw) {
+    var budget = squad.reduce(function (z, p) { return z + (p.sell || 0); }, 0) + bank;
+    var quota = { 1: 2, 2: 5, 3: 5, 4: 3 };
+    var picked = [], spent = 0, clubs = {};
+    var byPos = {};
+    poolArr.forEach(function (p) {
+      if (!p.rated || xpOf(p, gw) <= 0) return;
+      (byPos[p.pos] = byPos[p.pos] || []).push(p);
+    });
+    [1, 2, 3, 4].forEach(function (pos) {
+      var list = (byPos[pos] || []).slice().sort(function (a, b) { return xpOf(b, gw) - xpOf(a, gw); });
+      var need = quota[pos], got = 0;
+      list.forEach(function (p) {
+        if (got >= need || (clubs[p.team] || 0) >= CLUB_CAP || spent + p.cost > budget) return;
+        picked.push(p); spent += p.cost; clubs[p.team] = (clubs[p.team] || 0) + 1; got++;
+      });
+      if (got < need) { // budget forced cheaper cover: fill legally with the cheapest remaining
+        list.slice().sort(function (a, b) { return a.cost - b.cost; }).forEach(function (p) {
+          if (got >= need || picked.indexOf(p) >= 0 || (clubs[p.team] || 0) >= CLUB_CAP || spent + p.cost > budget) return;
+          picked.push(p); spent += p.cost; clubs[p.team] = (clubs[p.team] || 0) + 1; got++;
+        });
+      }
+    });
+    if (picked.length < 15) return null;
+    var xi = bestXI(picked, gw);
+    return { xp: xi.xp, spent: +spent.toFixed(1), budget: +budget.toFixed(1) };
+  }
+
   function applySwap(squad, outId, inPlayer) {
     return squad.map(function (p) {
       if (p.id !== outId) return p;
@@ -242,7 +275,7 @@
     return ft;
   }
 
-  function chipVerdicts(squad, poolArr, chips, gw, horizonGws) {
+  function chipVerdicts(squad, poolArr, chips, gw, horizonGws, bank) {
     var out = {};
     var bench = squad.filter(function (p) { return p.slot > 11; });
     var benchXp = bench.reduce(function (z, p) { return z + xpOf(p, gw); }, 0);
@@ -280,11 +313,16 @@
             ? 'Your best starter projects ' + capXp.toFixed(1) + ' xP' + (betterCap ? ' - a later week projects a better captain spot' : ' - the strongest captain spot on the visible horizon') + '. Triple is a one-week multiplier on one player: variance-heavy even when the read is right. The 7 xP bar is a judgement line, not calibrated.'
             : 'Best starter projects ' + capXp.toFixed(1) + ' xP - no standout week. A double gameweek is the classic spot; none is flagged in this horizon. Expires after GW' + c.expires + '.' };
       } else if (c.name === 'freehit') {
+        var fh = freeHitXi(squad, poolArr, bank || 0, gw);
+        var fhUplift = fh ? +(fh.xp - xi.xp).toFixed(2) : null;
         out.freehit = { state: 'live', expires: c.expires, blanks: blanks, newsOut: newsOut,
-          verdict: (blanks + newsOut) >= 3 ? 'candidate' : 'hold',
-          why: (blanks + newsOut) >= 3
-            ? (blanks + newsOut) + ' starters project 0 or carry news - a free hit patches the week without permanent squad damage. The cost is the chip itself: this copy expires after GW19 and the next unlocks GW20. The optimized one-week uplift of playing it (best affordable squad for the week) is not yet modelled here, so weigh this flag against taking hits instead (each -4 is certain). The 3-flagged bar is a judgement line, not calibrated.'
-            : 'Only ' + (blanks + newsOut) + ' starter(s) project 0 or carry news. That is a flag count, not the optimized uplift of playing the chip (best affordable one-week squad) - that comparison is not yet modelled, so this card cannot say whether holding is optimal. What is certain: playing it burns a copy that expires after GW' + c.expires + '. Bar is a judgement line, not calibrated.' };
+          uplift: fhUplift, fhXiXp: fh ? fh.xp : null,
+          verdict: (fhUplift !== null && fhUplift >= 2) ? 'candidate' : 'hold',
+          why: fhUplift === null
+            ? 'Could not build a legal free-hit squad inside the estimated budget - treat this card as unknown, not as a hold.'
+            : (fhUplift >= 2
+              ? 'Playing it this week projects +' + fhUplift.toFixed(1) + ' xP over your current XI (greedy best-affordable-squad estimate on weak xP, not a proven optimum). The certain cost is the copy itself: expires after GW' + c.expires + ', next copy unlocks GW20. Whether +' + fhUplift.toFixed(1) + ' now beats saving it for a worse week is your call. The 2 xP bar is a judgement line, not calibrated.'
+              : 'Playing it this week projects only +' + Math.max(0, fhUplift).toFixed(1) + ' xP over your current XI (greedy estimate), and ' + (blanks + newsOut) + ' starter(s) project 0 or carry news. The certain cost of playing is the copy itself (expires after GW' + c.expires + '). Holding is not proven optimal either - a worse future week simply is not visible yet. The 2 xP bar is a judgement line, not calibrated.') };
       } else if (c.name === 'wildcard') {
         out.wildcard = { state: 'live', expires: c.expires }; // structural verdict rides on the wildcard plan card
       }
@@ -459,7 +497,7 @@
     return out;
   }
 
-  return { evidence: evidence, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts,
+  return { evidence: evidence, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts, freeHitXi: freeHitXi,
     plans: plans, whoElse: whoElse, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
     candidates: candidates, toEngine: toEngine, computeSells: computeSells,
     DECISION_MARGIN: DECISION_MARGIN, CHIP_LABELS: CHIP_LABELS,

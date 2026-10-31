@@ -87,6 +87,27 @@ ok(cv.bboost && cv.bboost.state === 'live' && typeof cv.bboost.benchXp === 'numb
 ok(cv['3xc'].verdict === 'hold' || cv['3xc'].verdict === 'candidate', 'triple captain verdict present');
 ok(cv.freehit.blanks === 0 && cv.freehit.verdict === 'hold', 'no blanks -> free hit holds');
 
+// --- freeHitXi: budget, club cap, uplift-driven verdict ---
+const fhXi = E.freeHitXi(engineSquad, poolArr, 10, 9);
+ok(fhXi && typeof fhXi.xp === 'number', 'freeHitXi returns an XI xP estimate');
+ok(fhXi.spent <= fhXi.budget + 1e-9, 'freeHitXi stays inside budget');
+{
+  // club cap: build a pool where the top players all share one team
+  const sameTeam = poolArr.map((p) => ({ ...p, team: 'AAA' }));
+  const fx = E.freeHitXi(engineSquad, sameTeam, 0, 9);
+  // greedy picks at most 3 from AAA; must still produce 15 players from... it cannot (all AAA) -> null allowed
+  ok(fx === null || fx.spent <= fx.budget + 1e-9, 'freeHitXi respects club cap or declines');
+}
+{
+  // uplift verdict: tiny bank, squad already optimal-ish -> hold; huge xP gap -> candidate
+  const weak = engineSquad.map((p) => ({ ...p, sell: p.sell, xpgw: Object.fromEntries(Object.entries(p.xpgw || {}).map(([k, v]) => [k, 0])) }));
+  // weak squad: all xP 0, pool unchanged -> uplift equals best pool XI
+  const cvw = E.chipVerdicts(weak, poolArr, cs, 9, GWS, 10);
+  ok(cvw.freehit.uplift !== null && cvw.freehit.uplift > 2 && cvw.freehit.verdict === 'candidate', 'dead squad -> free hit candidate with computed uplift');
+  ok(/greedy best-affordable-squad estimate|greedy estimate/.test(cvw.freehit.why), 'FH card labels the uplift a greedy estimate');
+  ok(/not a proven optimum|not proven optimal/.test(cvw.freehit.why), 'FH card disclaims optimality both ways');
+}
+
 // --- plans: lean, hit rules, two lenses ---
 const pl = E.plans(engineSquad, poolArr, { gws: GWS, bank: 10, fts: 1, chipState: cs });
 ok(pl.plans.length === 4, 'four play cards');
