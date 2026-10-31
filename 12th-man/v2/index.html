@@ -193,7 +193,7 @@
 
   <section id="verdict">
     <h2>The <em>verdict</em></h2>
-    <p class="lede">Question one every week: is the squad good enough for this gameweek, or does it need fixing? The classes are judgement lines over a weak projection - the numbers behind the call are always shown.</p>
+    <p class="lede">Question one every week: is the squad good enough for this gameweek, or does it need fixing? This verdict is an experimental read over a weak projection - it has not been validated as decision advice, the classes are judgement lines, and the numbers behind the read are always shown.</p>
     <div id="verdictwrap">
       <div class="verdict"><h3>Load your squad</h3><p class="why">The verdict is computed from your actual squad, bank and free transfers - nothing generic gets dressed up as advice.</p></div>
     </div>
@@ -394,7 +394,7 @@
   /* ---------- verdict ---------- */
   function renderVerdict(v, c){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
-    var badge = v.cls === 'good' ? '<span class="badge">Hold signal</span>' : (v.cls === 'fix' ? '<span class="badge warn">Judgement call</span>' : '<span class="badge warn">Several moves to weigh</span>');
+    var badge = '<span class="badge warn">Experimental - not validated advice</span>' + (v.cls === 'good' ? '<span class="badge">Read: no fix clears the bar</span>' : (v.cls === 'fix' ? '<span class="badge warn">Read: one fix to weigh</span>' : '<span class="badge warn">Read: several issues to weigh</span>'));
     var assumptions = '<p class="why" style="margin-top:1em;border-top:1px dashed var(--line);padding-top:.8em">Assumptions in force: ' + c.ft + ' free transfer' + (c.ft === 1 ? '' : 's') + ' (confirmed by you; history derived ' + (state.ftDerived == null ? 'n/a' : state.ftDerived) + '), bank £' + c.bank.toFixed(1) + 'm (confirmed by you), squad as of the last locked gameweek. Projections come from a weak model - edges under ~1 xP sit inside its decision margin, a chosen sensitivity line rather than a calibrated threshold.</p>';
     var rows = '<div class="numbers">' +
       '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (v.unratedInXi ? ' (' + v.unratedInXi + ' unrated)' : '') + '</small></div></div>' +
@@ -422,7 +422,7 @@
       : '';
     var conflict = p.conflict ? '<div class="conflict">The two lenses disagree here: what helps this week hurts the horizon (or the reverse). Pick the lens that matches your appetite this week.</div>' : '';
     return '<article class="plan' + (lean ? ' lean' : '') + '"><span class="num">' + num + '</span><div class="tagrow">' +
-      (lean ? '<span class="badge">Engine lean - weak signal</span>' : '') +
+      (lean ? '<span class="badge">Engine lean - experimental, weak signal</span>' : '') +
       '<span class="badge quiet">' + (p.certain ? 'Certain cost -' + p.certain : 'No certain cost') + '</span></div>' +
       '<h3>' + p.label + '</h3>' + lens + conflict + '<dl>' + moveRows +
       '<div class="row"><dt>You gain</dt><dd>' + p.benefit + '</dd></div>' +
@@ -473,9 +473,9 @@
       // Evidence bars: the horizon check behind the verdict, shown not asserted.
       if(c.name === 'bboost' && v && v.benchByGw) body += '<div class="window" style="margin-top:.6em">Bench xP by week</div>' + gwBars(v.benchByGw, pool.gameweek);
       if(c.name === '3xc' && v && v.capByGw) body += '<div class="window" style="margin-top:.6em">Best-starter xP by week</div>' + gwBars(v.capByGw, pool.gameweek);
-      var badge = c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Candidate week</span>'
-        : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Borderline</span>'
-        : c.state === 'live' ? '<span class="badge quiet">Hold</span>'
+      var badge = c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Heuristic candidate - experimental</span>'
+        : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Heuristic borderline</span>'
+        : c.state === 'live' ? '<span class="badge quiet">Heuristic hold</span>'
         : '<span class="badge quiet">' + (c.state === 'spent' ? 'Spent' : (c.state === 'locked' ? 'Locked' : 'Future')) + '</span>';
       return '<div class="chip' + (c.state !== 'live' ? ' spentchip' : '') + '">' + head.replace('</h3>', badge + '</h3>') + windowLine + body + '</div>';
     }).join('');
