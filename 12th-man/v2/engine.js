@@ -225,6 +225,7 @@
   /* ---------- the verdict: good enough, or fix? (docs/10) ---------- */
   function assess(squad, poolArr, gw, bank) {
     var cands = candidates(poolArr, [gw], 8);
+    var cov = coverage(squad, poolArr);
     var xi = bestXI(squad, gw);
     var xiPlayers = squad.filter(function (p) { return xi.xiIds.indexOf(p.id) >= 0; });
     var flagged = xiPlayers.filter(function (p) {
@@ -236,17 +237,20 @@
     });
     var best1 = bestSwap(squad, cands, bank, [gw]);
     var gain = best1 ? best1.gain : 0;
+    var fixWord = cov.missing.length ? 'Best rated-only fix' : 'Best single fix';
     var cls, label, why;
     if (gain < 0.75 && flagged.length === 0) {
       cls = 'good'; label = 'Good enough this week';
-      why = 'No legal one-transfer fix inside your budget gains three-quarters of a point this week, and no starter carries team-news risk. Under a weak projection, that is a hold signal, not a hidden problem.';
+      why = (cov.couldShift ? 'Among rated players, no' : 'No') + ' legal one-transfer fix inside your budget gains three-quarters of a point this week, and no starter carries team-news risk. Under a weak projection, that is a hold signal, not a hidden problem.' +
+        (cov.couldShift ? ' Coverage is partial (below), so this class can shift.' : '');
     } else if (gain < 2.0 && flagged.length <= 1) {
       cls = 'fix'; label = 'One fix worth your judgement';
       why = 'The model sees a real but not decisive improvement available' +
-        (flagged.length ? ', and ' + flagged.length + (flagged.length === 1 ? ' starter carries' : ' starters carry') + ' news or a blank' : '') + '.';
+        (flagged.length ? ', and ' + flagged.length + (flagged.length === 1 ? ' starter carries' : ' starters carry') + ' news or a blank' : '') + '.' +
+        (cov.missing.length ? ' The named fix compares rated players only.' : '');
     } else {
       cls = 'surgery'; label = 'Structural issues worth modelling';
-      why = 'Best single fix projects +' + gain.toFixed(2) + ' xP this week' +
+      why = fixWord + ' projects +' + gain.toFixed(2) + ' xP this week' +
         (flagged.length ? ' and ' + flagged.length + (flagged.length === 1 ? ' starter is' : ' starters are') + ' flagged (news or blank)' : '') + '.';
     }
     return { cls: cls, label: label, why: why, xiXp: xi.xp, xiIds: xi.xiIds, captainId: xi.captainId,
@@ -318,13 +322,22 @@
     chips.forEach(function (c) {
       if (c.state !== 'live') { out[c.name] = { state: c.state, expires: c.expires, unlocks: c.unlocks }; return; }
       if (c.name === 'bboost') {
-        out.bboost = { state: 'live', expires: c.expires, benchXp: +benchXp.toFixed(2), benchByGw: benchByGw,
-          verdict: benchXp >= 12 ? 'candidate' : (benchXp >= 9 ? 'borderline' : 'hold'),
-          why: benchXp >= 12
-            ? 'Bench projects ' + benchXp.toFixed(1) + ' xP this week' + (betterBench ? ' - a later week in the horizon projects even higher, so compare before playing' : ' - as strong as the model sees on the horizon') + '. The 12/9 xP bars are judgement lines, not calibrated thresholds.'
-            : benchXp >= 9
-              ? 'Bench projects ' + benchXp.toFixed(1) + ' xP - playable, but ' + (betterBench ? 'a later horizon week projects higher' : 'not a standout week') + '. Bars are judgement lines, not calibrated.'
-              : 'Bench projects only ' + benchXp.toFixed(1) + ' xP this week - weak week for it. Expires after GW' + c.expires + '.' };
+        var benchMissing = bench.filter(function (p) { return !p.rated; });
+        if (benchMissing.length) {
+          out.bboost = { state: 'live', expires: c.expires, benchXp: +benchXp.toFixed(2), benchByGw: benchByGw,
+            verdict: 'withheld',
+            why: 'Bench projects ' + benchXp.toFixed(1) + ' xP this week counting rated bench players only - a partial estimate, not a lower bound. ' +
+              benchMissing.map(function (p) { return p.name; }).join(', ') +
+              (benchMissing.length === 1 ? ' carries' : ' carry') + ' no projection, which could raise or lower the total, and bench order is interlocked with the XI, so no candidate/borderline/hold call is made. Expires after GW' + c.expires + '.' };
+        } else {
+          out.bboost = { state: 'live', expires: c.expires, benchXp: +benchXp.toFixed(2), benchByGw: benchByGw,
+            verdict: benchXp >= 12 ? 'candidate' : (benchXp >= 9 ? 'borderline' : 'hold'),
+            why: benchXp >= 12
+              ? 'Bench projects ' + benchXp.toFixed(1) + ' xP this week' + (betterBench ? ' - a later week in the horizon projects even higher, so compare before playing' : ' - as strong as the model sees on the horizon') + '. The 12/9 xP bars are judgement lines, not calibrated thresholds.'
+              : benchXp >= 9
+                ? 'Bench projects ' + benchXp.toFixed(1) + ' xP - playable, but ' + (betterBench ? 'a later horizon week projects higher' : 'not a standout week') + '. Bars are judgement lines, not calibrated.'
+                : 'Bench projects only ' + benchXp.toFixed(1) + ' xP this week - weak week for it. Expires after GW' + c.expires + '.' };
+        }
       } else if (c.name === '3xc') {
         out['3xc'] = { state: 'live', expires: c.expires, capXp: +capXp.toFixed(2), capByGw: capByGw,
           verdict: capXp >= 7 ? 'candidate' : 'hold',
