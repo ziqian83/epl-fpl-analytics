@@ -30,7 +30,7 @@ holdout. Nothing from the holdouts influences the spec choice.
   them) but still score their real points via the full-data matrix.
 - Stage 1 (train-only spec selection): fit 2021-22+2022-23, validate on 2023-24. Grid:
   {model, persistence} x gate {0,.5,.6,.7,.8} x margin {0,1}. Ties break to simplest spec.
-- Stage 2 (true holdouts): 2024-25 (train 2021-22..2023-24), 2025-26 (train ..2024-25),
+- Stage 2 (held-out seasons): 2024-25 (train 2021-22..2023-24), 2025-26 (train ..2024-25),
   GW5-GW38. Baselines: hold, raw model margins 0/1/2, raw persistence, random (seeds 0-4).
 - Repro: panel sha256[:16]=e5c5f580073d8ecb (31,429 rows), python 3.10.12, numpy 2.2.6,
   duckdb 1.5.6, random seeds 0-4, DB /tmp/epl12_fit.duckdb (vaastav pinned master
@@ -46,7 +46,7 @@ holdout. Nothing from the holdouts influences the spec choice.
 - Persistence: +209..+349 across the grid (best: gate>=0.8 margin>1, 47 tr, 14 hits).
 - SELECTED SPEC: model, gate>=0.0, margin>1 (gates tied; simplest wins).
 
-## Stage 2 (true holdouts) - hit-adjusted points vs hold
+## Stage 2 (held-out seasons, retrospectively inspected) - hit-adjusted points vs hold
 
 | policy | 2024-25 (hold 1660) | 2025-26 (hold 1536) |
 | --- | --- | --- |
