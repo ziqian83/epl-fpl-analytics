@@ -18,12 +18,14 @@ vs +0.238 [+0.214, +0.261]). Everything else matches at printed precision,
 including all band calibration actuals and the C1/C2 calibration rows. These
 deltas are reported, not explained away: the original implementation differs
 somewhere and where exactly is unknown. Matching confidence intervals would
-not establish implementation equivalence. One likely contributor: this DB has
-5,541 player-GWs with two fixture rows (double fixtures); window order among
-same-GW rows is pinned here by opponent_team_id, but the original run's tie
-handling is unknown. An aggregated player-GW-grain variant was tried and
-diverges further (C0 0.440, C1 0.522, C2 0.439, C3 0.521 overall MAE), evidence
-the original ran on raw fixture rows.
+not establish implementation equivalence. No causal attribution is
+established. Candidate contributors, unproven: the original run's tie handling
+among same-player-GW fixture rows (5,541 such doubles in this DB; pinned here
+by opponent_team_id) and any other unpersisted implementation details. An
+aggregated player-GW-grain variant diverges further (C0 0.440, C1 0.522,
+C2 0.439, C3 0.521 overall MAE), consistent with - not proof of - the original
+having run on raw fixture rows. The rows-vs-calendar limitation below cannot
+explain these gaps: both runs used row windows. See docs/15_grain_audit.md.
 
 POPULATION-DEFINITION LIMITATION (material): this script's trailing window is
 the player's previous 4 ROWS within the season (missed GWs skipped). The frozen
