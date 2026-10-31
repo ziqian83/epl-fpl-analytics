@@ -1,25 +1,42 @@
 #!/usr/bin/env python3
 """Frozen-spec low-minutes estimator retrospective evaluation (docs/14).
 
-Reconstructed 31 Oct 2026 AFTER the original interactive run, directly from the
-frozen spec (verbatim in docs/14_low_minutes_evidence.md, appendix). The original
-run was executed interactively against /tmp/epl12_fit.duckdb and its code was not
-persisted; this script is the committed reproduction path.
+RECONSTRUCTED 31 Oct 2026 AFTER the original interactive run, from the frozen
+spec (verbatim in docs/14_low_minutes_evidence.md, appendix). The original run
+was executed interactively against /tmp/epl12_fit.duckdb and its code was not
+persisted; the original numbers are NOT exactly recoverable. This script is a
+reconstruction, not a reproduction of the original implementation.
 
-Verification (31 Oct, same DB, seed 20261031, deterministic ORDER BY): reproduces
-docs/14 exactly at printed precision for C0 bias, all C1 metrics, C2 MAE-all /
-bias / Spearman, C3 MAE-played / bias, calibration except band b1_89, and bootstrap
-C2-C0 and C3-C1 medians AND CIs. Last-digit gaps (+-0.001..0.003): C0 MAE-all
-(0.435 vs 0.436), C0 MAE-played (2.238 vs 2.239), C2 MAE-played (1.730 vs 1.729),
-C3 MAE-all (0.510 vs 0.511), Spearman C1/C3 (0.183/0.177 vs 0.184/0.178), band
-b1_89 actual (0.99 vs 0.98), C2/C3 b1_89 calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1
-(+0.239 [+0.217, +0.263] vs +0.238 [+0.214, +0.261]). These deltas sit far inside
-the reported CIs and change no conclusion.
+Known discrepancies vs the docs/14 table (same DB, seed 20261031, deterministic
+ORDER BY): C0 MAE-all (0.435 vs 0.436), C0 MAE-played (2.238 vs 2.239), C2
+MAE-played (1.730 vs 1.729), C3 MAE-all (0.510 vs 0.511), Spearman C1/C3
+(0.183/0.177 vs 0.184/0.178), band b1_89 actual (0.99 vs 0.98), C2/C3 b1_89
+calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1 (+0.239 [+0.217, +0.263]
+vs +0.238 [+0.214, +0.261]). Everything else matches at printed precision.
+These deltas are reported, not explained away: the original implementation
+differs somewhere and where exactly is unknown. Matching confidence intervals
+would not establish implementation equivalence.
 
-Population definition pinned by matching the recorded outputs: player-GW rows with
-gw>=5, trailing minutes = SUM(minutes) over the player's previous 4 ROWS within the
-same season (missed GWs skipped, not zero-filled calendar weeks), gated-out =
-trailing minutes < 180. Trailing form (C2) = AVG(total_points) over the same
+POPULATION-DEFINITION LIMITATION (material): this script's trailing window is
+the player's previous 4 ROWS within the season (missed GWs skipped). The frozen
+spec says "trailing-4-GW minutes", and every other pipeline component uses
+CALENDAR gameweeks: the model panel, both backtests and the prospective runner
+all share one PANEL_SQL (RANGE BETWEEN 4 PRECEDING AND 1 PRECEDING on gw,
+nrows4 = 4, >= 180 minutes), and the live gate (scripts/12thman2-refresh.mjs)
+slices the last 4 rounds of FPL element-summary history. For players with an
+absent trailing row (intermittent players, mid-season signings, data gaps) the
+two rules assign different eligibility and bands. Measured scope on this DB
+(gw>=5, 126,353 rows): 1,670 gate flips (535 rows-gated-only, 1,135
+calendar-gated-only), concentrated in 2021-22 (2.99% of that season's rows),
+76 flips (0.28%) in the 2025-26 test season; 1,709 band flips among the 87,924
+commonly gated rows; trailing minutes differ on 11,764 rows (median 90, max 270
+where differing). Read the evaluation conclusions with this mismatch in mind.
+Not patched: the spec for this eval was frozen, and the rest of the pipeline is
+internally consistent on the calendar rule.
+
+Population of this reconstruction: player-GW rows with gw>=5, trailing minutes =
+SUM(minutes) over the player's previous 4 ROWS within the same season, gated-out
+= trailing minutes < 180. Trailing form (C2) = AVG(total_points) over the same
 previous 4 rows, 0 when no trailing rows.
 
 DB: /tmp/epl12_fit.duckdb, built by scripts/fit-12thman-model.py
