@@ -1,3 +1,9 @@
+> STATUS (31 Oct, post-review): RETROSPECTIVE-EXPLORATORY. The holdout seasons below have
+> been inspected across multiple variants and no longer constitute an untouched test set.
+> See docs/13 for the methodological audit (incl. the +64 vs +97 selected-spec anomaly,
+> resolved as season-dependent gate binding after an arbitrary tie) and the prospective
+> outer-test protocol that replaces holdout reuse.
+
 # 12 - Squad-constrained decision backtest (budget, FT banking, hits, captain)
 
 `scripts/backtest-12thman-constrained.py` — 31 Oct 2026. Replays weekly transfer decisions
