@@ -96,6 +96,28 @@ differences written as first-minus-second):
 - C2 - C1 on played rows: median +0.238, CI [+0.214, +0.261] - C2 higher (worse);
   the band mean beats trailing form on played rows by about 0.24 pts.
 
+POPULATION-DEFINITION LIMITATION (material, applies to this whole evaluation):
+the frozen spec says "trailing-4-GW minutes", but both the original interactive
+run and the committed reconstruction (scripts/low-minutes-eval.py) implemented
+the trailing window as the player's previous 4 ROWS within the season, skipping
+missed GWs. Every other pipeline component uses CALENDAR gameweeks: the model
+panel, both backtests and the prospective runner share one PANEL_SQL (RANGE
+BETWEEN 4 PRECEDING AND 1 PRECEDING on gw, requiring a row in all 4 GWs,
+>= 180 minutes), and the live gate (scripts/12thman2-refresh.mjs) takes the last
+4 rounds of FPL element-summary history. For players with an absent trailing row
+(intermittent players, mid-season signings, data gaps) the two rules assign
+different eligibility and bands. Measured scope on the fit DB (gw>=5, 126,353
+rows): 1,670 gate flips (535 rows-gated-only, 1,135 calendar-gated-only),
+concentrated in 2021-22 (2.99% of that season's rows) and declining to 76 flips
+(0.28%) in the 2025-26 test season; 1,709 band flips among the 87,924 commonly
+gated rows; trailing minutes differ on 11,764 rows (median 90, max 270 where
+differing). Consequences: the numbers in this evaluation are not computed on the
+population the model, backtests, or live gate would use, and the spec's intent
+is calendar; treat the evaluation as approximate at the eligibility margin,
+especially for intermittent players. Not patched: the spec for this run was
+frozen, and the rest of the pipeline is internally consistent on the calendar
+rule.
+
 Outcome per the frozen rule: C3 is NOT supported - its played-row edge over the
 trivial band-mean baseline is negligible, so its extra machinery buys nothing.
 On overall MAE, no candidate shows an edge over silent zero that this analysis can
@@ -152,20 +174,20 @@ Spearman rank correlation of prediction vs actual on played rows (the buy-side o
 Selection rule: no estimator is merged on one metric; C3 must beat C0, C1 AND C2 on played-row
 MAE and not show worse bias than C1 to count as supported.
 
-## Reproduction
+## Reconstruction (not a reproduction of the original)
 
-scripts/low-minutes-eval.py (committed 31 Oct) re-runs the frozen-spec evaluation
-end to end. The original run was interactive and its code was not persisted; the
-script was reconstructed from the frozen spec above and verified against the same
-DB (seed 20261031, deterministic ORDER BY). It reproduces the table exactly at
-printed precision for C0 bias, all C1 metrics, C2 MAE-all / bias / Spearman, C3
-MAE-played / bias, and bootstrap C2-C0 and C3-C1 medians AND CIs. Last-digit gaps
-(+-0.001..0.003, inside the reported CIs): C0 MAE-all (0.435 vs 0.436), C0
-MAE-played (2.238 vs 2.239), C2 MAE-played (1.730 vs 1.729), C3 MAE-all (0.510 vs
-0.511), Spearman C1/C3 (0.183/0.177 vs 0.184/0.178), band b1_89 actual (0.99 vs
-0.98), C2/C3 b1_89 calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1 (+0.239
-[+0.217, +0.263] vs +0.238 [+0.214, +0.261]). No conclusion is affected.
-Population definition pinned by the reproduction: player-GW rows with gw>=5,
-trailing minutes = SUM(minutes) over the player's previous 4 rows within the same
-season (missed GWs skipped), gated-out = trailing minutes < 180.
+The original evaluation run was interactive and its code was not persisted; the
+original numbers are NOT exactly recoverable. scripts/low-minutes-eval.py
+(committed 31 Oct) is a reconstruction from the frozen spec above. Against the
+same DB (seed 20261031, deterministic ORDER BY) it matches the table at printed
+precision except: C0 MAE-all (0.435 vs 0.436), C0 MAE-played (2.238 vs 2.239),
+C2 MAE-played (1.730 vs 1.729), C3 MAE-all (0.510 vs 0.511), Spearman C1/C3
+(0.183/0.177 vs 0.184/0.178), band b1_89 actual (0.99 vs 0.98), C2/C3 b1_89
+calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1 (+0.239 [+0.217, +0.263]
+vs +0.238 [+0.214, +0.261]). These are unexplained implementation differences in
+the original run, reported as-is; matching confidence intervals would not
+establish implementation equivalence and are not offered as justification. The
+reconstruction also inherits the population-definition limitation above
+(previous 4 rows, not previous 4 calendar GWs), which likely accounts for part
+of the gap.
 DB: /tmp/epl12_fit.duckdb, built by scripts/fit-12thman-model.py.
