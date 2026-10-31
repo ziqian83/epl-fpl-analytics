@@ -1,57 +1,71 @@
-# 13 - Evaluation protocol and evidence-led plan (31 Oct 2026)
+# 13 - Evaluation protocol, methodological audit, and evidence-led plan (31 Oct 2026)
 
 Status of all numbers in docs/12: RETROSPECTIVE-EXPLORATORY. Both held-out seasons have
-now been inspected across multiple variants (margins, gates, starts, captain on/off).
-They are no longer untouched test sets, and future spec choices informed by them cannot
-be called independently validated.
+been inspected across multiple variants (margins, gates, starts, captain on/off). They
+are no longer untouched test sets; spec choices informed by them are not independent
+validation.
 
-## Methodological audit of docs/12 (prompted by review, resolved 31 Oct)
+## Simulator sanity review (independent pass over scripts/backtest-12thman-constrained.py)
 
-- Selected-spec anomaly (+64 vs raw m>1 +97 on 2024-25): NOT a bug. The stage-1 grid tied
-  at +508 across ALL gate values on the inner 2023-24 season (the minshare gate never
-  binds on model picks there), and the tie was broken by sort order to gate>=0.8. On
-  2024-25 the gate DID bind: 7 weeks where the model's best buy had minshare4 < 0.8
-  (instrumented count), diverging the transfer path and costing 33 pts. Binding is
-  season-dependent; "the gate never binds" was true only of the inner season. Protocol
-  fix applied: ties now break toward the simplest spec (lowest gate, lowest margin),
-  which would have selected raw model m>1 (gate 0.0) - its holdout numbers (+97/+252)
-  were already in the table, and the headline (loses to raw persistence +304/+358) is
-  unchanged.
-- Captain approximation: captain = weekly top-signal squad member, not a human choice;
-  this inflates all policies roughly equally and flattens between-policy differences.
-- Best-legal-XI approximates auto-subs generously (real auto-subs only replace
-  non-players in strict bench order); same generosity for every policy.
-- Price availability: buys pay the target-GW deadline price; intra-week price movement
-  is not modelled. Sell rounding: floor(profit/2), current price when down. Both
-  documented in docs/12 and identical across policies.
-- Interpretation bound: differences under ~30 pts/season across policies are inside
-  start-builder and approximation noise (start sensitivity showed +64..+536 on the same
-  holdout); only the large, consistent persistence-over-model gap carries signal.
+- ORACLE XI: yes. `best_xi_points` selects the XI and formation by REALIZED points after
+  the fact. A real manager sets the XI before matches. Captain is chosen pre-outcome
+  (top as-of signal), but the XI itself is oracle. All policy comparisons inherit this.
+- No realized points in DECISIONS: confirmed. Transfers, captain, and the spec grid use
+  predictions/form only; realized points enter only scoring (including the oracle XI).
+- Feature leakage: panel features are trailing-4-GW (RANGE 4 PRECEDING..1 PRECEDING) and
+  opponent strength is trailing; training is rolling-origin by season. No current-GW
+  feature use found.
+- Eligibility: panel requires 4 trailing GW rows AND >=180 minutes over them, so new
+  signings/youth are absent until their 5th GW; buy candidates must be panel-present;
+  squad members missing from a GW's rows keep their slot and score 0. This biases the
+  universe toward established regulars.
+- Prices: buys pay the target-GW deadline price; intra-week moves unmodelled. Sells:
+  buy + floor(profit/2), current price if down.
+- FT/hits: bank cap 5 (rule from 2024/25, verified), hits -4, runtime asserts bank >= 0
+  and squad size 15.
+- Approximation bias is NOT established as policy-neutral: the oracle XI, captain rule,
+  and price rules interact with each policy's squad path (e.g. hit-heavy paths field
+  different XIs). Equal rules do not imply equal bias, and no measurement here separates
+  that bias from real policy differences. Accordingly NO numerical noise threshold is
+  claimed; the start-sensitivity spread (+64..+536 on one holdout) demonstrates
+  fragility, not a quantified noise band.
 
-## Prospective outer-test protocol (the only path to a validated claim)
+## What the retrospective experiment supports - precisely
 
-1. Freeze specs NOW, before any 2026-27 evaluation: {hold, raw persistence m>0,
-   raw model m>1} with fixed builder 'signal', captain rule as coded, FT cap 5.
-2. Extend the panel with the current season (vaastav 2026-27, pinned commit recorded)
-   and evaluate week by week as GWs complete, WITHOUT re-inspecting intermediate results
-   to adjust specs. Each scored GW is appended to a results log with its data hash.
-3. The engine's own weekly frozen calls (12th-man/v2/data/frozen/, starting GW9) are the
-   parallel prospective test for the shipped product; scored post-deadline per artifact.
-4. Any spec change after a 2026-27 evaluation restarts the clock: new spec, new freeze,
-   evaluation only on GWs completed after the change.
+- Inside THIS simulator, on two retrospectively inspected seasons, raw form-chasing with
+  hit discipline outscored the raw projection model across all tested margins, while the
+  model had won the inner 2023-24 validation. That is a simulator finding about
+  generalization failure, not a result about real FPL play today.
+- It does NOT establish that form-chasing is the best real-money policy, and it is NOT
+  grounds to switch the live product's advice. Live engine copy and caveats stay as-is.
 
-## Evidence-led plan (grounded in the findings, not tuned toward an outcome)
+## docs/12 audit trail (resolved 31 Oct)
 
-- The simple baseline is the one to beat and currently the best-supported policy:
-  form-chasing with hit discipline. The user's original ask is consistency of the data
-  and decisions, not a fancy estimator. If the product recommends anything today, the
-  honest reference is the form baseline with the engine's evidence layer as
-  DISCIPLINE (fewer, better-sourced transfers), presented as judgement, not as a
-  validated edge.
-- The model's job is now diagnostic: where its inner-season edge came from (fixture
-  strength? xGI signal?) and why it failed to generalize (regime shift? coefficient
-  instability across fits?). That is inspection work (coefficient drift, per-feature
-  contribution by season), not score tuning.
-- Build movement that does not require new validation: provenance locking (panel hash
-  fixture), signal inspection tooling, test fixtures for the engine's legal-XI and
-  pricing rules against official edge cases, and the prospective protocol above.
+- Selected-spec anomaly (+64 vs raw m>1 +97 on 2024-25): not a bug. Stage-1 tied at +508
+  across all gate values (gate never binds on inner 2023-24 model picks); the tie broke
+  by sort order to gate>=0.8, which then bound on 2024-25 (7 weeks, instrumented) and
+  cost 33 pts. Fix (6a4712e): ties break toward the simplest spec - that would have
+  selected raw model m>1, whose numbers were already reported; headline unchanged.
+
+## Prospective outer-test protocol
+
+- 2026-27 GW1-8 are elapsed and GW9 is mid-flight: NOT untouched. The only clean
+  prospective window is GW10 onward, frozen before the GW10 deadline.
+- Freeze (spec + code + data hashes recorded in the repo) BEFORE the GW10 deadline:
+  {hold, raw persistence m>0, raw model m>1}, builder 'signal', captain rule as coded,
+  FT cap 5, panel extended with 2026-27 (vaastav pinned commit recorded at build time).
+  Score each completed GW without editing specs; any spec change restarts the clock.
+- The engine's frozen weekly calls (12th-man/v2/data/frozen/, from GW9) are PRODUCT
+  diagnostics - pre-deadline snapshots scored against actuals. They are not the same
+  evidence class as an executable-policy simulation and are reported separately.
+
+## Evidence-led plan (no tuning toward an outcome)
+
+- No policy recommendation changes anywhere (product, docs, user copy) until a
+  prospective, pre-registered result exists.
+- Diagnostic work on the model's generalization failure: coefficient drift across
+  rolling fits, per-feature contribution by season, regime comparison. Inspection and
+  measurement, not score tweaks.
+- Build movement without validation claims: provenance fixtures (panel hash locked in
+  tests/fixtures/), signal-inspection tooling, engine rule fixtures (legal XI, pricing
+  edge cases), and the GW10 freeze when its deadline approaches.
