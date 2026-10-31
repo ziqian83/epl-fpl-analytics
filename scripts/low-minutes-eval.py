@@ -8,14 +8,22 @@ persisted; the original numbers are NOT exactly recoverable. This script is a
 reconstruction, not a reproduction of the original implementation.
 
 Known discrepancies vs the docs/14 table (same DB, seed 20261031, deterministic
-ORDER BY): C0 MAE-all (0.435 vs 0.436), C0 MAE-played (2.238 vs 2.239), C2
-MAE-played (1.730 vs 1.729), C3 MAE-all (0.510 vs 0.511), Spearman C1/C3
-(0.183/0.177 vs 0.184/0.178), band b1_89 actual (0.99 vs 0.98), C2/C3 b1_89
-calibration (0.63/0.92 vs 0.62/0.93), bootstrap C2-C1 (+0.239 [+0.217, +0.263]
-vs +0.238 [+0.214, +0.261]). Everything else matches at printed precision.
-These deltas are reported, not explained away: the original implementation
-differs somewhere and where exactly is unknown. Matching confidence intervals
-would not establish implementation equivalence.
+ORDER BY): C0 MAE-all (0.435 vs 0.436), C0 MAE-played (2.238 vs 2.239), C1
+MAE-played (1.489 vs 1.491), C1 bias (+0.000 vs -0.001), C2 MAE-played (1.727
+vs 1.729), C2 Spearman (0.142 vs 0.143), C3 MAE-all (0.510 vs 0.511), C3
+MAE-played (1.482 vs 1.484), C3 bias (+0.003 vs +0.002), C3 Spearman (0.179
+vs 0.178), C3 b90_179 calibration (1.54 vs 1.53), bootstrap CI lower bounds
+(C2-C0 -0.012 vs -0.011; C3-C1 -0.011 vs -0.010; C2-C1 +0.237 [+0.215, +0.261]
+vs +0.238 [+0.214, +0.261]). Everything else matches at printed precision,
+including all band calibration actuals and the C1/C2 calibration rows. These
+deltas are reported, not explained away: the original implementation differs
+somewhere and where exactly is unknown. Matching confidence intervals would
+not establish implementation equivalence. One likely contributor: this DB has
+5,541 player-GWs with two fixture rows (double fixtures); window order among
+same-GW rows is pinned here by opponent_team_id, but the original run's tie
+handling is unknown. An aggregated player-GW-grain variant was tried and
+diverges further (C0 0.440, C1 0.522, C2 0.439, C3 0.521 overall MAE), evidence
+the original ran on raw fixture rows.
 
 POPULATION-DEFINITION LIMITATION (material): this script's trailing window is
 the player's previous 4 ROWS within the season (missed GWs skipped). The frozen
@@ -26,10 +34,10 @@ nrows4 = 4, >= 180 minutes), and the live gate (scripts/12thman2-refresh.mjs)
 slices the last 4 rounds of FPL element-summary history. For players with an
 absent trailing row (intermittent players, mid-season signings, data gaps) the
 two rules assign different eligibility and bands. Measured scope on this DB
-(gw>=5, 126,353 rows): 1,670 gate flips (535 rows-gated-only, 1,135
-calendar-gated-only), concentrated in 2021-22 (2.99% of that season's rows),
-76 flips (0.28%) in the 2025-26 test season; 1,709 band flips among the 87,924
-commonly gated rows; trailing minutes differ on 11,764 rows (median 90, max 270
+(gw>=5, 126,353 raw fixture rows): 1,683 gate flips (542 rows-gated-only, 1,141
+calendar-gated-only), concentrated in 2021-22 (3.06% of that season's rows),
+78 flips (0.29%) in the 2025-26 test season; 1,712 band flips among the 87,918
+commonly gated rows; trailing minutes differ on 11,791 rows (median 90, max 270
 where differing). Read the evaluation conclusions with this mismatch in mind.
 Not patched: the spec for this eval was frozen, and the rest of the pipeline is
 internally consistent on the calendar rule.
@@ -57,10 +65,14 @@ args = ap.parse_args()
 con = duckdb.connect(args.db, read_only=True)
 rows = con.execute("""
 WITH r AS (
+  -- raw fixture rows: a player-GW with two fixtures is TWO rows here, matching
+  -- the original interactive run's grain. Window order among same-GW fixture
+  -- rows is pinned by opponent_team_id so the run is deterministic; the
+  -- original run's tie handling is unknown.
   SELECT season, gw, player_id, position, minutes, total_points,
-    COALESCE(SUM(minutes) OVER (PARTITION BY season, player_id ORDER BY gw
+    COALESCE(SUM(minutes) OVER (PARTITION BY season, player_id ORDER BY gw, opponent_team_id
       ROWS BETWEEN 4 PRECEDING AND 1 PRECEDING),0) AS trail_min,
-    COALESCE(AVG(total_points) OVER (PARTITION BY season, player_id ORDER BY gw
+    COALESCE(AVG(total_points) OVER (PARTITION BY season, player_id ORDER BY gw, opponent_team_id
       ROWS BETWEEN 4 PRECEDING AND 1 PRECEDING),0) AS trail_form
   FROM epl_fpl_gameweeks
 )
