@@ -309,15 +309,22 @@
   }
 
   /* Free transfers held, derived from entry history under current official rules:
-     1 FT per GW, unused carry capped at 5, saved FTs retained through wildcard/free hit
-     (chip-week transfers do not consume FTs). Recurrence over finished GWs only. */
+     the first FT lands for GW2 ("After your first deadline you will receive 1 free
+     transfer each Gameweek"), so the first finished GW grants the 1 already counted;
+     1 accrues per finished GW after that, unused carry capped at 5; transfers beyond
+     the held amount cost points, not future FTs (floor at 0); wildcard/free-hit weeks
+     neither consume nor accrue - saved FTs are retained flat (chips help page:
+     "2 saved -> 2 saved after"). Recurrence over finished GWs only.
+     Validated against a live account ledger, GW1-9, 31 Oct 2026. */
   function deriveFT(hist) {
     var chipGw = {};
     ((hist && hist.chips) || []).forEach(function (c) { if (c.name === 'wildcard' || c.name === 'freehit') chipGw[c.event] = true; });
     var ft = 1;
-    ((hist && hist.current) || []).forEach(function (r) {
-      var used = chipGw[r.event] ? 0 : (r.event_transfers || 0);
-      ft = Math.min(FT_MAX, ft - used + 1);
+    ((hist && hist.current) || []).forEach(function (r, i) {
+      if (i === 0) return; // first finished GW: it grants the initial 1, no accrual on top
+      var chip = !!chipGw[r.event];
+      var used = chip ? 0 : (r.event_transfers || 0);
+      ft = Math.min(FT_MAX, Math.max(ft - used, 0) + (chip ? 0 : 1));
     });
     return ft;
   }
