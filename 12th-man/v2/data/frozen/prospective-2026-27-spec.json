@@ -1,0 +1,38 @@
+{
+  "kind": "prospective outer-test freeze (docs/13 protocol)",
+  "season": "2026-27",
+  "start_gw": 10,
+  "gw10_deadline": "2026-11-06T18:30:00Z",
+  "deadline_source": "official FPL API bootstrap-static, fetched 2026-10-31",
+  "spec_frozen_at": "2026-10-31T07:58:00Z",
+  "builder": "signal",
+  "ft_cap": 5,
+  "budget_tenths": 1000,
+  "club_cap": 3,
+  "policies": [
+    {"name": "hold", "key": "hold", "margin": null, "builder": "signal"},
+    {"name": "persistence_m0", "key": "f_pts4", "margin": 0.0, "builder": "signal"},
+    {"name": "model_m1", "key": "pred", "margin": 1.0, "builder": "signal"}
+  ],
+  "scorer": "pre-outcome pick_team + score_gw: legal XI/bench/captain/vice from as-of signal only; official auto-subs (bench order, formation legal, GK-for-GK) and vice-captain on realized minutes; full player-GW scoring",
+  "code": {
+    "repo": "ziqian83/epl-fpl-analytics",
+    "backtest_blob_sha1": "7f3b412bd69aaec354f546870f4e62b846be829f",
+    "runner_blob_sha1": "cb33a2be0a42de4faa9186221464c01095bc8b91",
+    "fit_panel_source_blob_sha1": "35034548ded19e56d8b83460f409fd994e267b02"
+  },
+  "panel": {
+    "train_seasons": ["2021-22", "2022-23", "2023-24", "2024-25", "2025-26"],
+    "train_source": "vaastav/Fantasy-Premier-League pinned master d7b05b51d137 (cache .fit-cache)",
+    "current_season_source": "official FPL API (bootstrap-static, element-summary, fixtures); vaastav 2026-27 covers only through GW6 at pinned master, insufficient for GW10 trailing-4 features",
+    "csv_sha256": null,
+    "pulled_at": null,
+    "note": "csv_sha256 and pulled_at are filled at the data freeze after GW9 completes and before the GW10 deadline; that data snapshot is part of the freeze plan, not a spec change"
+  },
+  "scoring_rule": "Score each completed GW (all fixtures finished, official points incl. bonus final) by deterministic replay of the frozen policies from GW10; per-GW points = cumulative(K) - cumulative(K-1). No spec or code edits after the freeze; any spec change restarts the clock and is recorded here.",
+  "known_simplifications": [
+    "buys pay the target-GW deadline price (intra-week moves unmodelled)",
+    "buy candidates must be panel-present (4 trailing GW rows, >=180 trailing minutes) - eligibility bias toward established regulars",
+    "chips (WC/FH/BB/TC) are not modelled in this simulation"
+  ]
+}
