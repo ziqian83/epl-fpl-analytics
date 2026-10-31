@@ -159,20 +159,33 @@ first eligible GW, scored each GW on realized best-XI points. The dynamic
 policy takes the single best predicted same-position swap each week (1 FT,
 margin m); the hold policy never transfers.
 
-| Holdout | Hold (never transfer) | Dynamic margin>0 | margin>1 | margin>2 |
-|---|---|---|---|---|
-| 2024-25 | 1247 | +190 (33 tr) | +190 (33 tr) | +207 (20 tr) |
-| 2025-26 | 1012 | +428 (33 tr) | +426 (32 tr) | +220 (19 tr) |
+Audited version (club cap 3 enforced; comparators added; 31 Oct, same day the
+first version of this table was written - the uncapped numbers were materially
+too kind and are replaced):
 
-Reading: weekly model-driven transferring beats never-transferring by a wide
-margin in both seasons, mostly because the hold squad decays (form drops,
-players stop appearing once injured below the minutes threshold - no auto-subs
-are modelled). 20 well-chosen transfers capture most of the gain; the extra
-~13 transfers at margin 0-1 add little or hurt (2025-26). This is the same
-optimistic diagnostic frame as the pairwise grid - no budget, prices,
-ownership, chips, hits or auto-subs - so it validates the PRODUCT SHAPE
-(weekly re-optimization with a small number of well-chosen moves), not any
-specific point total.
+| Holdout | Hold (never) | Model m>0 | Model m>1 | Model m>2 | Persistence 1FT/wk | Random 1FT/wk |
+|---|---|---|---|---|---|---|
+| 2024-25 | 1247 | -67 (33 tr) | -67 (33 tr) | +124 (17 tr) | -37 (33 tr) | -563 (33 tr) |
+| 2025-26 | 1012 | +385 (33 tr) | +385 (32 tr) | +94 (18 tr) | +267 (32 tr) | -353 (33 tr) |
+
+Reading, with the constraints that change the story stated first:
+- Enforcing the club cap removed a third of the apparent gain (uncapped
+  squads were partly illegal). Budget, selling-price erosion, hit costs, FT
+  banking and auto-subs are still NOT modelled - these figures remain an
+  optimistic diagnostic, not a deployable policy estimate.
+- Random weekly swapping craters (-563 / -353 vs hold): the gains are not
+  "transferring at all". The model beats the persistence heuristic (no model)
+  in both seasons, but the gap is modest in 2024-25 and large in 2025-26.
+- The margin question FLIPS between seasons (m>2 best in 2024-25, m>0-1 best
+  in 2025-26): two seasons cannot calibrate a transfer bar. This is exactly
+  why the page labels its bars chosen judgement lines.
+- Transfers are chosen on as-of predictions from prior-seasons-only fits - no
+  hindsight in selection. But the hold comparator is weak (its squad decays
+  out of panel eligibility with no auto-subs), so "beats hold" overstates
+  real-world value; the model-vs-persistence and model-vs-random gaps are the
+  informative ones.
+- Do not quote these figures as product quality claims. They justify continued
+  weekly re-optimization as a design direction; they do not calibrate it.
 
 ## Provenance and reproducibility (31 Oct 2026 addendum)
 

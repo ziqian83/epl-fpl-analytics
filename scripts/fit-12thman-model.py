@@ -99,7 +99,7 @@ panel AS (
   JOIN fixk f ON f.season=g.season AND f.k=g.gw AND f.team=g.team
   WINDOW w AS (PARTITION BY g.season, g.player_id ORDER BY g.gw RANGE BETWEEN 4 PRECEDING AND 1 PRECEDING)
 )
-SELECT season, k, player_id, position, f_pts4, f_xgi4, f_minshare4, opp_strength_k, target_pts
+SELECT season, k, player_id, position, team, f_pts4, f_xgi4, f_minshare4, opp_strength_k, target_pts
 FROM panel
 WHERE nrows4 = 4 AND f_minshare4*4*90 >= 180 AND opp_strength_k IS NOT NULL
 ORDER BY season, k, position, player_id

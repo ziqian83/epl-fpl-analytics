@@ -53,38 +53,69 @@ def best_xi_points(rows):
             top = max(top, sum(by['DEF'][:d]) + sum(by['MID'][:m]) + sum(by['FWD'][:f]))
     return best + top
 
-def dynamic_policy(te, margin):
-    """Simulate: start with the top-pred squad at the first eligible GW, then each
-    week take the single best predicted same-position swap above `margin`.
-    Returns (season realized total, transfers made)."""
+def dynamic_policy(te, margin, key='pred', seed=None):
+    """Simulate: start with a top-ranked squad at the first eligible GW (club cap 3
+    enforced), then each week take the single best ranked same-position swap
+    above `margin`. key='pred' uses the model; key='f_pts4' is the persistence
+    heuristic (no model); key='random' takes a seeded random legal swap per week
+    (activity comparator). Returns (season realized total, transfers made).
+    No budget/prices (stated diagnostic limitation); club cap 3 enforced."""
+    rng = np.random.default_rng(seed if seed is not None else 11)
     gws = sorted(te.k.unique())
     byk = {k: g for k, g in te.groupby('k')}
     first = byk[gws[0]]
+    teams = first.set_index('player_id').team
     squad = {}  # player_id -> position
+    club = {}
     for pos, n in QUOTA.items():
-        top = first[first.position == pos].nlargest(n, 'pred')
-        for pid in top.player_id: squad[pid] = pos
+        initkey = 'pred' if key in ('pred', 'random') else key
+        for pid in first[first.position == pos].sort_values(initkey, ascending=False).player_id:
+            t = teams.get(pid)
+            if club.get(t, 0) >= 3: continue
+            if sum(1 for v in squad.values() if v == pos) >= n: continue
+            squad[pid] = pos; club[t] = club.get(t, 0) + 1
     total, transfers = 0.0, 0
     for i, k in enumerate(gws):
         cur = byk[k]
+        teams = teams.combine_first(cur.set_index('player_id').team)
         rows = [(squad[pid], float(cur[cur.player_id == pid].target_pts.iloc[0])) for pid in squad if pid in set(cur.player_id)]
         total += best_xi_points(rows)
         if i + 1 >= len(gws): break
         nxt = byk[gws[i + 1]]
         insquad = nxt[nxt.player_id.isin(squad.keys())]
         outsquad = nxt[~nxt.player_id.isin(squad.keys())]
+        if key == 'random':
+            cands = []
+            for pos in QUOTA:
+                sin = insquad[insquad.position == pos]; sout = outsquad[outsquad.position == pos]
+                if sin.empty or sout.empty: continue
+                for w in sin.player_id:
+                    for b in sout.player_id:
+                        t = teams.get(b)
+                        if club.get(t, 0) - (1 if teams.get(w) == t else 0) < 3:
+                            cands.append((w, b, pos))
+            if cands:
+                w, b, pos = cands[rng.integers(len(cands))]
+                club[teams.get(w)] = club.get(teams.get(w), 0) - 1; club[teams.get(b)] = club.get(teams.get(b), 0) + 1
+                del squad[w]; squad[b] = pos; transfers += 1
+            continue
         best_gain, best_swap = margin, None
         for pos in QUOTA:
             sin = insquad[insquad.position == pos]
             sout = outsquad[outsquad.position == pos]
             if sin.empty or sout.empty: continue
-            worst = sin.loc[sin.pred.idxmin()]
-            best_in = sout.loc[sout.pred.idxmax()]
-            gain = best_in.pred - worst.pred
-            if gain > best_gain:
-                best_gain, best_swap = gain, (worst.player_id, best_in.player_id, pos)
+            for w in sin.itertuples():
+                t_w = teams.get(w.player_id)
+                for b in sout.itertuples():
+                    t_b = teams.get(b.player_id)
+                    if club.get(t_b, 0) - (1 if t_b == t_w else 0) >= 3: continue
+                    gain = getattr(b, key) - getattr(w, key)
+                    if gain > best_gain:
+                        best_gain, best_swap = gain, (w.player_id, b.player_id, pos, t_w, t_b)
         if best_swap:
-            del squad[best_swap[0]]; squad[best_swap[1]] = best_swap[2]; transfers += 1
+            w, b, pos, t_w, t_b = best_swap
+            club[t_w] = club.get(t_w, 0) - 1; club[t_b] = club.get(t_b, 0) + 1
+            del squad[w]; squad[b] = pos; transfers += 1
     return total, transfers
 
 def dynamic_hold(te):
@@ -138,6 +169,10 @@ def main():
         for m in [0.0, 1.0, 2.0]:
             tot, ntr = dynamic_policy(te, m)
             print(f'  1FT/wk model-driven, margin>{m}: {tot:.1f} ({tot - hold_total:+.1f} vs hold, {ntr} transfers)')
+        totp, ntrp = dynamic_policy(te, 0.0, key='f_pts4')
+        print(f'  1FT/wk persistence heuristic (no model): {totp:.1f} ({totp - hold_total:+.1f} vs hold, {ntrp} transfers)')
+        totr, ntrr = dynamic_policy(te, 0.0, key='random')
+        print(f'  1FT/wk random legal swap (activity comparator, seeded): {totr:.1f} ({totr - hold_total:+.1f} vs hold, {ntrr} transfers)')
 
 if __name__ == '__main__':
     main()
