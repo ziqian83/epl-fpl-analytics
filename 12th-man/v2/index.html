@@ -400,7 +400,7 @@
       var pl = pool.players[m.id];
       var s = m.name + ' (' + m.reason + '; ' + m.mins3 + ' min, ' + m.pts3 + ' pts over the last 3 GWs';
       if(pl && pl.news) s += '; ' + pl.news + (typeof pl.chance_next === 'number' ? ' - ' + pl.chance_next + '% chance of playing' : '');
-      if(m.epNext != null) s += "; FPL's own projection " + m.epNext.toFixed(1) + ' (external baseline, unvalidated)';
+      if(m.epNext != null) s += "; FPL's own projection " + m.epNext.toFixed(1) + ', external baseline unvalidated';
       return s + ')';
     }).join('; ');
     var shift = cov.couldShift
@@ -414,7 +414,7 @@
       parts.push(sn.clsChangesAt == null ? 'the verdict class does not change at any projection up to 10' : 'the verdict class changes if his projection reaches ~' + sn.clsChangesAt.toFixed(1) + ' xP');
       return 'Sensitivity for ' + nm + ': ' + parts.join('; ') + '. Scenario assumptions: every other projection, price and the squad held fixed, his this-week projection swept 0.5 to 10, this week only. A tipping point is not a probability, a range, or an estimate of his value - it says where this page state would flip, nothing more.';
     });
-    return '<p class="why" style="border-left:3px solid var(--warn);padding-left:.7em">Coverage: ' + (cov.total - cov.missing.length) + ' of ' + cov.total + ' squad players have a model projection. Missing: ' + names + '. A missing projection is not a real zero - the model simply cannot rank ' + (cov.missing.length === 1 ? 'this player' : 'these players') + ' yet.' + shift + (sens.length ? '<br>' + sens.join('<br>') : '') + '</p>';
+    return '<p class="why" style="border-left:3px solid var(--warn);padding-left:.7em">Coverage: ' + (cov.total - cov.missing.length) + ' of ' + cov.total + ' squad players have a model projection. Missing: ' + names + '. A missing projection is not a real zero - the model simply cannot rank ' + (cov.missing.length === 1 ? 'this player' : 'these players') + ' yet.' + shift + (sens.length ? ' <details class="ev"><summary>Tipping-point sweep +</summary>' + sens.join('<br>') + '</details>' : '') + '</p>';
   }
   function renderVerdict(v, c, cov){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
