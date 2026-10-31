@@ -236,7 +236,7 @@
     <p>Sources: official FPL API (bootstrap-static, element summaries, fixtures; entry, picks and history by your ID). Player pool refreshed daily by automation. Not affiliated with the Premier League. No odds, no market data, no scraping of private endpoints.</p>
   </div>
 </main>
-<script src="./engine.js?v=2026-10-31.1"></script><!-- bump v= whenever engine.js changes -->
+<script src="./engine.js?v=2026-10-31.2"></script><!-- bump v= whenever engine.js changes -->
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -382,28 +382,43 @@
     }
     var es = engineSquad();
     var gw = pool.gameweek, gws = pool.horizon_gws;
+    var cov = T12V2.coverage(es, poolArr);
     var chipState = T12V2.chipState(pool.chips, state.chips, gw);
     var verdict = T12V2.assess(es, poolArr, gw, c.bank);
     var pl = T12V2.plans(es, poolArr, { gws: gws, bank: c.bank, fts: c.ft, chipState: chipState });
-    renderVerdict(verdict, c);
-    renderPlans(pl);
-    renderChips({ chipState: chipState, verdicts: T12V2.chipVerdicts(es, poolArr, chipState, gw, gws, c.bank), wcPlan: pl.plans[3] });
+    renderVerdict(verdict, c, cov);
+    renderPlans(pl, cov);
+    renderChips({ chipState: chipState, verdicts: T12V2.chipVerdicts(es, poolArr, chipState, gw, gws, c.bank), wcPlan: pl.plans[3], cov: cov });
     renderOutsiders(es, c.bank, gws);
   }
 
   /* ---------- verdict ---------- */
-  function renderVerdict(v, c){
+  function coverageNote(cov){
+    if(!cov || !cov.missing.length) return '';
+    var names = cov.missing.map(function(m){
+      var pl = pool.players[m.id];
+      var s = m.name + ' (' + m.reason + '; ' + m.mins3 + ' min, ' + m.pts3 + ' pts over the last 3 GWs';
+      if(pl && pl.news) s += '; ' + pl.news + (typeof pl.chance_next === 'number' ? ' - ' + pl.chance_next + '% chance of playing' : '');
+      if(m.epNext != null) s += "; FPL's own projection " + m.epNext.toFixed(1);
+      return s + ')';
+    }).join('; ');
+    var shift = cov.couldShift
+      ? ' Because ' + (cov.shifters.length === 1 ? 'this player has' : 'these players have') + ' real recent minutes, the verdict class, the XI total and the named fix can all shift once rated - treat every comparison on this page as a rated-players-only read, not a settled one.'
+      : ' With no recent minutes, their absence is unlikely to move the verdict, but the totals still count rated players only.';
+    return '<p class="why" style="border-left:3px solid var(--warn);padding-left:.7em">Coverage: ' + (cov.total - cov.missing.length) + ' of ' + cov.total + ' squad players have a model projection. Missing: ' + names + '. A missing projection is not a real zero - the model simply cannot rank ' + (cov.missing.length === 1 ? 'this player' : 'these players') + ' yet.' + shift + '</p>';
+  }
+  function renderVerdict(v, c, cov){
     var cls = v.cls === 'good' ? '' : (v.cls === 'fix' ? ' fix' : ' surgery');
-    var badge = '<span class="badge warn">Experimental - not validated advice</span>' + (v.cls === 'good' ? '<span class="badge">Read: no fix clears the bar</span>' : (v.cls === 'fix' ? '<span class="badge warn">Read: one fix to weigh</span>' : '<span class="badge warn">Read: several issues to weigh</span>'));
+    var badge = '<span class="badge warn">Experimental - not validated advice</span>' + (cov && cov.couldShift ? '<span class="badge warn">Partial coverage - read can shift</span>' : '') + (v.cls === 'good' ? '<span class="badge">Read: no fix clears the bar</span>' : (v.cls === 'fix' ? '<span class="badge warn">Read: one fix to weigh</span>' : '<span class="badge warn">Read: several issues to weigh</span>'));
     var assumptions = '<p class="why" style="margin-top:1em;border-top:1px dashed var(--line);padding-top:.8em">Assumptions in force: ' + c.ft + ' free transfer' + (c.ft === 1 ? '' : 's') + ' (confirmed on this page; history derived ' + (state.ftDerived == null ? 'n/a' : state.ftDerived) + '), bank £' + c.bank.toFixed(1) + 'm (confirmed on this page), squad as of the last locked gameweek. Projections come from a weak model - edges under ~1 xP sit inside its decision margin, a chosen sensitivity line rather than a calibrated threshold.</p>';
     var rows = '<div class="numbers">' +
-      '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (v.unratedInXi ? ' (' + v.unratedInXi + ' unrated)' : '') + '</small></div></div>' +
+      '<div class="n"><div class="k">Best XI projection</div><div class="v">' + v.xiXp.toFixed(1) + '<small>xP GW' + pool.gameweek + (cov && cov.missing.length ? ' (rated players only)' : '') + '</small></div></div>' +
       (v.bestFix
-        ? '<div class="n"><div class="k">Best single fix</div><div class="v">+' + v.bestFix.gain.toFixed(2) + '<small>' + v.bestFix.out + ' &rarr; ' + v.bestFix.inn + ' (weak estimate)</small></div></div>'
-        : '<div class="n"><div class="k">Best single fix</div><div class="v">none<small>no legal swap inside budget improves this week</small></div></div>') +
+        ? '<div class="n"><div class="k">' + (cov && cov.missing.length ? 'Best rated fix' : 'Best single fix') + '</div><div class="v">+' + v.bestFix.gain.toFixed(2) + '<small>' + v.bestFix.out + ' &rarr; ' + v.bestFix.inn + ' (weak estimate' + (cov && cov.missing.length ? '; rated players only' : '') + ')</small></div></div>'
+        : '<div class="n"><div class="k">' + (cov && cov.missing.length ? 'Best rated fix' : 'Best single fix') + '</div><div class="v">none<small>no legal swap inside budget improves this week' + (cov && cov.missing.length ? ' - rated players only' : '') + '</small></div></div>') +
       '<div class="n"><div class="k">Starters flagged</div><div class="v">' + v.flagged.length + '<small>' + (v.flagged.length ? v.flagged.join(', ') : 'no news or blanks in the projected XI') + '</small></div></div>' +
       '</div>';
-    $('verdictwrap').innerHTML = '<div class="verdict' + cls + '"><div class="tagrow" style="min-height:1.7em;display:flex;justify-content:flex-end">' + badge + '</div><h3>' + v.label + '</h3><p class="why">' + v.why + '</p>' + rows + assumptions + '</div>';
+    $('verdictwrap').innerHTML = '<div class="verdict' + cls + '"><div class="tagrow" style="min-height:1.7em;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:.4em">' + badge + '</div><h3>' + v.label + '</h3><p class="why">' + v.why + '</p>' + rows + coverageNote(cov) + assumptions + '</div>';
   }
 
   /* ---------- plans ---------- */
@@ -429,9 +444,12 @@
       '<div class="row"><dt>It costs</dt><dd>' + p.cost + '</dd></div>' +
       '<div class="row"><dt>Uncertainty</dt><dd>' + p.uncertainty + '</dd></div>' + '</dl></article>';
   }
-  function renderPlans(pl){
+  function renderPlans(pl, cov){
+    var covLine = (cov && cov.missing.length)
+      ? ' Every total above counts rated players only - ' + cov.missing.map(function(m){ return m.name; }).join(', ') + ' would add an unknown amount on top, so totals are floors and the ordering of plays can shift.'
+      : '';
     $('plansrow').innerHTML = pl.plans.map(function(p, i){ return planCard(p, i, pl.leanKey); }).join('') +
-      '<p class="caption" style="grid-column:1/-1">' + pl.leanWhy + '</p>';
+      '<p class="caption" style="grid-column:1/-1">' + pl.leanWhy + covLine + '</p>';
   }
 
   /* ---------- chips ---------- */
@@ -440,6 +458,7 @@
     var chipState = data ? data.chipState : T12V2.chipState(pool.chips, state.chips, pool.gameweek);
     var verdicts = data ? data.verdicts : null;
     var wcPlan = data ? data.wcPlan : null;
+    var cov = data ? data.cov : null;
     var usedEvent = function(nm){ var ev = null; (state.chips || []).forEach(function(u){ if(u.name === nm) ev = Math.max(ev || 0, u.event || 0); }); return ev; };
     var gwBars = function(rows, highlightGw){
       if(!rows || !rows.length) return '';
@@ -473,7 +492,13 @@
       // Evidence bars: the horizon check behind the verdict, shown not asserted.
       if(c.name === 'bboost' && v && v.benchByGw) body += '<div class="window" style="margin-top:.6em">Bench xP by week</div>' + gwBars(v.benchByGw, pool.gameweek);
       if(c.name === '3xc' && v && v.capByGw) body += '<div class="window" style="margin-top:.6em">Best-starter xP by week</div>' + gwBars(v.capByGw, pool.gameweek);
-      var badge = c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Heuristic candidate - experimental</span>'
+      var benchMissing = cov ? cov.missing.filter(function(m){ return m.slot > 11; }) : [];
+      if(c.name === 'bboost' && c.state === 'live' && benchMissing.length){
+        body = '<p class="vwhy">The bench total above counts rated bench players only. ' + benchMissing.map(function(m){ return m.name; }).join(', ') + ' (bench) carry no projection - a missing estimate, not a real zero - so the true bench value is higher by an unknown amount and the candidate read is withheld.</p>' + body;
+      }
+      if(c.state === 'live' && cov && cov.couldShift) body += '<p class="vwhy" style="color:var(--faint);font-size:.82rem">Squad coverage incomplete - this read uses rated players only.</p>';
+      var badge = c.state === 'live' && c.name === 'bboost' && benchMissing.length ? '<span class="badge warn">Read withheld - incomplete coverage</span>'
+        : c.state === 'live' && v && v.verdict === 'candidate' ? '<span class="badge">Heuristic candidate - experimental</span>'
         : c.state === 'live' && v && v.verdict === 'borderline' ? '<span class="badge quiet">Heuristic borderline</span>'
         : c.state === 'live' ? '<span class="badge quiet">Heuristic hold</span>'
         : '<span class="badge quiet">' + (c.state === 'spent' ? 'Spent' : (c.state === 'locked' ? 'Locked' : 'Future')) + '</span>';
@@ -555,7 +580,20 @@
           'in for ' + w.replaces + ' (' + w.replacesXp.toFixed(1) + ')' + tags + '</div></div>';
       }).join('');
       return '<div class="outcol"><h3>' + POSN[pos] + '</h3>' + (rows || '<div class="outrow"><span class="meta">No rated outsider inside budget at this position.</span></div>') + '</div>';
-    }).join('');
+    }).join('') + unratedNote();
+  }
+  function unratedNote(){
+    var miss = poolArr.filter(function(p){ return !p.rated; }).map(function(p){
+      var last3 = (p.recent || []).slice(-3);
+      return { name: p.name, team: p.team, pos: p.pos, cost: p.cost,
+               mins3: last3.reduce(function(z, r){ return z + r.mins; }, 0),
+               pts3: last3.reduce(function(z, r){ return z + r.pts; }, 0),
+               reason: p.reason || 'not rated' };
+    }).filter(function(m){ return m.mins3 >= 45; })
+      .sort(function(a, b){ return b.pts3 - a.pts3; });
+    if(!miss.length) return '';
+    var top = miss.slice(0, 8).map(function(m){ return m.name + ' (' + m.team + ', ' + m.pts3 + ' pts over last 3 GWs)'; }).join('; ');
+    return '<p class="caption" style="margin-top:1em">Not compared above: ' + miss.length + ' players have real recent minutes but no model projection (' + top + (miss.length > 8 ? '; ...' : '') + '). Their recent points are facts, not projections - the model cannot rank them as transfer targets, so an "inside budget" list can miss the actual best buy.</p>';
   }
 })();
 </script>
