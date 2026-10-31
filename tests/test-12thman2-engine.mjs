@@ -171,7 +171,9 @@ const csFh3 = E.chipState(chipWindows, [{ name: 'freehit', event: 10 }], 12);
 ok(csFh3.find((c) => c.name === 'freehit').state === 'future' && csFh3.find((c) => c.name === 'freehit').unlocks === 20,
    'chipState: two GWs after a spent first-half FH, second copy shows GW20');
 
-// --- deriveFT: 1/GW, carry cap 5, retained through chips (official rules) ---
+// --- deriveFT: first FT lands for GW2, 1/GW accrual after, carry cap 5, hits do not
+//     borrow future FTs (floor at 0), WC/FH weeks flat (official rules; validated
+//     against a live account ledger GW1-9 on 31 Oct 2026, game showed 1 held for GW9) ---
 const histShape = {
   chips: [{ name: 'wildcard', event: 7 }],
   current: [
@@ -179,13 +181,21 @@ const histShape = {
     { event: 4, event_transfers: 0 }, { event: 5, event_transfers: 0 }, { event: 6, event_transfers: 3 },
     { event: 7, event_transfers: 0 }, { event: 8, event_transfers: 1 },
   ] };
-ok(E.deriveFT(histShape) === 3, 'deriveFT: WC-retained carry cap-5 recurrence gives 3 (0,1,1,0,0,3,WC,1)');
-ok(E.deriveFT({ chips: [], current: [{ event: 1, event_transfers: 0 }] }) === 2, 'deriveFT: one unused week carries to 2');
+ok(E.deriveFT(histShape) === 1, 'deriveFT: live-account GW1-8 ledger (0,1,1,0,0,3,WC,1) yields the game\'s 1 for GW9');
+ok(E.deriveFT({ chips: [], current: [{ event: 1, event_transfers: 0 }] }) === 1, 'deriveFT: first FT lands for GW2 - the first deadline grants the initial 1, no extra accrual');
 ok(E.deriveFT({ chips: [], current: Array.from({ length: 8 }, () => ({ event_transfers: 0 })) }) === 5,
    'deriveFT: carry caps at 5');
 ok(E.deriveFT({ chips: [{ name: 'freehit', event: 6 }], current: Array.from({ length: 6 }, (_, i) => ({ event: i + 1, event_transfers: i === 5 ? 4 : 0 })) }) === 5,
    'deriveFT: FH-week transfers do not consume FTs (saved FTs retained, cap 5)');
 ok(E.deriveFT({ chips: [], current: [] }) === 1, 'deriveFT: pre-GW1 start is 1');
+ok(E.deriveFT({ chips: [{ name: 'freehit', event: 3 }], current: [{ event: 1, event_transfers: 0 }, { event: 2, event_transfers: 0 }, { event: 3, event_transfers: 0 }] }) === 2,
+   'deriveFT: FH week neither consumes nor accrues - carry stays flat across the chip week');
+ok(E.deriveFT({ chips: [{ name: 'wildcard', event: 3 }], current: [{ event: 1, event_transfers: 0 }, { event: 2, event_transfers: 0 }, { event: 3, event_transfers: 0 }] }) === 2,
+   'deriveFT: WC week neither consumes nor accrues - carry stays flat across the chip week');
+const histShapeGw9 = { chips: histShape.chips, current: histShape.current.concat([{ event: 9, event_transfers: 2 }]) };
+ok(E.deriveFT(histShapeGw9) === 1, 'deriveFT: 2 made with 1 held costs 4 points, not a future FT - GW10 still starts at 1');
+ok(E.deriveFT({ chips: [], current: [{ event: 1, event_transfers: 0 }, { event: 2, event_transfers: 3 }] }) === 1,
+   'deriveFT: hits floor the ledger at 0 held before the weekly accrual');
 
 console.log(failures ? failures + ' FAILURES' : 'ALL PASS');
 process.exit(failures ? 1 : 0);
