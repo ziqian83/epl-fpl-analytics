@@ -91,3 +91,13 @@ exploratory.
   tests/fixtures/), signal-inspection tooling, engine rule fixtures (legal XI, pricing
   edge cases - now landed as tests/test_simulator_rules.py), and the GW10 freeze when
   its deadline approaches.
+
+## Addendum (31 Oct 2026): prospective = frozen DECISIONS, not only frozen code/data
+
+Code/data pins alone are not a prospective freeze. The 2026-27 outer test now
+freezes the actual policy decisions before each GW deadline (runner `freeze`),
+scores them later from the frozen records (`score-gw`), and treats the
+after-the-fact replay (`replay`, formerly `run`) as a diagnostic only. Protocol
+details and the exact input boundary: docs/16 "Forward decision freeze"; both
+specs carry a decision_freeze block. This addendum landed before any data
+freeze or frozen decision existed, so no prospective clock was invalidated.
