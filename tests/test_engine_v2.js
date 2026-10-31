@@ -81,5 +81,16 @@ const after = T.assess(es, poolArr, 9, 5.0);
 ok(after.xiXp !== before.xiXp || JSON.stringify(after.bestFix) !== JSON.stringify(before.bestFix),
    'outputs are sensitive to a missing player gaining a projection (documents the defect coverage discloses)');
 
+// --- 5. tipping-point sensitivity: sweep finds flips, leaves base state untouched ---
+poolPlayers[4] = mk(4, 1, null, { recent: [{ gw: 7, pts: 5, mins: 90, xgi: 0 }] }); // slot 14, unrated
+es = squadFrom(ids);
+const sBase = T.assess(es, poolArr, 9, 5.0);
+const sn = T.sensitivity(es, poolArr, 9, 5.0, 4);
+ok(sn && typeof sn === 'object', 'sensitivity returns a result');
+ok(sn.entersXiAt === null || (sn.entersXiAt >= 0.5 && sn.entersXiAt <= 10), 'entersXiAt within swept range or null');
+ok(sn.clsChangesAt === null || (sn.clsChangesAt >= 0.5 && sn.clsChangesAt <= 10), 'clsChangesAt within swept range or null');
+const sAfter = T.assess(es, poolArr, 9, 5.0);
+ok(JSON.stringify(sAfter) === JSON.stringify(sBase), 'sensitivity sweep does not mutate squad or base verdict');
+
 console.log(pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);
