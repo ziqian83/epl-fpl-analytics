@@ -222,6 +222,30 @@
     return { total: squad.length, missing: missing, shifters: shifters, couldShift: shifters.length > 0 };
   }
 
+  /* Sensitivity: for a missing-projection squad player, at what imputed this-GW
+     xP would the verdict class, the named fix, or XI membership change? A sweep
+     over the engine's own machinery - no invented coefficient, no imputed value
+     is used in any displayed number (docs/14). */
+  function sensitivity(squad, poolArr, gw, bank, playerId) {
+    var base = assess(squad, poolArr, gw, bank);
+    var baseFix = base.bestFix ? base.bestFix.out + '>' + base.bestFix.inn : 'none';
+    var entersXiAt = null, fixChangesAt = null, clsChangesAt = null;
+    for (var v = 0.5; v <= 10.01; v += 0.5) {
+      var mod = squad.map(function (p) {
+        if (p.id !== playerId) return p;
+        var xpgw = {}; xpgw[gw] = v;
+        return Object.assign({}, p, { rated: true, xpgw: xpgw });
+      });
+      var a = assess(mod, poolArr, gw, bank);
+      if (entersXiAt === null && a.xiIds.indexOf(playerId) >= 0) entersXiAt = v;
+      var fix = a.bestFix ? a.bestFix.out + '>' + a.bestFix.inn : 'none';
+      if (fixChangesAt === null && fix !== baseFix) fixChangesAt = v;
+      if (clsChangesAt === null && a.cls !== base.cls) clsChangesAt = v;
+    }
+    return { playerId: playerId, entersXiAt: entersXiAt, fixChangesAt: fixChangesAt, clsChangesAt: clsChangesAt,
+             baseFix: base.bestFix ? base.bestFix.out + ' -> ' + base.bestFix.inn : null };
+  }
+
   /* ---------- the verdict: good enough, or fix? (docs/10) ---------- */
   function assess(squad, poolArr, gw, bank) {
     var cands = candidates(poolArr, [gw], 8);
@@ -529,7 +553,7 @@
     return out;
   }
 
-  return { evidence: evidence, coverage: coverage, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts, freeHitXi: freeHitXi,
+  return { evidence: evidence, coverage: coverage, sensitivity: sensitivity, assess: assess, chipState: chipState, deriveFT: deriveFT, chipVerdicts: chipVerdicts, freeHitXi: freeHitXi,
     plans: plans, whoElse: whoElse, bestXI: bestXI, horizonXp: horizonXp, legalClubCap: legalClubCap,
     candidates: candidates, toEngine: toEngine, computeSells: computeSells,
     DECISION_MARGIN: DECISION_MARGIN, CHIP_LABELS: CHIP_LABELS,
