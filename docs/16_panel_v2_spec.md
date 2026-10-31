@@ -85,3 +85,36 @@ so this is a sanity read on the corrected units, not evidence of improvement.
    vs scraper gaps - affects how n_missing4 should be interpreted.
 3. Whether v2's opp_gc4 should include a defensive-home/away split - NOT in
    scope; would be a new spec and new version.
+
+## Prospective wiring (31 Oct 2026, second pass)
+
+- scripts/prospective-12thman.py is version-aware, additively: spec field
+  "panel_version" selects v1 (default; original PANEL_SQL) or v2 (PANEL_SQL_V2)
+  via panel_sql_for(); nothing about the v1 path changed. refresh-data now
+  snapshots the official fixture id per row; build-db keeps it and applies the
+  same build-time fixture-integrity assert as the v2 fit builder. run() refuses
+  v2 on a pre-fixture-column snapshot with an explicit re-pull message.
+- v1's SQL applies eligibility in-query; v2's panel stays unfiltered for its
+  diagnostics, so run() applies the identical outcome (nrows4=4, >=180 trailing
+  minutes) before fit_and_prep. Without this filter lstsq sees NULL features
+  (914 raw train rows have no player records in the window) - caught by the
+  first real smoke test, fixed before any freeze.
+- v2's prospective freeze is 12th-man/v2/data/frozen/prospective-2026-27-spec-v2.json
+  (WIRED, PRE-FREEZE): own code pins (runner/backtest/panel-source blob sha1s),
+  data pins filled at the data freeze, unresolved source gaps, intended start
+  GW10. The v1 provisional spec and future v1 results stay untouched; v2 scores
+  to prospective-2026-27-results-v2.json and version labels are never merged.
+- Smoke test on a real refresh (31 Oct 09:12Z pull, GW1-8, 5,220 rows, 669
+  players, 0 null fixtures): build-db assert clean; v2 panel 134,705 raw rows;
+  after eligibility 210-223 panel-present players per 2026-27 GW (GW5-8);
+  fit_and_prep produces preds for all; opp_strength_k 0.0-2.75 (per-fixture
+  goals - sane units, versus v1's row-scaled inflation). Panel rows for a GW
+  materialize only after that GW's data lands; features use strictly trailing
+  GWs, so decisions stay pre-outcome.
+- tests/test_prospective_versions.py (green): panel selection, unknown-version
+  rejection, label separation, spec pin equality against git blob hashes, v1
+  spec untouched, functional build_db on a synthetic cache incl. the integrity
+  assert firing on a corrupted fixture, and fit_and_prep on the filtered panel.
+- Note on scope: contiguous 2026-27 history (all 669 players, 0-minute rounds
+  included) is NOT evidence of scheduled-blank semantics - no blank has
+  occurred yet; the synthetic tests establish intended behavior only.
