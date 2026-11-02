@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T00:55:06.545Z",
+  "generated_at": "2026-11-02T01:25:18.609Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -20,25 +20,25 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 46.3,
+      "selected_pct": 46.4,
       "v1gw": 60,
       "rated": true,
       "f": {
-        "pts4": 4.75,
+        "pts4": 6,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 3.31,
+      "xp": 4.04,
       "xpgw": {
-        "10": 3.31,
-        "11": 2.79,
-        "12": 2.73,
-        "13": 2.61,
-        "14": 2.53
+        "10": 4.04,
+        "11": 3.52,
+        "12": 3.46,
+        "13": 3.34,
+        "14": 3.26
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -93,25 +93,25 @@
       "cost": 8,
       "status": "a",
       "news": "",
-      "selected_pct": 24,
+      "selected_pct": 24.2,
       "v1gw": 80,
       "rated": true,
       "f": {
-        "pts4": 6.75,
+        "pts4": 8.25,
         "xgi4": 0.25,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 3.82,
+      "xp": 4.63,
       "xpgw": {
-        "10": 3.82,
-        "11": 3.3,
-        "12": 3.24,
-        "13": 3.12,
-        "14": 3.04
+        "10": 4.63,
+        "11": 4.1,
+        "12": 4.04,
+        "13": 3.92,
+        "14": 3.84
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -163,7 +163,7 @@
       "name": "Lewis-Skelly",
       "team": "ARS",
       "pos": 3,
-      "cost": 5.4,
+      "cost": 5.3,
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
@@ -183,27 +183,27 @@
       "team": "ARS",
       "pos": 2,
       "cost": 5.9,
-      "status": "d",
-      "news": "Hip injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 47.9,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 4,
+        "pts4": 5.5,
         "xgi4": 0.23,
-        "minshare4": 0.54,
+        "minshare4": 0.79,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 2.34,
+      "xp": 3.15,
       "xpgw": {
-        "10": 2.34,
-        "11": 1.82,
-        "12": 1.76,
-        "13": 1.64,
-        "14": 1.56
+        "10": 3.15,
+        "11": 2.63,
+        "12": 2.57,
+        "13": 2.45,
+        "14": 2.37
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -239,7 +239,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.7,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -293,7 +293,7 @@
       "cost": 9.5,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 6.6,
+      "selected_pct": 6.5,
       "v1gw": 95,
       "rated": true,
       "f": {
@@ -326,27 +326,27 @@
       "team": "ARS",
       "pos": 3,
       "cost": 7.4,
-      "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 11.8,
+      "status": "a",
+      "news": "",
+      "selected_pct": 12,
       "v1gw": 75,
       "rated": true,
       "f": {
-        "pts4": 4.75,
-        "xgi4": 0.29,
-        "minshare4": 0.72,
+        "pts4": 6.75,
+        "xgi4": 0.41,
+        "minshare4": 0.97,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 3.27,
+      "xp": 4.49,
       "xpgw": {
-        "10": 3.27,
-        "11": 2.79,
-        "12": 3.08,
-        "13": 2.69,
-        "14": 2.66
+        "10": 4.49,
+        "11": 4.01,
+        "12": 4.3,
+        "13": 3.9,
+        "14": 3.87
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -363,7 +363,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 1.2,
+      "selected_pct": 1.1,
       "v1gw": 65,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -382,25 +382,25 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 16.8,
+      "selected_pct": 16.7,
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 1.75,
-        "xgi4": 0.44,
-        "minshare4": 0.75,
+        "pts4": 2.5,
+        "xgi4": 0.47,
+        "minshare4": 0.99,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 3.16,
+      "xp": 3.81,
       "xpgw": {
-        "10": 3.16,
-        "11": 2.68,
-        "12": 2.97,
-        "13": 2.57,
-        "14": 2.54
+        "10": 3.81,
+        "11": 3.33,
+        "12": 3.62,
+        "13": 3.22,
+        "14": 3.19
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -415,27 +415,27 @@
       "team": "ARS",
       "pos": 3,
       "cost": 6.2,
-      "status": "d",
-      "news": "Ankle injury - 50% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.4,
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 2.5,
-        "xgi4": 0.27,
-        "minshare4": 0.63,
+        "pts4": 3,
+        "xgi4": 0.41,
+        "minshare4": 0.88,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 2.73,
+      "xp": 3.58,
       "xpgw": {
-        "10": 2.73,
-        "11": 2.25,
-        "12": 2.53,
-        "13": 2.14,
-        "14": 2.11
+        "10": 3.58,
+        "11": 3.1,
+        "12": 3.39,
+        "13": 2.99,
+        "14": 2.97
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -625,8 +625,24 @@
       "news": "",
       "selected_pct": 5.5,
       "v1gw": 75,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.29,
+        "minshare4": 0.64,
+        "oppstr": 1.5
+      },
+      "fixtures": [
+        "HUL (H)"
+      ],
+      "xp": 3.45,
+      "xpgw": {
+        "10": 3.45,
+        "11": 2.97,
+        "12": 3.26,
+        "13": 2.87,
+        "14": 2.84
+      },
       "fixgw": {
         "10": "HUL (H)",
         "11": "NEW (A)",
@@ -718,25 +734,25 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 21.9,
+      "selected_pct": 22.3,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 6.75,
+        "pts4": 9.25,
         "xgi4": 0.1,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 1.5
       },
       "fixtures": [
         "HUL (H)"
       ],
-      "xp": 3.49,
+      "xp": 4.56,
       "xpgw": {
-        "10": 3.49,
-        "11": 2.96,
-        "12": 2.9,
-        "13": 2.78,
-        "14": 2.7
+        "10": 4.56,
+        "11": 4.04,
+        "12": 3.98,
+        "13": 3.86,
+        "14": 3.78
       },
       "fixgw": {
         "10": "HUL (H)",
@@ -753,7 +769,7 @@
       "cost": 4.3,
       "status": "s",
       "news": "Suspended until 21 Nov",
-      "selected_pct": 4.2,
+      "selected_pct": 4.1,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -828,20 +844,20 @@
       "rated": true,
       "f": {
         "pts4": 1.25,
-        "xgi4": 0.06,
+        "xgi4": 0.07,
         "minshare4": 0.54,
         "oppstr": 1.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.64,
+      "xp": 1.65,
       "xpgw": {
-        "10": 1.64,
-        "11": 2.17,
-        "12": 1.49,
-        "13": 2.09,
-        "14": 2.15
+        "10": 1.65,
+        "11": 2.18,
+        "12": 1.5,
+        "13": 2.1,
+        "14": 2.16
       },
       "fixgw": {
         "10": "MUN (A)",
@@ -947,7 +963,7 @@
       "cost": 4,
       "status": "u",
       "news": "Has joined Getafe on loan for the rest of the season",
-      "selected_pct": 1.2,
+      "selected_pct": 1.1,
       "v1gw": 40,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -985,7 +1001,7 @@
       "cost": 8.1,
       "status": "a",
       "news": "",
-      "selected_pct": 51.5,
+      "selected_pct": 51.9,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -1128,7 +1144,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 3.4,
+      "selected_pct": 3.3,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1312,7 +1328,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.3,
+      "selected_pct": 6.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1493,7 +1509,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.3,
+      "selected_pct": 2.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1709,7 +1725,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 26,
+      "selected_pct": 26.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1947,7 +1963,7 @@
       "cost": 7.3,
       "status": "a",
       "news": "",
-      "selected_pct": 0.4,
+      "selected_pct": 0.5,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -1966,7 +1982,7 @@
       "cost": 6.4,
       "status": "a",
       "news": "",
-      "selected_pct": 15.5,
+      "selected_pct": 16.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2039,7 +2055,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 6.2,
+      "selected_pct": 6.1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2147,7 +2163,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2,
+      "selected_pct": 1.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -2217,7 +2233,7 @@
       "cost": 4.6,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 6.8,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -2363,7 +2379,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 14.7,
+      "selected_pct": 14.5,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2560,7 +2576,7 @@
       "cost": 4.9,
       "status": "d",
       "news": "Illness - 75% chance of playing",
-      "selected_pct": 1.7,
+      "selected_pct": 1.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2760,7 +2776,7 @@
       "cost": 4.6,
       "status": "a",
       "news": "",
-      "selected_pct": 22.6,
+      "selected_pct": 22.8,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -2849,7 +2865,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 9.8,
+      "selected_pct": 10.5,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2954,7 +2970,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 44,
+      "selected_pct": 44.5,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -3173,7 +3189,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 46.7,
+      "selected_pct": 46.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -3300,7 +3316,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 0.9,
+      "selected_pct": 1.2,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -3503,7 +3519,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 10.3,
+      "selected_pct": 10.2,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -3557,7 +3573,7 @@
       "cost": 4.9,
       "status": "u",
       "news": "Has joined Como on loan for the rest of the season",
-      "selected_pct": 0.6,
+      "selected_pct": 0.5,
       "v1gw": 50,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -3871,7 +3887,7 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 27.6,
+      "selected_pct": 27.8,
       "v1gw": 95,
       "rated": true,
       "f": {
@@ -3941,7 +3957,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.9,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4160,7 +4176,7 @@
       "cost": 7.7,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 44,
+      "selected_pct": 42.1,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4179,25 +4195,25 @@
       "cost": 7,
       "status": "a",
       "news": "",
-      "selected_pct": 23.9,
+      "selected_pct": 24.9,
       "v1gw": 65,
       "rated": true,
       "f": {
         "pts4": 8.25,
-        "xgi4": 0.42,
+        "xgi4": 0.44,
         "minshare4": 0.97,
         "oppstr": 1.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 4.73,
+      "xp": 4.78,
       "xpgw": {
-        "10": 4.73,
-        "11": 5.31,
-        "12": 4.67,
-        "13": 5.18,
-        "14": 5.27
+        "10": 4.78,
+        "11": 5.36,
+        "12": 4.72,
+        "13": 5.23,
+        "14": 5.32
       },
       "fixgw": {
         "10": "MUN (A)",
@@ -4344,7 +4360,7 @@
       "cost": 4,
       "status": "d",
       "news": "Calf injury - 50% chance of playing",
-      "selected_pct": 8.5,
+      "selected_pct": 8.3,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -4839,7 +4855,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.1,
+      "selected_pct": 1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -4985,7 +5001,7 @@
       "cost": 5.9,
       "status": "i",
       "news": "Hamstring injury - Unknown return date",
-      "selected_pct": 5.5,
+      "selected_pct": 5.3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -5020,7 +5036,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 4.6,
+      "selected_pct": 4.5,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -5325,7 +5341,7 @@
       "cost": 4.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5.8,
+      "selected_pct": 5.7,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -5363,7 +5379,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.7,
+      "selected_pct": 0.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -5607,7 +5623,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 8.5,
+      "selected_pct": 8.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6239,7 +6255,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.5,
+      "selected_pct": 4.4,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -6336,20 +6352,20 @@
       "rated": true,
       "f": {
         "pts4": 4.5,
-        "xgi4": 0.1,
+        "xgi4": 0.09,
         "minshare4": 0.75,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.01,
+      "xp": 3,
       "xpgw": {
-        "10": 3.01,
-        "11": 2.06,
-        "12": 2.94,
-        "13": 2.31,
-        "14": 2.72
+        "10": 3,
+        "11": 2.05,
+        "12": 2.93,
+        "13": 2.3,
+        "14": 2.71
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -6416,13 +6432,13 @@
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.25,
+      "xp": 3.27,
       "xpgw": {
-        "10": 3.25,
-        "11": 2.29,
-        "12": 3.17,
-        "13": 2.54,
-        "14": 2.95
+        "10": 3.27,
+        "11": 2.31,
+        "12": 3.19,
+        "13": 2.56,
+        "14": 2.97
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -6444,20 +6460,20 @@
       "rated": true,
       "f": {
         "pts4": 4.25,
-        "xgi4": 0.17,
+        "xgi4": 0.16,
         "minshare4": 0.74,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.03,
+      "xp": 3,
       "xpgw": {
-        "10": 3.03,
-        "11": 2.07,
-        "12": 2.95,
-        "13": 2.32,
-        "14": 2.73
+        "10": 3,
+        "11": 2.04,
+        "12": 2.92,
+        "13": 2.3,
+        "14": 2.7
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -6533,20 +6549,20 @@
       "rated": true,
       "f": {
         "pts4": 6,
-        "xgi4": 0.62,
+        "xgi4": 0.63,
         "minshare4": 0.9,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 4.43,
+      "xp": 4.44,
       "xpgw": {
-        "10": 4.43,
-        "11": 3.81,
-        "12": 4.4,
-        "13": 3.84,
-        "14": 4.03
+        "10": 4.44,
+        "11": 3.83,
+        "12": 4.41,
+        "13": 3.85,
+        "14": 4.05
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -6606,20 +6622,20 @@
       "rated": true,
       "f": {
         "pts4": 4.75,
-        "xgi4": 0.39,
+        "xgi4": 0.43,
         "minshare4": 0.86,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.99,
+      "xp": 4.08,
       "xpgw": {
-        "10": 3.99,
-        "11": 3.37,
-        "12": 3.96,
-        "13": 3.4,
-        "14": 3.59
+        "10": 4.08,
+        "11": 3.47,
+        "12": 4.05,
+        "13": 3.49,
+        "14": 3.69
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -6709,7 +6725,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 3.8,
+      "selected_pct": 3.7,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6801,7 +6817,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 4.5,
+      "selected_pct": 4.4,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -6896,7 +6912,7 @@
       "cost": 4.1,
       "status": "a",
       "news": "",
-      "selected_pct": 7.2,
+      "selected_pct": 7.1,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -6950,7 +6966,7 @@
       "cost": 4.2,
       "status": "a",
       "news": "",
-      "selected_pct": 12.8,
+      "selected_pct": 12.6,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7109,7 +7125,7 @@
       "name": "McNair",
       "team": "HUL",
       "pos": 2,
-      "cost": 4,
+      "cost": 3.9,
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
@@ -7223,7 +7239,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.5,
+      "selected_pct": 4.4,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -8095,7 +8111,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 11.5,
+      "selected_pct": 11.4,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -8511,7 +8527,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 21.2,
+      "selected_pct": 21.1,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -8607,21 +8623,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.25,
+        "pts4": 2.75,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.65,
+      "xp": 3.18,
       "xpgw": {
-        "10": 2.65,
-        "11": 3.04,
-        "12": 2.59,
-        "13": 3.12,
-        "14": 2.29
+        "10": 3.18,
+        "11": 3.57,
+        "12": 3.12,
+        "13": 3.65,
+        "14": 2.82
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -8737,21 +8753,21 @@
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 3.25,
-        "xgi4": 0.02,
-        "minshare4": 0.75,
+        "pts4": 3.5,
+        "xgi4": 0.06,
+        "minshare4": 1,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.35,
+      "xp": 2.89,
       "xpgw": {
-        "10": 2.35,
-        "11": 2.74,
-        "12": 2.29,
-        "13": 2.82,
-        "14": 1.99
+        "10": 2.89,
+        "11": 3.29,
+        "12": 2.84,
+        "13": 3.37,
+        "14": 2.54
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -8768,7 +8784,7 @@
       "cost": 5.2,
       "status": "i",
       "news": "Hamstring injury - Unknown return date",
-      "selected_pct": 1.3,
+      "selected_pct": 1.2,
       "v1gw": 55,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -8791,21 +8807,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.25,
-        "xgi4": 0.01,
-        "minshare4": 0.74,
+        "pts4": 2.5,
+        "xgi4": 0.09,
+        "minshare4": 0.96,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.09,
+      "xp": 2.67,
       "xpgw": {
-        "10": 2.09,
-        "11": 2.49,
-        "12": 2.04,
-        "13": 2.56,
-        "14": 1.73
+        "10": 2.67,
+        "11": 3.07,
+        "12": 2.62,
+        "13": 3.15,
+        "14": 2.32
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -8857,7 +8873,7 @@
       "name": "Lucky",
       "team": "LIV",
       "pos": 2,
-      "cost": 4,
+      "cost": 3.9,
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
@@ -8883,21 +8899,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "xgi4": 0.09,
-        "minshare4": 0.74,
+        "pts4": 4,
+        "xgi4": 0.1,
+        "minshare4": 0.99,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.41,
+      "xp": 2.96,
       "xpgw": {
-        "10": 2.41,
-        "11": 2.8,
-        "12": 2.35,
-        "13": 2.88,
-        "14": 2.05
+        "10": 2.96,
+        "11": 3.36,
+        "12": 2.91,
+        "13": 3.43,
+        "14": 2.6
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -8975,21 +8991,21 @@
       "v1gw": 75,
       "rated": true,
       "f": {
-        "pts4": 3.25,
-        "xgi4": 0.22,
-        "minshare4": 0.61,
+        "pts4": 3.75,
+        "xgi4": 0.3,
+        "minshare4": 0.83,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.55,
+      "xp": 3.23,
       "xpgw": {
-        "10": 2.55,
-        "11": 2.91,
-        "12": 2.46,
-        "13": 3.05,
-        "14": 2.34
+        "10": 3.23,
+        "11": 3.59,
+        "12": 3.14,
+        "13": 3.72,
+        "14": 3.02
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -9023,8 +9039,8 @@
       "team": "LIV",
       "pos": 3,
       "cost": 6.7,
-      "status": "d",
-      "news": "Hamstring injury - 50% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 13.5,
       "v1gw": 70,
       "rated": false,
@@ -9105,21 +9121,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.23,
-        "minshare4": 0.75,
+        "pts4": 1.75,
+        "xgi4": 0.29,
+        "minshare4": 1,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.38,
+      "xp": 2.98,
       "xpgw": {
-        "10": 2.38,
-        "11": 2.74,
-        "12": 2.29,
-        "13": 2.87,
-        "14": 2.17
+        "10": 2.98,
+        "11": 3.34,
+        "12": 2.89,
+        "13": 3.48,
+        "14": 2.77
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -9210,8 +9226,8 @@
       "team": "LIV",
       "pos": 3,
       "cost": 6.5,
-      "status": "d",
-      "news": "Knee injury - 50% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.7,
       "v1gw": 65,
       "rated": false,
@@ -9250,10 +9266,26 @@
       "cost": 9.2,
       "status": "a",
       "news": "",
-      "selected_pct": 20.8,
+      "selected_pct": 21.2,
       "v1gw": 90,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 5,
+        "xgi4": 0.25,
+        "minshare4": 0.68,
+        "oppstr": 2
+      },
+      "fixtures": [
+        "CRY (A)"
+      ],
+      "xp": 3.35,
+      "xpgw": {
+        "10": 3.35,
+        "11": 3.71,
+        "12": 3.26,
+        "13": 3.85,
+        "14": 3.14
+      },
       "fixgw": {
         "10": "CRY (A)",
         "11": "MUN (H)",
@@ -9453,7 +9485,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 16.5,
+      "selected_pct": 16.2,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -9558,7 +9590,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 26.5,
+      "selected_pct": 26.2,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9593,7 +9625,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 0.4,
+      "selected_pct": 0.3,
       "v1gw": 55,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -9704,7 +9736,7 @@
       "cost": 8.2,
       "status": "i",
       "news": "Knee injury - Unknown return date",
-      "selected_pct": 6.4,
+      "selected_pct": 6.3,
       "v1gw": 85,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -9742,7 +9774,7 @@
       "cost": 7.9,
       "status": "a",
       "news": "",
-      "selected_pct": 36.7,
+      "selected_pct": 36.2,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -10053,7 +10085,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 7.7,
+      "selected_pct": 7.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -10199,7 +10231,7 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 5.7,
+      "selected_pct": 5.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -10234,7 +10266,7 @@
       "cost": 4.8,
       "status": "s",
       "news": "Suspended until 22 Nov",
-      "selected_pct": 1.1,
+      "selected_pct": 1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -10342,7 +10374,7 @@
       "cost": 4.2,
       "status": "i",
       "news": "Unspecified injury - Unknown return date",
-      "selected_pct": 3.8,
+      "selected_pct": 3.7,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -10399,7 +10431,7 @@
       "cost": 11.7,
       "status": "a",
       "news": "",
-      "selected_pct": 22.3,
+      "selected_pct": 22,
       "v1gw": 120,
       "rated": true,
       "f": {
@@ -10434,7 +10466,7 @@
       "cost": 7.9,
       "status": "a",
       "news": "",
-      "selected_pct": 21,
+      "selected_pct": 20.7,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -10469,7 +10501,7 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 5.7,
+      "selected_pct": 5.6,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -10932,7 +10964,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 20.4,
+      "selected_pct": 20.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11005,7 +11037,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.4,
+      "selected_pct": 2.3,
       "v1gw": 70,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -11024,7 +11056,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 7.6,
+      "selected_pct": 7.5,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -11059,7 +11091,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 2.4,
+      "selected_pct": 2.3,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -11297,7 +11329,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 10.3,
+      "selected_pct": 10.1,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -11697,7 +11729,7 @@
       "cost": 7.9,
       "status": "a",
       "news": "",
-      "selected_pct": 11.2,
+      "selected_pct": 11,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -11786,7 +11818,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.5,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -12195,7 +12227,7 @@
       "cost": 4.3,
       "status": "a",
       "news": "",
-      "selected_pct": 2.3,
+      "selected_pct": 2.4,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -12265,7 +12297,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
+      "selected_pct": 7.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -12433,7 +12465,7 @@
       "cost": 6.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.5,
+      "selected_pct": 1.6,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -12747,7 +12779,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 1.6,
+      "selected_pct": 1.5,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -12911,7 +12943,7 @@
       "pos": 2,
       "cost": 5.4,
       "status": "d",
-      "news": "Knock - 75% chance of playing",
+      "news": "Concussion - 75% chance of playing",
       "selected_pct": 1.6,
       "v1gw": 55,
       "rated": true,
@@ -13196,8 +13228,8 @@
       "team": "SUN",
       "pos": 3,
       "cost": 5.3,
-      "status": "a",
-      "news": "",
+      "status": "d",
+      "news": "Muscular injury - 75% chance of playing",
       "selected_pct": 0,
       "v1gw": 55,
       "rated": false,
@@ -13526,8 +13558,8 @@
       "team": "ARS",
       "pos": 3,
       "cost": 6.1,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 3.8,
       "v1gw": 65,
       "rated": false,
@@ -13728,7 +13760,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 6.3,
+      "selected_pct": 6.2,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -13763,7 +13795,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.1,
+      "selected_pct": 2.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13852,25 +13884,25 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 4.6,
+      "selected_pct": 4.5,
       "v1gw": 60,
       "rated": true,
       "f": {
         "pts4": 2,
-        "xgi4": 0.46,
+        "xgi4": 0.45,
         "minshare4": 0.91,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.58,
+      "xp": 3.56,
       "xpgw": {
-        "10": 3.58,
-        "11": 2.97,
-        "12": 3.55,
-        "13": 3,
-        "14": 3.19
+        "10": 3.56,
+        "11": 2.95,
+        "12": 3.54,
+        "13": 2.98,
+        "14": 3.17
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -13941,7 +13973,7 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 14.1,
+      "selected_pct": 14,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -14110,21 +14142,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.75,
-        "xgi4": 0.02,
-        "minshare4": 0.58,
+        "pts4": 3.75,
+        "xgi4": 0.07,
+        "minshare4": 0.8,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.08,
+      "xp": 2.81,
       "xpgw": {
-        "10": 2.08,
-        "11": 2.48,
-        "12": 2.03,
-        "13": 2.55,
-        "14": 1.72
+        "10": 2.81,
+        "11": 3.21,
+        "12": 2.76,
+        "13": 3.29,
+        "14": 2.46
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -14146,20 +14178,20 @@
       "rated": true,
       "f": {
         "pts4": 2.5,
-        "xgi4": 0.32,
+        "xgi4": 0.27,
         "minshare4": 0.94,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.49,
+      "xp": 3.39,
       "xpgw": {
-        "10": 3.49,
-        "11": 2.88,
-        "12": 3.46,
-        "13": 2.91,
-        "14": 3.1
+        "10": 3.39,
+        "11": 2.78,
+        "12": 3.36,
+        "13": 2.8,
+        "14": 3
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -14414,7 +14446,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.9,
+      "selected_pct": 1,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -15194,25 +15226,25 @@
       "cost": 8.1,
       "status": "a",
       "news": "",
-      "selected_pct": 4.2,
+      "selected_pct": 4.3,
       "v1gw": null,
       "rated": true,
       "f": {
-        "pts4": 3,
-        "xgi4": 0.31,
-        "minshare4": 0.7,
+        "pts4": 3.25,
+        "xgi4": 0.36,
+        "minshare4": 0.95,
         "oppstr": 2
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.81,
+      "xp": 3.38,
       "xpgw": {
-        "10": 2.81,
-        "11": 3.17,
-        "12": 2.72,
-        "13": 3.3,
-        "14": 2.6
+        "10": 3.38,
+        "11": 3.74,
+        "12": 3.29,
+        "13": 3.88,
+        "14": 3.17
       },
       "fixgw": {
         "10": "CRY (A)",
@@ -15419,7 +15451,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 0.3,
+      "selected_pct": 0.4,
       "v1gw": null,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -15668,20 +15700,20 @@
       "rated": true,
       "f": {
         "pts4": 4.5,
-        "xgi4": 0.06,
+        "xgi4": 0.08,
         "minshare4": 1,
         "oppstr": 1.5
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.22,
+      "xp": 3.26,
       "xpgw": {
-        "10": 3.22,
-        "11": 2.26,
-        "12": 3.14,
-        "13": 2.51,
-        "14": 2.92
+        "10": 3.26,
+        "11": 2.3,
+        "12": 3.18,
+        "13": 2.55,
+        "14": 2.96
       },
       "fixgw": {
         "10": "NEW (H)",
@@ -16040,7 +16072,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 0,
+      "selected_pct": 0.1,
       "v1gw": null,
       "rated": false,
       "reason": "cold start: fewer than 4 recent gameweeks",
