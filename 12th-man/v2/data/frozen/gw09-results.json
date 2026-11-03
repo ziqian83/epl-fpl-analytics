@@ -1,0 +1,276 @@
+{
+  "kind": "GW9 scoring of the pre-frozen engine calls in gw09.json - the accountability second half. Actuals from the official FPL API (event/9/live) after the event was finished and data_checked. No hindsight re-selection: every scored lineup is exactly the one frozen before the deadline.",
+  "gameweek": 9,
+  "scored_at": "2026-11-03T19:35:40.255Z",
+  "official_finality": {
+    "event_finished": true,
+    "data_checked": true,
+    "bonus_applied": true
+  },
+  "reproduction_check": {
+    "method": "re-ran the exact freeze pipeline (pinned pool + pinned engine, hashes below) against the same locked-GW inputs; every frozen number regenerated exactly before scoring.",
+    "pool_sha256_16": "a2f3df7d894050e2",
+    "engine_sha256_16": "5101342b276e6f77",
+    "asserts": [
+      {
+        "label": "verdict.xiXp",
+        "got": 45.56,
+        "want": 45.56,
+        "ok": true
+      },
+      {
+        "label": "verdict.bestFix.gain",
+        "got": 2.43,
+        "want": 2.43,
+        "ok": true
+      },
+      {
+        "label": "freehit.fhXiXp",
+        "got": 52.99,
+        "want": 52.99,
+        "ok": true
+      },
+      {
+        "label": "freehit.uplift",
+        "got": 7.43,
+        "want": 7.43,
+        "ok": true
+      },
+      {
+        "label": "bboost.benchXp",
+        "got": 8.67,
+        "want": 8.67,
+        "ok": true
+      },
+      {
+        "label": "3xc.capXp",
+        "got": 5.44,
+        "want": 5.44,
+        "ok": true
+      },
+      {
+        "label": "bestFix.inn",
+        "got": "Tavernier",
+        "want": "Tavernier",
+        "ok": true
+      },
+      {
+        "label": "bestFix.out",
+        "got": "Cherki",
+        "want": "Cherki",
+        "ok": true
+      },
+      {
+        "label": "lean",
+        "got": "aggr",
+        "want": "aggr",
+        "ok": true
+      },
+      {
+        "label": "freeHitXiCopy.xp==frozen fhXiXp",
+        "got": 52.99,
+        "want": 52.99,
+        "ok": true
+      }
+    ],
+    "all_ok": true
+  },
+  "results": {
+    "bestFix": {
+      "claim": "swap Cherki -> Tavernier gains +2.43 xP this week",
+      "tavernier_actual": 3,
+      "cherki_actual": 1,
+      "realized_edge": 2,
+      "claim_met": true
+    },
+    "frozen_xi": {
+      "xp_claim": 45.56,
+      "xi": [
+        {
+          "name": "Kinsky",
+          "actual": 6
+        },
+        {
+          "name": "Dasilva",
+          "actual": 2
+        },
+        {
+          "name": "Justin",
+          "actual": 2
+        },
+        {
+          "name": "De Cuyper",
+          "actual": 9
+        },
+        {
+          "name": "Rice",
+          "actual": 8
+        },
+        {
+          "name": "Belloumi",
+          "actual": 5
+        },
+        {
+          "name": "Rogers",
+          "actual": 9
+        },
+        {
+          "name": "Groß",
+          "actual": 2
+        },
+        {
+          "name": "Cherki",
+          "actual": 1
+        },
+        {
+          "name": "Evanilson",
+          "actual": 9
+        },
+        {
+          "name": "Haaland",
+          "actual": 2
+        }
+      ],
+      "captain": "Evanilson",
+      "realized_total": 64,
+      "delta_vs_claim": 18.44
+    },
+    "freehit": {
+      "frozen_verdict": "candidate",
+      "uplift_claim_xp": 7.43,
+      "fhXiXp_claim": 52.99,
+      "fh_xi": [
+        {
+          "name": "Kinsky",
+          "actual": 6
+        },
+        {
+          "name": "Gabriel",
+          "actual": 6
+        },
+        {
+          "name": "Hill",
+          "actual": 6
+        },
+        {
+          "name": "Truffert",
+          "actual": 6
+        },
+        {
+          "name": "Neto",
+          "actual": 3
+        },
+        {
+          "name": "Manzambi",
+          "actual": 7
+        },
+        {
+          "name": "Barnes",
+          "actual": 2
+        },
+        {
+          "name": "Iwobi",
+          "actual": 6
+        },
+        {
+          "name": "Haaland",
+          "actual": 2
+        },
+        {
+          "name": "Thiago",
+          "actual": 9
+        },
+        {
+          "name": "N.Jackson",
+          "actual": 9
+        }
+      ],
+      "fh_captain": "Haaland",
+      "fh_realized_total": 64,
+      "realized_uplift_vs_frozen_xi": 0,
+      "verdict_supported_by_realized": false
+    },
+    "bboost": {
+      "frozen_verdict": "hold",
+      "bench_xp_claim": 8.67,
+      "bench": [
+        {
+          "name": "Kinsky",
+          "actual": 6
+        },
+        {
+          "name": "João Pedro",
+          "actual": 0
+        },
+        {
+          "name": "Justin",
+          "actual": 2
+        },
+        {
+          "name": "Guéhi",
+          "actual": 0
+        }
+      ],
+      "bench_realized": 8,
+      "note": "hold bar was benchXp < 9; realized bench points would have been added in full under bench boost"
+    },
+    "3xc": {
+      "frozen_verdict": "hold",
+      "cap_xp_claim": 5.44,
+      "captain": "Evanilson",
+      "captain_actual": 9,
+      "note": "triple captain would have added one extra copy of the captain's actual points"
+    }
+  },
+  "hindsight_oracle_diagnostic_only": {
+    "note": "Best possible XI from the same 15 players with full knowledge of GW9 actuals. Diagnostic only - never the benchmark the frozen calls are judged against.",
+    "xi": [
+      {
+        "name": "Verbruggen",
+        "actual": 11
+      },
+      {
+        "name": "De Cuyper",
+        "actual": 9
+      },
+      {
+        "name": "Calafiori",
+        "actual": 6
+      },
+      {
+        "name": "Dasilva",
+        "actual": 2
+      },
+      {
+        "name": "Justin",
+        "actual": 2
+      },
+      {
+        "name": "Rogers",
+        "actual": 9
+      },
+      {
+        "name": "Rice",
+        "actual": 8
+      },
+      {
+        "name": "Belloumi",
+        "actual": 5
+      },
+      {
+        "name": "Groß",
+        "actual": 2
+      },
+      {
+        "name": "Evanilson",
+        "actual": 9
+      },
+      {
+        "name": "Haaland",
+        "actual": 2
+      }
+    ],
+    "captain": "Verbruggen",
+    "realized_total": 76
+  }
+}
