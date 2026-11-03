@@ -115,7 +115,7 @@
           "actual": 9
         },
         {
-          "name": "Groß",
+          "name": "Gro\u00df",
           "actual": 2
         },
         {
@@ -133,7 +133,8 @@
       ],
       "captain": "Evanilson",
       "realized_total": 64,
-      "delta_vs_claim": 18.44
+      "delta_vs_claim": 18.44,
+      "captain_note": "Captain shown is the engine's own best-XI captain pick (highest projected xP in the XI), NOT the user's locked captaincy. The frozen gw09.json squad snapshot shows the user's locked lineup labels (Haaland captain); the scored best-XI and its captain are the engine's selections, frozen pre-deadline."
     },
     "freehit": {
       "frozen_verdict": "candidate",
@@ -199,7 +200,7 @@
           "actual": 6
         },
         {
-          "name": "João Pedro",
+          "name": "Jo\u00e3o Pedro",
           "actual": 0
         },
         {
@@ -207,7 +208,7 @@
           "actual": 2
         },
         {
-          "name": "Guéhi",
+          "name": "Gu\u00e9hi",
           "actual": 0
         }
       ],
@@ -219,7 +220,8 @@
       "cap_xp_claim": 5.44,
       "captain": "Evanilson",
       "captain_actual": 9,
-      "note": "triple captain would have added one extra copy of the captain's actual points"
+      "note": "triple captain would have added one extra copy of the captain's actual points",
+      "captain_note": "Same engine-captain basis as frozen_xi: the triple-captain card was scored on the engine's captain pick, not the user's locked captain."
     }
   },
   "hindsight_oracle_diagnostic_only": {
@@ -258,7 +260,7 @@
         "actual": 5
       },
       {
-        "name": "Groß",
+        "name": "Gro\u00df",
         "actual": 2
       },
       {
@@ -272,5 +274,6 @@
     ],
     "captain": "Verbruggen",
     "realized_total": 76
-  }
+  },
+  "interpretation_caveat": "One gameweek of realized outcomes is a single sample: it neither validates nor condemns the model's calibration, and a realized result does not prove any frozen verdict (hold/candidate) was optimal or wrong. These comparisons record what the pre-frozen calls would have done, nothing more."
 }
