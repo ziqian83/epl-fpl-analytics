@@ -1,7 +1,7 @@
 {
   "kind": "prospective outer-test freeze (docs/13 protocol) - panel v2 (docs/16 versioned correction)",
   "panel_version": "v2",
-  "status": "WIRED, PRE-FREEZE: data freeze (csv_sha256/pulled_at fill) completes on the 2026-11-04 wake, before the GW10 deadline; no spec or code edits after that freeze",
+  "status": "FROZEN 2026-11-04: data pins filled from the 2026-11-04T01:04:07Z API snapshot (5,890 rows, 670 players, GW1-9 complete) and GW10 decisions frozen for all three policies; no spec or code edits from here - any spec change restarts the clock",
   "season": "2026-27",
   "start_gw": 10,
   "gw10_deadline": "2026-11-06T18:30:00Z",
@@ -50,8 +50,8 @@
     ],
     "train_source": "vaastav/Fantasy-Premier-League pinned master d7b05b51d137 (cache .fit-cache)",
     "current_season_source": "official FPL API (bootstrap-static, element-summary, fixtures); element-summary history supplies the fixture id per row; vaastav 2026-27 covers only through GW6 at pinned master, insufficient for GW10 trailing-4 features",
-    "csv_sha256": null,
-    "pulled_at": null,
+    "csv_sha256": "97c5c62320ea906d12f2986a53e0ebc1f247b5ee9192eef1f220081381c8532a",
+    "pulled_at": "2026-11-04T01:04:07Z",
     "note": "csv_sha256 and pulled_at are filled at the data freeze after GW9 completes and before the GW10 deadline; that data snapshot is part of the freeze plan, not a spec change. The snapshot carries the fixture column (runner refresh-data format from 31 Oct 2026)."
   },
   "scoring_rule": "Score each completed GW (all fixtures finished, official points incl. bonus final) by deterministic replay of the frozen policies from GW10; per-GW points = cumulative(K) - cumulative(K-1). Version labels are preserved when scoring and reporting: v2 numbers are never merged with or substituted for v1. No spec or code edits after the freeze; any spec change restarts the clock and is recorded here.",
@@ -94,6 +94,12 @@
       "git_commit": null,
       "file_sha256": null,
       "note": "Deadline refusal at/after the official GW deadline (events snapshot), snapshot-consumed prices (freeze hashes the same file it reads; no second fetch), as-of fit/squad guardrails, start-squad declaration, revision_history added; runner pin updated. git_commit/file_sha256 of THIS revision are filled by the next revision (bytes preserved in git)."
+    },
+    {
+      "rev": 4,
+      "git_commit": null,
+      "file_sha256": null,
+      "note": "Data freeze 2026-11-04: panel.csv_sha256/pulled_at filled from the official API snapshot (pulled_at 2026-11-04T01:04:07Z, 5,890 rows, GW1-9 complete); vaastav train-season pin d7b05b51d137 unchanged. GW10 decisions frozen pre-deadline (decisions/gw10-v2.json, self-hashed). git_commit/file_sha256 of THIS revision are filled by the next revision (bytes preserved in git)."
     }
   ]
 }
