@@ -1,0 +1,404 @@
+{
+  "kind": "frozen pre-deadline policy decisions (docs/13/16)",
+  "panel_version": "v2",
+  "season": "2026-27",
+  "gw": 11,
+  "frozen_at": "2026-11-09T21:16:12Z",
+  "gw_deadline": "2026-11-21T11:00:00Z",
+  "inputs": {
+    "played_rows": "gw < 11 from 2026-27-merged_gw.csv",
+    "csv_sha256": "ad464ebc345e939c10c7112a575b25e3ed3eadaa706aca42847bb1cde7c2c9b1",
+    "csv_pulled_at": "2026-11-09T21:14:56Z",
+    "schedule": "2026-27-schedule.csv (epl_schedule, 20 rows at GW 11)",
+    "prices": "2026-27-prices.csv saved snapshot (consumed and hashed by freeze; no second fetch)",
+    "prices_pulled_at": "2026-11-09T21:14:56Z",
+    "prices_sha256": "cd55bf3ce53d5e164962efd6a58901a97d16fb18f78b5239e91f386baf229e30",
+    "deadlines": "2026-27-events.csv (official); GW 11 deadline 2026-11-21T11:00:00Z"
+  },
+  "code": {
+    "repo": "ziqian83/epl-fpl-analytics",
+    "runner_blob_sha1": "71c0da91d416beca9ad3b07a6b2f81522ec5bc5f",
+    "backtest_blob_sha1": "9d9593950cb90879612169bca1d32075aec03cfa",
+    "fit_panel_source_blob_sha1": "07dc175b000b9c06c2a84a8068ac9b944b01b4b7"
+  },
+  "policies": {
+    "hold": {
+      "squad": [
+        {
+          "pid": 79,
+          "pos": "FWD",
+          "team": "Bournemouth",
+          "buy": 64
+        },
+        {
+          "pid": 166,
+          "pos": "FWD",
+          "team": "Aston Villa",
+          "buy": 70
+        },
+        {
+          "pid": 411,
+          "pos": "FWD",
+          "team": "Man City",
+          "buy": 158
+        },
+        {
+          "pid": 68,
+          "pos": "MID",
+          "team": "Bournemouth",
+          "buy": 66
+        },
+        {
+          "pid": 13,
+          "pos": "MID",
+          "team": "Arsenal",
+          "buy": 74
+        },
+        {
+          "pid": 261,
+          "pos": "MID",
+          "team": "Fulham",
+          "buy": 54
+        },
+        {
+          "pid": 156,
+          "pos": "MID",
+          "team": "Chelsea",
+          "buy": 66
+        },
+        {
+          "pid": 31,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 48
+        },
+        {
+          "pid": 4,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 80
+        },
+        {
+          "pid": 129,
+          "pos": "MID",
+          "team": "Brighton",
+          "buy": 54
+        },
+        {
+          "pid": 112,
+          "pos": "DEF",
+          "team": "Spurs",
+          "buy": 50
+        },
+        {
+          "pid": 109,
+          "pos": "GKP",
+          "team": "Brighton",
+          "buy": 46
+        },
+        {
+          "pid": 115,
+          "pos": "DEF",
+          "team": "Brighton",
+          "buy": 54
+        },
+        {
+          "pid": 566,
+          "pos": "DEF",
+          "team": "Bournemouth",
+          "buy": 51
+        },
+        {
+          "pid": 496,
+          "pos": "GKP",
+          "team": "Spurs",
+          "buy": 44
+        }
+      ],
+      "bank_after": 21,
+      "fts_before": 1,
+      "fts_after": 1,
+      "transfers": [],
+      "hits_this_gw": 0,
+      "transfers_total_after": 0,
+      "hits_total_after": 0,
+      "xi": [
+        109,
+        4,
+        31,
+        112,
+        68,
+        261,
+        129,
+        13,
+        79,
+        166,
+        411
+      ],
+      "bench": [
+        156,
+        115,
+        566,
+        496
+      ],
+      "captain": 79,
+      "vice": 166,
+      "signal_key": "pred"
+    },
+    "persistence_m0": {
+      "squad": [
+        {
+          "pid": 31,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 48
+        },
+        {
+          "pid": 79,
+          "pos": "FWD",
+          "team": "Bournemouth",
+          "buy": 64
+        },
+        {
+          "pid": 4,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 80
+        },
+        {
+          "pid": 166,
+          "pos": "FWD",
+          "team": "Aston Villa",
+          "buy": 70
+        },
+        {
+          "pid": 112,
+          "pos": "DEF",
+          "team": "Spurs",
+          "buy": 50
+        },
+        {
+          "pid": 411,
+          "pos": "FWD",
+          "team": "Man City",
+          "buy": 158
+        },
+        {
+          "pid": 109,
+          "pos": "GKP",
+          "team": "Brighton",
+          "buy": 46
+        },
+        {
+          "pid": 129,
+          "pos": "MID",
+          "team": "Brighton",
+          "buy": 54
+        },
+        {
+          "pid": 13,
+          "pos": "MID",
+          "team": "Arsenal",
+          "buy": 74
+        },
+        {
+          "pid": 156,
+          "pos": "MID",
+          "team": "Chelsea",
+          "buy": 66
+        },
+        {
+          "pid": 60,
+          "pos": "DEF",
+          "team": "Bournemouth",
+          "buy": 55
+        },
+        {
+          "pid": 183,
+          "pos": "MID",
+          "team": "Coventry City",
+          "buy": 49
+        },
+        {
+          "pid": 261,
+          "pos": "MID",
+          "team": "Fulham",
+          "buy": 54
+        },
+        {
+          "pid": 496,
+          "pos": "GKP",
+          "team": "Spurs",
+          "buy": 44
+        },
+        {
+          "pid": 504,
+          "pos": "DEF",
+          "team": "Brighton",
+          "buy": 53
+        }
+      ],
+      "bank_after": 35,
+      "fts_before": 1,
+      "fts_after": 0,
+      "transfers": [
+        {
+          "out": 115,
+          "in": 504,
+          "sell": 54,
+          "cost": 53,
+          "kind": "ft"
+        }
+      ],
+      "hits_this_gw": 0,
+      "transfers_total_after": 1,
+      "hits_total_after": 0,
+      "xi": [
+        109,
+        31,
+        4,
+        112,
+        504,
+        60,
+        129,
+        13,
+        79,
+        166,
+        411
+      ],
+      "bench": [
+        156,
+        261,
+        183,
+        496
+      ],
+      "captain": 31,
+      "vice": 4,
+      "signal_key": "f_pts4"
+    },
+    "model_m1": {
+      "squad": [
+        {
+          "pid": 79,
+          "pos": "FWD",
+          "team": "Bournemouth",
+          "buy": 64
+        },
+        {
+          "pid": 166,
+          "pos": "FWD",
+          "team": "Aston Villa",
+          "buy": 70
+        },
+        {
+          "pid": 411,
+          "pos": "FWD",
+          "team": "Man City",
+          "buy": 158
+        },
+        {
+          "pid": 68,
+          "pos": "MID",
+          "team": "Bournemouth",
+          "buy": 66
+        },
+        {
+          "pid": 13,
+          "pos": "MID",
+          "team": "Arsenal",
+          "buy": 74
+        },
+        {
+          "pid": 261,
+          "pos": "MID",
+          "team": "Fulham",
+          "buy": 54
+        },
+        {
+          "pid": 156,
+          "pos": "MID",
+          "team": "Chelsea",
+          "buy": 66
+        },
+        {
+          "pid": 31,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 48
+        },
+        {
+          "pid": 4,
+          "pos": "DEF",
+          "team": "Arsenal",
+          "buy": 80
+        },
+        {
+          "pid": 129,
+          "pos": "MID",
+          "team": "Brighton",
+          "buy": 54
+        },
+        {
+          "pid": 112,
+          "pos": "DEF",
+          "team": "Spurs",
+          "buy": 50
+        },
+        {
+          "pid": 109,
+          "pos": "GKP",
+          "team": "Brighton",
+          "buy": 46
+        },
+        {
+          "pid": 115,
+          "pos": "DEF",
+          "team": "Brighton",
+          "buy": 54
+        },
+        {
+          "pid": 566,
+          "pos": "DEF",
+          "team": "Bournemouth",
+          "buy": 51
+        },
+        {
+          "pid": 496,
+          "pos": "GKP",
+          "team": "Spurs",
+          "buy": 44
+        }
+      ],
+      "bank_after": 21,
+      "fts_before": 1,
+      "fts_after": 1,
+      "transfers": [],
+      "hits_this_gw": 0,
+      "transfers_total_after": 0,
+      "hits_total_after": 0,
+      "xi": [
+        109,
+        4,
+        31,
+        112,
+        68,
+        261,
+        129,
+        13,
+        79,
+        166,
+        411
+      ],
+      "bench": [
+        156,
+        115,
+        566,
+        496
+      ],
+      "captain": 79,
+      "vice": 166,
+      "signal_key": "pred"
+    }
+  },
+  "content_sha256": "f0bd673371ebba6d0ddc93b8b852d297b2ed2ffcca9fae729fa0657a069c72a5"
+}
