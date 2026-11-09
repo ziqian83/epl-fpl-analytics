@@ -1,12 +1,15 @@
 {
   "spec": "prospective-2026-27-spec.json",
-  "scored_through_gw": null,
+  "panel_version": "v1",
+  "decision_source": "frozen pre-deadline decisions (12th-man/v2/data/frozen/decisions/)",
   "provenance": {
-    "source": "official FPL API (bootstrap-static, element-summary, fixtures) - chunked validation pull",
-    "pulled_at": "2026-10-31T08:01:14Z",
-    "csv_sha256": "ba23daf4b414e400fe55ecc8ee283eea8074d6147921090d4ad2bc4c0ead257f",
-    "rows": 5220,
-    "players": 669,
+    "source": "official FPL API (bootstrap-static, element-summary, fixtures)",
+    "pulled_at": "2026-11-09T21:14:56Z",
+    "csv_sha256": "ad464ebc345e939c10c7112a575b25e3ed3eadaa706aca42847bb1cde7c2c9b1",
+    "rows": 6562,
+    "players": 672,
+    "schedule_rows": 760,
+    "events_rows": 38,
     "completed_gws": [
       1,
       2,
@@ -15,27 +18,51 @@
       5,
       6,
       7,
-      8
+      8,
+      9,
+      10
     ]
   },
   "policies": {
     "hold": {
-      "weekly": {},
-      "total": 0.0,
+      "weekly": {
+        "10": {
+          "pts": 66.0,
+          "transfers": 0,
+          "hits": 0
+        }
+      },
+      "total": 66.0,
       "transfers": 0,
-      "hits": 0
+      "hits": 0,
+      "net": 66.0
     },
     "persistence_m0": {
-      "weekly": {},
-      "total": 0.0,
+      "weekly": {
+        "10": {
+          "pts": 69.0,
+          "transfers": 0,
+          "hits": 0
+        }
+      },
+      "total": 69.0,
       "transfers": 0,
-      "hits": 0
+      "hits": 0,
+      "net": 69.0
     },
     "model_m1": {
-      "weekly": {},
-      "total": 0.0,
+      "weekly": {
+        "10": {
+          "pts": 66.0,
+          "transfers": 0,
+          "hits": 0
+        }
+      },
+      "total": 66.0,
       "transfers": 0,
-      "hits": 0
+      "hits": 0,
+      "net": 66.0
     }
-  }
+  },
+  "scored_through_gw": 10
 }
