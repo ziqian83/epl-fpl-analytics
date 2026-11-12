@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T01:49:17.184Z",
+  "generated_at": "2026-11-12T02:48:42.210Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -93,7 +93,7 @@
       "cost": 8.1,
       "status": "a",
       "news": "",
-      "selected_pct": 26,
+      "selected_pct": 26.1,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -1096,7 +1096,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.6,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1261,7 +1261,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 0.1,
+      "selected_pct": 0.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -1982,7 +1982,7 @@
       "cost": 6.5,
       "status": "a",
       "news": "",
-      "selected_pct": 23.6,
+      "selected_pct": 23.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2849,7 +2849,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 14.5,
+      "selected_pct": 14.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2938,7 +2938,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 47.7,
+      "selected_pct": 47.8,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -3487,7 +3487,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 9.9,
+      "selected_pct": 9.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -4176,7 +4176,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 32,
+      "selected_pct": 31.9,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4195,7 +4195,7 @@
       "cost": 7.1,
       "status": "a",
       "news": "",
-      "selected_pct": 30.8,
+      "selected_pct": 31,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -5529,8 +5529,8 @@
       "team": "CRY",
       "pos": 4,
       "cost": 5.9,
-      "status": "a",
-      "news": "",
+      "status": "d",
+      "news": "Ankle injury - 75% chance of playing",
       "selected_pct": 0.4,
       "v1gw": 60,
       "rated": false,
@@ -5912,7 +5912,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 5.5,
+      "selected_pct": 5.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -6252,7 +6252,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 10.6,
+      "selected_pct": 10.7,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6998,7 +6998,7 @@
       "cost": 4.2,
       "status": "a",
       "news": "",
-      "selected_pct": 12,
+      "selected_pct": 11.9,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7179,7 +7179,7 @@
       "cost": 5.3,
       "status": "d",
       "news": "Hamstring injury - 75% chance of playing",
-      "selected_pct": 9.7,
+      "selected_pct": 9.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -7861,7 +7861,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 2.9,
+      "selected_pct": 2.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9054,7 +9054,7 @@
       "cost": 7.1,
       "status": "a",
       "news": "",
-      "selected_pct": 7.1,
+      "selected_pct": 7,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -9638,7 +9638,7 @@
       "cost": 5.6,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 22.9,
+      "selected_pct": 22.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -10498,7 +10498,7 @@
       "cost": 7.9,
       "status": "a",
       "news": "",
-      "selected_pct": 19.2,
+      "selected_pct": 19.1,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -10996,7 +10996,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 18.3,
+      "selected_pct": 18.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11352,7 +11352,7 @@
       "name": "Steur",
       "team": "NEW",
       "pos": 3,
-      "cost": 4.8,
+      "cost": 4.7,
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
@@ -11393,7 +11393,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 8.4,
+      "selected_pct": 8.3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -12393,7 +12393,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 9.1,
+      "selected_pct": 9.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13891,7 +13891,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.6,
+      "selected_pct": 3.7,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13980,7 +13980,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 3.7,
+      "selected_pct": 3.6,
       "v1gw": 60,
       "rated": true,
       "f": {
