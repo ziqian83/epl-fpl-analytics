@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T02:30:24.409Z",
+  "generated_at": "2026-11-14T02:11:00.130Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -20,7 +20,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 47.5,
+      "selected_pct": 47.6,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -93,7 +93,7 @@
       "cost": 8.1,
       "status": "a",
       "news": "",
-      "selected_pct": 26.1,
+      "selected_pct": 26.2,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -474,7 +474,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.4,
       "v1gw": 55,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -1982,7 +1982,7 @@
       "cost": 6.5,
       "status": "a",
       "news": "",
-      "selected_pct": 23.8,
+      "selected_pct": 23.9,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2379,7 +2379,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 12.9,
+      "selected_pct": 12.8,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2938,7 +2938,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 47.8,
+      "selected_pct": 47.9,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -3871,7 +3871,7 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 28.4,
+      "selected_pct": 28.3,
       "v1gw": 95,
       "rated": true,
       "f": {
@@ -4176,7 +4176,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 31.7,
+      "selected_pct": 31.6,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4195,7 +4195,7 @@
       "cost": 7.1,
       "status": "a",
       "news": "",
-      "selected_pct": 31.1,
+      "selected_pct": 31.3,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -5125,7 +5125,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.7,
+      "selected_pct": 4.6,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -6252,7 +6252,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 10.7,
+      "selected_pct": 10.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6522,7 +6522,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 9.9,
+      "selected_pct": 9.8,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -6684,7 +6684,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 0.2,
+      "selected_pct": 0.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -9533,7 +9533,7 @@
       "cost": 6,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 14.1,
+      "selected_pct": 14,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -9638,7 +9638,7 @@
       "cost": 5.6,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 22.7,
+      "selected_pct": 22.6,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -10098,7 +10098,7 @@
       "cost": 15.8,
       "status": "a",
       "news": "",
-      "selected_pct": 78.9,
+      "selected_pct": 78.8,
       "v1gw": 155,
       "rated": true,
       "f": {
@@ -10406,7 +10406,7 @@
       "cost": 4.2,
       "status": "i",
       "news": "Unspecified injury - Unknown return date",
-      "selected_pct": 3.3,
+      "selected_pct": 3.2,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -12393,7 +12393,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 9.3,
+      "selected_pct": 9.4,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -12961,7 +12961,7 @@
       "name": "Roefs",
       "team": "SUN",
       "pos": 1,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
       "selected_pct": 1.9,
