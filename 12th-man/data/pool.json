@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T03:34:32.424Z",
+  "generated_at": "2026-11-19T03:06:52.570Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -718,7 +718,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 24.8,
+      "selected_pct": 24.9,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -969,7 +969,7 @@
       "cost": 8.2,
       "status": "a",
       "news": "",
-      "selected_pct": 54,
+      "selected_pct": 54.1,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -1004,7 +1004,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 1.1,
+      "selected_pct": 1,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -1093,10 +1093,10 @@
       "name": "McGinn",
       "team": "AVL",
       "pos": 3,
-      "cost": 5.4,
+      "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 3.8,
+      "selected_pct": 3.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1261,7 +1261,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 0.2,
+      "selected_pct": 0.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -1296,7 +1296,7 @@
       "cost": 6.2,
       "status": "d",
       "news": "Calf injury - 75% chance of playing",
-      "selected_pct": 8.5,
+      "selected_pct": 8.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1693,7 +1693,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 31.6,
+      "selected_pct": 31.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1982,7 +1982,7 @@
       "cost": 6.5,
       "status": "a",
       "news": "",
-      "selected_pct": 24.2,
+      "selected_pct": 24.3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2379,7 +2379,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 12.8,
+      "selected_pct": 12.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2687,7 +2687,7 @@
       "cost": 7.8,
       "status": "s",
       "news": "Suspended until 5 Dec",
-      "selected_pct": 7.9,
+      "selected_pct": 7.8,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -2849,7 +2849,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 15,
+      "selected_pct": 15.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2938,7 +2938,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 48.1,
+      "selected_pct": 48.2,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -3189,7 +3189,7 @@
       "name": "Georginio",
       "team": "BHA",
       "pos": 4,
-      "cost": 5.3,
+      "cost": 5.2,
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
@@ -3227,10 +3227,10 @@
       "name": "Gomez",
       "team": "BHA",
       "pos": 3,
-      "cost": 5,
+      "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 4.3,
+      "selected_pct": 4.4,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -3941,7 +3941,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 5,
+      "selected_pct": 4.9,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4176,7 +4176,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 31.2,
+      "selected_pct": 31.1,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4195,7 +4195,7 @@
       "cost": 7.1,
       "status": "a",
       "news": "",
-      "selected_pct": 31.8,
+      "selected_pct": 32.1,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -5607,7 +5607,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 8.5,
+      "selected_pct": 8.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6001,7 +6001,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 0,
+      "selected_pct": 0.1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -6252,7 +6252,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 10.9,
+      "selected_pct": 11,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6287,7 +6287,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.4,
+      "selected_pct": 4.3,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -6452,7 +6452,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.3,
+      "selected_pct": 1.2,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -7620,7 +7620,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 6.6,
+      "selected_pct": 6.5,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7988,7 +7988,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.6,
+      "selected_pct": 2.5,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -8559,7 +8559,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 17.4,
+      "selected_pct": 17.3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -8781,7 +8781,7 @@
       "cost": 6.4,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 14.7,
+      "selected_pct": 14.6,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -9019,7 +9019,7 @@
       "cost": 7.2,
       "status": "a",
       "news": "",
-      "selected_pct": 5.8,
+      "selected_pct": 6,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -9292,7 +9292,7 @@
       "name": "McConnell",
       "team": "LIV",
       "pos": 3,
-      "cost": 4.4,
+      "cost": 4.3,
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
@@ -9533,7 +9533,7 @@
       "cost": 6,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 13.8,
+      "selected_pct": 13.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -9638,7 +9638,7 @@
       "cost": 5.6,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 22.2,
+      "selected_pct": 22,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9803,7 +9803,7 @@
       "cost": 6.8,
       "status": "a",
       "news": "",
-      "selected_pct": 2.3,
+      "selected_pct": 2.2,
       "v1gw": 70,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -10996,7 +10996,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 18.1,
+      "selected_pct": 18,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11104,7 +11104,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 6.5,
+      "selected_pct": 6.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -12193,7 +12193,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 15.6,
+      "selected_pct": 15.7,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -12393,7 +12393,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 9.7,
+      "selected_pct": 9.8,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13307,7 +13307,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.8,
+      "selected_pct": 2.9,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -13977,10 +13977,10 @@
       "name": "Gonzalo",
       "team": "FUL",
       "pos": 4,
-      "cost": 5.9,
+      "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 3.6,
+      "selected_pct": 3.5,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -14701,7 +14701,7 @@
       "name": "Suzuki",
       "team": "AVL",
       "pos": 1,
-      "cost": 5,
+      "cost": 5.1,
       "status": "a",
       "news": "",
       "selected_pct": 3.2,
@@ -14888,7 +14888,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 2.7,
+      "selected_pct": 2.6,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -15791,7 +15791,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.5,
       "v1gw": null,
       "rated": true,
       "f": {
