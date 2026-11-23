@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T02:01:48.087Z",
+  "generated_at": "2026-11-23T02:26:59.285Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -20,7 +20,7 @@
       "cost": 6.3,
       "status": "d",
       "news": "Shoulder injury - 75% chance of playing",
-      "selected_pct": 47.5,
+      "selected_pct": 46.8,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -201,7 +201,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 48.6,
+      "selected_pct": 48.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -252,10 +252,10 @@
       "name": "White",
       "team": "ARS",
       "pos": 2,
-      "cost": 5.4,
+      "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 4,
+      "selected_pct": 3.9,
       "v1gw": 55,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -293,7 +293,7 @@
       "cost": 9.4,
       "status": "i",
       "news": "Thigh injury - Expected back 20 Dec",
-      "selected_pct": 5.2,
+      "selected_pct": 5.1,
       "v1gw": 95,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -366,7 +366,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 16.6,
+      "selected_pct": 16.7,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -753,7 +753,7 @@
       "cost": 4.3,
       "status": "i",
       "news": "Concussion - Expected back 28 Nov",
-      "selected_pct": 3.3,
+      "selected_pct": 3.2,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -969,7 +969,7 @@
       "cost": 8.3,
       "status": "a",
       "news": "",
-      "selected_pct": 54.6,
+      "selected_pct": 54.7,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -1001,7 +1001,7 @@
       "name": "Buendía",
       "team": "AVL",
       "pos": 3,
-      "cost": 5.9,
+      "cost": 5.8,
       "status": "a",
       "news": "",
       "selected_pct": 1,
@@ -1280,7 +1280,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 8.8,
+      "selected_pct": 8.7,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1445,7 +1445,7 @@
       "cost": 5.6,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1626,7 +1626,7 @@
       "cost": 6.3,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.4,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -1661,7 +1661,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 32.8,
+      "selected_pct": 33.1,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1934,7 +1934,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 26.4,
+      "selected_pct": 26.8,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2061,7 +2061,7 @@
       "cost": 5.4,
       "status": "i",
       "news": "Knee injury - Expected back 2 Dec",
-      "selected_pct": 0.8,
+      "selected_pct": 0.7,
       "v1gw": 55,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -2331,7 +2331,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 12.1,
+      "selected_pct": 12,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2398,7 +2398,7 @@
       "name": "Damsgaard",
       "team": "BRE",
       "pos": 3,
-      "cost": 5.3,
+      "cost": 5.2,
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
@@ -2455,7 +2455,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.6,
+      "selected_pct": 1.5,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2639,7 +2639,7 @@
       "cost": 7.8,
       "status": "s",
       "news": "Suspended until 5 Dec",
-      "selected_pct": 6.7,
+      "selected_pct": 6.6,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -2712,25 +2712,25 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 24.3,
+      "selected_pct": 24.5,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 4.75,
+        "pts4": 5.25,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.27,
+      "xp": 3.8,
       "xpgw": {
-        "12": 3.27,
-        "13": 2.31,
-        "14": 2.8,
-        "15": 3.25,
-        "16": 3.17
+        "12": 3.8,
+        "13": 2.84,
+        "14": 3.32,
+        "15": 3.77,
+        "16": 3.7
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -2801,7 +2801,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 18.4,
+      "selected_pct": 18.7,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2855,25 +2855,25 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.7,
+      "selected_pct": 0.8,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 2.5,
-        "xgi4": 0.08,
-        "minshare4": 0.55,
+        "pts4": 4.25,
+        "xgi4": 0.17,
+        "minshare4": 0.73,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 2.24,
+      "xp": 3.21,
       "xpgw": {
-        "12": 2.24,
-        "13": 1.28,
-        "14": 1.77,
-        "15": 2.22,
-        "16": 2.14
+        "12": 3.21,
+        "13": 2.25,
+        "14": 2.74,
+        "15": 3.19,
+        "16": 3.11
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -2890,25 +2890,25 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 49.8,
+      "selected_pct": 50,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 4,
-        "xgi4": 0.33,
-        "minshare4": 0.67,
+        "pts4": 4.25,
+        "xgi4": 0.44,
+        "minshare4": 0.92,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.07,
+      "xp": 3.79,
       "xpgw": {
-        "12": 3.07,
-        "13": 2.11,
-        "14": 2.6,
-        "15": 3.05,
-        "16": 2.97
+        "12": 3.79,
+        "13": 2.83,
+        "14": 3.31,
+        "15": 3.76,
+        "16": 3.69
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -2929,21 +2929,21 @@
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 3,
-        "xgi4": 0.02,
-        "minshare4": 0.75,
+        "pts4": 3.25,
+        "xgi4": 0.03,
+        "minshare4": 1,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 2.49,
+      "xp": 2.98,
       "xpgw": {
-        "12": 2.49,
-        "13": 1.53,
-        "14": 2.02,
-        "15": 2.47,
-        "16": 2.39
+        "12": 2.98,
+        "13": 2.02,
+        "14": 2.51,
+        "15": 2.96,
+        "16": 2.88
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -2996,27 +2996,27 @@
       "team": "BHA",
       "pos": 2,
       "cost": 4.5,
-      "status": "a",
-      "news": "",
+      "status": "s",
+      "news": "Suspended until 2 Dec",
       "selected_pct": 0.1,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "xgi4": 0.14,
-        "minshare4": 0.73,
+        "pts4": 3,
+        "xgi4": 0.22,
+        "minshare4": 0.98,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 2.74,
+      "xp": 3.16,
       "xpgw": {
-        "12": 2.74,
-        "13": 1.78,
-        "14": 2.27,
-        "15": 2.72,
-        "16": 2.65
+        "12": 3.16,
+        "13": 2.2,
+        "14": 2.69,
+        "15": 3.14,
+        "16": 3.06
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -3109,25 +3109,25 @@
       "cost": 6.3,
       "status": "a",
       "news": "",
-      "selected_pct": 49.4,
+      "selected_pct": 49.5,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 3,
-        "xgi4": 0.48,
-        "minshare4": 0.75,
+        "pts4": 4,
+        "xgi4": 0.59,
+        "minshare4": 1,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.78,
+      "xp": 4.69,
       "xpgw": {
-        "12": 3.78,
-        "13": 3.06,
-        "14": 3.39,
-        "15": 3.84,
-        "16": 3.92
+        "12": 4.69,
+        "13": 3.98,
+        "14": 4.3,
+        "15": 4.75,
+        "16": 4.83
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -3186,21 +3186,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "xgi4": 0.16,
-        "minshare4": 0.73,
+        "pts4": 4.25,
+        "xgi4": 0.41,
+        "minshare4": 0.95,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.01,
+      "xp": 4.14,
       "xpgw": {
-        "12": 3.01,
-        "13": 2.29,
-        "14": 2.62,
-        "15": 3.07,
-        "16": 3.15
+        "12": 4.14,
+        "13": 3.42,
+        "14": 3.75,
+        "15": 4.2,
+        "16": 4.28
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -3240,21 +3240,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 3.75,
-        "xgi4": 0.3,
-        "minshare4": 0.67,
+        "pts4": 4.5,
+        "xgi4": 0.44,
+        "minshare4": 0.85,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 2.89,
+      "xp": 3.71,
       "xpgw": {
-        "12": 2.89,
-        "13": 2.18,
-        "14": 2.51,
-        "15": 2.96,
-        "16": 3.03
+        "12": 3.71,
+        "13": 3,
+        "14": 3.33,
+        "15": 3.78,
+        "16": 3.85
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -3420,28 +3420,28 @@
       "name": "Kostoulas",
       "team": "BHA",
       "pos": 4,
-      "cost": 5.8,
+      "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 9.3,
+      "selected_pct": 9,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.22,
-        "minshare4": 0.67,
+        "pts4": 1.75,
+        "xgi4": 0.29,
+        "minshare4": 0.74,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 2.65,
+      "xp": 2.99,
       "xpgw": {
-        "12": 2.65,
-        "13": 1.93,
-        "14": 2.26,
-        "15": 2.71,
-        "16": 2.78
+        "12": 2.99,
+        "13": 2.27,
+        "14": 2.6,
+        "15": 3.05,
+        "16": 3.13
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -3642,7 +3642,7 @@
       "name": "Hato",
       "team": "CHE",
       "pos": 2,
-      "cost": 4.5,
+      "cost": 4.4,
       "status": "i",
       "news": "Back injury - Unknown return date",
       "selected_pct": 0.5,
@@ -3807,7 +3807,7 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 28,
+      "selected_pct": 27.7,
       "v1gw": 95,
       "rated": true,
       "f": {
@@ -3842,7 +3842,7 @@
       "cost": 6.9,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.4,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -3877,7 +3877,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.7,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4055,7 +4055,7 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.4,
       "v1gw": 50,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4112,7 +4112,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 28.5,
+      "selected_pct": 28.1,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4128,10 +4128,10 @@
       "name": "N.Jackson",
       "team": "AVL",
       "pos": 4,
-      "cost": 7.2,
+      "cost": 7.3,
       "status": "a",
       "news": "",
-      "selected_pct": 35.9,
+      "selected_pct": 36.2,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4296,7 +4296,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 6.8,
       "v1gw": 40,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4518,7 +4518,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 1.6,
+      "selected_pct": 1.7,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -5800,7 +5800,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 5.3,
+      "selected_pct": 5.2,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -5887,27 +5887,27 @@
       "team": "HUL",
       "pos": 3,
       "cost": 5,
-      "status": "a",
-      "news": "",
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
       "selected_pct": 0.1,
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 4.75,
+        "pts4": 5,
         "xgi4": 0.13,
-        "minshare4": 0.61,
+        "minshare4": 0.74,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.68,
+      "xp": 2.94,
       "xpgw": {
-        "12": 2.68,
-        "13": 2.72,
-        "14": 1.94,
-        "15": 2.5,
-        "16": 2.38
+        "12": 2.94,
+        "13": 2.98,
+        "14": 2.2,
+        "15": 2.75,
+        "16": 2.64
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -5959,7 +5959,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -6410,7 +6410,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 9.6,
+      "selected_pct": 9.5,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -6737,7 +6737,7 @@
       "cost": 4.3,
       "status": "a",
       "news": "",
-      "selected_pct": 4.1,
+      "selected_pct": 4,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -6832,7 +6832,7 @@
       "cost": 4.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.4,
+      "selected_pct": 6.3,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -6890,21 +6890,21 @@
       "v1gw": 40,
       "rated": true,
       "f": {
-        "pts4": 3,
+        "pts4": 4.5,
         "xgi4": 0.03,
-        "minshare4": 0.69,
+        "minshare4": 0.94,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.41,
+      "xp": 3.21,
       "xpgw": {
-        "12": 2.41,
-        "13": 2.45,
-        "14": 1.51,
-        "15": 2.14,
-        "16": 2
+        "12": 3.21,
+        "13": 3.25,
+        "14": 2.31,
+        "15": 2.94,
+        "16": 2.8
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -6925,21 +6925,21 @@
       "v1gw": 40,
       "rated": true,
       "f": {
-        "pts4": 2,
+        "pts4": 3.5,
         "xgi4": 0.02,
-        "minshare4": 0.56,
+        "minshare4": 0.79,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 1.99,
+      "xp": 2.76,
       "xpgw": {
-        "12": 1.99,
-        "13": 2.03,
-        "14": 1.09,
-        "15": 1.72,
-        "16": 1.58
+        "12": 2.76,
+        "13": 2.8,
+        "14": 1.86,
+        "15": 2.49,
+        "16": 2.35
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -6977,8 +6977,24 @@
       "news": "",
       "selected_pct": 2.4,
       "v1gw": 40,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 1.25,
+        "xgi4": 0.02,
+        "minshare4": 0.53,
+        "oppstr": 3
+      },
+      "fixtures": [
+        "CRY (A)"
+      ],
+      "xp": 1.75,
+      "xpgw": {
+        "12": 1.75,
+        "13": 1.79,
+        "14": 0.86,
+        "15": 1.48,
+        "16": 1.34
+      },
       "fixgw": {
         "12": "CRY (A)",
         "13": "NFO (H)",
@@ -7053,8 +7069,24 @@
       "news": "",
       "selected_pct": 8.8,
       "v1gw": 50,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 4,
+        "xgi4": 0.39,
+        "minshare4": 0.74,
+        "oppstr": 3
+      },
+      "fixtures": [
+        "CRY (A)"
+      ],
+      "xp": 3.5,
+      "xpgw": {
+        "12": 3.5,
+        "13": 3.54,
+        "14": 2.76,
+        "15": 3.32,
+        "16": 3.2
+      },
       "fixgw": {
         "12": "CRY (A)",
         "13": "NFO (H)",
@@ -7127,25 +7159,25 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.2,
+      "selected_pct": 4.1,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.07,
-        "minshare4": 0.75,
+        "pts4": 2.25,
+        "xgi4": 0.1,
+        "minshare4": 1,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.4,
+      "xp": 3.07,
       "xpgw": {
-        "12": 2.4,
-        "13": 2.44,
-        "14": 1.66,
-        "15": 2.22,
-        "16": 2.1
+        "12": 3.07,
+        "13": 3.11,
+        "14": 2.33,
+        "15": 2.88,
+        "16": 2.77
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -7238,25 +7270,25 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.7,
+      "selected_pct": 1.8,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 5.5,
-        "xgi4": 0.26,
-        "minshare4": 0.74,
+        "pts4": 8.75,
+        "xgi4": 0.55,
+        "minshare4": 0.99,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 3.22,
+      "xp": 5.18,
       "xpgw": {
-        "12": 3.22,
-        "13": 3.26,
-        "14": 2.48,
-        "15": 3.04,
-        "16": 2.92
+        "12": 5.18,
+        "13": 5.22,
+        "14": 4.44,
+        "15": 5,
+        "16": 4.88
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -7381,7 +7413,7 @@
       "name": "Palmer",
       "team": "IPS",
       "pos": 1,
-      "cost": 4,
+      "cost": 3.9,
       "status": "a",
       "news": "",
       "selected_pct": 3.3,
@@ -7475,8 +7507,8 @@
       "pos": 2,
       "cost": 4,
       "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 6.3,
+      "news": "Calf injury - 75% chance of playing",
+      "selected_pct": 6.2,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7717,7 +7749,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 2.7,
+      "selected_pct": 2.6,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -8015,7 +8047,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 11.4,
+      "selected_pct": 11.6,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -8085,7 +8117,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.6,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -8139,7 +8171,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 7.1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -8193,7 +8225,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.9,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -8431,7 +8463,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 16.5,
+      "selected_pct": 16.8,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -8523,25 +8555,25 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.1,
+      "selected_pct": 4.2,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 3,
+        "pts4": 4.75,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.51,
+      "xp": 3.38,
       "xpgw": {
-        "12": 2.51,
-        "13": 3.11,
-        "14": 2.46,
-        "15": 3.06,
-        "16": 2.65
+        "12": 3.38,
+        "13": 3.98,
+        "14": 3.33,
+        "15": 3.93,
+        "16": 3.52
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -8653,25 +8685,25 @@
       "cost": 6.4,
       "status": "a",
       "news": "",
-      "selected_pct": 14.4,
+      "selected_pct": 14.5,
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "xgi4": 0.08,
-        "minshare4": 0.75,
+        "pts4": 5,
+        "xgi4": 0.14,
+        "minshare4": 1,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.14,
+      "xp": 3.08,
       "xpgw": {
-        "12": 2.14,
-        "13": 2.74,
-        "14": 2.09,
-        "15": 2.69,
-        "16": 2.28
+        "12": 3.08,
+        "13": 3.68,
+        "14": 3.03,
+        "15": 3.63,
+        "16": 3.22
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -8686,8 +8718,8 @@
       "team": "LIV",
       "pos": 2,
       "cost": 5.1,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 1.1,
       "v1gw": 55,
       "rated": false,
@@ -8711,21 +8743,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.25,
-        "xgi4": 0.09,
-        "minshare4": 0.71,
+        "pts4": 3.75,
+        "xgi4": 0.1,
+        "minshare4": 0.96,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 1.81,
+      "xp": 2.65,
       "xpgw": {
-        "12": 1.81,
-        "13": 2.42,
-        "14": 1.76,
-        "15": 2.37,
-        "16": 1.96
+        "12": 2.65,
+        "13": 3.25,
+        "14": 2.6,
+        "15": 3.2,
+        "16": 2.79
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -8803,21 +8835,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "xgi4": 0.08,
-        "minshare4": 0.75,
+        "pts4": 5,
+        "xgi4": 0.09,
+        "minshare4": 1,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.17,
+      "xp": 3,
       "xpgw": {
-        "12": 2.17,
-        "13": 2.77,
-        "14": 2.11,
-        "15": 2.72,
-        "16": 2.31
+        "12": 3,
+        "13": 3.6,
+        "14": 2.94,
+        "15": 3.55,
+        "16": 3.14
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -8850,7 +8882,7 @@
       "name": "Tsimikas",
       "team": "LIV",
       "pos": 2,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
@@ -8888,28 +8920,28 @@
       "name": "Wirtz",
       "team": "LIV",
       "pos": 3,
-      "cost": 7.3,
+      "cost": 7.4,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
+      "selected_pct": 8.2,
       "v1gw": 75,
       "rated": true,
       "f": {
-        "pts4": 5.25,
-        "xgi4": 0.28,
-        "minshare4": 0.65,
+        "pts4": 8.75,
+        "xgi4": 0.64,
+        "minshare4": 0.9,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 3.08,
+      "xp": 5.27,
       "xpgw": {
-        "12": 3.08,
-        "13": 3.59,
-        "14": 2.99,
-        "15": 3.5,
-        "16": 3.3
+        "12": 5.27,
+        "13": 5.77,
+        "14": 5.17,
+        "15": 5.68,
+        "16": 5.49
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -8924,9 +8956,9 @@
       "team": "LIV",
       "pos": 3,
       "cost": 7.1,
-      "status": "a",
-      "news": "",
-      "selected_pct": 7,
+      "status": "d",
+      "news": "Calf injury - 75% chance of playing",
+      "selected_pct": 6.8,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -8961,10 +8993,26 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.4,
+      "selected_pct": 13.6,
       "v1gw": 70,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 4.25,
+        "xgi4": 0.26,
+        "minshare4": 0.53,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "EVE (A)"
+      ],
+      "xp": 3.03,
+      "xpgw": {
+        "12": 3.03,
+        "13": 3.54,
+        "14": 2.94,
+        "15": 3.45,
+        "16": 3.26
+      },
       "fixgw": {
         "12": "EVE (A)",
         "13": "SUN (H)",
@@ -9041,21 +9089,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 3.25,
-        "xgi4": 0.15,
-        "minshare4": 0.75,
+        "pts4": 4,
+        "xgi4": 0.19,
+        "minshare4": 0.95,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.63,
+      "xp": 3.25,
       "xpgw": {
-        "12": 2.63,
-        "13": 3.14,
-        "14": 2.54,
-        "15": 3.05,
-        "16": 2.86
+        "12": 3.25,
+        "13": 3.76,
+        "14": 3.16,
+        "15": 3.66,
+        "16": 3.47
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -9186,25 +9234,25 @@
       "cost": 9.3,
       "status": "a",
       "news": "",
-      "selected_pct": 26.4,
+      "selected_pct": 26.6,
       "v1gw": 90,
       "rated": true,
       "f": {
-        "pts4": 4.75,
-        "xgi4": 0.3,
-        "minshare4": 0.71,
+        "pts4": 6,
+        "xgi4": 0.64,
+        "minshare4": 0.94,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 3.12,
+      "xp": 4.61,
       "xpgw": {
-        "12": 3.12,
-        "13": 3.63,
-        "14": 3.03,
-        "15": 3.53,
-        "16": 3.34
+        "12": 4.61,
+        "13": 5.12,
+        "14": 4.52,
+        "15": 5.03,
+        "16": 4.83
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -9297,7 +9345,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
+      "selected_pct": 6.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9332,7 +9380,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 7.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -9405,7 +9453,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 12.5,
+      "selected_pct": 12.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -9491,10 +9539,10 @@
       "name": "Gvardiol",
       "team": "MCI",
       "pos": 2,
-      "cost": 5.6,
+      "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 20.2,
+      "selected_pct": 19.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9659,7 +9707,7 @@
       "cost": 6.8,
       "status": "a",
       "news": "",
-      "selected_pct": 2.1,
+      "selected_pct": 2,
       "v1gw": 70,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -9675,10 +9723,10 @@
       "name": "Cherki",
       "team": "MCI",
       "pos": 3,
-      "cost": 7.9,
+      "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 33.3,
+      "selected_pct": 32.6,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -9713,7 +9761,7 @@
       "cost": 7.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.4,
+      "selected_pct": 4.3,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -9748,7 +9796,7 @@
       "cost": 7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.4,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -9801,7 +9849,7 @@
       "pos": 3,
       "cost": 6.4,
       "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
+      "news": "Hamstring injury - 75% chance of playing",
       "selected_pct": 0.3,
       "v1gw": 65,
       "rated": false,
@@ -9970,7 +10018,7 @@
       "cost": 15.8,
       "status": "a",
       "news": "",
-      "selected_pct": 78.5,
+      "selected_pct": 78.2,
       "v1gw": 155,
       "rated": true,
       "f": {
@@ -10005,25 +10053,25 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
+      "selected_pct": 6.9,
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 1.25,
+        "pts4": 1.75,
         "xgi4": 0.01,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 2.64,
+      "xp": 3.16,
       "xpgw": {
-        "12": 2.64,
-        "13": 2.21,
-        "14": 2.64,
-        "15": 2.6,
-        "16": 1.98
+        "12": 3.16,
+        "13": 2.73,
+        "14": 3.16,
+        "15": 3.12,
+        "16": 2.5
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10076,8 +10124,8 @@
       "team": "MUN",
       "pos": 3,
       "cost": 5.7,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.3,
       "v1gw": 60,
       "rated": false,
@@ -10122,19 +10170,19 @@
       "f": {
         "pts4": 1,
         "xgi4": 0.03,
-        "minshare4": 0.68,
+        "minshare4": 0.93,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 1.92,
+      "xp": 2.31,
       "xpgw": {
-        "12": 1.92,
-        "13": 1.5,
-        "14": 1.92,
-        "15": 1.88,
-        "16": 1.27
+        "12": 2.31,
+        "13": 1.88,
+        "14": 2.31,
+        "15": 2.27,
+        "16": 1.65
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10148,28 +10196,28 @@
       "name": "Maguire",
       "team": "MUN",
       "pos": 2,
-      "cost": 4.6,
-      "status": "d",
-      "news": "Back injury - 75% chance of playing",
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
       "selected_pct": 4.6,
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 0,
-        "xgi4": 0.01,
-        "minshare4": 0.63,
+        "pts4": 0.75,
+        "xgi4": 0.02,
+        "minshare4": 0.81,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 1.69,
+      "xp": 2.21,
       "xpgw": {
-        "12": 1.69,
-        "13": 1.26,
-        "14": 1.69,
-        "15": 1.65,
-        "16": 1.03
+        "12": 2.21,
+        "13": 1.78,
+        "14": 2.21,
+        "15": 2.17,
+        "16": 1.55
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10203,27 +10251,27 @@
       "team": "MUN",
       "pos": 2,
       "cost": 4.8,
-      "status": "a",
-      "news": "",
+      "status": "s",
+      "news": "Suspended until 2 Dec",
       "selected_pct": 0.5,
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 1,
+        "pts4": 0,
         "xgi4": 0.1,
-        "minshare4": 0.75,
+        "minshare4": 0.77,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 2.19,
+      "xp": 1.94,
       "xpgw": {
-        "12": 2.19,
-        "13": 1.76,
-        "14": 2.19,
-        "15": 2.15,
-        "16": 1.53
+        "12": 1.94,
+        "13": 1.51,
+        "14": 1.94,
+        "15": 1.9,
+        "16": 1.28
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10237,9 +10285,9 @@
       "name": "Heaven",
       "team": "MUN",
       "pos": 2,
-      "cost": 4.3,
-      "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
+      "cost": 4.2,
+      "status": "a",
+      "news": "",
       "selected_pct": 0.2,
       "v1gw": 45,
       "rated": false,
@@ -10339,21 +10387,21 @@
       "v1gw": 120,
       "rated": true,
       "f": {
-        "pts4": 3,
-        "xgi4": 0.49,
-        "minshare4": 0.5,
+        "pts4": 3.5,
+        "xgi4": 0.63,
+        "minshare4": 0.75,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 3.47,
+      "xp": 4.32,
       "xpgw": {
-        "12": 3.47,
-        "13": 2.96,
-        "14": 3.57,
-        "15": 3.42,
-        "16": 2.76
+        "12": 4.32,
+        "13": 3.81,
+        "14": 4.43,
+        "15": 4.28,
+        "16": 3.61
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10370,25 +10418,25 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 17.9,
+      "selected_pct": 17.7,
       "v1gw": 80,
       "rated": true,
       "f": {
-        "pts4": 1.25,
+        "pts4": 1.5,
         "xgi4": 0.26,
-        "minshare4": 0.73,
+        "minshare4": 0.79,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 2.7,
+      "xp": 2.86,
       "xpgw": {
-        "12": 2.7,
-        "13": 2.19,
-        "14": 2.81,
-        "15": 2.66,
-        "16": 2
+        "12": 2.86,
+        "13": 2.35,
+        "14": 2.97,
+        "15": 2.82,
+        "16": 2.16
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10409,21 +10457,21 @@
       "v1gw": 80,
       "rated": true,
       "f": {
-        "pts4": 2,
+        "pts4": 2.25,
         "xgi4": 0.26,
-        "minshare4": 0.56,
+        "minshare4": 0.68,
         "oppstr": 1.25
       },
       "fixtures": [
         "BRE (H)"
       ],
-      "xp": 2.62,
+      "xp": 2.89,
       "xpgw": {
-        "12": 2.62,
-        "13": 2.11,
-        "14": 2.73,
-        "15": 2.58,
-        "16": 1.92
+        "12": 2.89,
+        "13": 2.37,
+        "14": 2.99,
+        "15": 2.84,
+        "16": 2.18
       },
       "fixgw": {
         "12": "BRE (H)",
@@ -10515,8 +10563,24 @@
       "news": "",
       "selected_pct": 1.1,
       "v1gw": 55,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 2,
+        "xgi4": 0.08,
+        "minshare4": 0.58,
+        "oppstr": 1.25
+      },
+      "fixtures": [
+        "BRE (H)"
+      ],
+      "xp": 2.56,
+      "xpgw": {
+        "12": 2.56,
+        "13": 2.05,
+        "14": 2.67,
+        "15": 2.52,
+        "16": 1.86
+      },
       "fixgw": {
         "12": "BRE (H)",
         "13": "NEW (A)",
@@ -10868,7 +10932,7 @@
       "cost": 5.2,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 16.8,
+      "selected_pct": 16.5,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11373,10 +11437,10 @@
       "name": "N.Williams",
       "team": "NFO",
       "pos": 2,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 4.9,
+      "selected_pct": 4.8,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11649,7 +11713,7 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 8.9,
+      "selected_pct": 8.8,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -11940,7 +12004,7 @@
       "pos": 4,
       "cost": 5.4,
       "status": "d",
-      "news": "Leg injury - 75% chance of playing",
+      "news": "Ankle injury - 75% chance of playing",
       "selected_pct": 0.3,
       "v1gw": 55,
       "rated": true,
@@ -12033,7 +12097,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 15.9,
+      "selected_pct": 16.1,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -12068,7 +12132,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 15,
+      "selected_pct": 14.8,
       "v1gw": 40,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -12087,7 +12151,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.8,
+      "selected_pct": 2.9,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -12106,7 +12170,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5,
+      "selected_pct": 5.1,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -12214,7 +12278,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 4,
+      "selected_pct": 3.9,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -12249,25 +12313,25 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 11.4,
+      "selected_pct": 11.5,
       "v1gw": 50,
       "rated": true,
       "f": {
         "pts4": 4.75,
         "xgi4": 0.05,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 0.75
       },
       "fixtures": [
         "NEW (H)"
       ],
-      "xp": 3.01,
+      "xp": 3.4,
       "xpgw": {
-        "12": 3.01,
-        "13": 2.05,
-        "14": 2.53,
-        "15": 2.98,
-        "16": 2.91
+        "12": 3.4,
+        "13": 2.44,
+        "14": 2.93,
+        "15": 3.38,
+        "16": 3.3
       },
       "fixgw": {
         "12": "NEW (H)",
@@ -12747,7 +12811,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 1.3,
+      "selected_pct": 1.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -13652,7 +13716,7 @@
       "name": "Maeda",
       "team": "IPS",
       "pos": 3,
-      "cost": 5.3,
+      "cost": 5.2,
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
@@ -13712,7 +13776,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5.6,
+      "selected_pct": 5.5,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -13747,7 +13811,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.9,
+      "selected_pct": 4,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13925,25 +13989,25 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.3,
+      "selected_pct": 13.4,
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 2.5,
+        "pts4": 5,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.93,
+      "xp": 4.01,
       "xpgw": {
-        "12": 2.93,
-        "13": 2.97,
-        "14": 2.04,
-        "15": 2.67,
-        "16": 2.52
+        "12": 4.01,
+        "13": 4.05,
+        "14": 3.11,
+        "15": 3.74,
+        "16": 3.6
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -14037,21 +14101,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 1.25,
+        "pts4": 2.5,
         "xgi4": 0.02,
-        "minshare4": 0.62,
+        "minshare4": 0.81,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 2.08,
+      "xp": 2.71,
       "xpgw": {
-        "12": 2.08,
-        "13": 2.12,
-        "14": 1.34,
-        "15": 1.9,
-        "16": 1.78
+        "12": 2.71,
+        "13": 2.76,
+        "14": 1.98,
+        "15": 2.53,
+        "16": 2.41
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -14110,21 +14174,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 5.25,
-        "xgi4": 0.28,
-        "minshare4": 0.72,
+        "pts4": 6.75,
+        "xgi4": 0.33,
+        "minshare4": 0.96,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.85,
+      "xp": 3.75,
       "xpgw": {
-        "12": 2.85,
-        "13": 3.46,
-        "14": 2.8,
-        "15": 3.41,
-        "16": 3
+        "12": 3.75,
+        "13": 4.35,
+        "14": 3.69,
+        "15": 4.3,
+        "16": 3.89
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -14275,21 +14339,21 @@
       "v1gw": 40,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0,
-        "minshare4": 0.5,
+        "pts4": 2.75,
+        "xgi4": 0.01,
+        "minshare4": 0.75,
         "oppstr": 3
       },
       "fixtures": [
         "CRY (A)"
       ],
-      "xp": 1.74,
+      "xp": 2.5,
       "xpgw": {
-        "12": 1.74,
-        "13": 1.78,
-        "14": 0.85,
-        "15": 1.48,
-        "16": 1.33
+        "12": 2.5,
+        "13": 2.54,
+        "14": 1.61,
+        "15": 2.24,
+        "16": 2.1
       },
       "fixgw": {
         "12": "CRY (A)",
@@ -14519,7 +14583,7 @@
       "name": "Gozo",
       "team": "CRY",
       "pos": 3,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
       "selected_pct": 0,
@@ -14560,7 +14624,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.4,
+      "selected_pct": 3.5,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -14668,7 +14732,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 0.2,
+      "selected_pct": 0.3,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -15198,21 +15262,21 @@
       "v1gw": null,
       "rated": true,
       "f": {
-        "pts4": 3,
-        "xgi4": 0.29,
-        "minshare4": 0.65,
+        "pts4": 4.25,
+        "xgi4": 0.61,
+        "minshare4": 0.85,
         "oppstr": 1.25
       },
       "fixtures": [
         "EVE (A)"
       ],
-      "xp": 2.51,
+      "xp": 3.91,
       "xpgw": {
-        "12": 2.51,
-        "13": 3.02,
-        "14": 2.42,
-        "15": 2.93,
-        "16": 2.74
+        "12": 3.91,
+        "13": 4.42,
+        "14": 3.82,
+        "15": 4.33,
+        "16": 4.14
       },
       "fixgw": {
         "12": "EVE (A)",
@@ -15456,8 +15520,24 @@
       "news": "",
       "selected_pct": 0.1,
       "v1gw": null,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 1,
+        "xgi4": 0.05,
+        "minshare4": 0.7,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "NEW (H)"
+      ],
+      "xp": 2.23,
+      "xpgw": {
+        "12": 2.23,
+        "13": 1.51,
+        "14": 1.84,
+        "15": 2.29,
+        "16": 2.36
+      },
       "fixgw": {
         "12": "NEW (H)",
         "13": "BOU (A)",
