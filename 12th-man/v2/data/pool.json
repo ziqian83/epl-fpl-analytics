@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T02:17:03.194Z",
+  "generated_at": "2026-11-23T02:51:05.022Z",
   "model": "docs/09 v1 coefficients (unchanged). xpgw holds trailing features constant across the horizon; doubles count as two matches; blanks are 0. Evidence fields (recent, form, consistency inputs) are raw official data, not projections.",
   "model_version": "v1",
   "gameweek": 12,
@@ -235,7 +235,7 @@
       "cost": 6.3,
       "status": "d",
       "news": "Shoulder injury - 75% chance of playing",
-      "selected_pct": 47.5,
+      "selected_pct": 46.8,
       "ep_next": 3.6,
       "chance_next": 75,
       "v1gw": 60,
@@ -784,7 +784,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 48.6,
+      "selected_pct": 48.4,
       "ep_next": 3.5,
       "chance_next": 100,
       "v1gw": 55,
@@ -940,10 +940,10 @@
       "name": "White",
       "team": "ARS",
       "pos": 2,
-      "cost": 5.4,
+      "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 4,
+      "selected_pct": 3.9,
       "ep_next": 2.5,
       "chance_next": 100,
       "v1gw": 55,
@@ -1087,7 +1087,7 @@
       "cost": 9.4,
       "status": "i",
       "news": "Thigh injury - Expected back 20 Dec",
-      "selected_pct": 5.2,
+      "selected_pct": 5.1,
       "ep_next": 0,
       "chance_next": 0,
       "v1gw": 95,
@@ -1318,7 +1318,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 16.6,
+      "selected_pct": 16.7,
       "ep_next": 5.5,
       "chance_next": null,
       "v1gw": 65,
@@ -2602,7 +2602,7 @@
       "cost": 4.3,
       "status": "i",
       "news": "Concussion - Expected back 28 Nov",
-      "selected_pct": 3.3,
+      "selected_pct": 3.2,
       "ep_next": 0,
       "chance_next": 0,
       "v1gw": 45,
@@ -3238,7 +3238,7 @@
       "cost": 8.3,
       "status": "a",
       "news": "",
-      "selected_pct": 54.6,
+      "selected_pct": 54.7,
       "ep_next": 4.2,
       "chance_next": null,
       "v1gw": 75,
@@ -3322,7 +3322,7 @@
       "name": "Buendía",
       "team": "AVL",
       "pos": 3,
-      "cost": 5.9,
+      "cost": 5.8,
       "status": "a",
       "news": "",
       "selected_pct": 1,
@@ -3470,7 +3470,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
-      "ep_next": 1.8,
+      "ep_next": 2.8,
       "chance_next": 100,
       "v1gw": 60,
       "recent": [
@@ -3518,9 +3518,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 4,
+          "mins": 64,
+          "xgi": 0.03
         }
       ],
       "fixgw": {
@@ -4234,7 +4234,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 8.8,
+      "selected_pct": 8.7,
       "ep_next": 2.8,
       "chance_next": 100,
       "v1gw": 60,
@@ -4768,7 +4768,7 @@
       "cost": 5.6,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.9,
       "ep_next": 8.8,
       "chance_next": null,
       "v1gw": 55,
@@ -5317,7 +5317,7 @@
       "cost": 6.3,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.4,
       "ep_next": 4.5,
       "chance_next": null,
       "v1gw": 65,
@@ -5404,7 +5404,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 32.8,
+      "selected_pct": 33.1,
       "ep_next": 6,
       "chance_next": null,
       "v1gw": 60,
@@ -6256,7 +6256,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 26.4,
+      "selected_pct": 26.8,
       "ep_next": 7.5,
       "chance_next": null,
       "v1gw": 60,
@@ -6646,7 +6646,7 @@
       "cost": 5.4,
       "status": "i",
       "news": "Knee injury - Expected back 2 Dec",
-      "selected_pct": 0.8,
+      "selected_pct": 0.7,
       "ep_next": 0,
       "chance_next": 0,
       "v1gw": 55,
@@ -7441,7 +7441,7 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 12.1,
+      "selected_pct": 12,
       "ep_next": 1.5,
       "chance_next": 100,
       "v1gw": 60,
@@ -7612,7 +7612,7 @@
       "name": "Damsgaard",
       "team": "BRE",
       "pos": 3,
-      "cost": 5.3,
+      "cost": 5.2,
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
@@ -7774,7 +7774,7 @@
       "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.6,
+      "selected_pct": 1.5,
       "ep_next": 1.8,
       "chance_next": 100,
       "v1gw": 50,
@@ -8380,7 +8380,7 @@
       "cost": 7.8,
       "status": "s",
       "news": "Suspended until 5 Dec",
-      "selected_pct": 6.7,
+      "selected_pct": 6.6,
       "ep_next": 0,
       "chance_next": 0,
       "v1gw": 80,
@@ -8611,8 +8611,8 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 24.3,
-      "ep_next": 4.8,
+      "selected_pct": 24.5,
+      "ep_next": 5.2,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -8660,8 +8660,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 2,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -8675,20 +8675,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 4.75,
-        "pts2": 3,
+        "pts4": 5.25,
+        "pts2": 4,
         "xgi4": 0,
         "xgi2": 0,
-        "minshare4": 0.75
+        "minshare4": 1
       },
-      "xp": 3.27,
+      "xp": 3.8,
       "xpgw": {
-        "12": 3.27,
-        "13": 2.31,
-        "14": 2.8,
-        "15": 3.25,
-        "16": 3.17,
-        "17": 2.72
+        "12": 3.8,
+        "13": 2.84,
+        "14": 3.32,
+        "15": 3.77,
+        "16": 3.7,
+        "17": 3.24
       }
     },
     "110": {
@@ -8857,7 +8857,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 18.4,
+      "selected_pct": 18.7,
       "ep_next": 8,
       "chance_next": 100,
       "v1gw": 50,
@@ -8994,7 +8994,7 @@
         {
           "gw": 11,
           "pts": 0,
-          "mins": 0,
+          "mins": 10,
           "xgi": 0
         }
       ],
@@ -9016,8 +9016,8 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.7,
-      "ep_next": 2.5,
+      "selected_pct": 0.8,
+      "ep_next": 4.2,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -9065,9 +9065,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 7,
+          "mins": 66,
+          "xgi": 0.35
         }
       ],
       "fixgw": {
@@ -9080,20 +9080,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 2.5,
-        "pts2": 2.5,
-        "xgi4": 0.08,
-        "xgi2": 0.11,
-        "minshare4": 0.55
+        "pts4": 4.25,
+        "pts2": 6,
+        "xgi4": 0.17,
+        "xgi2": 0.28,
+        "minshare4": 0.73
       },
-      "xp": 2.24,
+      "xp": 3.21,
       "xpgw": {
-        "12": 2.24,
-        "13": 1.28,
-        "14": 1.77,
-        "15": 2.22,
-        "16": 2.14,
-        "17": 1.69
+        "12": 3.21,
+        "13": 2.25,
+        "14": 2.74,
+        "15": 3.19,
+        "16": 3.11,
+        "17": 2.66
       }
     },
     "115": {
@@ -9103,8 +9103,8 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 49.8,
-      "ep_next": 4,
+      "selected_pct": 50,
+      "ep_next": 4.2,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -9152,9 +9152,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 90,
+          "xgi": 0.45
         }
       ],
       "fixgw": {
@@ -9167,20 +9167,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 4,
-        "pts2": 3,
-        "xgi4": 0.33,
-        "xgi2": 0.36,
-        "minshare4": 0.67
+        "pts4": 4.25,
+        "pts2": 3.5,
+        "xgi4": 0.44,
+        "xgi2": 0.59,
+        "minshare4": 0.92
       },
-      "xp": 3.07,
+      "xp": 3.79,
       "xpgw": {
-        "12": 3.07,
-        "13": 2.11,
-        "14": 2.6,
-        "15": 3.05,
-        "16": 2.97,
-        "17": 2.52
+        "12": 3.79,
+        "13": 2.83,
+        "14": 3.31,
+        "15": 3.76,
+        "16": 3.69,
+        "17": 3.23
       }
     },
     "116": {
@@ -9191,7 +9191,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.5,
-      "ep_next": 3,
+      "ep_next": 3.2,
       "chance_next": 100,
       "v1gw": 45,
       "recent": [
@@ -9239,9 +9239,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 90,
+          "xgi": 0.06
         }
       ],
       "fixgw": {
@@ -9254,20 +9254,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 2.5,
-        "xgi4": 0.02,
-        "xgi2": 0.03,
-        "minshare4": 0.75
+        "pts4": 3.25,
+        "pts2": 3,
+        "xgi4": 0.03,
+        "xgi2": 0.06,
+        "minshare4": 1
       },
-      "xp": 2.49,
+      "xp": 2.98,
       "xpgw": {
-        "12": 2.49,
-        "13": 1.53,
-        "14": 2.02,
-        "15": 2.47,
-        "16": 2.39,
-        "17": 1.94
+        "12": 2.98,
+        "13": 2.02,
+        "14": 2.51,
+        "15": 2.96,
+        "16": 2.88,
+        "17": 2.43
       }
     },
     "117": {
@@ -9419,11 +9419,11 @@
       "team": "BHA",
       "pos": 2,
       "cost": 4.5,
-      "status": "a",
-      "news": "",
+      "status": "s",
+      "news": "Suspended until 2 Dec",
       "selected_pct": 0.1,
-      "ep_next": 3.5,
-      "chance_next": null,
+      "ep_next": 0,
+      "chance_next": 0,
       "v1gw": 45,
       "recent": [
         {
@@ -9470,9 +9470,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": -2,
+          "mins": 88,
+          "xgi": 0.31
         }
       ],
       "fixgw": {
@@ -9485,20 +9485,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "pts2": 3,
-        "xgi4": 0.14,
-        "xgi2": 0.1,
-        "minshare4": 0.73
+        "pts4": 3,
+        "pts2": 2,
+        "xgi4": 0.22,
+        "xgi2": 0.26,
+        "minshare4": 0.98
       },
-      "xp": 2.74,
+      "xp": 3.16,
       "xpgw": {
-        "12": 2.74,
-        "13": 1.78,
-        "14": 2.27,
-        "15": 2.72,
-        "16": 2.65,
-        "17": 2.19
+        "12": 3.16,
+        "13": 2.2,
+        "14": 2.69,
+        "15": 3.14,
+        "16": 3.06,
+        "17": 2.61
       }
     },
     "120": {
@@ -9653,7 +9653,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.2,
+      "ep_next": 0.5,
       "chance_next": 100,
       "v1gw": 60,
       "recent": [
@@ -9701,8 +9701,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 23,
           "xgi": 0
         }
       ],
@@ -9725,7 +9725,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
-      "ep_next": 0.8,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": 60,
       "recent": [
@@ -9773,8 +9773,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 23,
           "xgi": 0
         }
       ],
@@ -9796,8 +9796,8 @@
       "cost": 6.3,
       "status": "a",
       "news": "",
-      "selected_pct": 49.4,
-      "ep_next": 3,
+      "selected_pct": 49.5,
+      "ep_next": 4,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -9845,9 +9845,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 4,
+          "mins": 90,
+          "xgi": 0.44
         }
       ],
       "fixgw": {
@@ -9860,20 +9860,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 5,
-        "xgi4": 0.48,
-        "xgi2": 0.76,
-        "minshare4": 0.75
+        "pts4": 4,
+        "pts2": 7,
+        "xgi4": 0.59,
+        "xgi2": 0.98,
+        "minshare4": 1
       },
-      "xp": 3.78,
+      "xp": 4.69,
       "xpgw": {
-        "12": 3.78,
-        "13": 3.06,
-        "14": 3.39,
-        "15": 3.84,
-        "16": 3.92,
-        "17": 3.25
+        "12": 4.69,
+        "13": 3.98,
+        "14": 4.3,
+        "15": 4.75,
+        "16": 4.83,
+        "17": 4.17
       }
     },
     "125": {
@@ -9884,7 +9884,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
-      "ep_next": 0.8,
+      "ep_next": 1.2,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -9932,9 +9932,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 2,
+          "mins": 66,
+          "xgi": 0.45
         }
       ],
       "fixgw": {
@@ -10028,7 +10028,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.7,
-      "ep_next": 3.5,
+      "ep_next": 4.2,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -10076,9 +10076,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 79,
+          "xgi": 1.02
         }
       ],
       "fixgw": {
@@ -10091,20 +10091,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "pts2": 4.5,
-        "xgi4": 0.16,
-        "xgi2": 0.09,
-        "minshare4": 0.73
+        "pts4": 4.25,
+        "pts2": 6,
+        "xgi4": 0.41,
+        "xgi2": 0.6,
+        "minshare4": 0.95
       },
-      "xp": 3.01,
+      "xp": 4.14,
       "xpgw": {
-        "12": 3.01,
-        "13": 2.29,
-        "14": 2.62,
-        "15": 3.07,
-        "16": 3.15,
-        "17": 2.48
+        "12": 4.14,
+        "13": 3.42,
+        "14": 3.75,
+        "15": 4.2,
+        "16": 4.28,
+        "17": 3.62
       }
     },
     "128": {
@@ -10187,7 +10187,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.5,
-      "ep_next": 3.8,
+      "ep_next": 4.5,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -10235,9 +10235,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 66,
+          "xgi": 0.57
         }
       ],
       "fixgw": {
@@ -10250,20 +10250,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.75,
-        "pts2": 1.5,
-        "xgi4": 0.3,
-        "xgi2": 0.14,
-        "minshare4": 0.67
+        "pts4": 4.5,
+        "pts2": 3,
+        "xgi4": 0.44,
+        "xgi2": 0.42,
+        "minshare4": 0.85
       },
-      "xp": 2.89,
+      "xp": 3.71,
       "xpgw": {
-        "12": 2.89,
-        "13": 2.18,
-        "14": 2.51,
-        "15": 2.96,
-        "16": 3.03,
-        "17": 2.37
+        "12": 3.71,
+        "13": 3,
+        "14": 3.33,
+        "15": 3.78,
+        "16": 3.85,
+        "17": 3.19
       }
     },
     "130": {
@@ -10846,11 +10846,11 @@
       "name": "Kostoulas",
       "team": "BHA",
       "pos": 4,
-      "cost": 5.8,
+      "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 9.3,
-      "ep_next": 1.5,
+      "selected_pct": 9,
+      "ep_next": 1.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -10898,9 +10898,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 23,
+          "xgi": 0.31
         }
       ],
       "fixgw": {
@@ -10913,20 +10913,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "pts2": 1,
-        "xgi4": 0.22,
-        "xgi2": 0.14,
-        "minshare4": 0.67
+        "pts4": 1.75,
+        "pts2": 1.5,
+        "xgi4": 0.29,
+        "xgi2": 0.3,
+        "minshare4": 0.74
       },
-      "xp": 2.65,
+      "xp": 2.99,
       "xpgw": {
-        "12": 2.65,
-        "13": 1.93,
-        "14": 2.26,
-        "15": 2.71,
-        "16": 2.78,
-        "17": 2.12
+        "12": 2.99,
+        "13": 2.27,
+        "14": 2.6,
+        "15": 3.05,
+        "16": 3.13,
+        "17": 2.47
       }
     },
     "139": {
@@ -11596,7 +11596,7 @@
       "name": "Hato",
       "team": "CHE",
       "pos": 2,
-      "cost": 4.5,
+      "cost": 4.4,
       "status": "i",
       "news": "Back injury - Unknown return date",
       "selected_pct": 0.5,
@@ -12076,7 +12076,7 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 28,
+      "selected_pct": 27.7,
       "ep_next": 2.8,
       "chance_next": 100,
       "v1gw": 95,
@@ -12163,7 +12163,7 @@
       "cost": 6.9,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.4,
       "ep_next": 1.8,
       "chance_next": null,
       "v1gw": 70,
@@ -12250,7 +12250,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.7,
       "ep_next": 2,
       "chance_next": null,
       "v1gw": 65,
@@ -12742,8 +12742,8 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
-      "ep_next": 1.2,
+      "selected_pct": 0.4,
+      "ep_next": 1.5,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -12791,8 +12791,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 3,
           "xgi": 0
         }
       ],
@@ -12958,7 +12958,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 28.5,
+      "selected_pct": 28.1,
       "ep_next": 0,
       "chance_next": 0,
       "v1gw": 75,
@@ -13027,10 +13027,10 @@
       "name": "N.Jackson",
       "team": "AVL",
       "pos": 4,
-      "cost": 7.2,
+      "cost": 7.3,
       "status": "a",
       "news": "",
-      "selected_pct": 35.9,
+      "selected_pct": 36.2,
       "ep_next": 8.8,
       "chance_next": null,
       "v1gw": 65,
@@ -13118,7 +13118,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.7,
-      "ep_next": 4.5,
+      "ep_next": 5.3,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -13564,7 +13564,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 6.8,
       "ep_next": 1,
       "chance_next": 100,
       "v1gw": 40,
@@ -14314,7 +14314,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 1.6,
+      "selected_pct": 1.7,
       "ep_next": 5.8,
       "chance_next": 100,
       "v1gw": 50,
@@ -15671,7 +15671,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4,
-      "ep_next": 2.2,
+      "ep_next": 0.7,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -18442,7 +18442,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 5.3,
+      "selected_pct": 5.2,
       "ep_next": 2.8,
       "chance_next": null,
       "v1gw": 60,
@@ -18686,11 +18686,11 @@
       "team": "HUL",
       "pos": 3,
       "cost": 5,
-      "status": "a",
-      "news": "",
+      "status": "d",
+      "news": "Hamstring injury - 75% chance of playing",
       "selected_pct": 0.1,
-      "ep_next": 4.8,
-      "chance_next": 100,
+      "ep_next": 3.8,
+      "chance_next": 75,
       "v1gw": 50,
       "recent": [
         {
@@ -18737,8 +18737,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 44,
           "xgi": 0
         }
       ],
@@ -18752,20 +18752,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 4.75,
-        "pts2": 1,
+        "pts4": 5,
+        "pts2": 1.5,
         "xgi4": 0.13,
         "xgi2": 0.05,
-        "minshare4": 0.61
+        "minshare4": 0.74
       },
-      "xp": 2.68,
+      "xp": 2.94,
       "xpgw": {
-        "12": 2.68,
-        "13": 2.72,
-        "14": 1.94,
-        "15": 2.5,
-        "16": 2.38,
-        "17": 2.54
+        "12": 2.94,
+        "13": 2.98,
+        "14": 2.2,
+        "15": 2.75,
+        "16": 2.64,
+        "17": 2.8
       }
     },
     "241": {
@@ -18862,7 +18862,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.4,
       "ep_next": 2.2,
       "chance_next": null,
       "v1gw": 55,
@@ -20206,7 +20206,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 9.6,
+      "selected_pct": 9.5,
       "ep_next": 1,
       "chance_next": null,
       "v1gw": 40,
@@ -20843,7 +20843,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 1,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -21217,7 +21217,7 @@
       "cost": 4.3,
       "status": "a",
       "news": "",
-      "selected_pct": 4.1,
+      "selected_pct": 4,
       "ep_next": 0,
       "chance_next": null,
       "v1gw": 45,
@@ -21577,7 +21577,7 @@
       "cost": 4.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.4,
+      "selected_pct": 6.3,
       "ep_next": 1.8,
       "chance_next": null,
       "v1gw": 40,
@@ -21737,7 +21737,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 11.7,
-      "ep_next": 3,
+      "ep_next": 4.5,
       "chance_next": 100,
       "v1gw": 40,
       "recent": [
@@ -21785,8 +21785,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 6,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -21800,20 +21800,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 3,
+        "pts4": 4.5,
+        "pts2": 6,
         "xgi4": 0.03,
         "xgi2": 0.06,
-        "minshare4": 0.69
+        "minshare4": 0.94
       },
-      "xp": 2.41,
+      "xp": 3.21,
       "xpgw": {
-        "12": 2.41,
-        "13": 2.45,
-        "14": 1.51,
-        "15": 2.14,
-        "16": 2,
-        "17": 2.17
+        "12": 3.21,
+        "13": 3.25,
+        "14": 2.31,
+        "15": 2.94,
+        "16": 2.8,
+        "17": 2.97
       }
     },
     "280": {
@@ -21824,7 +21824,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
-      "ep_next": 2,
+      "ep_next": 3.5,
       "chance_next": 100,
       "v1gw": 40,
       "recent": [
@@ -21872,8 +21872,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 6,
+          "mins": 83,
           "xgi": 0
         }
       ],
@@ -21887,20 +21887,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 2,
-        "pts2": 2.5,
+        "pts4": 3.5,
+        "pts2": 5.5,
         "xgi4": 0.02,
         "xgi2": 0,
-        "minshare4": 0.56
+        "minshare4": 0.79
       },
-      "xp": 1.99,
+      "xp": 2.76,
       "xpgw": {
-        "12": 1.99,
-        "13": 2.03,
-        "14": 1.09,
-        "15": 1.72,
-        "16": 1.58,
-        "17": 1.75
+        "12": 2.76,
+        "13": 2.8,
+        "14": 1.86,
+        "15": 2.49,
+        "16": 2.35,
+        "17": 2.52
       }
     },
     "281": {
@@ -21983,7 +21983,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.4,
-      "ep_next": 1,
+      "ep_next": 1.2,
       "chance_next": null,
       "v1gw": 40,
       "recent": [
@@ -22031,8 +22031,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 23,
           "xgi": 0
         }
       ],
@@ -22044,8 +22044,23 @@
         "16": "MCI (A)",
         "17": "LIV (H)"
       },
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes"
+      "rated": true,
+      "f": {
+        "pts4": 1.25,
+        "pts2": 1,
+        "xgi4": 0.02,
+        "xgi2": 0.01,
+        "minshare4": 0.53
+      },
+      "xp": 1.75,
+      "xpgw": {
+        "12": 1.75,
+        "13": 1.79,
+        "14": 0.86,
+        "15": 1.48,
+        "16": 1.34,
+        "17": 1.51
+      }
     },
     "283": {
       "name": "Jacob",
@@ -22271,7 +22286,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 8.8,
-      "ep_next": 2.2,
+      "ep_next": 4,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -22319,9 +22334,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 7,
+          "mins": 90,
+          "xgi": 0.93
         }
       ],
       "fixgw": {
@@ -22332,8 +22347,23 @@
         "16": "MCI (A)",
         "17": "LIV (H)"
       },
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes"
+      "rated": true,
+      "f": {
+        "pts4": 4,
+        "pts2": 3.5,
+        "xgi4": 0.39,
+        "xgi2": 0.47,
+        "minshare4": 0.74
+      },
+      "xp": 3.5,
+      "xpgw": {
+        "12": 3.5,
+        "13": 3.54,
+        "14": 2.76,
+        "15": 3.32,
+        "16": 3.2,
+        "17": 3.36
+      }
     },
     "287": {
       "name": "Millar",
@@ -22487,7 +22517,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
-      "ep_next": 0,
+      "ep_next": 0.8,
       "chance_next": 100,
       "v1gw": 45,
       "recent": [
@@ -22535,9 +22565,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 67,
+          "xgi": 0.08
         }
       ],
       "fixgw": {
@@ -22558,8 +22588,8 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.2,
-      "ep_next": 1.5,
+      "selected_pct": 4.1,
+      "ep_next": 2.2,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -22607,9 +22637,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 90,
+          "xgi": 0.13
         }
       ],
       "fixgw": {
@@ -22622,20 +22652,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "pts2": 1,
-        "xgi4": 0.07,
-        "xgi2": 0.03,
-        "minshare4": 0.75
+        "pts4": 2.25,
+        "pts2": 2.5,
+        "xgi4": 0.1,
+        "xgi2": 0.09,
+        "minshare4": 1
       },
-      "xp": 2.4,
+      "xp": 3.07,
       "xpgw": {
-        "12": 2.4,
-        "13": 2.44,
-        "14": 1.66,
-        "15": 2.22,
-        "16": 2.1,
-        "17": 2.26
+        "12": 3.07,
+        "13": 3.11,
+        "14": 2.33,
+        "15": 2.88,
+        "16": 2.77,
+        "17": 2.93
       }
     },
     "291": {
@@ -22933,8 +22963,8 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.7,
-      "ep_next": 5.5,
+      "selected_pct": 1.8,
+      "ep_next": 8.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -22982,9 +23012,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 13,
+          "mins": 90,
+          "xgi": 1.17
         }
       ],
       "fixgw": {
@@ -22997,20 +23027,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 5.5,
-        "pts2": 1,
-        "xgi4": 0.26,
-        "xgi2": 0.01,
-        "minshare4": 0.74
+        "pts4": 8.75,
+        "pts2": 7.5,
+        "xgi4": 0.55,
+        "xgi2": 0.59,
+        "minshare4": 0.99
       },
-      "xp": 3.22,
+      "xp": 5.18,
       "xpgw": {
-        "12": 3.22,
-        "13": 3.26,
-        "14": 2.48,
-        "15": 3.04,
-        "16": 2.92,
-        "17": 3.08
+        "12": 5.18,
+        "13": 5.22,
+        "14": 4.44,
+        "15": 5,
+        "16": 4.88,
+        "17": 5.04
       }
     },
     "296": {
@@ -23309,7 +23339,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
-      "ep_next": 2.2,
+      "ep_next": 2,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -23392,7 +23422,7 @@
       "name": "Palmer",
       "team": "IPS",
       "pos": 1,
-      "cost": 4,
+      "cost": 3.9,
       "status": "a",
       "news": "",
       "selected_pct": 3.3,
@@ -23612,7 +23642,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 2.7,
-      "ep_next": 1.8,
+      "ep_next": 1.7,
       "chance_next": null,
       "v1gw": 40,
       "recent": [
@@ -23697,9 +23727,9 @@
       "pos": 2,
       "cost": 4,
       "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 6.3,
-      "ep_next": 0.6,
+      "news": "Calf injury - 75% chance of playing",
+      "selected_pct": 6.2,
+      "ep_next": 0.2,
       "chance_next": 75,
       "v1gw": 40,
       "recent": [
@@ -23786,7 +23816,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1,
-      "ep_next": 0.2,
+      "ep_next": 0.3,
       "chance_next": null,
       "v1gw": 40,
       "recent": [
@@ -23930,7 +23960,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
-      "ep_next": 0.2,
+      "ep_next": 0.3,
       "chance_next": null,
       "v1gw": 40,
       "recent": [
@@ -24074,7 +24104,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 1.2,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -24290,7 +24320,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 2.8,
+      "ep_next": 3.3,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -24434,7 +24464,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 1.5,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -24520,8 +24550,8 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 2.7,
-      "ep_next": 1.2,
+      "selected_pct": 2.6,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -24680,7 +24710,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 1.2,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -24839,7 +24869,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.8,
-      "ep_next": 0.8,
+      "ep_next": 0.7,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -25558,7 +25588,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 11.4,
+      "selected_pct": 11.6,
       "ep_next": 4.2,
       "chance_next": null,
       "v1gw": 45,
@@ -25732,7 +25762,7 @@
       "cost": 4.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.6,
       "ep_next": 5.2,
       "chance_next": null,
       "v1gw": 45,
@@ -25891,7 +25921,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 7.1,
       "ep_next": 6,
       "chance_next": null,
       "v1gw": 50,
@@ -26050,7 +26080,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.9,
       "ep_next": 5.2,
       "chance_next": 100,
       "v1gw": 60,
@@ -26815,7 +26845,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 16.5,
+      "selected_pct": 16.8,
       "ep_next": 3.8,
       "chance_next": 100,
       "v1gw": 60,
@@ -27118,8 +27148,8 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.1,
-      "ep_next": 3,
+      "selected_pct": 4.2,
+      "ep_next": 4.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -27167,8 +27197,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 7,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -27182,20 +27212,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 2,
+        "pts4": 4.75,
+        "pts2": 5.5,
         "xgi4": 0,
         "xgi2": 0,
-        "minshare4": 0.75
+        "minshare4": 1
       },
-      "xp": 2.51,
+      "xp": 3.38,
       "xpgw": {
-        "12": 2.51,
-        "13": 3.11,
-        "14": 2.46,
-        "15": 3.06,
-        "16": 2.65,
-        "17": 2.59
+        "12": 3.38,
+        "13": 3.98,
+        "14": 3.33,
+        "15": 3.93,
+        "16": 3.52,
+        "17": 3.46
       }
     },
     "351": {
@@ -27565,8 +27595,8 @@
       "cost": 6.4,
       "status": "a",
       "news": "",
-      "selected_pct": 14.4,
-      "ep_next": 3.5,
+      "selected_pct": 14.5,
+      "ep_next": 5,
       "chance_next": 100,
       "v1gw": 65,
       "recent": [
@@ -27614,9 +27644,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 6,
+          "mins": 90,
+          "xgi": 0.24
         }
       ],
       "fixgw": {
@@ -27629,20 +27659,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "pts2": 2,
-        "xgi4": 0.08,
-        "xgi2": 0.08,
-        "minshare4": 0.75
+        "pts4": 5,
+        "pts2": 5,
+        "xgi4": 0.14,
+        "xgi2": 0.2,
+        "minshare4": 1
       },
-      "xp": 2.14,
+      "xp": 3.08,
       "xpgw": {
-        "12": 2.14,
-        "13": 2.74,
-        "14": 2.09,
-        "15": 2.69,
-        "16": 2.28,
-        "17": 2.22
+        "12": 3.08,
+        "13": 3.68,
+        "14": 3.03,
+        "15": 3.63,
+        "16": 3.22,
+        "17": 3.16
       }
     },
     "357": {
@@ -27650,11 +27680,11 @@
       "team": "LIV",
       "pos": 2,
       "cost": 5.1,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 1.1,
-      "ep_next": 0,
-      "chance_next": 75,
+      "ep_next": 0.2,
+      "chance_next": 100,
       "v1gw": 55,
       "recent": [
         {
@@ -27701,9 +27731,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 12,
+          "xgi": 0.01
         }
       ],
       "fixgw": {
@@ -27725,7 +27755,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.8,
-      "ep_next": 2.2,
+      "ep_next": 3.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -27773,9 +27803,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 6,
+          "mins": 90,
+          "xgi": 0.06
         }
       ],
       "fixgw": {
@@ -27788,20 +27818,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 2.25,
-        "pts2": 1,
-        "xgi4": 0.09,
-        "xgi2": 0.01,
-        "minshare4": 0.71
+        "pts4": 3.75,
+        "pts2": 4,
+        "xgi4": 0.1,
+        "xgi2": 0.04,
+        "minshare4": 0.96
       },
-      "xp": 1.81,
+      "xp": 2.65,
       "xpgw": {
-        "12": 1.81,
-        "13": 2.42,
-        "14": 1.76,
-        "15": 2.37,
-        "16": 1.96,
-        "17": 1.89
+        "12": 2.65,
+        "13": 3.25,
+        "14": 2.6,
+        "15": 3.2,
+        "16": 2.79,
+        "17": 2.73
       }
     },
     "359": {
@@ -27812,7 +27842,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.2,
+      "ep_next": 0.5,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -27860,8 +27890,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 5,
           "xgi": 0
         }
       ],
@@ -28028,7 +28058,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.8,
-      "ep_next": 3.5,
+      "ep_next": 5,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -28076,9 +28106,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 6,
+          "mins": 90,
+          "xgi": 0.05
         }
       ],
       "fixgw": {
@@ -28091,20 +28121,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.5,
-        "pts2": 2,
-        "xgi4": 0.08,
-        "xgi2": 0.12,
-        "minshare4": 0.75
+        "pts4": 5,
+        "pts2": 5,
+        "xgi4": 0.09,
+        "xgi2": 0.14,
+        "minshare4": 1
       },
-      "xp": 2.17,
+      "xp": 3,
       "xpgw": {
-        "12": 2.17,
-        "13": 2.77,
-        "14": 2.11,
-        "15": 2.72,
-        "16": 2.31,
-        "17": 2.24
+        "12": 3,
+        "13": 3.6,
+        "14": 2.94,
+        "15": 3.55,
+        "16": 3.14,
+        "17": 3.07
       }
     },
     "363": {
@@ -28183,7 +28213,7 @@
       "name": "Tsimikas",
       "team": "LIV",
       "pos": 2,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
@@ -28327,11 +28357,11 @@
       "name": "Wirtz",
       "team": "LIV",
       "pos": 3,
-      "cost": 7.3,
+      "cost": 7.4,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
-      "ep_next": 5.2,
+      "selected_pct": 8.2,
+      "ep_next": 8.8,
       "chance_next": 100,
       "v1gw": 75,
       "recent": [
@@ -28379,9 +28409,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 14,
+          "mins": 90,
+          "xgi": 1.44
         }
       ],
       "fixgw": {
@@ -28394,20 +28424,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 5.25,
-        "pts2": 6.5,
-        "xgi4": 0.28,
-        "xgi2": 0.23,
-        "minshare4": 0.65
+        "pts4": 8.75,
+        "pts2": 13.5,
+        "xgi4": 0.64,
+        "xgi2": 0.95,
+        "minshare4": 0.9
       },
-      "xp": 3.08,
+      "xp": 5.27,
       "xpgw": {
-        "12": 3.08,
-        "13": 3.59,
-        "14": 2.99,
-        "15": 3.5,
-        "16": 3.3,
-        "17": 3.11
+        "12": 5.27,
+        "13": 5.77,
+        "14": 5.17,
+        "15": 5.68,
+        "16": 5.49,
+        "17": 5.29
       }
     },
     "367": {
@@ -28415,11 +28445,11 @@
       "team": "LIV",
       "pos": 3,
       "cost": 7.1,
-      "status": "a",
-      "news": "",
-      "selected_pct": 7,
-      "ep_next": 2,
-      "chance_next": 100,
+      "status": "d",
+      "news": "Calf injury - 75% chance of playing",
+      "selected_pct": 6.8,
+      "ep_next": 1.5,
+      "chance_next": 75,
       "v1gw": 70,
       "recent": [
         {
@@ -28504,8 +28534,8 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.4,
-      "ep_next": 2,
+      "selected_pct": 13.6,
+      "ep_next": 4.2,
       "chance_next": 100,
       "v1gw": 70,
       "recent": [
@@ -28553,9 +28583,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 9,
+          "mins": 90,
+          "xgi": 0.49
         }
       ],
       "fixgw": {
@@ -28566,8 +28596,23 @@
         "16": "TOT (H)",
         "17": "HUL (A)"
       },
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes"
+      "rated": true,
+      "f": {
+        "pts4": 4.25,
+        "pts2": 8,
+        "xgi4": 0.26,
+        "xgi2": 0.5,
+        "minshare4": 0.53
+      },
+      "xp": 3.03,
+      "xpgw": {
+        "12": 3.03,
+        "13": 3.54,
+        "14": 2.94,
+        "15": 3.45,
+        "16": 3.26,
+        "17": 3.06
+      }
     },
     "369": {
       "name": "Ngumoha",
@@ -28576,8 +28621,8 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
-      "ep_next": 0.8,
+      "selected_pct": 0.6,
+      "ep_next": 4,
       "chance_next": null,
       "v1gw": 60,
       "recent": [
@@ -28625,9 +28670,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 13,
+          "mins": 77,
+          "xgi": 1.76
         }
       ],
       "fixgw": {
@@ -28793,7 +28838,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.4,
-      "ep_next": 3.2,
+      "ep_next": 4,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -28841,9 +28886,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 71,
+          "xgi": 0.18
         }
       ],
       "fixgw": {
@@ -28856,20 +28901,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3.25,
-        "pts2": 4.5,
-        "xgi4": 0.15,
-        "xgi2": 0.13,
-        "minshare4": 0.75
+        "pts4": 4,
+        "pts2": 6,
+        "xgi4": 0.19,
+        "xgi2": 0.22,
+        "minshare4": 0.95
       },
-      "xp": 2.63,
+      "xp": 3.25,
       "xpgw": {
-        "12": 2.63,
-        "13": 3.14,
-        "14": 2.54,
-        "15": 3.05,
-        "16": 2.86,
-        "17": 2.66
+        "12": 3.25,
+        "13": 3.76,
+        "14": 3.16,
+        "15": 3.66,
+        "16": 3.47,
+        "17": 3.28
       }
     },
     "373": {
@@ -29024,7 +29069,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 0.8,
+      "ep_next": 1,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -29072,9 +29117,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 18,
+          "xgi": 0.13
         }
       ],
       "fixgw": {
@@ -29168,7 +29213,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.6,
-      "ep_next": 0.2,
+      "ep_next": 1.8,
       "chance_next": 100,
       "v1gw": 65,
       "recent": [
@@ -29216,9 +29261,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 6,
+          "mins": 18,
+          "xgi": 0.6
         }
       ],
       "fixgw": {
@@ -29311,8 +29356,8 @@
       "cost": 9.3,
       "status": "a",
       "news": "",
-      "selected_pct": 26.4,
-      "ep_next": 4.8,
+      "selected_pct": 26.6,
+      "ep_next": 6,
       "chance_next": 100,
       "v1gw": 90,
       "recent": [
@@ -29360,9 +29405,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 5,
+          "mins": 84,
+          "xgi": 1.36
         }
       ],
       "fixgw": {
@@ -29375,20 +29420,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 4.75,
-        "pts2": 4,
-        "xgi4": 0.3,
-        "xgi2": 0.28,
-        "minshare4": 0.71
+        "pts4": 6,
+        "pts2": 6.5,
+        "xgi4": 0.64,
+        "xgi2": 0.96,
+        "minshare4": 0.94
       },
-      "xp": 3.12,
+      "xp": 4.61,
       "xpgw": {
-        "12": 3.12,
-        "13": 3.63,
-        "14": 3.03,
-        "15": 3.53,
-        "16": 3.34,
-        "17": 3.15
+        "12": 4.61,
+        "13": 5.12,
+        "14": 4.52,
+        "15": 5.03,
+        "16": 4.83,
+        "17": 4.64
       }
     },
     "380": {
@@ -29471,7 +29516,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 0.8,
+      "ep_next": 1,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -29519,9 +29564,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 5,
+          "xgi": 0.03
         }
       ],
       "fixgw": {
@@ -29686,7 +29731,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
+      "selected_pct": 6.9,
       "ep_next": 1.5,
       "chance_next": null,
       "v1gw": 55,
@@ -29773,7 +29818,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 6.9,
+      "selected_pct": 7.3,
       "ep_next": 6,
       "chance_next": null,
       "v1gw": 50,
@@ -30004,7 +30049,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 12.5,
+      "selected_pct": 12.4,
       "ep_next": 0.5,
       "chance_next": 100,
       "v1gw": 60,
@@ -30247,10 +30292,10 @@
       "name": "Gvardiol",
       "team": "MCI",
       "pos": 2,
-      "cost": 5.6,
+      "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 20.2,
+      "selected_pct": 19.8,
       "ep_next": 1,
       "chance_next": 100,
       "v1gw": 55,
@@ -30784,7 +30829,7 @@
       "cost": 6.8,
       "status": "a",
       "news": "",
-      "selected_pct": 2.1,
+      "selected_pct": 2,
       "ep_next": 1.2,
       "chance_next": 100,
       "v1gw": 70,
@@ -30853,10 +30898,10 @@
       "name": "Cherki",
       "team": "MCI",
       "pos": 3,
-      "cost": 7.9,
+      "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 33.3,
+      "selected_pct": 32.5,
       "ep_next": 2.8,
       "chance_next": null,
       "v1gw": 75,
@@ -30943,7 +30988,7 @@
       "cost": 7.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.4,
+      "selected_pct": 4.3,
       "ep_next": 2,
       "chance_next": 100,
       "v1gw": 75,
@@ -31030,7 +31075,7 @@
       "cost": 7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.4,
       "ep_next": 1.8,
       "chance_next": 100,
       "v1gw": 70,
@@ -31188,7 +31233,7 @@
       "pos": 3,
       "cost": 6.4,
       "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
+      "news": "Hamstring injury - 75% chance of playing",
       "selected_pct": 0.3,
       "ep_next": 0.2,
       "chance_next": 75,
@@ -31780,7 +31825,7 @@
       "cost": 15.8,
       "status": "a",
       "news": "",
-      "selected_pct": 78.5,
+      "selected_pct": 78.2,
       "ep_next": 3.5,
       "chance_next": 100,
       "v1gw": 155,
@@ -31867,8 +31912,8 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 7,
-      "ep_next": 1.2,
+      "selected_pct": 6.9,
+      "ep_next": 1.8,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -31916,8 +31961,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 2,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -31931,20 +31976,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.25,
-        "pts2": 0.5,
+        "pts4": 1.75,
+        "pts2": 1.5,
         "xgi4": 0.01,
         "xgi2": 0,
-        "minshare4": 0.75
+        "minshare4": 1
       },
-      "xp": 2.64,
+      "xp": 3.16,
       "xpgw": {
-        "12": 2.64,
-        "13": 2.21,
-        "14": 2.64,
-        "15": 2.6,
-        "16": 1.98,
-        "17": 2.64
+        "12": 3.16,
+        "13": 2.73,
+        "14": 3.16,
+        "15": 3.12,
+        "16": 2.5,
+        "17": 3.16
       }
     },
     "413": {
@@ -32096,11 +32141,11 @@
       "team": "MUN",
       "pos": 3,
       "cost": 5.7,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.3,
-      "ep_next": 2.1,
-      "chance_next": 75,
+      "ep_next": 3.2,
+      "chance_next": 100,
       "v1gw": 60,
       "recent": [
         {
@@ -32147,9 +32192,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 2,
+          "mins": 64,
+          "xgi": 0.02
         }
       ],
       "fixgw": {
@@ -32171,7 +32216,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 0,
+      "ep_next": 0.5,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -32219,9 +32264,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 2,
+          "mins": 90,
+          "xgi": 0.02
         }
       ],
       "fixgw": {
@@ -32292,7 +32337,7 @@
         {
           "gw": 11,
           "pts": 0,
-          "mins": 0,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -32310,28 +32355,28 @@
         "pts2": 0,
         "xgi4": 0.03,
         "xgi2": 0.01,
-        "minshare4": 0.68
+        "minshare4": 0.93
       },
-      "xp": 1.92,
+      "xp": 2.31,
       "xpgw": {
-        "12": 1.92,
-        "13": 1.5,
-        "14": 1.92,
-        "15": 1.88,
-        "16": 1.27,
-        "17": 1.92
+        "12": 2.31,
+        "13": 1.88,
+        "14": 2.31,
+        "15": 2.27,
+        "16": 1.65,
+        "17": 2.31
       }
     },
     "418": {
       "name": "Maguire",
       "team": "MUN",
       "pos": 2,
-      "cost": 4.6,
-      "status": "d",
-      "news": "Back injury - 75% chance of playing",
+      "cost": 4.5,
+      "status": "a",
+      "news": "",
       "selected_pct": 4.6,
-      "ep_next": 0,
-      "chance_next": 75,
+      "ep_next": 0.8,
+      "chance_next": 100,
       "v1gw": 50,
       "recent": [
         {
@@ -32378,9 +32423,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 68,
+          "xgi": 0.03
         }
       ],
       "fixgw": {
@@ -32393,20 +32438,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 0,
-        "pts2": 0,
-        "xgi4": 0.01,
-        "xgi2": 0,
-        "minshare4": 0.63
+        "pts4": 0.75,
+        "pts2": 1.5,
+        "xgi4": 0.02,
+        "xgi2": 0.01,
+        "minshare4": 0.81
       },
-      "xp": 1.69,
+      "xp": 2.21,
       "xpgw": {
-        "12": 1.69,
-        "13": 1.26,
-        "14": 1.69,
-        "15": 1.65,
-        "16": 1.03,
-        "17": 1.69
+        "12": 2.21,
+        "13": 1.78,
+        "14": 2.21,
+        "15": 2.17,
+        "16": 1.55,
+        "17": 2.21
       }
     },
     "419": {
@@ -32466,7 +32511,7 @@
         {
           "gw": 11,
           "pts": 0,
-          "mins": 0,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -32486,11 +32531,11 @@
       "team": "MUN",
       "pos": 2,
       "cost": 4.8,
-      "status": "a",
-      "news": "",
+      "status": "s",
+      "news": "Suspended until 2 Dec",
       "selected_pct": 0.5,
-      "ep_next": 1,
-      "chance_next": null,
+      "ep_next": 0,
+      "chance_next": 0,
       "v1gw": 50,
       "recent": [
         {
@@ -32537,8 +32582,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": -4,
+          "mins": 7,
           "xgi": 0
         }
       ],
@@ -32552,32 +32597,32 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1,
-        "pts2": 1,
+        "pts4": 0,
+        "pts2": -1,
         "xgi4": 0.1,
         "xgi2": 0.01,
-        "minshare4": 0.75
+        "minshare4": 0.77
       },
-      "xp": 2.19,
+      "xp": 1.94,
       "xpgw": {
-        "12": 2.19,
-        "13": 1.76,
-        "14": 2.19,
-        "15": 2.15,
-        "16": 1.53,
-        "17": 2.19
+        "12": 1.94,
+        "13": 1.51,
+        "14": 1.94,
+        "15": 1.9,
+        "16": 1.28,
+        "17": 1.94
       }
     },
     "421": {
       "name": "Heaven",
       "team": "MUN",
       "pos": 2,
-      "cost": 4.3,
-      "status": "d",
-      "news": "Unspecified injury - 75% chance of playing",
+      "cost": 4.2,
+      "status": "a",
+      "news": "",
       "selected_pct": 0.2,
       "ep_next": 0,
-      "chance_next": 75,
+      "chance_next": 100,
       "v1gw": 45,
       "recent": [
         {
@@ -32697,7 +32742,7 @@
         {
           "gw": 11,
           "pts": 0,
-          "mins": 0,
+          "mins": 25,
           "xgi": 0
         }
       ],
@@ -32936,7 +32981,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 20,
-      "ep_next": 3,
+      "ep_next": 3.5,
       "chance_next": null,
       "v1gw": 120,
       "recent": [
@@ -32984,9 +33029,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 2,
+          "mins": 90,
+          "xgi": 0.57
         }
       ],
       "fixgw": {
@@ -32999,20 +33044,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 5,
-        "xgi4": 0.49,
-        "xgi2": 0.78,
-        "minshare4": 0.5
+        "pts4": 3.5,
+        "pts2": 6,
+        "xgi4": 0.63,
+        "xgi2": 1.06,
+        "minshare4": 0.75
       },
-      "xp": 3.47,
+      "xp": 4.32,
       "xpgw": {
-        "12": 3.47,
-        "13": 2.96,
-        "14": 3.57,
-        "15": 3.42,
-        "16": 2.76,
-        "17": 3.47
+        "12": 4.32,
+        "13": 3.81,
+        "14": 4.43,
+        "15": 4.28,
+        "16": 3.61,
+        "17": 4.32
       }
     },
     "427": {
@@ -33022,8 +33067,8 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 17.9,
-      "ep_next": 1.2,
+      "selected_pct": 17.7,
+      "ep_next": 1.5,
       "chance_next": null,
       "v1gw": 80,
       "recent": [
@@ -33071,8 +33116,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 21,
           "xgi": 0
         }
       ],
@@ -33086,20 +33131,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.25,
-        "pts2": 1,
+        "pts4": 1.5,
+        "pts2": 1.5,
         "xgi4": 0.26,
         "xgi2": 0.2,
-        "minshare4": 0.73
+        "minshare4": 0.79
       },
-      "xp": 2.7,
+      "xp": 2.86,
       "xpgw": {
-        "12": 2.7,
-        "13": 2.19,
-        "14": 2.81,
-        "15": 2.66,
-        "16": 2,
-        "17": 2.7
+        "12": 2.86,
+        "13": 2.35,
+        "14": 2.97,
+        "15": 2.82,
+        "16": 2.16,
+        "17": 2.86
       }
     },
     "428": {
@@ -33110,7 +33155,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 5.6,
-      "ep_next": 2,
+      "ep_next": 2.2,
       "chance_next": null,
       "v1gw": 80,
       "recent": [
@@ -33158,8 +33203,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 45,
           "xgi": 0
         }
       ],
@@ -33173,20 +33218,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 2,
-        "pts2": 2.5,
+        "pts4": 2.25,
+        "pts2": 3,
         "xgi4": 0.26,
         "xgi2": 0.18,
-        "minshare4": 0.56
+        "minshare4": 0.68
       },
-      "xp": 2.62,
+      "xp": 2.89,
       "xpgw": {
-        "12": 2.62,
-        "13": 2.11,
-        "14": 2.73,
-        "15": 2.58,
-        "16": 1.92,
-        "17": 2.62
+        "12": 2.89,
+        "13": 2.37,
+        "14": 2.99,
+        "15": 2.84,
+        "16": 2.18,
+        "17": 2.89
       }
     },
     "429": {
@@ -33269,7 +33314,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 1,
+      "ep_next": 1.2,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -33317,8 +33362,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 25,
           "xgi": 0
         }
       ],
@@ -33428,7 +33473,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
-      "ep_next": 1,
+      "ep_next": 2,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -33476,9 +33521,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 4,
+          "mins": 86,
+          "xgi": 0.03
         }
       ],
       "fixgw": {
@@ -33489,8 +33534,23 @@
         "16": "ARS (A)",
         "17": "NFO (H)"
       },
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes"
+      "rated": true,
+      "f": {
+        "pts4": 2,
+        "pts2": 4,
+        "xgi4": 0.08,
+        "xgi2": 0.16,
+        "minshare4": 0.58
+      },
+      "xp": 2.56,
+      "xpgw": {
+        "12": 2.56,
+        "13": 2.05,
+        "14": 2.67,
+        "15": 2.52,
+        "16": 1.86,
+        "17": 2.56
+      }
     },
     "433": {
       "name": "Ugarte",
@@ -34004,7 +34064,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
-      "ep_next": 1.5,
+      "ep_next": 1.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -34052,9 +34112,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 45,
+          "xgi": 0.18
         }
       ],
       "fixgw": {
@@ -34681,7 +34741,7 @@
       "cost": 5.2,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 16.8,
+      "selected_pct": 16.5,
       "ep_next": 2.2,
       "chance_next": 75,
       "v1gw": 50,
@@ -36083,7 +36143,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
-      "ep_next": 1.8,
+      "ep_next": 1.7,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -36238,11 +36298,11 @@
       "name": "N.Williams",
       "team": "NFO",
       "pos": 2,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 4.9,
-      "ep_next": 3,
+      "selected_pct": 4.8,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -36401,7 +36461,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
-      "ep_next": 0.8,
+      "ep_next": 0.3,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -36488,7 +36548,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.9,
-      "ep_next": 2,
+      "ep_next": 2.3,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -36575,7 +36635,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.3,
-      "ep_next": 0.5,
+      "ep_next": 0.7,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -36647,7 +36707,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
-      "ep_next": 3.2,
+      "ep_next": 3.7,
       "chance_next": 100,
       "v1gw": 45,
       "recent": [
@@ -36950,7 +37010,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.5,
+      "ep_next": 0.3,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -37093,8 +37153,8 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 8.9,
-      "ep_next": 2.8,
+      "selected_pct": 8.8,
+      "ep_next": 3,
       "chance_next": 100,
       "v1gw": 80,
       "recent": [
@@ -37340,7 +37400,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.5,
-      "ep_next": 1.2,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -37571,7 +37631,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 3.2,
+      "ep_next": 2.7,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -37730,7 +37790,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.3,
-      "ep_next": 0.2,
+      "ep_next": 0.3,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -37802,7 +37862,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1,
-      "ep_next": 1,
+      "ep_next": 1.3,
       "chance_next": 100,
       "v1gw": 45,
       "recent": [
@@ -37874,7 +37934,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
-      "ep_next": 0.8,
+      "ep_next": 0.7,
       "chance_next": null,
       "v1gw": 60,
       "recent": [
@@ -37946,7 +38006,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
-      "ep_next": 0.2,
+      "ep_next": 0.3,
       "chance_next": 100,
       "v1gw": 60,
       "recent": [
@@ -38016,7 +38076,7 @@
       "pos": 4,
       "cost": 5.4,
       "status": "d",
-      "news": "Leg injury - 75% chance of playing",
+      "news": "Ankle injury - 75% chance of playing",
       "selected_pct": 0.3,
       "ep_next": 3.2,
       "chance_next": 75,
@@ -38105,7 +38165,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.2,
+      "ep_next": 0.3,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -38320,7 +38380,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 15.9,
+      "selected_pct": 16.1,
       "ep_next": 6,
       "chance_next": null,
       "v1gw": 45,
@@ -38407,7 +38467,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 15,
+      "selected_pct": 14.8,
       "ep_next": 0,
       "chance_next": null,
       "v1gw": 40,
@@ -38479,7 +38539,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 2.8,
+      "selected_pct": 2.9,
       "ep_next": 2,
       "chance_next": null,
       "v1gw": 60,
@@ -38551,7 +38611,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5,
+      "selected_pct": 5.1,
       "ep_next": 4.8,
       "chance_next": 100,
       "v1gw": 55,
@@ -38956,7 +39016,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 11.4,
+      "selected_pct": 11.5,
       "ep_next": 4.8,
       "chance_next": null,
       "v1gw": 50,
@@ -39006,8 +39066,8 @@
         {
           "gw": 11,
           "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "mins": 90,
+          "xgi": 0.01
         }
       ],
       "fixgw": {
@@ -39024,16 +39084,16 @@
         "pts2": 6,
         "xgi4": 0.05,
         "xgi2": 0.03,
-        "minshare4": 0.75
+        "minshare4": 1
       },
-      "xp": 3.01,
+      "xp": 3.4,
       "xpgw": {
-        "12": 3.01,
-        "13": 2.05,
-        "14": 2.53,
-        "15": 2.98,
-        "16": 2.91,
-        "17": 2.46
+        "12": 3.4,
+        "13": 2.44,
+        "14": 2.93,
+        "15": 3.38,
+        "16": 3.3,
+        "17": 2.85
       }
     },
     "505": {
@@ -40615,7 +40675,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 1.3,
+      "selected_pct": 1.4,
       "ep_next": 2.8,
       "chance_next": null,
       "v1gw": 60,
@@ -43100,7 +43160,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 3.2,
+      "ep_next": 3,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -43414,11 +43474,11 @@
       "name": "Maeda",
       "team": "IPS",
       "pos": 3,
-      "cost": 5.3,
+      "cost": 5.2,
       "status": "a",
       "news": "",
       "selected_pct": 0.2,
-      "ep_next": 1.2,
+      "ep_next": 1.3,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -43633,7 +43693,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5.6,
+      "selected_pct": 5.5,
       "ep_next": 2,
       "chance_next": null,
       "v1gw": 55,
@@ -43720,7 +43780,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.9,
+      "selected_pct": 4,
       "ep_next": 6.8,
       "chance_next": null,
       "v1gw": 50,
@@ -44126,7 +44186,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 3.8,
+      "ep_next": 3.7,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -44212,8 +44272,8 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.3,
-      "ep_next": 2.5,
+      "selected_pct": 13.4,
+      "ep_next": 5,
       "chance_next": null,
       "v1gw": 45,
       "recent": [
@@ -44261,8 +44321,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 10,
+          "mins": 90,
           "xgi": 0
         }
       ],
@@ -44276,20 +44336,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 2.5,
-        "pts2": 3,
+        "pts4": 5,
+        "pts2": 8,
         "xgi4": 0,
         "xgi2": 0,
-        "minshare4": 0.75
+        "minshare4": 1
       },
-      "xp": 2.93,
+      "xp": 4.01,
       "xpgw": {
-        "12": 2.93,
-        "13": 2.97,
-        "14": 2.04,
-        "15": 2.67,
-        "16": 2.52,
-        "17": 2.69
+        "12": 4.01,
+        "13": 4.05,
+        "14": 3.11,
+        "15": 3.74,
+        "16": 3.6,
+        "17": 3.77
       }
     },
     "573": {
@@ -44372,7 +44432,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0,
+      "ep_next": 0.2,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -44420,9 +44480,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 22,
+          "xgi": 0.14
         }
       ],
       "fixgw": {
@@ -44531,7 +44591,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 1.2,
+      "ep_next": 2.5,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -44579,8 +44639,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 5,
+          "mins": 67,
           "xgi": 0
         }
       ],
@@ -44594,20 +44654,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.25,
-        "pts2": 0.5,
+        "pts4": 2.5,
+        "pts2": 3,
         "xgi4": 0.02,
         "xgi2": 0.03,
-        "minshare4": 0.62
+        "minshare4": 0.81
       },
-      "xp": 2.08,
+      "xp": 2.71,
       "xpgw": {
-        "12": 2.08,
-        "13": 2.12,
-        "14": 1.34,
-        "15": 1.9,
-        "16": 1.78,
-        "17": 1.94
+        "12": 2.71,
+        "13": 2.76,
+        "14": 1.98,
+        "15": 2.53,
+        "16": 2.41,
+        "17": 2.58
       }
     },
     "577": {
@@ -44762,7 +44822,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.8,
-      "ep_next": 5.2,
+      "ep_next": 6.8,
       "chance_next": null,
       "v1gw": 55,
       "recent": [
@@ -44810,9 +44870,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 6,
+          "mins": 84,
+          "xgi": 0.2
         }
       ],
       "fixgw": {
@@ -44825,20 +44885,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 5.25,
-        "pts2": 3.5,
-        "xgi4": 0.28,
-        "xgi2": 0.42,
-        "minshare4": 0.72
+        "pts4": 6.75,
+        "pts2": 6.5,
+        "xgi4": 0.33,
+        "xgi2": 0.53,
+        "minshare4": 0.96
       },
-      "xp": 2.85,
+      "xp": 3.75,
       "xpgw": {
-        "12": 2.85,
-        "13": 3.46,
-        "14": 2.8,
-        "15": 3.41,
-        "16": 3,
-        "17": 2.93
+        "12": 3.75,
+        "13": 4.35,
+        "14": 3.69,
+        "15": 4.3,
+        "16": 3.89,
+        "17": 3.82
       }
     },
     "580": {
@@ -45296,7 +45356,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.4,
-      "ep_next": 1.5,
+      "ep_next": 2.8,
       "chance_next": 100,
       "v1gw": 40,
       "recent": [
@@ -45344,9 +45404,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 5,
+          "mins": 90,
+          "xgi": 0.05
         }
       ],
       "fixgw": {
@@ -45359,20 +45419,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "pts2": 1.5,
-        "xgi4": 0,
-        "xgi2": 0,
-        "minshare4": 0.5
+        "pts4": 2.75,
+        "pts2": 4,
+        "xgi4": 0.01,
+        "xgi2": 0.03,
+        "minshare4": 0.75
       },
-      "xp": 1.74,
+      "xp": 2.5,
       "xpgw": {
-        "12": 1.74,
-        "13": 1.78,
-        "14": 0.85,
-        "15": 1.48,
-        "16": 1.33,
-        "17": 1.5
+        "12": 2.5,
+        "13": 2.54,
+        "14": 1.61,
+        "15": 2.24,
+        "16": 2.1,
+        "17": 2.26
       }
     },
     "587": {
@@ -45542,7 +45602,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.2,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": 50,
       "recent": [
@@ -45590,9 +45650,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 3,
+          "mins": 45,
+          "xgi": 0.23
         }
       ],
       "fixgw": {
@@ -45686,7 +45746,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
-      "ep_next": 5.2,
+      "ep_next": 3.7,
       "chance_next": 100,
       "v1gw": 55,
       "recent": [
@@ -45773,7 +45833,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 1.1,
-      "ep_next": 2.5,
+      "ep_next": 2.7,
       "chance_next": null,
       "v1gw": 40,
       "recent": [
@@ -46015,7 +46075,7 @@
       "name": "Gozo",
       "team": "CRY",
       "pos": 3,
-      "cost": 4.9,
+      "cost": 4.8,
       "status": "a",
       "news": "",
       "selected_pct": 0,
@@ -46162,7 +46222,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.4,
+      "selected_pct": 3.5,
       "ep_next": 2.8,
       "chance_next": null,
       "v1gw": 50,
@@ -46409,7 +46469,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0,
+      "ep_next": 0.2,
       "chance_next": null,
       "v1gw": 50,
       "recent": [
@@ -46457,8 +46517,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 1,
           "xgi": 0
         }
       ],
@@ -46480,7 +46540,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 0.2,
+      "selected_pct": 0.3,
       "ep_next": 3.5,
       "chance_next": null,
       "v1gw": 45,
@@ -47633,7 +47693,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0.8,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": null,
       "recent": [
@@ -47681,9 +47741,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 45,
+          "xgi": 0.08
         }
       ],
       "fixgw": {
@@ -47792,7 +47852,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 3.5,
+      "ep_next": 3.3,
       "chance_next": null,
       "v1gw": null,
       "recent": [
@@ -48383,7 +48443,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 4.4,
-      "ep_next": 3,
+      "ep_next": 4.2,
       "chance_next": null,
       "v1gw": null,
       "recent": [
@@ -48431,9 +48491,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 5,
+          "mins": 71,
+          "xgi": 1.3
         }
       ],
       "fixgw": {
@@ -48446,20 +48506,20 @@
       },
       "rated": true,
       "f": {
-        "pts4": 3,
-        "pts2": 2.5,
-        "xgi4": 0.29,
-        "xgi2": 0.24,
-        "minshare4": 0.65
+        "pts4": 4.25,
+        "pts2": 5,
+        "xgi4": 0.61,
+        "xgi2": 0.9,
+        "minshare4": 0.85
       },
-      "xp": 2.51,
+      "xp": 3.91,
       "xpgw": {
-        "12": 2.51,
-        "13": 3.02,
-        "14": 2.42,
-        "15": 2.93,
-        "16": 2.74,
-        "17": 2.54
+        "12": 3.91,
+        "13": 4.42,
+        "14": 3.82,
+        "15": 4.33,
+        "16": 4.14,
+        "17": 3.94
       }
     },
     "628": {
@@ -49205,7 +49265,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.4,
-      "ep_next": 0.5,
+      "ep_next": 0.8,
       "chance_next": 100,
       "v1gw": null,
       "recent": [
@@ -49253,8 +49313,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 6,
           "xgi": 0
         }
       ],
@@ -49277,7 +49337,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0.1,
-      "ep_next": 0.8,
+      "ep_next": 1,
       "chance_next": 100,
       "v1gw": null,
       "recent": [
@@ -49325,9 +49385,9 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
-          "xgi": 0
+          "pts": 1,
+          "mins": 90,
+          "xgi": 0.03
         }
       ],
       "fixgw": {
@@ -49338,8 +49398,23 @@
         "16": "IPS (H)",
         "17": "FUL (A)"
       },
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes"
+      "rated": true,
+      "f": {
+        "pts4": 1,
+        "pts2": 0.5,
+        "xgi4": 0.05,
+        "xgi2": 0.09,
+        "minshare4": 0.7
+      },
+      "xp": 2.23,
+      "xpgw": {
+        "12": 2.23,
+        "13": 1.51,
+        "14": 1.84,
+        "15": 2.29,
+        "16": 2.36,
+        "17": 1.7
+      }
     },
     "640": {
       "name": "Flemming",
@@ -49493,7 +49568,7 @@
       "status": "a",
       "news": "",
       "selected_pct": 0,
-      "ep_next": 0,
+      "ep_next": 0.2,
       "chance_next": null,
       "v1gw": null,
       "recent": [
@@ -49541,8 +49616,8 @@
         },
         {
           "gw": 11,
-          "pts": 0,
-          "mins": 0,
+          "pts": 1,
+          "mins": 45,
           "xgi": 0
         }
       ],
