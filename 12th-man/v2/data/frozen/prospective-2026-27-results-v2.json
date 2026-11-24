@@ -30,12 +30,17 @@
           "pts": 66.0,
           "transfers": 0,
           "hits": 0
+        },
+        "11": {
+          "pts": 41.0,
+          "transfers": 0,
+          "hits": 0
         }
       },
-      "total": 66.0,
+      "total": 107.0,
       "transfers": 0,
       "hits": 0,
-      "net": 66.0
+      "net": 107.0
     },
     "persistence_m0": {
       "weekly": {
@@ -43,12 +48,17 @@
           "pts": 69.0,
           "transfers": 0,
           "hits": 0
+        },
+        "11": {
+          "pts": 41.0,
+          "transfers": 1,
+          "hits": 0
         }
       },
-      "total": 69.0,
-      "transfers": 0,
+      "total": 110.0,
+      "transfers": 1,
       "hits": 0,
-      "net": 69.0
+      "net": 110.0
     },
     "model_m1": {
       "weekly": {
@@ -56,13 +66,18 @@
           "pts": 66.0,
           "transfers": 0,
           "hits": 0
+        },
+        "11": {
+          "pts": 41.0,
+          "transfers": 0,
+          "hits": 0
         }
       },
-      "total": 66.0,
+      "total": 107.0,
       "transfers": 0,
       "hits": 0,
-      "net": 66.0
+      "net": 107.0
     }
   },
-  "scored_through_gw": 10
+  "scored_through_gw": 11
 }
