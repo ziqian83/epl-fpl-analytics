@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T02:26:59.285Z",
+  "generated_at": "2026-11-24T05:52:09.485Z",
   "model": "docs/09_12thman_model.md v1 - OLS on trailing 4GW + 2GW form, minutes share, home share and role-split opponent terms; validated rolling holdouts; ranking tool, not point-precise. xpgw holds trailing features constant across the horizon (form decay unmodeled); doubles count as two matches; blanks are 0.",
   "model_version": "v1",
   "horizon_gws": [
@@ -19,8 +19,8 @@
       "pos": 1,
       "cost": 6.3,
       "status": "d",
-      "news": "Shoulder injury - 75% chance of playing",
-      "selected_pct": 46.8,
+      "news": "Shoulder injury - 50% chance of playing",
+      "selected_pct": 46.1,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -93,7 +93,7 @@
       "cost": 8.1,
       "status": "a",
       "news": "",
-      "selected_pct": 26.7,
+      "selected_pct": 26.8,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -201,7 +201,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 48.4,
+      "selected_pct": 48.3,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -401,7 +401,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.7,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -607,7 +607,7 @@
       "cost": 7.4,
       "status": "a",
       "news": "",
-      "selected_pct": 5.8,
+      "selected_pct": 5.7,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -661,7 +661,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 3,
+      "selected_pct": 3.1,
       "v1gw": 50,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -718,7 +718,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 25.5,
+      "selected_pct": 25.4,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -751,8 +751,8 @@
       "team": "AVL",
       "pos": 2,
       "cost": 4.3,
-      "status": "i",
-      "news": "Concussion - Expected back 28 Nov",
+      "status": "d",
+      "news": "Concussion - 75% chance of playing",
       "selected_pct": 3.2,
       "v1gw": 45,
       "rated": true,
@@ -969,7 +969,7 @@
       "cost": 8.3,
       "status": "a",
       "news": "",
-      "selected_pct": 54.7,
+      "selected_pct": 54.6,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -1445,7 +1445,7 @@
       "cost": 5.6,
       "status": "a",
       "news": "",
-      "selected_pct": 3.9,
+      "selected_pct": 4.2,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1480,7 +1480,7 @@
       "cost": 5.4,
       "status": "a",
       "news": "",
-      "selected_pct": 3.4,
+      "selected_pct": 3.5,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -1533,7 +1533,7 @@
       "pos": 2,
       "cost": 4.9,
       "status": "i",
-      "news": "Thigh injury - Expected back 31 Oct",
+      "news": "Thigh injury - Unknown return date",
       "selected_pct": 0,
       "v1gw": 50,
       "rated": false,
@@ -1658,10 +1658,10 @@
       "name": "Tavernier",
       "team": "BOU",
       "pos": 3,
-      "cost": 6.7,
+      "cost": 6.8,
       "status": "a",
       "news": "",
-      "selected_pct": 33.1,
+      "selected_pct": 33.4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1715,7 +1715,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 1.1,
+      "selected_pct": 1.2,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -1934,7 +1934,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 26.8,
+      "selected_pct": 27.2,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -2011,21 +2011,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 2.75,
+        "pts4": 4.25,
         "xgi4": 0.01,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 2.47,
+      "xp": 3.27,
       "xpgw": {
-        "12": 2.47,
-        "13": 2.66,
-        "14": 2.86,
-        "15": 2.34,
-        "16": 2.89
+        "12": 3.27,
+        "13": 3.46,
+        "14": 3.67,
+        "15": 3.14,
+        "16": 3.69
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2084,21 +2084,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 3.25,
-        "xgi4": 0.09,
-        "minshare4": 0.69,
+        "pts4": 4.75,
+        "xgi4": 0.1,
+        "minshare4": 0.94,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.97,
+      "xp": 2.78,
       "xpgw": {
-        "12": 1.97,
-        "13": 2.16,
-        "14": 2.37,
-        "15": 1.84,
-        "16": 2.4
+        "12": 2.78,
+        "13": 2.97,
+        "14": 3.18,
+        "15": 2.65,
+        "16": 3.2
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2115,25 +2115,25 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.7,
+      "selected_pct": 1.8,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.04,
-        "minshare4": 0.63,
+        "pts4": 5.5,
+        "xgi4": 0.26,
+        "minshare4": 0.83,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.96,
+      "xp": 3.87,
       "xpgw": {
-        "12": 1.96,
-        "13": 1.95,
-        "14": 2.32,
-        "15": 1.62,
-        "16": 2.15
+        "12": 3.87,
+        "13": 3.87,
+        "14": 4.23,
+        "15": 3.54,
+        "16": 4.06
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2154,21 +2154,21 @@
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 3,
+        "pts4": 4.5,
         "xgi4": 0.04,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 2,
+      "xp": 2.81,
       "xpgw": {
-        "12": 2,
-        "13": 2.19,
-        "14": 2.4,
-        "15": 1.87,
-        "16": 2.42
+        "12": 2.81,
+        "13": 3,
+        "14": 3.21,
+        "15": 2.68,
+        "16": 3.23
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2189,21 +2189,21 @@
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 2.5,
-        "xgi4": 0.05,
-        "minshare4": 0.75,
+        "pts4": 4,
+        "xgi4": 0.16,
+        "minshare4": 1,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.88,
+      "xp": 2.92,
       "xpgw": {
-        "12": 1.88,
-        "13": 2.07,
-        "14": 2.27,
-        "15": 1.74,
-        "16": 2.3
+        "12": 2.92,
+        "13": 3.11,
+        "14": 3.32,
+        "15": 2.79,
+        "16": 3.34
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2331,25 +2331,25 @@
       "cost": 6.1,
       "status": "a",
       "news": "",
-      "selected_pct": 12,
+      "selected_pct": 11.8,
       "v1gw": 60,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.13,
-        "minshare4": 0.65,
+        "pts4": 1.75,
+        "xgi4": 0.15,
+        "minshare4": 0.72,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 2.15,
+      "xp": 2.38,
       "xpgw": {
-        "12": 2.15,
-        "13": 2.14,
-        "14": 2.51,
-        "15": 1.81,
-        "16": 2.34
+        "12": 2.38,
+        "13": 2.38,
+        "14": 2.74,
+        "15": 2.05,
+        "16": 2.57
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2370,21 +2370,21 @@
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 4.25,
-        "xgi4": 0.32,
-        "minshare4": 0.54,
+        "pts4": 5,
+        "xgi4": 0.36,
+        "minshare4": 0.72,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 2.42,
+      "xp": 3.01,
       "xpgw": {
-        "12": 2.42,
-        "13": 2.41,
-        "14": 2.78,
-        "15": 2.08,
-        "16": 2.61
+        "12": 3.01,
+        "13": 3.01,
+        "14": 3.37,
+        "15": 2.68,
+        "16": 3.2
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2424,21 +2424,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 1.5,
-        "xgi4": 0.05,
-        "minshare4": 0.51,
+        "pts4": 2.5,
+        "xgi4": 0.1,
+        "minshare4": 0.55,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.76,
+      "xp": 2.22,
       "xpgw": {
-        "12": 1.76,
-        "13": 1.75,
-        "14": 2.11,
-        "15": 1.42,
-        "16": 1.95
+        "12": 2.22,
+        "13": 2.22,
+        "14": 2.58,
+        "15": 1.89,
+        "16": 2.41
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2459,21 +2459,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 1.75,
-        "xgi4": 0.01,
-        "minshare4": 0.5,
+        "pts4": 4.25,
+        "xgi4": 0.05,
+        "minshare4": 0.72,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.76,
+      "xp": 2.91,
       "xpgw": {
-        "12": 1.76,
-        "13": 1.75,
-        "14": 2.12,
-        "15": 1.42,
-        "16": 1.95
+        "12": 2.91,
+        "13": 2.9,
+        "14": 3.27,
+        "15": 2.57,
+        "16": 3.1
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -2507,8 +2507,8 @@
       "team": "BRE",
       "pos": 3,
       "cost": 5,
-      "status": "d",
-      "news": "Knock - 75% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0,
       "v1gw": 50,
       "rated": false,
@@ -2528,7 +2528,7 @@
       "cost": 4.9,
       "status": "a",
       "news": "",
-      "selected_pct": 1.3,
+      "selected_pct": 1.2,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2712,7 +2712,7 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 24.5,
+      "selected_pct": 24.6,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -2801,7 +2801,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 18.7,
+      "selected_pct": 19.1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -2890,7 +2890,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 50,
+      "selected_pct": 50.1,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -3182,7 +3182,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 4.7,
+      "selected_pct": 4.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -3236,7 +3236,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 2.5,
+      "selected_pct": 2.4,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -3423,7 +3423,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 9,
+      "selected_pct": 8.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -3807,7 +3807,7 @@
       "cost": 9.8,
       "status": "a",
       "news": "",
-      "selected_pct": 27.7,
+      "selected_pct": 27.4,
       "v1gw": 95,
       "rated": true,
       "f": {
@@ -3877,7 +3877,7 @@
       "cost": 6.6,
       "status": "a",
       "news": "",
-      "selected_pct": 4.7,
+      "selected_pct": 4.6,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4112,7 +4112,7 @@
       "cost": 7.6,
       "status": "i",
       "news": "Thigh injury - Unknown return date",
-      "selected_pct": 28.1,
+      "selected_pct": 27.8,
       "v1gw": 75,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -4131,7 +4131,7 @@
       "cost": 7.3,
       "status": "a",
       "news": "",
-      "selected_pct": 36.2,
+      "selected_pct": 36.4,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -4166,7 +4166,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 1.7,
+      "selected_pct": 1.8,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -4515,10 +4515,10 @@
       "name": "Rudoni",
       "team": "COV",
       "pos": 3,
-      "cost": 4.9,
+      "cost": 5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.7,
+      "selected_pct": 1.8,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -5515,21 +5515,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.75,
+        "pts4": 3,
         "xgi4": 0.01,
-        "minshare4": 0.75,
+        "minshare4": 1,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.61,
+      "xp": 3.07,
       "xpgw": {
-        "12": 2.61,
-        "13": 2.17,
-        "14": 2.82,
-        "15": 2.06,
-        "16": 2.45
+        "12": 3.07,
+        "13": 2.62,
+        "14": 3.27,
+        "15": 2.52,
+        "16": 2.9
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5582,27 +5582,27 @@
       "team": "EVE",
       "pos": 2,
       "cost": 6.2,
-      "status": "a",
-      "news": "",
-      "selected_pct": 18.8,
+      "status": "s",
+      "news": "Suspended until 13 Dec",
+      "selected_pct": 18.3,
       "v1gw": 60,
       "rated": true,
       "f": {
-        "pts4": 2.5,
+        "pts4": 1.5,
         "xgi4": 0,
-        "minshare4": 0.75,
+        "minshare4": 0.86,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 1.97,
+      "xp": 1.87,
       "xpgw": {
-        "12": 1.97,
-        "13": 1.53,
-        "14": 2.18,
-        "15": 1.42,
-        "16": 1.81
+        "12": 1.87,
+        "13": 1.42,
+        "14": 2.07,
+        "15": 1.31,
+        "16": 1.7
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5621,8 +5621,24 @@
       "news": "",
       "selected_pct": 2.2,
       "v1gw": 55,
-      "rated": false,
-      "reason": "cold start: under 180 recent minutes",
+      "rated": true,
+      "f": {
+        "pts4": 3.5,
+        "xgi4": 0.06,
+        "minshare4": 0.72,
+        "oppstr": 0.75
+      },
+      "fixtures": [
+        "LIV (H)"
+      ],
+      "xp": 2.26,
+      "xpgw": {
+        "12": 2.26,
+        "13": 1.81,
+        "14": 2.46,
+        "15": 1.71,
+        "16": 2.09
+      },
       "fixgw": {
         "12": "LIV (H)",
         "13": "AVL (A)",
@@ -5661,21 +5677,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 2.5,
+        "pts4": 3,
         "xgi4": 0.07,
-        "minshare4": 0.55,
+        "minshare4": 0.8,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 1.7,
+      "xp": 2.22,
       "xpgw": {
-        "12": 1.7,
-        "13": 1.25,
-        "14": 1.9,
-        "15": 1.14,
-        "16": 1.53
+        "12": 2.22,
+        "13": 1.77,
+        "14": 2.42,
+        "15": 1.67,
+        "16": 2.05
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5696,21 +5712,21 @@
       "v1gw": 45,
       "rated": true,
       "f": {
-        "pts4": 3.5,
+        "pts4": 3.75,
         "xgi4": 0.1,
-        "minshare4": 0.7,
+        "minshare4": 0.95,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.46,
+      "xp": 2.91,
       "xpgw": {
-        "12": 2.46,
-        "13": 2.01,
-        "14": 2.66,
-        "15": 1.91,
-        "16": 2.29
+        "12": 2.91,
+        "13": 2.46,
+        "14": 3.12,
+        "15": 2.36,
+        "16": 2.74
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5765,25 +5781,25 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 7.2,
+      "selected_pct": 7.1,
       "v1gw": 65,
       "rated": true,
       "f": {
-        "pts4": 3.75,
-        "xgi4": 0.2,
-        "minshare4": 0.74,
+        "pts4": 4.25,
+        "xgi4": 0.21,
+        "minshare4": 0.93,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 3.01,
+      "xp": 3.45,
       "xpgw": {
-        "12": 3.01,
-        "13": 2.66,
-        "14": 3.05,
-        "15": 2.48,
-        "16": 2.74
+        "12": 3.45,
+        "13": 3.11,
+        "14": 3.49,
+        "15": 2.92,
+        "16": 3.18
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5858,21 +5874,21 @@
       "v1gw": 60,
       "rated": true,
       "f": {
-        "pts4": 2,
+        "pts4": 3,
         "xgi4": 0.12,
-        "minshare4": 0.75,
+        "minshare4": 0.98,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.38,
+      "xp": 3.03,
       "xpgw": {
-        "12": 2.38,
-        "13": 2.04,
-        "14": 2.42,
-        "15": 1.86,
-        "16": 2.11
+        "12": 3.03,
+        "13": 2.69,
+        "14": 3.07,
+        "15": 2.5,
+        "16": 2.76
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -5887,8 +5903,8 @@
       "team": "HUL",
       "pos": 3,
       "cost": 5,
-      "status": "d",
-      "news": "Hamstring injury - 75% chance of playing",
+      "status": "i",
+      "news": "Hamstring injury - Unknown return date",
       "selected_pct": 0.1,
       "v1gw": 50,
       "rated": true,
@@ -5963,21 +5979,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2.25,
+        "pts4": 2.5,
         "xgi4": 0.27,
-        "minshare4": 0.75,
+        "minshare4": 0.87,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.73,
+      "xp": 2.99,
       "xpgw": {
-        "12": 2.73,
-        "13": 2.39,
-        "14": 2.78,
-        "15": 2.21,
-        "16": 2.46
+        "12": 2.99,
+        "13": 2.65,
+        "14": 3.04,
+        "15": 2.47,
+        "16": 2.72
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -6017,21 +6033,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 2.25,
-        "xgi4": 0.16,
-        "minshare4": 0.7,
+        "pts4": 2.75,
+        "xgi4": 0.17,
+        "minshare4": 0.95,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.38,
+      "xp": 2.92,
       "xpgw": {
-        "12": 2.38,
-        "13": 2.04,
-        "14": 2.43,
-        "15": 1.86,
-        "16": 2.11
+        "12": 2.92,
+        "13": 2.58,
+        "14": 2.96,
+        "15": 2.39,
+        "16": 2.65
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -6071,21 +6087,21 @@
       "v1gw": 50,
       "rated": true,
       "f": {
-        "pts4": 1.75,
+        "pts4": 2.25,
         "xgi4": 0.05,
-        "minshare4": 0.7,
+        "minshare4": 0.89,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 2.22,
+      "xp": 2.65,
       "xpgw": {
-        "12": 2.22,
-        "13": 1.88,
-        "14": 2.26,
-        "15": 1.7,
-        "16": 1.95
+        "12": 2.65,
+        "13": 2.31,
+        "14": 2.69,
+        "15": 2.13,
+        "16": 2.38
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -6144,21 +6160,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 6.75,
-        "xgi4": 0.73,
-        "minshare4": 0.72,
+        "pts4": 7.25,
+        "xgi4": 0.76,
+        "minshare4": 0.91,
         "oppstr": 0.75
       },
       "fixtures": [
         "LIV (H)"
       ],
-      "xp": 4.56,
+      "xp": 5.06,
       "xpgw": {
-        "12": 4.56,
-        "13": 4.22,
-        "14": 4.61,
-        "15": 4.04,
-        "16": 4.29
+        "12": 5.06,
+        "13": 4.72,
+        "14": 5.11,
+        "15": 4.54,
+        "16": 4.79
       },
       "fixgw": {
         "12": "LIV (H)",
@@ -6829,10 +6845,10 @@
       "name": "Egan",
       "team": "HUL",
       "pos": 2,
-      "cost": 4.1,
+      "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 6.3,
+      "selected_pct": 6.2,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -6886,7 +6902,7 @@
       "cost": 4.2,
       "status": "a",
       "news": "",
-      "selected_pct": 11.7,
+      "selected_pct": 11.8,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7067,7 +7083,7 @@
       "cost": 5.2,
       "status": "a",
       "news": "",
-      "selected_pct": 8.8,
+      "selected_pct": 8.9,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -7270,7 +7286,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 1.8,
+      "selected_pct": 1.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -7435,7 +7451,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 0.6,
+      "selected_pct": 0.5,
       "v1gw": 40,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -7473,7 +7489,7 @@
       "cost": 4,
       "status": "a",
       "news": "",
-      "selected_pct": 2.7,
+      "selected_pct": 2.6,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -7508,7 +7524,7 @@
       "cost": 4,
       "status": "d",
       "news": "Calf injury - 75% chance of playing",
-      "selected_pct": 6.2,
+      "selected_pct": 6.1,
       "v1gw": 40,
       "rated": true,
       "f": {
@@ -8047,7 +8063,7 @@
       "cost": 4.8,
       "status": "a",
       "news": "",
-      "selected_pct": 11.6,
+      "selected_pct": 11.8,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -8171,7 +8187,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 7.1,
+      "selected_pct": 7.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -8225,7 +8241,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.9,
+      "selected_pct": 1.1,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -8331,8 +8347,8 @@
       "team": "HUL",
       "pos": 3,
       "cost": 5,
-      "status": "a",
-      "news": "",
+      "status": "i",
+      "news": "Thigh injury - Unknown return date",
       "selected_pct": 0,
       "v1gw": 50,
       "rated": false,
@@ -8463,7 +8479,7 @@
       "cost": 6,
       "status": "a",
       "news": "",
-      "selected_pct": 16.8,
+      "selected_pct": 17.1,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -8555,7 +8571,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.2,
+      "selected_pct": 4.3,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -8606,7 +8622,7 @@
       "name": "Woodman",
       "team": "LIV",
       "pos": 1,
-      "cost": 4,
+      "cost": 3.9,
       "status": "a",
       "news": "",
       "selected_pct": 0.9,
@@ -8831,7 +8847,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.9,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -8923,7 +8939,7 @@
       "cost": 7.4,
       "status": "a",
       "news": "",
-      "selected_pct": 8.2,
+      "selected_pct": 9.3,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -8958,7 +8974,7 @@
       "cost": 7.1,
       "status": "d",
       "news": "Calf injury - 75% chance of playing",
-      "selected_pct": 6.8,
+      "selected_pct": 6.7,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -8993,7 +9009,7 @@
       "cost": 6.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.6,
+      "selected_pct": 13.8,
       "v1gw": 70,
       "rated": true,
       "f": {
@@ -9028,7 +9044,7 @@
       "cost": 5.7,
       "status": "a",
       "news": "",
-      "selected_pct": 0.5,
+      "selected_pct": 0.6,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -9234,7 +9250,7 @@
       "cost": 9.3,
       "status": "a",
       "news": "",
-      "selected_pct": 26.6,
+      "selected_pct": 26.8,
       "v1gw": 90,
       "rated": true,
       "f": {
@@ -9380,7 +9396,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 7.3,
+      "selected_pct": 7.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -9453,7 +9469,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 12.4,
+      "selected_pct": 12.3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -9486,8 +9502,8 @@
       "team": "MCI",
       "pos": 2,
       "cost": 5.9,
-      "status": "d",
-      "news": "Unspecified injury - 50% chance of playing",
+      "status": "a",
+      "news": "",
       "selected_pct": 0.9,
       "v1gw": 60,
       "rated": false,
@@ -9542,7 +9558,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 19.8,
+      "selected_pct": 19.6,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -9688,7 +9704,7 @@
       "cost": 8.1,
       "status": "i",
       "news": "Knee injury - Unknown return date",
-      "selected_pct": 5.3,
+      "selected_pct": 5.2,
       "v1gw": 85,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -9726,7 +9742,7 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 32.6,
+      "selected_pct": 32,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -9761,7 +9777,7 @@
       "cost": 7.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.3,
+      "selected_pct": 4.2,
       "v1gw": 75,
       "rated": true,
       "f": {
@@ -10018,7 +10034,7 @@
       "cost": 15.8,
       "status": "a",
       "news": "",
-      "selected_pct": 78.2,
+      "selected_pct": 77.8,
       "v1gw": 155,
       "rated": true,
       "f": {
@@ -10253,7 +10269,7 @@
       "cost": 4.8,
       "status": "s",
       "news": "Suspended until 2 Dec",
-      "selected_pct": 0.5,
+      "selected_pct": 0.4,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -10418,7 +10434,7 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 17.7,
+      "selected_pct": 17.5,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -10453,7 +10469,7 @@
       "cost": 7.8,
       "status": "a",
       "news": "",
-      "selected_pct": 5.6,
+      "selected_pct": 5.5,
       "v1gw": 80,
       "rated": true,
       "f": {
@@ -10932,7 +10948,7 @@
       "cost": 5.2,
       "status": "d",
       "news": "Unspecified injury - 75% chance of playing",
-      "selected_pct": 16.5,
+      "selected_pct": 16.3,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -11313,7 +11329,7 @@
       "cost": 5.9,
       "status": "a",
       "news": "",
-      "selected_pct": 7.5,
+      "selected_pct": 7.4,
       "v1gw": 60,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -11748,7 +11764,7 @@
       "cost": 6.2,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.6,
       "v1gw": 65,
       "rated": true,
       "f": {
@@ -11964,7 +11980,7 @@
       "name": "Wood",
       "team": "NFO",
       "pos": 4,
-      "cost": 5.7,
+      "cost": 5.6,
       "status": "a",
       "news": "",
       "selected_pct": 0.7,
@@ -12097,7 +12113,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 16.1,
+      "selected_pct": 16.2,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -12132,7 +12148,7 @@
       "cost": 3.9,
       "status": "a",
       "news": "",
-      "selected_pct": 14.8,
+      "selected_pct": 14.7,
       "v1gw": 40,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -12170,11 +12186,11 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 5.1,
+      "selected_pct": 5.2,
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 4.75,
+        "pts4": 4.5,
         "xgi4": 0.16,
         "minshare4": 0.62,
         "oppstr": 1.25
@@ -12182,13 +12198,13 @@
       "fixtures": [
         "SUN (A)"
       ],
-      "xp": 2.88,
+      "xp": 2.81,
       "xpgw": {
-        "12": 2.88,
-        "13": 3.1,
-        "14": 2.97,
-        "15": 2.8,
-        "16": 2.45
+        "12": 2.81,
+        "13": 3.03,
+        "14": 2.9,
+        "15": 2.73,
+        "16": 2.38
       },
       "fixgw": {
         "12": "SUN (A)",
@@ -12243,7 +12259,7 @@
       "cost": 4.3,
       "status": "a",
       "news": "",
-      "selected_pct": 2.9,
+      "selected_pct": 2.8,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -12313,7 +12329,7 @@
       "cost": 5.3,
       "status": "a",
       "news": "",
-      "selected_pct": 11.5,
+      "selected_pct": 11.6,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -12757,7 +12773,7 @@
       "cost": 4.4,
       "status": "a",
       "news": "",
-      "selected_pct": 0.8,
+      "selected_pct": 0.7,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
@@ -13481,7 +13497,7 @@
       "cost": 5.7,
       "status": "i",
       "news": "Muscular injury - Unknown return date",
-      "selected_pct": 4.1,
+      "selected_pct": 4,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -13780,21 +13796,21 @@
       "v1gw": 55,
       "rated": true,
       "f": {
-        "pts4": 2,
-        "xgi4": 0.03,
-        "minshare4": 0.58,
+        "pts4": 2.25,
+        "xgi4": 0.04,
+        "minshare4": 0.6,
         "oppstr": 2.5
       },
       "fixtures": [
         "MUN (A)"
       ],
-      "xp": 1.9,
+      "xp": 2.02,
       "xpgw": {
-        "12": 1.9,
-        "13": 1.9,
-        "14": 2.26,
-        "15": 1.57,
-        "16": 2.09
+        "12": 2.02,
+        "13": 2.02,
+        "14": 2.38,
+        "15": 1.69,
+        "16": 2.21
       },
       "fixgw": {
         "12": "MUN (A)",
@@ -13811,7 +13827,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 4,
+      "selected_pct": 4.1,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -13900,7 +13916,7 @@
       "cost": 5.8,
       "status": "a",
       "news": "",
-      "selected_pct": 3.1,
+      "selected_pct": 3,
       "v1gw": 60,
       "rated": true,
       "f": {
@@ -13989,7 +14005,7 @@
       "cost": 4.7,
       "status": "a",
       "news": "",
-      "selected_pct": 13.4,
+      "selected_pct": 13.5,
       "v1gw": 45,
       "rated": true,
       "f": {
@@ -14170,7 +14186,7 @@
       "cost": 5.5,
       "status": "a",
       "news": "",
-      "selected_pct": 4.8,
+      "selected_pct": 4.9,
       "v1gw": 55,
       "rated": true,
       "f": {
@@ -14624,7 +14640,7 @@
       "cost": 5.1,
       "status": "a",
       "news": "",
-      "selected_pct": 3.5,
+      "selected_pct": 3.7,
       "v1gw": 50,
       "rated": true,
       "f": {
@@ -14806,9 +14822,9 @@
       "team": "BHA",
       "pos": 3,
       "cost": 4.4,
-      "status": "a",
-      "news": "",
-      "selected_pct": 2.5,
+      "status": "i",
+      "news": "Unspecified injury - Unknown return date",
+      "selected_pct": 2.4,
       "v1gw": 45,
       "rated": false,
       "reason": "cold start: under 180 recent minutes",
